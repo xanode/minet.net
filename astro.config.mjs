@@ -7,5 +7,6 @@ export default defineConfig({
   experimental: {
     assets: true,
   },
-  integrations: [tailwind()]
+  integrations: [tailwind()],
+  site: 'https://minet.xanode.fr',
 });
