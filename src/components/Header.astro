@@ -1,0 +1,47 @@
+---
+import ButtonAction from "@components/ButtonAction.astro";
+import Icon from "@components/Icon.astro";
+import NavItem from "@components/NavItem.astro";
+---
+
+<header class="fixed w-full z-50 text-white bg-neutral-800/90 backdrop-blur-sm border-b border-neutral-700 p-4">
+    <div class="flex flex-col md:flex-row items-center max-w-8xl mx-auto">
+        <a class="flex-none overflow-hidden" href="/">
+            <span class="sr-only">MiNET</span>
+            <Icon className="h-20 w-auto fill-white" name="minet" />
+        </a>
+        <nav class="relative flex flex-col md:flex-row items-center ml-auto">
+            <ul class="flex flex-col md:flex-row leading-8 space-x-4 text-center text-sm">
+                <NavItem href="/tutoriels/" target="_self">
+                    Tutoriels
+                </NavItem>
+                <NavItem href="/equipe/" target="_self">
+                    Équipe
+                </NavItem>
+                <NavItem href="/clubs/" target="_self">
+                    Nos clubs
+                </NavItem>
+                <NavItem href="/partenaires/" target="_self">
+                    Nos partenaires
+                </NavItem>
+                <NavItem href="/services/" target="_self">
+                    Nos services
+                </NavItem>
+                <NavItem href="https://payment.minet.net/" target='_blank'>
+                    Cotiser
+                </NavItem>
+                <NavItem href="https://conferences.minet.net/" target='_blank'>
+                    Conférences
+                </NavItem>
+                <NavItem href="https://status.minet.net/" target='_blank'>
+                    État des services
+                </NavItem>
+            </ul>
+            <div class="flex ml-4 pl-4">
+                <ButtonAction class="relative p-3 font-bold" href="https://adh6.minet.net/" rounded="md">
+                    Espace adhérent
+                </ButtonAction>
+            </div>
+        </nav>
+    </div>
+</header>

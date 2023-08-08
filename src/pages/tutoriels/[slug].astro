@@ -1,0 +1,33 @@
+---
+import { getCollection } from "astro:content";
+
+import Layout from "@layouts/Layout.astro";
+
+export async function getStaticPaths() {
+    const tutorials = await getCollection("tutoriels");
+    return tutorials.map((tutorial) => {
+        return {
+            params: {
+                slug: tutorial.slug,
+            },
+            props: {
+                tutorial,
+            },
+        };
+    });
+};
+
+const { tutorial } = Astro.props;
+const { Content } = await tutorial.render();
+---
+
+<Layout title={tutorial.data.title}>
+    <main class="py-20 mt-20 text-white">
+        <div class="flex flex-col items-center gap-20 max-w-8xl mx-auto">
+            <h1 class="text-4xl font-bold my-6">{tutorial.data.description}</h1>
+            <div class="prose lg:prose-xl prose-invert text-justify">
+                <Content />
+            </div>
+        </div>
+    </main>
+</Layout>

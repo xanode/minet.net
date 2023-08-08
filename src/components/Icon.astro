@@ -1,0 +1,18 @@
+---
+import { IconsDict } from '@libs/icons';
+
+interface Props {
+    className?: string;
+    label?: string;
+    name: keyof typeof IconsDict;
+}
+const { className = "", label, name } = Astro.props;
+---
+
+<svg
+    aria-label={label}
+    aria-hidden="true"
+    class:list={[className]}
+    viewBox={IconsDict[name].viewbox}
+    set:html={IconsDict[name].content}
+/>

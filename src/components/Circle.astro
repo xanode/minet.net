@@ -1,0 +1,14 @@
+---
+interface Props {
+    width: string,
+    height: string,
+    zindex: string,
+}
+const { width, height, zindex } = Astro.props;
+---
+
+<div class:list={[width, height, zindex, "animate-circle-scale rounded-full absolute inset-0 m-auto"]}>
+    <span class="bg-circle-before -z-1 absolute inset-0 w-full h-full rounded-full pointer-events-none"></span>
+    <slot />
+    <span class="absolute inset-0 w-full h-full rounded-full pointer-events-none p-0.5 bg-circle-after mask-circle"></span>
+</div>

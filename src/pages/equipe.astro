@@ -1,0 +1,86 @@
+---
+import PulseCircles from '@components/PulseCircles.astro';
+import TeamCard from '@components/TeamCard.astro';
+import TeamCarousel from '@components/TeamCarousel.astro';
+import Layout from '@layouts/Layout.astro';
+
+import RespoWifiReference from "~/assets/equipe/Alexandre.png";
+import RespoFormationsReference from "~/assets/equipe/Bence.png";
+import RespoWebReference from "~/assets/equipe/benoit.png";
+import TresorierReference from "~/assets/equipe/Bilal.png";
+import VicePresident1Reference from "~/assets/equipe/Clément.png";
+import RespoInventaireReference from "~/assets/equipe/Fabulo.png";
+import SecretaireReference from "~/assets/equipe/Gatien.png";
+import RespoClubsReference from "~/assets/equipe/hector.png";
+import RespoCommunication1Reference from "~/assets/equipe/Inès.png";
+import PresidentReference from "~/assets/equipe/nathan.png";
+import RespoCommunication2Reference from "~/assets/equipe/Orlane.png";
+import VicePresident2Reference from "~/assets/equipe/Siffrein.png";
+import RespoPermanenceReference from "~/assets/equipe/Yassine.png";
+---
+
+<Layout title="MiNET">
+	<main class="py-20 mt-20">
+		<div class="flex flex-col items-center gap-40">
+			<section class="relative text-white">
+				<div class="mx-auto pb-112">
+					<h1 class="relative text-7xl font-bold text-center leading-relaxed">
+						Rejoignez-nous
+					</h1>
+					<PulseCircles />
+				</div>
+			</section>
+			<section class="relative mb-28 md:mb-38 text-white">
+				<div class="relative flex flex-col items-center gap-10">
+					<h2 class="font-bold text-7xl">
+						Notre équipe
+					</h2>
+					<p class="text-2xl">
+						Découvrez l'équipe MiNET
+					</p>
+				</div>
+				<TeamCarousel startIndex={6}>
+					<li>
+						<TeamCard image={RespoPermanenceReference} name="Yassine Boussafir" role="Responsable Permanence" pseudo="bouyass" />
+					</li>
+					<li>
+						<TeamCard image={RespoCommunication1Reference} name="Inès Kacer" role="Responsable Communication" pseudo="nesi" />
+					</li>
+					<li>
+						<TeamCard image={RespoWifiReference} name="Alexandre Humeau" role="Responsable Wi-Fi" pseudo="didier" />
+					</li>
+					<li>
+						<TeamCard image={RespoFormationsReference} name="Bence Kolonics" role="Responsable Formations" pseudo="placeholder" />
+					</li>
+					<li>
+						<TeamCard image={SecretaireReference} name="Gatien Roujanski" role="Secrétaire" pseudo="fauconk" />
+					</li>
+					<li>
+						<TeamCard image={VicePresident1Reference} name="Clément Lucas" role="Vice-Président" pseudo="sulray" />
+					</li>
+					<li>
+						<TeamCard image={PresidentReference} name="Nathan Stchepinsky" role="Président" pseudo="seaweedbrain" />
+					</li>
+					<li>
+						<TeamCard image={VicePresident2Reference} name="Siffrein Sigy" role="Vice-Président" pseudo="wobarron" />
+					</li>
+					<li>
+						<TeamCard image={TresorierReference} name="Bilal Bousmeslout" role="Trésorier" pseudo="linegann" />
+					</li>
+					<li>
+						<TeamCard image={RespoWebReference} name="Benoit Marzelleau" role="Responsable Web" pseudo="xanode" />
+					</li>
+					<li>
+						<TeamCard image={RespoCommunication2Reference} name="Orlane Donias" role="Responsable Communication" pseudo="kamiro" />
+					</li>
+					<li>
+						<TeamCard image={RespoClubsReference} name="Hector Fétis" role="Responsable Clubs" pseudo="smyler" />
+					</li>
+					<li>
+						<TeamCard image={RespoInventaireReference} name="Thomas Plazziac" role="Responsable Inventaire" pseudo="fabulo" />
+					</li>
+				</TeamCarousel>
+			</section>
+		</div>
+	</main>
+</Layout>

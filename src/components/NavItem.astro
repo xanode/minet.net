@@ -1,0 +1,11 @@
+---
+interface Props {
+    href: string;
+    target?: astroHTML.JSX.HTMLAttributeAnchorTarget;
+}
+const { href, target } = Astro.props as Props;
+---
+
+<a class="hover:text-sky-400 transition-colors" href={href} target={target}>
+    <slot />
+</a>

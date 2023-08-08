@@ -1,0 +1,143 @@
+---
+---
+
+<particles-canvas class="fixed -z-10 w-full h-screen"></particles-canvas>
+
+<script>
+    class ParticlesCanvas extends HTMLElement {
+        canvas: HTMLCanvasElement;
+        ctx: CanvasRenderingContext2D | null;
+        particleCount: number = 400;
+        maxDistance: number = 100;
+        particleSize: number = 3;
+        minDiameter: number = 2;
+        maxDiameter: number = 4;
+        particleSpeed: number = 0.4;
+        interactiveDistance: number = 100;
+        interactiveOpacity: number = 0.3;
+        lineWidth: number = 1;
+        particles: { x: number; y: number; vx: number; vy: number; diameter: number; }[] = [];
+        mouseX: number = 0;
+        mouseY: number = 0;
+
+        constructor() {
+            super();
+
+            // Create a shadow root
+            this.attachShadow({ mode: 'open' });
+
+            // Create a canvas element inside the shadow root
+            this.canvas = document.createElement('canvas');
+            this.shadowRoot!.appendChild(this.canvas);
+
+            // Set canvas dimensions to match the element size
+            this.canvas.width = this.clientWidth;
+            this.canvas.height = this.clientHeight;
+
+            // Get the canvas context
+            this.ctx = this.canvas.getContext('2d');
+
+            this.init();
+            this.drawParticles();
+
+            // Attach event listeners for interaction
+            this.addEventListener('mousemove', this.handleMouseInteraction.bind(this));
+            window.addEventListener('resize', this.handleResize.bind(this));
+        }
+
+        init() {
+            for (let i = 0; i < this.particleCount; i++) {
+                this.particles.push({
+                    x: Math.random() * this.canvas.width,
+                    y: Math.random() * this.canvas.height,
+                    vx: (Math.random() - 0.5) * this.particleSpeed,
+                    vy: (Math.random() - 0.5) * this.particleSpeed,
+                    diameter: this.getRandomDiameter()
+                });
+            }
+        }
+
+        getRandomDiameter() {
+            return Math.random() * (this.maxDiameter - this.minDiameter) + this.minDiameter;
+        }
+
+        drawParticles() {
+            this.ctx?.clearRect(0, 0, this.canvas.width, this.canvas.height);
+
+            // Store the position of the mouse
+            const mouseX = this.mouseX;
+            const mouseY = this.mouseY;
+
+            for (let i = 0; i < this.particles.length; i++) {
+                const particle = this.particles[i];
+
+                // Draw particle
+                this.ctx?.beginPath();
+                this.ctx?.arc(particle.x, particle.y, particle.diameter / 2, 0, 2 * Math.PI);
+                this.ctx!.fillStyle = "#D1D1D1";
+                this.ctx?.fill();
+
+                // Update particle position
+                particle.x += particle.vx;
+                particle.y += particle.vy;
+
+                // Boundary check
+                if (particle.x < 0 || particle.x > this.canvas.width) {
+                    particle.vx = -particle.vx;
+                }
+                if (particle.y < 0 || particle.y > this.canvas.height) {
+                    particle.vy = -particle.vy;
+                }
+
+                // Calculate distance between particle and mouse
+                const distance = Math.sqrt(
+                    Math.pow(particle.x - mouseX, 2) + Math.pow(particle.y - mouseY, 2)
+                );
+
+                // Draw line between particle and mouse if distance is smaller than threshold
+                if (distance < this.interactiveDistance) {
+                    this.ctx!.strokeStyle = `rgba(255, 255, 255, ${(1 - distance / this.interactiveDistance) * this.interactiveOpacity})`;
+                    this.ctx!.lineWidth = this.lineWidth;
+                    this.ctx?.beginPath();
+                    this.ctx?.moveTo(particle.x, particle.y);
+                    this.ctx?.lineTo(mouseX, mouseY);
+                    this.ctx?.stroke();
+                }
+            }
+
+            requestAnimationFrame(this.drawParticles.bind(this));
+        }
+
+        handleMouseInteraction(event: MouseEvent) {
+            this.mouseX = event.clientX;
+            this.mouseY = event.clientY;
+
+            for (let i = 0; i < this.particles.length; i++) {
+                const particle = this.particles[i];
+
+                const distance = Math.sqrt(
+                    Math.pow(particle.x - this.mouseX, 2) + Math.pow(particle.y - this.mouseY, 2)
+                );
+
+                if (distance < this.interactiveDistance) {
+                    const opacity = 1 - distance / this.interactiveDistance;
+                    this.ctx!.fillStyle = `rgba(255, 255, 255, ${opacity * this.interactiveOpacity})`;
+
+                    // Draw an interactive circle around the particle
+                    this.ctx?.beginPath();
+                    this.ctx?.arc(particle.x, particle.y, this.interactiveDistance, 0, 2 * Math.PI);
+                    this.ctx?.fill();
+                }
+            }
+        }
+
+        handleResize() {
+            this.canvas.width = this.clientWidth;
+            this.canvas.height = this.clientHeight;
+        }
+    }
+
+    // Define the custom element "particles-canvas"
+    customElements.define('particles-canvas', ParticlesCanvas);
+
+</script>
