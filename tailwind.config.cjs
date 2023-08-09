@@ -59,9 +59,9 @@ module.exports = {
 				'empty': '""',
 			},
 			dropShadow: {
-				'lg-red-500': [
-					'0 10px 8px rgba(239,68,68,.04)',
-					'0 4px 3px rgba(239,68,68,.1)',
+				'pseudo': [
+					'0 10px 8px rgba(239,68,68,.12)',
+					'0 4px 3px rgba(239,68,68,.3)',
 				],
 			},
 			duration: {
