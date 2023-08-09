@@ -1,0 +1,177 @@
+---
+---
+
+<network-canvas class="relative block w-full h-full backdrop-blur-sm rounded-2xl shadow-inner shadow-neutral-700"></network-canvas>
+
+<script>
+    import { networkNodes } from "@libs/network_nodes";
+    import type { NetworkNode } from "@libs/network_nodes";
+
+    interface TransferBall {
+        fromNode: number;
+        toNode: number;
+        progress: number;
+        speed: number;
+    }
+
+    class AbstractNetwork extends HTMLElement {
+        networkCanvas: HTMLCanvasElement;
+        networkCtx: CanvasRenderingContext2D | null;
+        transferCanvas: HTMLCanvasElement;
+        transferCtx: CanvasRenderingContext2D | null;
+        nodeRadius: number = 5;
+        maxConnections: number = 3;
+        reductionFactor: number = 0.8;
+
+        constructor() {
+            super();
+            this.attachShadow({ mode: 'open' });
+
+            this.networkCanvas = document.createElement('canvas');
+            this.networkCanvas.style.position = 'absolute';
+            this.networkCanvas.style.inset = '0';
+            this.networkCanvas.style.zIndex = '0';
+
+            this.transferCanvas = document.createElement('canvas');
+            this.transferCanvas.style.position = 'absolute';
+            this.transferCanvas.style.inset = '0';
+            this.transferCanvas.style.zIndex = '1';
+            
+            this.shadowRoot?.appendChild(this.networkCanvas);
+            this.shadowRoot?.appendChild(this.transferCanvas);
+
+            // Get canvas contexts
+            this.networkCtx = this.networkCanvas.getContext('2d');
+            this.transferCtx = this.transferCanvas.getContext('2d');
+        }
+
+        connectedCallback() {
+            // Set network canvas sizes
+            this.networkCanvas.width = Math.floor(650 * this.reductionFactor);
+            this.networkCanvas.height = Math.floor(838 * this.reductionFactor);
+
+            // Set transfer canvas sizes
+            this.transferCanvas.width = Math.floor(650 * this.reductionFactor);
+            this.transferCanvas.height = Math.floor(838 * this.reductionFactor);
+
+            this.style.width = Math.floor(650 * this.reductionFactor) + 'px';
+            this.style.height = Math.floor(838 * this.reductionFactor) + 'px';
+
+            this.renderNetwork(networkNodes);
+
+            this.animateDataTransferBalls(networkNodes);
+        }
+
+        renderNetwork(nodes: NetworkNode[]) {
+            if (!this.networkCtx) return;
+            this.networkCtx.clearRect(0, 0, this.networkCanvas.width, this.networkCanvas.height);
+
+            // Draw connection lines first
+            for (const node of nodes) {
+                for (const connectionIndex of node.connections) {
+                    const connectedNode = nodes[connectionIndex];
+                    this.networkCtx.beginPath();
+                    this.networkCtx.moveTo(Math.floor(node.x * this.reductionFactor), Math.floor(node.y * this.reductionFactor));
+                    this.networkCtx.lineTo(Math.floor(connectedNode.x * this.reductionFactor), Math.floor(connectedNode.y * this.reductionFactor));
+                    this.networkCtx.strokeStyle = 'rgba(64,64,64,.3)';
+                    this.networkCtx.stroke();
+                    this.networkCtx.closePath();
+                }
+            }
+
+            for (const node of nodes) {
+                // Draw the drop shadow
+                this.networkCtx.shadowColor = '#38dbf8';
+                this.networkCtx.shadowBlur = 12;
+                this.networkCtx.shadowOffsetX = 0;
+                this.networkCtx.shadowOffsetY = 0;
+
+                // Draw the node circle
+                this.networkCtx.beginPath();
+                this.networkCtx.arc(Math.floor(node.x * this.reductionFactor), Math.floor(node.y * this.reductionFactor), this.nodeRadius, 0, 2 * Math.PI);
+                this.networkCtx.fillStyle = '#38dbf8';
+                this.networkCtx.fill();
+                this.networkCtx.closePath();
+
+                // Clear the shadow settings
+                this.networkCtx.shadowColor = 'transparent';
+                this.networkCtx.shadowBlur = 0;
+                this.networkCtx.shadowOffsetX = 0;
+                this.networkCtx.shadowOffsetY = 0;
+            }
+        }
+
+        drawDataTransferBall(x: number, y: number) {
+            if (!this.transferCtx) return;
+
+            // Draw the drop shadow
+            this.transferCtx.shadowColor = '#38dbf8';
+            this.transferCtx.shadowBlur = 12;
+            this.transferCtx.shadowOffsetX = 0;
+            this.transferCtx.shadowOffsetY = 0;
+            
+            // Draw the circle
+            this.transferCtx.beginPath();
+            this.transferCtx.arc(x, y, 2, 0, 2 * Math.PI);
+            this.transferCtx.fillStyle = '#38dbf8';
+            this.transferCtx.fill();
+            this.transferCtx.closePath();
+
+            // Clear the shadow settings
+            this.transferCtx.shadowColor = 'transparent';
+            this.transferCtx.shadowBlur = 0;
+            this.transferCtx.shadowOffsetX = 0;
+            this.transferCtx.shadowOffsetY = 0;
+        }
+
+        animateDataTransferBalls(nodes: NetworkNode[]) {
+            if (!this.transferCtx) return;
+
+            const transferBalls: TransferBall[] = []; // Store transfer ball data
+
+            const animate = () => {
+                this.transferCtx?.clearRect(0, 0, this.transferCanvas.width, this.transferCanvas.height);
+
+                for (let i = 0; i < transferBalls.length; i++) {
+                    const ball = transferBalls[i];
+                    const node = nodes[ball.fromNode];
+                    const connectedNode = nodes[ball.toNode];
+
+                    ball.progress += ball.speed;
+                    if (ball.progress > 1) {
+                        ball.progress = 0;
+                        ball.fromNode = ball.toNode;
+
+                        // Find the next connected node
+                        const connectedNodes = nodes[ball.fromNode].connections;
+                        if (connectedNodes.length > 0) {
+                            ball.toNode = connectedNodes[Math.floor(Math.random() * connectedNodes.length)];
+                        }
+                    }
+
+                    const ballX = node.x + (connectedNode.x - node.x) * ball.progress;
+                    const ballY = node.y + (connectedNode.y - node.y) * ball.progress;
+                    this.drawDataTransferBall(Math.floor(ballX * this.reductionFactor), Math.floor(ballY * this.reductionFactor));
+                }
+
+                requestAnimationFrame(animate);
+            };
+
+            // Initialize transfer balls
+            for (const node of nodes) {
+                for (const connectionIndex of node.connections) {
+                    transferBalls.push({
+                        fromNode: node.connections[Math.floor(Math.random() * node.connections.length)],
+                        toNode: connectionIndex,
+                        progress: Math.random(),
+                        speed: 0.005 + Math.random() * 0.0005, // Adjust speed range
+                    });
+                }
+            }
+
+            animate();
+        }
+    }
+
+    customElements.define('network-canvas', AbstractNetwork);
+</script>
