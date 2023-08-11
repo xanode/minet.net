@@ -1,0 +1,200 @@
+---
+---
+
+<canvas is="minet-globe" class="h-[600px] w-[1200px]"></canvas>
+
+<script>
+    import * as BufferGeometryUtils from 'three/examples/jsm/utils/BufferGeometryUtils';
+    import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls';
+    import * as THREE from 'three';
+
+    class MiNETGlobe extends HTMLCanvasElement {
+        // Three.js related objects
+        private camera!: THREE.PerspectiveCamera;
+        private renderer!: THREE.WebGLRenderer;
+        private orbitControls!: OrbitControls;
+        private scene!: THREE.Scene;
+        // Camera related attributes
+        private readonly cameraData = {
+            fov: 20,
+            near: 100,
+            far: 500,
+            position: new THREE.Vector3(0, 0, 220),
+        };
+        // Light related attributes
+        private readonly lightData = {
+            color: 0xffffff,
+            intensity: 2,
+            x: 5,
+            y: 3,
+            z: 5,
+        };
+        // Globe related attributes
+        private readonly globeData = {
+            radius: 30,
+            latitudeSegmentsCount: 80,
+            longitudeSegmentsCount: 80,
+            color: 0x1e3a8a, // blue-900
+        };
+        // Dots related attributes
+        private readonly dotColor: THREE.ColorRepresentation = 0xffffff;
+        private readonly dotDensity: number = 0.2;
+        private dotGeometries!: THREE.BufferGeometry;
+        private dotMesh!: THREE.Mesh;
+        private readonly dotMaterial = new THREE.MeshBasicMaterial({ color: this.dotColor });
+        private readonly dotSize: number = 0.15;
+
+
+        constructor() {
+            super();
+        }
+
+        connectedCallback() {
+            this.setup();
+        }
+
+        async setup() {
+            this.initScene();
+            await this.loadImage('/map.png');
+            this.computeAndRender();
+        }
+
+        initScene() {
+            // Initialize camera
+            this.camera = new THREE.PerspectiveCamera(this.cameraData.fov, this.clientWidth / this.clientHeight, this.cameraData.near, this.cameraData.far);
+
+            // Initialize renderer
+            this.renderer = new THREE.WebGLRenderer({ alpha: true, antialias: true, canvas: this });
+            const pixelRatio = window.devicePixelRatio;
+            const width = this.clientWidth * pixelRatio;
+            const height = this.clientHeight * pixelRatio;
+            this.renderer.setSize(width, height);
+            this.renderer.setPixelRatio(pixelRatio);
+
+            // Initialize scene
+            this.scene = new THREE.Scene();
+            this.scene.fog = new THREE.Fog(0x535ef3, 400, 2000);
+
+            // Set up lights
+            this.scene.add(new THREE.AmbientLight(0x333333)); // soft white light
+            const light = new THREE.DirectionalLight(this.lightData.color, this.lightData.intensity); // white directional light
+            light.position.set(this.lightData.x, this.lightData.y, this.lightData.z);
+            this.scene.add(light);
+
+            // Set up base layer globe
+            const globeMesh: THREE.Mesh = new THREE.Mesh(
+                new THREE.SphereGeometry(this.globeData.radius, this.globeData.latitudeSegmentsCount, this.globeData.longitudeSegmentsCount),
+                new THREE.MeshPhongMaterial({ color: this.globeData.color }),
+            );
+            this.scene.add(globeMesh);
+
+            // Set up orbit controls
+            this.orbitControls = new OrbitControls(this.camera, this.renderer.domElement);
+            this.camera.position.set(this.cameraData.position.x, this.cameraData.position.y, this.cameraData.position.z);
+            this.orbitControls.update();
+        }
+
+        async loadImage(imageUrl: string) {
+            const image: HTMLImageElement = await this.loadImageAsync(imageUrl);
+            const imageData: ImageData = this.getImageData(image);
+            this.computeDots(imageData);
+        }
+
+        loadImageAsync(imageUrl: string): Promise<HTMLImageElement> {
+            return new Promise((resolve) => {
+                const imageLoader = new THREE.ImageLoader();
+                imageLoader.load(imageUrl, resolve);
+            });
+        }
+
+        getImageData(image: HTMLImageElement) {
+            const tempCanvas = document.createElement('canvas');
+            tempCanvas.width = image.width;
+            tempCanvas.height = image.height;
+            const ctx = tempCanvas.getContext('2d')!;
+            ctx.drawImage(image, 0, 0);
+            return ctx.getImageData(0, 0, image.width, image.height);
+        }
+
+        computeDots(imageData: ImageData) {
+            /**
+             * Set up the dots
+             */
+            const separateDotGeometries: Array<THREE.CircleGeometry> = [];
+            const vector: THREE.Vector3 = new THREE.Vector3();
+
+            for (let latitude = 0; latitude < this.globeData.latitudeSegmentsCount; latitude++) {
+                // Calculate the radius of the circle at this latitude
+                const radius = Math.cos((-90 + (180 / this.globeData.latitudeSegmentsCount) * latitude) * Math.PI/180) * this.globeData.latitudeSegmentsCount;
+                // Calculate the circumference
+                const circumference = 4 * Math.PI * radius;
+                // Calculate number of dots required
+                const dotsRequired = Math.ceil(circumference * this.dotDensity);
+
+                for (let dot = 0; dot < this.globeData.latitudeSegmentsCount; dot++) {
+                    const dotGeometry = new THREE.CircleGeometry(this.dotSize, 5);
+                    const phi = (Math.PI / this.globeData.latitudeSegmentsCount) * latitude;
+                    const theta = (2*Math.PI / dotsRequired) * dot;
+
+                    vector.setFromSphericalCoords(this.globeData.radius, phi, theta);
+                    dotGeometry.lookAt(vector);
+                    dotGeometry.translate(vector.x, vector.y, vector.z);
+                    dotGeometry.computeBoundingSphere();
+
+                    // Find UV position of the dot on the land image
+                    const UV = this.spherePointToUV(dotGeometry.boundingSphere!.center, new THREE.Vector3());
+                    // Sample the pixel on the land image at the given UV position
+                    const sampledPixel = this.sampleImage(imageData, UV);
+
+                    // If the pixel is not transparent, create the dot
+                    if (sampledPixel[3]) separateDotGeometries.push(dotGeometry);
+                }
+            }
+            this.dotGeometries = BufferGeometryUtils.mergeGeometries(separateDotGeometries);
+            this.dotMesh = new THREE.Mesh(this.dotGeometries, this.dotMaterial);
+
+            // Add dots to the scene
+            this.scene.add(this.dotMesh);
+        }
+
+        computeAndRender() {
+            const animate = (time: number) => {
+                time *= 0.001; // convert time to seconds
+                this.updateDotMeshRotation(time);
+                this.orbitControls.update();
+                this.renderer.render(this.scene, this.camera);
+                requestAnimationFrame(animate);
+            };
+            animate(0);
+        }
+
+        updateDotMeshRotation(time: number) {
+            this.dotMesh.rotation.y = time * 0.6;
+        }
+
+        get aspectRatio() {
+            const rect = this.getBoundingClientRect();
+            return rect.width / rect.height;
+        }
+
+        spherePointToUV(dotCenter: THREE.Vector3, sphereCenter: THREE.Vector3) {
+            const newVector = new THREE.Vector3();
+            newVector.subVectors(dotCenter, sphereCenter).normalize();
+
+            const UV = {
+                x: 1 - (0.5 + Math.atan2(newVector.z, newVector.x) / (2*Math.PI)),
+                y: 0.5 + Math.asin(newVector.y) / Math.PI,
+            };
+
+            return new THREE.Vector2(UV.x, UV.y);
+        }
+
+        sampleImage(imageData: ImageData, UV: THREE.Vector2) {
+            const point = 4 * Math.floor(UV.x * imageData.width) + Math.floor(UV.y * imageData.height) * imageData.width * 4;
+
+            return imageData.data.slice(point, point + 4); // 4 is the number of bytes per pixel (RGBA)
+        }
+    }
+
+    customElements.define('minet-globe', MiNETGlobe, { extends: 'canvas' });
+</script>

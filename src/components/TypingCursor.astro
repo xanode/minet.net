@@ -1,0 +1,64 @@
+---
+interface Props {
+    strings: string[];
+}
+const { strings } = Astro.props;
+
+const dataStrings = JSON.stringify(strings);
+---
+
+<typing-cursor class="inline-flex items-center justify-center" data-strings={dataStrings}>
+    <span class="text-transparent bg-clip-text bg-gradient-to-r from-sky-600 to-sky-400"></span>
+    <span class="w-1 h-20 bg-white ml-2 translate-y-0.5 animate-typing"></span>
+</typing-cursor>
+
+<script>
+    class TypingCursor extends HTMLElement {
+        textArea: HTMLSpanElement | null;
+        strings: string[];
+        currentStringIndex: number = 0;
+        currentTextIndex: number = 0;
+        isDeleting: boolean = false;
+        typingSpeed: number = 100;
+        deletingSpeed: number = 80;
+        delay: number = 3000;
+
+        constructor() {
+            super();
+            this.textArea = this.querySelector('span');
+            this.strings = JSON.parse(this.dataset.strings || '[]');
+        }
+
+        connectedCallback() {
+            console.log(this.textContent);
+            this.animateTyping();
+        }
+
+        animateTyping() {
+            const currentString = this.strings[this.currentStringIndex]; // Get the current string to type
+
+            let speed = this.isDeleting ? this.deletingSpeed : this.typingSpeed; // Determine the speed based on whether it's typing or deleting
+
+            this.textArea!.textContent = currentString.substring(0, this.currentTextIndex); // Update the text content of the element
+
+            this.isDeleting ? this.currentTextIndex-- : this.currentTextIndex++; // Adjust the text index based on typing or deleting
+
+            // Handle transitions between strings and looping
+            if (this.isDeleting && this.currentTextIndex === 0) {
+                this.isDeleting = false;
+                this.currentStringIndex = (this.currentStringIndex + 1) % this.strings.length; // Move to the next string
+            }
+
+            // Check for completion of typing and initiate deletion
+            if (!this.isDeleting && this.currentTextIndex > currentString.length) {
+                this.isDeleting = true;
+                speed = this.delay; // Use a longer delay after typing before deleting
+            }
+
+            // Schedule the next animation iteration
+            setTimeout(() => this.animateTyping(), speed);
+        }
+    }
+
+    customElements.define('typing-cursor', TypingCursor);
+</script>

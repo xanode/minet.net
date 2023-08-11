@@ -1,5 +1,6 @@
 ---
-import AbstractNetwork from '@components/AbstractNetwork.astro';
+import Globe from '@components/Globe.astro';
+import TypingCursor from '@components/TypingCursor.astro';
 import Layout from '@layouts/Layout.astro';
 ---
 
@@ -7,20 +8,12 @@ import Layout from '@layouts/Layout.astro';
 	<main class="py-20 mt-20">
 		<div class="flex flex-col items-center gap-40">
 			<section class="relative flex flex-col items-center gap-20 text-white max-w-8xl">
-				<div class="flex flex-row items-center gap-20">
-					<div class="basis-1/2 space-y-10">
-						<h1 class="text-7xl font-bold">
-							Nous sommes le <span class="text-sky-400 drop-shadow-lg-red-500">FAI étudiant</span> de Télécom SudParis.
-						</h1>
-						<p class="text-lg">
-							MiNET est une association loi de 1901 chargée de la gestion du réseau informatique de la MAISEL de Télécom SudParis & Institut Mines-Télécom Business School depuis 1991.
-						</p>
-						
-					</div>
-					<div class="basis-1/2">
-						<AbstractNetwork />
-					</div>
-				</div>
+				<h1 class="text-7xl font-bold text-center leading-tight">
+					Nous sommes<br />
+					<TypingCursor strings={["le fournisseur d'accès internet", "l'hébergeur web"]} /><br />
+					étudiant de Télécom SudParis.
+				</h1>
+				<Globe />
 			</section>
 		</div>
 	</main>

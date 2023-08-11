@@ -36,6 +36,7 @@ module.exports = {
 				'circle-scale': 'circle-scale 0.84s cubic-bezier(0.09,0,0,1) 80ms forwards, 0.72s linear 80ms forwards',
 				'floatting': 'floatting 6s ease-in-out infinite',
 				'pulse-circle': 'pulse-circle 1800ms linear infinite both',
+				'typing': 'typing 1.5s linear infinite',
 			},
 			backgroundImage: {
 				'circle-after': 'linear-gradient(1.72deg,hsla(0,0%,100%,0) 8.89%,#7dd3fc 30.41%,#0ea5e9 50.24%,#0284c7 67.59%,hsla(0,0%,100%,0) 86.81%)',
@@ -63,6 +64,10 @@ module.exports = {
 					'0 10px 8px rgba(239,68,68,.12)',
 					'0 4px 3px rgba(239,68,68,.3)',
 				],
+				'typing': [
+					'0 10px 8px rgba(56,189,248,.24)',
+					'0 4px 3px rgba(56,189,248,.18)',
+				]
 			},
 			duration: {
 				'1200': '1200ms',
@@ -70,20 +75,20 @@ module.exports = {
 			keyframes: {
 				'circle-scale': {
 					'0%': {
-						'transform': 'scale(0)',
+						transform: 'scale(0)',
 					},
 					'100%': {
-						'transform': 'scale(1)',
+						transform: 'scale(1)',
 					},
 				},
 				'floatting': {
 					'0%, 100%': {
 						'box-shadow': 'rgba(79,85,227,0.3) -17px 9px 34px -20px, rgba(255,92,178,0.05) 0px 24px 54px 0px',
-						'transform': 'translateY(0px)',
+						transform: 'translateY(0px)',
 					},
 					'50%': {
 						'box-shadow': 'rgba(79,85,227,0.3) -17px 9px 34px -20px, rgba(255,92,178,0.05) 0px 24px 54px 0px, rgba(0,0,0,0.2) 0px 25px 15px 0px',
-						'transform': 'translateY(-10px)',
+						transform: 'translateY(-10px)',
 					},
 				},
 				'pulse-circle': {
@@ -97,6 +102,20 @@ module.exports = {
 					'100%': {
 						opacity: '0',
 						transform: 'scale(1.2)',
+					},
+				},
+				'typing': {
+					'0%': {
+						opacity: '0',
+					},
+					'49%': {
+						opacity: '0',
+					},
+					'51%': {
+						opacity: '1',
+					},
+					'100%': {
+						opacity: '1',
 					},
 				},
 			},
