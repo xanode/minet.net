@@ -15,9 +15,9 @@ const { lineColor, textColor, mandate } = Astro.props;
 
 <section class="relative max-w-8xl space-y-20">
     <div class="flex flex-col items-center min-w-[1px] max-w-full">
-        <span class={`w-[1px] h-48 pr-[1px] bg-gradient-to-b from-blue-600/0 to-cyan-400 ${lineColor.from} ${lineColor.to}`}></span>
+        <span class={`w-[1px] h-48 pr-[1px] bg-gradient-to-b ${lineColor.from} ${lineColor.to}`}></span>
         <div class="text-center space-y-10">
-            <h3 class={`text-3xl tracking-tighter font-bold bg-clip-text text-transparent bg-gradient-to-r from-blue-600 to-cyan-400 ${textColor.from} ${textColor.to}`}>
+            <h3 class={`text-3xl tracking-tighter font-bold bg-clip-text text-transparent bg-gradient-to-r ${textColor.from} ${textColor.to}`}>
                 Mandat {mandate}
             </h3>
         </div>
