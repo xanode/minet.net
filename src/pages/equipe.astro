@@ -1,4 +1,6 @@
 ---
+import MemberCard from '@components/MemberCard.astro';
+import OldMembersSection from '@components/OldMembersSection.astro';
 import PulseCircles from '@components/PulseCircles.astro';
 import TeamCard from '@components/TeamCard.astro';
 import TeamCarousel from '@components/TeamCarousel.astro';
@@ -30,7 +32,7 @@ import RespoPermanenceReference from "~/assets/equipe/Yassine.png";
 					<PulseCircles />
 				</div>
 			</section>
-			<section class="relative mb-28 md:mb-38 text-white">
+			<section class="relative mb-10 text-white">
 				<div class="relative flex flex-col items-center gap-10">
 					<h2 class="font-bold text-7xl">
 						Notre équipe
@@ -81,6 +83,109 @@ import RespoPermanenceReference from "~/assets/equipe/Yassine.png";
 					</li>
 				</TeamCarousel>
 			</section>
+			<OldMembersSection mandate="2021-2022" lineColor={{from: 'from-blue-600/0', to: 'to-cyan-400'}} textColor={{from: 'from-blue-600', to: 'to-cyan-400'}}>
+				<MemberCard name="Jules Gonzales" pseudo="seberus" role="Président" />
+				<MemberCard name="Éloïse Bonnet" pseudo="lovali" role="Vice-Présidente" />
+				<MemberCard name="Hamza Benfkira" pseudo="lionofinterest" role="Vice-Président" />
+				<MemberCard name="Héloïse Thu Ping One" pseudo="heloise" role="Trésorière" />
+				<MemberCard name="Amar Drame" pseudo="adn8" role="Vice-Trésorier" />
+				<MemberCard name="Kenza Benjelloun" pseudo="growser" role="Secrétaire" />
+				<MemberCard name="Viktor Colas" pseudo="vaktas" role="Responsable Web & Formations" />
+				<MemberCard name="Paul Vancauwenberghe" pseudo="kl0wn" role="Responsable Formations & Communication" />
+				<MemberCard name="Zohra Bekhti" pseudo="zohrabekhti" role="Responsable Communication" />
+				<MemberCard name="Kanamé Murakami" pseudo="free_hugs" role="Responsable Relations Clubs" />
+				<MemberCard name="Léonard Fourneret" pseudo="pasta" role="Responsable Relations Entreprises" />
+				<MemberCard name="Martin Spiering" pseudo="typhlos" role="Responsable Hardware" />
+				<MemberCard name="Pierre Cornette" pseudo="flying_potato" role="Responsable Archéologistique" />
+			</OldMembersSection>
+			<OldMembersSection mandate="2020-2021" lineColor={{from: 'from-violet-600/0', to: 'to-blue-400'}} textColor={{from: 'from-violet-600', to: 'to-blue-400'}}>
+				<MemberCard name="Clément Parssegny" pseudo="cleplatypint" role="Président" />
+				<MemberCard name="Dzenan Cindrak" pseudo="za" role="Vice-Président & Secrétaire" />
+				<MemberCard name="Gauthier Carpentier" pseudo="nierquick" role="Vice-Président" />
+				<MemberCard name="Anna-Rose Lescure" pseudo="kapebm" role="Trésorière" />
+				<MemberCard name="Yasmine Mazouz" pseudo="enimsay" role="Vice-Trésorière" />
+				<MemberCard name="Mohamed Chamrouk" pseudo="snow" role="Resposnable Communication" />
+				<MemberCard name="Othman Mhaouty" pseudo="bjorno" role="Responsable Formations" />
+				<MemberCard name="Valentin Paolicelli" pseudo="omeega1" role="Responsable Clubs" />
+				<MemberCard name="Aurélien Chomon" pseudo="financier" role="Responsable Relations Entreprises" />
+			</OldMembersSection>
+			<OldMembersSection mandate="2019-2020" lineColor={{from: 'from-fuchsia-600/0', to: 'to-violet-400'}} textColor={{from: 'from-fuchsia-600', to: 'to-violet-400'}}>
+				<MemberCard name="François Horta" pseudo="frazew" role="Président" />
+				<MemberCard name="Johan Hubau-Honoré" pseudo="heisenberg" role="Vice-Président" />
+				<MemberCard name="Gabriel Prévault" pseudo="gabery" role="Vice-Président" />
+				<MemberCard name="Xavier-Henri Monier" pseudo="archonte" role="Trésorier" />
+				<MemberCard name="Julie Chevrier" pseudo="littlewillow" role="Secrétaire" />
+				<MemberCard name="Alexandre Breux" pseudo="diabord" role="Responsable Web" />
+				<MemberCard name="Constance Chou" pseudo="rico" role="Responsable Communication" />
+				<MemberCard name="Jean-Baptiste Mouret" pseudo="hydroxyl" role="Trésorier" resignation/>
+			</OldMembersSection>
+			<OldMembersSection mandate="2018-2019" lineColor={{from: 'from-rose-600/0', to: 'to-fuchsia-400'}} textColor={{from: 'from-rose-600', to: 'to-fuchsia-400'}}>
+			</OldMembersSection>
+			<OldMembersSection mandate="2017-2018" lineColor={{from: 'from-orange-600/0', to: 'to-rose-400'}} textColor={{from: 'from-orange-600', to: 'to-rose-400'}}>
+			</OldMembersSection>
+			<OldMembersSection mandate="2016-2017" lineColor={{from: 'from-yellow-600/0', to: 'to-orange-400'}} textColor={{from: 'from-yellow-600', to: 'to-orange-400'}}>
+			</OldMembersSection>
+			<OldMembersSection mandate="2015-2016" lineColor={{from: 'from-green-600/0', to: 'to-yellow-400'}} textColor={{from: 'from-green-600', to: 'to-yellow-400'}}>
+			</OldMembersSection>
+			<OldMembersSection mandate="2014-2015" lineColor={{from: 'from-teal-600/0', to: 'to-green-400'}} textColor={{from: 'from-teal-600', to: 'to-green-400'}}>
+				<MemberCard name="Anasse Hassala" pseudo="marlow" role="Président" />
+				<MemberCard name="Paul Jarleton" pseudo="sarlam" role="Vice-Président" resignation/>
+				<MemberCard name="Andréa Mornet-Martinvalet" pseudo="badgohan" role="Trésorière" />
+				<MemberCard name="Pauline Remontet" pseudo="draconis" role="Secrétaire" />
+				<MemberCard name="Youness Skalli" pseudo="yon" role="Responsable Web" />
+				<MemberCard name="Nicolas Merle" pseudo="antonov" role="Responsable Communication" />
+				<MemberCard name="Kevin Cazal" pseudo="no_pseudo" role="Responsable Formations" />
+				<MemberCard name="Jean-Edouard Reuglewicz" pseudo="bichon" role="Responsable Hardware" />
+				<MemberCard name="Marie-Pierre Salvi" pseudo="twili" role="Responsable Logiciels Libres" />
+				<MemberCard name="Myriam El-Houdini-Dehaudt" pseudo="timka" role="Responsable Conférences" />
+				<MemberCard name="Noé Marius" pseudo="khalaan" role="Responsable Monitoring" />
+			</OldMembersSection>
+			<OldMembersSection mandate="2013-2014" lineColor={{from: 'from-sky-600/0', to: 'to-teal-400'}} textColor={{from: 'from-sky-600', to: 'to-teal-400'}}>
+			</OldMembersSection>
+			<OldMembersSection mandate="2012-2013" lineColor={{from: 'from-indigo-600/0', to: 'to-sky-400'}} textColor={{from: 'from-indigo-600', to: 'to-sky-400'}}>
+			</OldMembersSection>
+			<OldMembersSection mandate="2011-2012" lineColor={{from: 'from-purple-600/0', to: 'to-indigo-400'}} textColor={{from: 'from-purple-600', to: 'to-indigo-400'}}>
+				<MemberCard name="Stéphanie Ouillon" pseudo="stephanie" role="Présidente" />
+				<MemberCard name="Nicolas Carlo" pseudo="espeon" role="Vice-Président" />
+				<MemberCard name="Ariane Richer" pseudo="ariane" role="Trésoière" />
+				<MemberCard name="Vincent Jacquot" pseudo="stern" role="Secrétaire" />
+				<MemberCard name="Vincent Pesenti" pseudo="jaden" role="Responsable Projets" />
+				<MemberCard name="Yolaine Raux" pseudo="layian" role="Responsable Formation" />
+				<MemberCard name="Philippe Tillet" pseudo="ragnar" role="Responsable Applications" />
+				<MemberCard name="Fabien Bernard" pseudo="fab0102" role="Bienfaiteur" />
+			</OldMembersSection>
+			<OldMembersSection mandate="2010-2011" lineColor={{from: 'from-pink-600/0', to: 'to-purple-400'}} textColor={{from: 'from-pink-600', to: 'to-purple-400'}}>
+			</OldMembersSection>
+			<OldMembersSection mandate="2009-2010" lineColor={{from: 'from-red-600/0', to: 'to-pink-400'}} textColor={{from: 'from-red-600', to: 'to-pink-400'}}>
+			</OldMembersSection>
+			<OldMembersSection mandate="2008-2009" lineColor={{from: 'from-amber-600/0', to: 'to-red-400'}} textColor={{from: 'from-amber-600', to: 'to-red-400'}}>
+			</OldMembersSection>
+			<OldMembersSection mandate="2007-2008" lineColor={{from: 'from-lime-600/0', to: 'to-amber-400'}} textColor={{from: 'from-lime-600', to: 'to-amber-400'}}>
+			</OldMembersSection>
+			<OldMembersSection mandate="2006-2007" lineColor={{from: 'from-emerald-600/0', to: 'to-lime-400'}} textColor={{from: 'from-emerald-600', to: 'to-lime-400'}}>
+			</OldMembersSection>
+			<OldMembersSection mandate="2005-2006" lineColor={{from: 'from-cyan-600/0', to: 'to-emerald-400'}} textColor={{from: 'from-cyan-600', to: 'to-emerald-400'}}>
+			</OldMembersSection>
+			<OldMembersSection mandate="2004-2005" lineColor={{from: 'from-blue-600/0', to: 'to-cyan-400'}} textColor={{from: 'from-blue-600', to: 'to-cyan-400'}}>
+			</OldMembersSection>
+			<OldMembersSection mandate="2003-2004" lineColor={{from: 'from-violet-600/0', to: 'to-blue-400'}} textColor={{from: 'from-violet-600', to: 'to-blue-400'}}>
+			</OldMembersSection>
+			<OldMembersSection mandate="2002-2003" lineColor={{from: 'from-fuchsia-600/0', to: 'to-violet-400'}} textColor={{from: 'from-fuchsia-600', to: 'to-violet-400'}}>
+			</OldMembersSection>
+			<OldMembersSection mandate="2001-2002" lineColor={{from: 'from-rose-600/0', to: 'to-fuchsia-400'}} textColor={{from: 'from-rose-600', to: 'to-fuchsia-400'}}>
+			</OldMembersSection>
+			<OldMembersSection mandate="2000-2001" lineColor={{from: 'from-orange-600/0', to: 'to-rose-400'}} textColor={{from: 'from-orange-600', to: 'to-rose-400'}}>
+			</OldMembersSection>
+			<OldMembersSection mandate="1999-2000" lineColor={{from: 'from-yellow-600/0', to: 'to-orange-400'}} textColor={{from: 'from-yellow-600', to: 'to-orange-400'}}>
+			</OldMembersSection>
+			<OldMembersSection mandate="1998-1999" lineColor={{from: 'from-green-600/0', to: 'to-yellow-400'}} textColor={{from: 'from-green-600', to: 'to-yellow-400'}}>
+			</OldMembersSection>
+			<OldMembersSection mandate="1997-1998" lineColor={{from: 'from-teal-600/0', to: 'to-green-400'}} textColor={{from: 'from-teal-600', to: 'to-green-400'}}>
+				<MemberCard name="Steeve Devergne" pseudo="steeve" role="Président" />
+				<MemberCard name="Kewin Kubryck" pseudo="kewin" role="Vice-Président" />
+				<MemberCard name="Éric Ferrand" pseudo="eric" role="Trésorier" />
+				<MemberCard name="Stéphane Lecoanet" pseudo="maciste" role="Secrétaire" />
+			</OldMembersSection>
 		</div>
 	</main>
 </Layout>

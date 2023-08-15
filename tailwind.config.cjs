@@ -76,6 +76,9 @@ module.exports = {
 			fontFamily: {
 				sans: ['Inter', ...defaultTheme.fontFamily.sans],
 			},
+			gap: {
+				'18': '4.5rem',
+			},
 			keyframes: {
 				'circle-scale': {
 					'0%': {

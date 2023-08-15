@@ -1,0 +1,29 @@
+---
+interface Props {
+    name: string;
+    pseudo: string;
+    role: string;
+    resignation?: boolean;
+}
+
+const { name, pseudo, role, resignation } = Astro.props;
+---
+
+<div class="relative flex flex-col gap-4 border rounded-lg border-neutral-900 p-2">
+    {resignation && (
+        <div class="absolute inset-0 flex items-center justify-center text-neutral-300 font-semibold rounded-lg w-full h-full bg-neutral-900/80 backdrop-blur-[1px]">
+            Démission
+        </div>
+    )}
+    <div class="flex gap-18">
+        <span class="font-bold">
+            {name}
+        </span>
+        <span class="ml-auto text-red-600 text-sm font-mono font-bold">
+            {pseudo}
+        </span>
+    </div>
+    <p class="font-medium">
+        {role}
+    </p>
+</div>
