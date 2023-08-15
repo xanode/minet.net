@@ -1,4 +1,5 @@
-const plugin = require('tailwindcss/plugin')
+const defaultTheme = require('tailwindcss/defaultTheme');
+const plugin = require('tailwindcss/plugin');
 
 const backfaceVisibility = plugin(function({addUtilities}) {
   addUtilities({
@@ -72,6 +73,9 @@ module.exports = {
 			duration: {
 				'1200': '1200ms',
 			},
+			fontFamily: {
+				sans: ['Inter', ...defaultTheme.fontFamily.sans],
+			},
 			keyframes: {
 				'circle-scale': {
 					'0%': {
@@ -135,6 +139,7 @@ module.exports = {
 				'112': '28rem',
 				'164': '41rem',
 				'220': '55rem',
+				'256': '64rem',
 				'275': '68.75rem',
 				'276': '69rem',
 				'280': '70rem',

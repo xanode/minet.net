@@ -1,8 +1,9 @@
 ---
 interface Props {
+    minHeight?: string;
     strings: string[];
 }
-const { strings } = Astro.props;
+const { minHeight, strings } = Astro.props;
 
 const dataStrings = JSON.stringify(strings);
 ---
@@ -30,7 +31,6 @@ const dataStrings = JSON.stringify(strings);
         }
 
         connectedCallback() {
-            console.log(this.textContent);
             this.animateTyping();
         }
 

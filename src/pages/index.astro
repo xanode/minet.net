@@ -7,13 +7,73 @@ import Layout from '@layouts/Layout.astro';
 <Layout title="MiNET">
 	<main class="py-20 mt-20">
 		<div class="flex flex-col items-center gap-40">
-			<section class="relative flex flex-col items-center gap-20 text-white max-w-8xl">
-				<h1 class="text-7xl font-bold text-center leading-tight">
-					Nous sommes<br />
-					<TypingCursor strings={["le fournisseur d'accès internet", "l'hébergeur web"]} /><br />
-					étudiant de Télécom SudParis.
-				</h1>
-				<Globe />
+			<section class="relative flex flex-row items-center gap-10 text-white w-full max-w-8xl">
+				<div class="flex flex-col gap-12 z-10 w-full">
+					<h1 class="text-6xl font-extrabold tracking-tighter leading-tight">
+						Nous sommes<br />
+						<span class="inline-flex items-center gap-2">
+							<TypingCursor strings={["le FAI", "l'hébergeur web"]} />
+							étudiant
+						</span><br />
+						de Télécom SudParis
+					</h1>
+					<h2 class="text-2xl font-normal text-neutral-500 tracking-tight max-w-3xl">
+						MiNET est l'association étudiante loi de 1901 qui gère le réseau informatique de la résidence étudiante de Télécom SudParis et d'Institut Mines-Télécom Business School depuis 1991.
+					</h2>
+					<div class="flex flex-row gap-8 self-center text-lg font-medium w-full">
+						<div class="basis-1/2 rounded-lg bg-white p-[1px]">
+							<button class="w-full rounded-lg bg-white hover:bg-black hover:bg-transparent text-black hover:text-white px-4 py-3 duration-200">
+								Cotiser
+							</button>
+						</div>
+						<div class="basis-1/2 rounded-lg bg-gradient-to-br from-blue-500 to-cyan-400 p-[1px]">
+							<button class="w-full rounded-lg bg-black hover:bg-transparent text-white hover:text-black px-4 py-3 duration-200">
+								Nous découvrir
+							</button>
+						</div>
+					</div>
+				</div>
+				<div class="relative w-full aspect-square m-auto">
+					<div class="absolute -top-20 -right-60 w-256 h-256">
+						<Globe />
+					</div>
+				</div>
+			</section>
+			<section class="relative flex flex-col items-center border-t border-b border-neutral-700 bg-neutral-900 w-screen mt-20">
+				<div class="flex items-center py-6 w-full max-w-8xl">
+					<div class="flex-grow text-center px-8 border-r-1 border-neutral-700">
+						<p class="text-6xl leading-tight tracking-tighter font-bold bg-clip-text text-transparent bg-gradient-to-b from-white to-neutral-300">
+							+800
+						</p>
+						<span class="uppercase text-sm tracking-tighter text-neutral-400 font-semibold">
+							adhérents
+						</span>
+					</div>
+					<div class="flex-grow text-center px-8 border-r-1 border-neutral-700">
+						<p class="text-6xl leading-tight tracking-tighter font-bold bg-clip-text text-transparent bg-gradient-to-b from-white to-neutral-300">
+							10 Gb/s
+						</p>
+						<span class="uppercase text-sm tracking-tighter text-neutral-400 font-semibold">
+							de débit
+						</span>
+					</div>
+					<div class="flex-grow text-center px-8 border-r-1 border-neutral-700">
+						<p class="text-6xl leading-tight tracking-tighter font-bold bg-clip-text text-transparent bg-gradient-to-b from-white to-neutral-300">
+							+15
+						</p>
+						<span class="uppercase text-sm tracking-tighter text-neutral-400 font-semibold">
+							serveurs physiques
+						</span>
+					</div>
+					<div class="flex-grow text-center px-8">
+						<p class="text-6xl leading-tight tracking-tighter font-bold bg-clip-text text-transparent bg-gradient-to-b from-white to-neutral-300">
+							98 %
+						</p>
+						<span class="uppercase text-sm tracking-tighter text-neutral-400 font-semibold">
+							d'uptime en 2023
+						</span>
+					</div>
+				</div>
 			</section>
 		</div>
 	</main>
