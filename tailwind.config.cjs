@@ -28,6 +28,15 @@ const maskProperty = plugin(function({addUtilities}) {
 	});
 });
 
+const textStroke = plugin(function({addUtilities}) {
+	addUtilities({
+		'.text-stroke': {
+			'-webkit-text-stroke': '1px rgb(255 255 255 / 50%)',
+			'text-stroke': '1px rgb(255 255 255 / 50%)',
+		}
+	});
+});
+
 /** @type {import('tailwindcss').Config} */
 module.exports = {
 	content: ['./src/**/*.{astro,html,js,jsx,md,mdx,svelte,ts,tsx,vue}'],
@@ -168,6 +177,7 @@ module.exports = {
 		backfaceVisibility,
 		background,
 		maskProperty,
+		textStroke,
 		require('@tailwindcss/typography'),
 	],
 }
