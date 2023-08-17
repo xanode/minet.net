@@ -10,6 +10,6 @@ interface Props {
 const { top, left, right, bottom } = Astro.props;
 ---
 
-<div class:list={[top, left, right, bottom, "w-14 h-14 absolute flex items-center justify-center animate-floatting shadow-tooltip rounded-full border-t-1 border-t-transparent border-l-1 border-l-transparent background-tooltip z-20"]}>
+<div class:list={[top, left, right, bottom, "w-14 h-14 absolute hidden lg:flex items-center justify-center animate-floatting shadow-tooltip rounded-full border-t-1 border-t-transparent border-l-1 border-l-transparent background-tooltip z-20"]}>
     <Icon className="w-4.5 h-5 fill-sky-300" name="people" />
 </div>

@@ -1,0 +1,36 @@
+---
+---
+
+<button is="nav-button" class="group flex lg:hidden flex-col gap-2 ml-auto" aria-label="Ouvrir le menu">
+        <span class="relative block h-0.5 w-8 bg-white group-aria-expanded:hidden"></span>
+        <span class="relative block h-0.5 w-8 bg-white group-aria-expanded:hidden"></span>
+        <span class="relative block h-0.5 w-8 bg-white group-aria-expanded:hidden"></span>
+        <span class="relative hidden group-aria-expanded:block h-0.5 w-8 bg-white rotate-45 top-1"></span>
+        <span class="relative hidden group-aria-expanded:block h-0.5 w-8 bg-white -rotate-45 -top-1.5"></span>
+</button>
+
+<script>
+    class NavButton extends HTMLButtonElement {
+        expanded: boolean;
+        menu: HTMLElement;
+
+        constructor() {
+            super();
+            this.expanded = false;
+            this.menu = document.querySelector('#phone-menu')!;
+        }
+
+        connectedCallback() {
+            this.setAttribute('aria-expanded', this.expanded.toString());
+            this.addEventListener('click', this.handleClick);
+        }
+
+        handleClick() {
+            this.expanded = !this.expanded;
+            this.setAttribute('aria-expanded', this.expanded.toString());
+            this.menu.setAttribute('aria-hidden', (!this.expanded).toString());
+        }
+    }
+
+    customElements.define('nav-button', NavButton, { extends: 'button' });
+</script>

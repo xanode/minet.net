@@ -1,17 +1,19 @@
 ---
 import ButtonAction from "@components/ButtonAction.astro";
 import Icon from "@components/Icon.astro";
+import NavButton from "@components/NavButton.astro";
 import NavItem from "@components/NavItem.astro";
 ---
 
 <header class="fixed w-full z-50 text-white bg-neutral-800/50 backdrop-blur-sm border-b border-neutral-700 p-4">
-    <div class="flex flex-col md:flex-row max-w-8xl mx-auto">
-        <a class="md:self-center flex-none overflow-hidden" href="/">
+    <div class="flex items-center max-w-8xl mx-auto">
+        <a class="flex-none overflow-hidden" href="/">
             <span class="sr-only">MiNET</span>
             <Icon className="h-20 w-auto fill-white" name="minet" />
         </a>
-        <nav class="relative hidden md:flex flex-col md:flex-row items-center md:ml-auto">
-            <ul class="flex flex-col md:flex-row items-center leading-8 md:space-x-4 text-center text-sm">
+        {/* Large screen */}
+        <nav class="relative hidden lg:flex items-center ml-auto">
+            <ul class="flex items-center leading-8 space-x-4 text-center text-sm">
                 <NavItem href="/tutoriels/" target="_self">
                     Tutoriels
                 </NavItem>
@@ -43,5 +45,51 @@ import NavItem from "@components/NavItem.astro";
                 </ButtonAction>
             </div>
         </nav>
+        {/* Mobile screen */}
+        <NavButton />
     </div>
+    <nav id="phone-menu" aria-hidden="true" class="aria-hidden:hidden relative w-full mt-4">
+        <div class="flex flex-col items-center justify-center h-full">
+            <ul class="flex flex-col items-center justify-center leading-8 space-y-2 text-center text-sm">
+                <div class="w-screen h-[1px] bg-white/10"></div>
+                <NavItem href="/tutoriels/" target="_self">
+                    Tutoriels
+                </NavItem>
+                <div class="w-screen h-[1px] bg-white/10"></div>
+                <NavItem href="/equipe/" target="_self">
+                    Équipe
+                </NavItem>
+                <div class="w-screen h-[1px] bg-white/10"></div>
+                <NavItem href="/clubs/" target="_self">
+                    Nos clubs
+                </NavItem>
+                <div class="w-screen h-[1px] bg-white/10"></div>
+                <NavItem href="/partenaires/" target="_self">
+                    Nos partenaires
+                </NavItem>
+                <div class="w-screen h-[1px] bg-white/10"></div>
+                <NavItem href="/services/" target="_self">
+                    Nos services
+                </NavItem>
+                <div class="w-screen h-[1px] bg-white/10"></div>
+                <NavItem href="https://payment.minet.net/" target='_blank'>
+                    Cotiser
+                </NavItem>
+                <div class="w-screen h-[1px] bg-white/10"></div>
+                <NavItem href="https://conferences.minet.net/" target='_blank'>
+                    Conférences
+                </NavItem>
+                <div class="w-screen h-[1px] bg-white/10"></div>
+                <NavItem href="https://status.minet.net/" target='_blank'>
+                    État des services
+                </NavItem>
+                <div class="w-screen h-[1px] bg-white/10"></div>
+            </ul>
+            <div class="flex mt-4 self-end">
+                <ButtonAction class="relative p-3 text-sm font-medium" href="https://adh6.minet.net/" rounded="md">
+                    Espace adhérent
+                </ButtonAction>
+            </div>
+        </div>
+    </nav>
 </header>

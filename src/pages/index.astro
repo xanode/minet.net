@@ -5,22 +5,22 @@ import Layout from '@layouts/Layout.astro';
 ---
 
 <Layout title="MiNET">
-	<main class="py-20 mt-20">
+	<main class="py-20 px-2 mt-20 overflow-x-hidden">
 		<div class="flex flex-col items-center gap-40">
-			<section class="relative flex flex-row items-center gap-10 text-white w-full max-w-8xl">
-				<div class="flex flex-col gap-12 z-10 w-full">
-					<h1 class="text-6xl font-extrabold tracking-tighter leading-tight">
+			<section class="relative flex flex-col lg:flex-row items-center gap-10 text-white w-full max-w-8xl">
+				<div class="flex flex-col gap-12 text-center lg:text-start z-10 w-full">
+					<h1 class="text-4xl lg:text-6xl font-extrabold tracking-tighter leading-tight">
 						Nous sommes<br />
 						<span class="inline-flex items-center gap-2">
 							<TypingCursor strings={["le FAI", "l'hébergeur web"]} />
-							étudiant
+							<span class="hidden lg:block">étudiant</span>
 						</span><br />
-						de Télécom SudParis
+						<span class="lg:hidden">étudiant </span>de <span class="lg:hidden"><br /></span>Télécom SudParis
 					</h1>
-					<h2 class="text-2xl font-normal text-neutral-500 tracking-tight max-w-3xl">
+					<h2 class="text-xl lg:text-2xl font-normal text-neutral-500 tracking-tight max-w-3xl">
 						MiNET est l'association étudiante loi de 1901 qui gère le réseau informatique de la résidence étudiante de Télécom SudParis et d'Institut Mines-Télécom Business School depuis 1991.
 					</h2>
-					<div class="flex flex-row gap-8 self-center text-center text-lg font-medium w-full">
+					<div class="flex flex-col lg:flex-row gap-8 self-center text-center text-sm lg:text-lg font-medium w-full">
 						<div class="basis-1/2 rounded-lg bg-white p-[1px]">
 							<a class="inline-block w-full rounded-lg bg-white hover:bg-black text-black hover:text-white px-4 py-3 duration-200" href="https://payment.minet.net/" target="_blank">
 								Cotiser
@@ -34,39 +34,39 @@ import Layout from '@layouts/Layout.astro';
 					</div>
 				</div>
 				<div class="relative w-full aspect-square m-auto">
-					<div class="absolute -top-20 -right-60 w-256 h-256">
+					<div class="absolute -top-20 -right-80 lg:-right-60 w-256 h-256">
 						<Globe />
 					</div>
 				</div>
 			</section>
-			<section class="relative flex flex-col items-center border-t border-b border-neutral-700 bg-neutral-900 w-screen mt-20">
-				<div class="flex items-center py-6 w-full max-w-8xl">
-					<div class="flex-grow text-center px-8 border-r-1 border-neutral-700">
-						<p class="text-6xl leading-tight tracking-tighter font-bold bg-clip-text text-transparent bg-gradient-to-b from-white to-neutral-300">
+			<section class="relative flex flex-col items-center border-t border-b border-neutral-700 bg-neutral-900 w-screen -mt-40 lg:mt-20">
+				<div class="flex flex-col md:flex-row items-center py-6 w-full max-w-8xl">
+					<div class="flex-grow text-center py-8 md:px-8 border-b-1 md:border-b-0 md:border-r-1 border-neutral-700 w-full lg:w-auto">
+						<p class="text-4xl lg:text-6xl leading-tight tracking-tighter font-bold bg-clip-text text-transparent bg-gradient-to-b from-white to-neutral-300">
 							+800
 						</p>
 						<span class="uppercase text-sm tracking-tighter text-neutral-400 font-semibold">
 							adhérents
 						</span>
 					</div>
-					<div class="flex-grow text-center px-8 border-r-1 border-neutral-700">
-						<p class="text-6xl leading-tight tracking-tighter font-bold bg-clip-text text-transparent bg-gradient-to-b from-white to-neutral-300">
+					<div class="flex-grow text-center py-8 md:px-8 border-b-1 md:border-b-0 md:border-r-1 border-neutral-700 w-full lg:w-auto">
+						<p class="text-4xl lg:text-6xl leading-tight tracking-tighter font-bold bg-clip-text text-transparent bg-gradient-to-b from-white to-neutral-300">
 							10 Gb/s
 						</p>
 						<span class="uppercase text-sm tracking-tighter text-neutral-400 font-semibold">
 							de débit
 						</span>
 					</div>
-					<div class="flex-grow text-center px-8 border-r-1 border-neutral-700">
-						<p class="text-6xl leading-tight tracking-tighter font-bold bg-clip-text text-transparent bg-gradient-to-b from-white to-neutral-300">
+					<div class="flex-grow text-center py-8 md:px-8 border-b-1 md:border-b-0 md:border-r-1 border-neutral-700 w-full lg:w-auto">
+						<p class="text-4xl lg:text-6xl leading-tight tracking-tighter font-bold bg-clip-text text-transparent bg-gradient-to-b from-white to-neutral-300">
 							+15
 						</p>
 						<span class="uppercase text-sm tracking-tighter text-neutral-400 font-semibold">
 							serveurs physiques
 						</span>
 					</div>
-					<div class="flex-grow text-center px-8">
-						<p class="text-6xl leading-tight tracking-tighter font-bold bg-clip-text text-transparent bg-gradient-to-b from-white to-neutral-300">
+					<div class="flex-grow text-center py-8 md:px-8">
+						<p class="text-4xl lg:text-6xl leading-tight tracking-tighter font-bold bg-clip-text text-transparent bg-gradient-to-b from-white to-neutral-300">
 							98 %
 						</p>
 						<span class="uppercase text-sm tracking-tighter text-neutral-400 font-semibold">

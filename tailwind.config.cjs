@@ -25,7 +25,6 @@ const maskProperty = plugin(function({addUtilities}) {
 		'.mask-circle': {
 			'-webkit-mask': 'linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0)',
 			'mask-composite': 'exclude',
-			//'mask': 'linear-gradient(#fff 0 0) content-box exclude, linear-gradient(#fff 0 0) exclude',
 		}
 	});
 });
@@ -147,10 +146,15 @@ module.exports = {
 				'4.5': '18px',
 				'34': '8.5rem',
 				'38': '9.5rem',
+				'67': '16.75rem',
 				'74': '18.5rem',
+				'90': '22.5rem',
 				'98': '24.5rem',
 				'108': '27rem',
 				'112': '28rem',
+				'113': '28.25rem',
+				'124': '31rem',
+				'148': '37rem',
 				'164': '41rem',
 				'220': '55rem',
 				'256': '64rem',

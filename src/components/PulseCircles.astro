@@ -4,22 +4,22 @@ import Icon from "@components/Icon.astro";
 import Tooltip from "@components/Tooltip.astro";
 ---
 
-<div class="absolute w-280 h-280 -top-34 left-1/2 right-1/2 m-auto flex items-center justify-center rounded-full -translate-x-1/2">
-    <span class="w-74 h-74 bg-sky-400 blur-pulse-before absolute inset-0 m-auto"></span>
-    <div class="absolute inset-0 m-auto w-275 h-275 opacity-0 scale-30 rounded-full bg-sky-400 animate-pulse-circle blur-pulse-after -z-10 pointer-events-none select-none"></div>
-    <div class="w-44 h-44 absolute inset-0 m-auto shadow-pulse backdrop-blur-xl bg-neutral-900 rounded-3xl z-11 select-none">
+<div class="absolute w-113 lg:w-280 h-113 lg:h-280 top-24 lg:-top-34 left-1/2 right-1/2 m-auto flex items-center justify-center rounded-full -translate-x-1/2">
+    <span class="w-64 lg:w-74 h-64 lg:h-74 bg-sky-400 blur-pulse-before absolute inset-0 m-auto"></span>
+    <div class="absolute inset-0 m-auto w-113 lg:w-275 h-113 lg:h-275 opacity-0 scale-30 rounded-full bg-sky-400 animate-pulse-circle blur-pulse-after -z-10 pointer-events-none select-none"></div>
+    <div class="w-24 lg:w-44 h-24 lg:h-44 absolute inset-0 m-auto shadow-pulse backdrop-blur-xl bg-neutral-900 rounded-3xl z-11 select-none">
         <Icon className="absolute w-full h-full inset-0 fill-transparent block" name="minet" />
     </div>
-    <Circle width="w-108" height="h-108" zindex="z-10">
+    <Circle width="w-44 lg:w-108" height="h-44 lg:h-108" zindex="z-10">
         <Tooltip top="top-20" />
     </Circle>
-    <Circle width="w-164" height="h-164" zindex="z-9">
+    <Circle width="w-67 lg:w-164" height="h-67 lg:h-164" zindex="z-9">
         <Tooltip top="top-9" right="right-28" />
     </Circle>
-    <Circle width="w-220" height="h-220" zindex="z-8">
+    <Circle width="w-90 lg:w-220" height="h-90 lg:h-220" zindex="z-8">
         <Tooltip right="-right-1.5" bottom="bottom-72" />
         <Tooltip left="left-0" bottom="bottom-64" />
     </Circle>
-    <Circle width="w-276" height="h-276" zindex="z-7" />
-    <span class="w-98 h-74 bg-sky-600 opacity-70 blur-pulse-after absolute inset-0 -top-64 -right-36 m-auto -z-1 -rotate-45"></span>
+    <Circle width="w-113 lg:w-276" height="h-113 lg:h-276" zindex="z-7" />
+    <span class="w-52 lg:w-98 h-52 lg:h-74 bg-sky-600 opacity-70 blur-pulse-after absolute inset-0 -top-64 -right-36 m-auto -z-1 -rotate-45"></span>
 </div>

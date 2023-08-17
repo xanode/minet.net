@@ -22,9 +22,9 @@ const { Content } = await tutorial.render();
 ---
 
 <Layout title={tutorial.data.title}>
-    <main class="py-20 mt-20 text-white">
-        <div class="flex flex-col items-center gap-20 max-w-4xl mx-auto backdrop-blur-sm rounded-2xl border border-neutral-700">
-            <h1 class="text-4xl font-bold my-6">{tutorial.data.description}</h1>
+    <main class="py-20 px-2 mt-20 text-white">
+        <div class="flex flex-col items-center gap-20 p-2 max-w-4xl mx-auto backdrop-blur-sm rounded-2xl border border-neutral-700">
+            <h1 class="text-3xl md:text-4xl text-center font-bold my-6">{tutorial.data.description}</h1>
             <div class="prose lg:prose-xl prose-invert text-justify">
                 <Content />
             </div>
