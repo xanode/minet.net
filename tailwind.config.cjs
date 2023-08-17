@@ -23,7 +23,9 @@ const background = plugin(function({addUtilities}) {
 const maskProperty = plugin(function({addUtilities}) {
 	addUtilities({
 		'.mask-circle': {
-			'mask': 'linear-gradient(#fff 0 0) content-box exclude, linear-gradient(#fff 0 0) exclude',
+			'-webkit-mask': 'linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0)',
+			'mask-composite': 'exclude',
+			//'mask': 'linear-gradient(#fff 0 0) content-box exclude, linear-gradient(#fff 0 0) exclude',
 		}
 	});
 });
