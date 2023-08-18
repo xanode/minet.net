@@ -9,8 +9,8 @@ export default defineConfig({
     assets: true
   },
   integrations: [tailwind()],
-  site: 'https://minet.xanode.fr',
-  output: "static",
+  site: "https://minet.xanode.fr",
+  output: "hybrid",
   adapter: vercel({
     analytics: true,
   }),
