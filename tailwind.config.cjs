@@ -162,7 +162,7 @@ module.exports = {
 						transform: 'translateY(-50%) translateX(-50%) translateX(5%) translateY(35%)',
 					},
 					'100%':  {
-						transform: 'translateY(-50%) translateX(-50%) translateX(-15%) translateY(10%)',
+						transform: 'translateY(-50%) translateX(-50%) translateX(-15%) translateY(-10%)',
 					},
 				},
 				'pulse-circle': {
