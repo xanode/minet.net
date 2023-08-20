@@ -46,6 +46,9 @@ module.exports = {
 			animation: {
 				'circle-scale': 'circle-scale 0.84s cubic-bezier(0.09,0,0,1) 80ms forwards, 0.72s linear 80ms forwards',
 				'floatting': 'floatting 6s ease-in-out infinite',
+				'gradient-1': 'gradient-1 11s cubic-bezier(0.1, 0, 0.9, 1) infinite',
+				'gradient-2': 'gradient-2 11s cubic-bezier(0.1, 0, 0.9, 1) infinite',
+				'gradient-3': 'gradient-3 11s cubic-bezier(0.1, 0, 0.9, 1) infinite',
 				'pulse-circle': 'pulse-circle 1800ms linear infinite both',
 				'typing': 'typing 1.5s linear infinite',
 			},
@@ -108,6 +111,60 @@ module.exports = {
 						transform: 'translateY(-10px)',
 					},
 				},
+				'gradient-1': {
+					'0%': {
+						transform: 'translateY(-50%) translateX(-50%) rotate(-20deg) translateX(20%)',
+					},
+					'25%': {
+						transform: 'translateY(-50%) translateX(-50%) skew(-15deg, -15deg) rotate(80deg) translateX(30%)',
+					},
+					'50%':  {
+						transform: 'translateY(-50%) translateX(-50%) rotate(180deg) translateX(25%)',
+					},
+					'75%': {
+						transform: 'translateY(-50%) translateX(-50%) skew(15deg, 15deg) rotate(240deg) translateX(15%)',
+					},
+					'100%': {
+						transform: 'translateY(-50%) translateX(-50%) rotate(340deg) translateX(20%)',
+					},
+				},
+				'gradient-2': {
+					'0%': {
+						transform: 'translateY(-50%) translateX(-50%) rotate(40deg) translateX(-20%)',
+					},
+					'25%': {
+						transform: 'translateY(-50%) translateX(-50%) skew(-15deg, -15deg) rotate(110deg) translateX(-5%)',
+					},
+					'50%': {
+						transform: 'translateY(-50%) translateX(-50%) rotate(210deg) translateX(-35%)',
+					},
+					'75%': {
+						transform: 'translateY(-50%) translateX(-50%) skew(15deg, 15deg) rotate(200deg) translateX(-10%)',
+					},
+					'100%': {
+						transform: 'translateY(-50%) translateX(-50%) rotate(400deg) translateX(-20%)',
+					},
+				},
+				'gradient-3': {
+					'0%': {
+						transform: 'translateY(-50%) translateX(-50%) translateX(-15%) translateY(-10%)',
+					},
+					'20%': {
+						transform: 'translateY(-50%) translateX(-50%) translateX(20%) translateY(-30%)',
+					},
+					'40%': {
+						transform: 'translateY(-50%) translateX(-50%) translateX(-25%) translateY(-15%)',
+					},
+					'60%': {
+						transform: 'translateY(-50%) translateX(-50%) translateX(30%) translateY(20%)',
+					},
+					'80%': {
+						transform: 'translateY(-50%) translateX(-50%) translateX(5%) translateY(35%)',
+					},
+					'100%':  {
+						transform: 'translateY(-50%) translateX(-50%) translateX(-15%) translateY(10%)',
+					},
+				},
 				'pulse-circle': {
 					'0%': {
 						opacity: '0',
@@ -154,14 +211,19 @@ module.exports = {
 				'112': '28rem',
 				'113': '28.25rem',
 				'124': '31rem',
+				'125': '31.25rem',
 				'148': '37rem',
+				'150': '37.5rem',
 				'164': '41rem',
+				'175': '43.75rem',
 				'220': '55rem',
 				'256': '64rem',
 				'275': '68.75rem',
 				'276': '69rem',
 				'280': '70rem',
 				'1/12': '8.333333%',
+				'2/5': '40%',
+				'3/5': '60%',
 			},
 			transformOrigin: {
 				'0': '0 0',

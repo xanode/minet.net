@@ -1,7 +1,57 @@
 ---
+import  { Image } from "astro:assets";
+import ServiceCard from "@components/ServiceCard.astro";
 import Layout from "@layouts/Layout.astro";
+
+import CryptpadLogoReference from "~/assets/services/cryptpad.png";
+import EtherpadLogoReference from "~/assets/services/etherpad.png";
+import FramadateLogoReference from "~/assets/services/framadate.png";
+import GitlabLogoReference from "~/assets/services/gitlab.png";
+import HostingLogoReference from "~/assets/services/hosting.png";
+import LimesurveyLogoReference from "~/assets/services/limesurvey.png";
+import MailmanLogoReference from "~/assets/services/mailman.png";
+import WikiJSLogoReference from "~/assets/services/wikijs.png";
 ---
 
 <Layout title="MiNET - Nos services">
-    
+    <main class="py-20 px-2 mt-20">
+        <section class="relative flex flex-col items-center gap-40 text-white max-w-8xl mx-auto">
+            <h1 class="text-5xl md:text-6xl font-bold text-center">Nos services</h1>
+            <div class="relative flex p-6">
+                <div class="absolute z-0 inset-0 overflow-hidden blur-pulse-after select-none pointer-events-none">
+                    <div class="absolute rounded-full bg-purple-600 opacity-60 w-175 h-175 -z-20 top-2/5 left-3/5 mix-blend-lighten animate-gradient-1"></div>
+                    <div class="absolute rounded-full bg-pink-600 opacity-60 w-150 h-150 -z-10 top-3/5 left-2/5 mix-blend-screen animate-gradient-2"></div>
+                    <div class="absolute rounded-full bg-sky-600 opacity-60 w-125 h-125 -z-30 top-1/2 left-1/2 mix-blend-screen animate-gradient-3"></div>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                    <ServiceCard image={CryptpadLogoReference} title="Cryptpad" href="https://cryptpad.minet.net/">
+                        Cryptpad, c'est un drive (donc un espace personnel) avec un tableur, un éditeur de texte, un truc pour faire des dessins moches, un framadate, etc...
+                        Hé oui, c'est les services de google mais en mieux.
+                    </ServiceCard>
+                    <ServiceCard image={WikiJSLogoReference} title="Wiki.js" href="https://wiki.minet.net/">
+                        La base de connaissance de MiNET, le wiki est le meilleur endroit pour décrouvrir notre infrastructure.
+                    </ServiceCard>
+                    <ServiceCard image={FramadateLogoReference} title="Framadate" href="https://framadate.minet.net/">
+                        Bien connu, framadate permet de planifier des réunion ou de faire des sondages rapides 
+                    </ServiceCard>
+                    <ServiceCard image={LimesurveyLogoReference} title="Sondage" href="https://sondage.minet.net/">
+                        Créez des sondages à la Google Forms en quelques clics, herbergés chez MiNET. 
+                    </ServiceCard>
+                    <ServiceCard image={GitlabLogoReference} title="Gitlab" href="https://gitlab.minet.net/">
+                        Le serveur Gitlab de MiNET, où tous nos projets sont stockés. 
+                    </ServiceCard>
+                    <ServiceCard image={MailmanLogoReference} title="Mailing lists" href="https://listes.minet.net/">
+                        MiNET fournit plusieurs mailing lists utilisées au sein de la vie associative du campus. 
+                    </ServiceCard>
+                    <ServiceCard image={EtherpadLogoReference} title="Etherpad" href="https://etherpad.minet.net/">
+                        MiNET vous propose un etherpad hébergé sur ses serveurs.
+                        Etherpad est un éditeur de texte en ligne, open-source, collaboratif et en temps réel.
+                    </ServiceCard>
+                    <ServiceCard image={HostingLogoReference} title="Hébergement" href="https://hosting.minet.net/">
+                        MiNET propose à ses adhérent un service d'hébergement de machines virtuelles gratuit. 
+                    </ServiceCard>
+                </div>
+            </div>
+        </section>
+    </main>
 </Layout>
