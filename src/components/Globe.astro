@@ -10,8 +10,6 @@
     class Globe extends HTMLCanvasElement {
         globe!: Phenomenon;
         phi: number = 0;
-        pointerInteracting: number | null = null;
-        pointerInteractionMovement: number = 0;
 
         constructor() {
             super();
@@ -35,53 +33,16 @@
                 markers: [
                     { location: [48.856614, 2.3522219], size: 0.03 }
                 ],
-                onRender: this.render,
+                onRender: this.render
             });
             setTimeout(() => this.style.opacity = '1');
-
-            this.addEventListener('mousemove', this.handleMouseMove);
-            this.addEventListener('pointerdown', this.handlePointerDown);
-            this.addEventListener('pointerout', this.handlePointerOut);
-            this.addEventListener('pointerup', this.handlePointerUp);
-            this.addEventListener('touchmove', this.handleTouchMove);
         }
 
-        handleMouseMove(event: MouseEvent) {
-            if (this.pointerInteracting !== null) {
-                const delta = event.clientX - this.pointerInteracting;
-                this.pointerInteractionMovement = delta;
-                this.phi = this.pointerInteractionMovement / 200;
-            }
-        }
-
-        handlePointerDown(event: MouseEvent) {
-            this.pointerInteracting = event.clientX - this.pointerInteractionMovement;
-            this.style.cursor = 'grabbing';
-        }
-
-        handlePointerOut() {
-            this.pointerInteracting = null;
-            this.style.cursor = 'grab';
-        }
-
-        handlePointerUp() {
-            this.pointerInteracting = null;
-            this.style.cursor = 'grab';
-        }
-
-        handleTouchMove(event: TouchEvent) {
-            if (this.pointerInteracting !== null && event.touches[0]) {
-                const delta = event.touches[0].clientX - this.pointerInteracting;
-                this.pointerInteractionMovement = delta;
-                this.phi = this.pointerInteractionMovement / 100;
-            }
-        }
-
-        render(state: any) {
+        render(state: Record<string, any>) {
             state.phi = this.phi;
             state.width = this.offsetWidth * 2;
             state.height = this.offsetWidth * 2;
-            this.phi += 0.002;
+            this.phi += 0.0005 % (2 * Math.PI);
         }
 
         disconnectedCallback() {

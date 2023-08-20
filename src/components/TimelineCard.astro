@@ -1,0 +1,16 @@
+---
+interface Props {
+    title: string
+}
+const { title } = Astro.props
+---
+
+<div class="relative flex flex-col justify-between text-start gap-4 p-6 rounded-2xl shadow-inner shadow-white/10 backdrop-blur-sm">
+    <span class="absolute inset-0 -z-1 p-[1px] rounded-2xl bg-gradient-to-br from-white/30 via-transparent to-white/30 mask-circle"></span>
+    <h1 class="text-2xl font-medium text-white">
+        {title}
+    </h1>
+    <p class="text-lg text-white/80">
+        <slot />
+    </p>
+</div>
