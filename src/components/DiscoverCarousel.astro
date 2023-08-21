@@ -1,0 +1,115 @@
+---
+import DiscoverCard from "@components/DiscoverCard.astro";
+import TimelineCard from "@components/TimelineCard.astro";
+
+import EquipeReference from "~/assets/fun_1.jpg";
+import ServeursReference from "~/assets/background.jpg";
+import SoireeReference from "~/assets/soirée_1.jpg";
+---
+
+<discover-carousel>
+    <div class="flex flex-col lg:flex-row items-center justify-between gap-2 text-2xl md:text-3xl text-white/50 mt-20">
+        <button class="hover:text-white/70 aria-selected:text-white" data-target="0">
+            Une mission technique
+        </button>
+        <span class="hidden lg:flex grow shrink h-[1px] bg-gradient-to-r from-white/10 via-white/50 to-white/10"></span>
+        <button class="hover:text-white/70 aria-selected:text-white" data-target="1">
+            au cœur de la vie étudiante
+        </button>
+        <span class="hidden lg:flex grow shrink h-[1px] bg-gradient-to-r from-white/10 via-white/50 to-white/10"></span>
+        <button class="hover:text-white/70 aria-selected:text-white" data-target="2">
+            et un projet formateur.
+        </button>
+    </div>
+    <DiscoverCard name="0" image={ServeursReference} color1="bg-zinc-600" color2="bg-neutral-600" color3="bg-stone-600">
+        <TimelineCard title="7 bâtiments, 800 logements" icon="autres-services">
+            MiNET fournit l'accès à Internet à plus de 800 logements répartis dans 7 bâtiments de la résidence étudiante de Télécom SudParis et d'Institut Mines-Télécom Business School, la MAISEL SudParis.
+        </TimelineCard>
+        <TimelineCard title="Connexion filaire et Wi-Fi" icon="wi-fi">
+            Chaque logement est équipé d'une prise Ethernet (Gigabit) et un ensemble de bornes Wi-Fi (2.4 et 5 GHz) permettent de couvrir l'ensemble des bâtiments.
+        </TimelineCard>
+        <TimelineCard title="Une large infrastructure" icon="autres-services">
+            Une quinzaine de serveurs répartis dans deux salles, authentification 802.1X, commutateurs CISCO, supervision via Zabbix, plusieurs clusters Proxmox, cluster de stockage distribué sous Ceph, etc.
+        </TimelineCard>
+    </DiscoverCard>
+    <DiscoverCard name="1" image={SoireeReference} color1="bg-violet-600" color2="bg-purple-600" color3="bg-fuchsia-600">
+        <TimelineCard title="Organisation d'une soirée" icon="autres-services">
+            Tous les trois ans, MiNET est l'organisateur d'une soirée étudiante qui rassemble des centaines d'étudiants.
+        </TimelineCard>
+        <TimelineCard title="Soutien du monde associatif" icon="wi-fi">
+            Chaque année, MiNET distribue des subventions aux autres clubs et associations du campus afin d'enrichir la vie étudiante.
+        </TimelineCard>
+        <TimelineCard title="De nombreux clubs" icon="autres-services">
+            MiNET contient de nombreux clubs couvrant chacun un domaine différent et qui rassemblent des dizaines d'étudiants.
+        </TimelineCard>
+    </DiscoverCard>
+    <DiscoverCard name="2" image={EquipeReference} color1="bg-cyan-600" color2="bg-sky-600" color3="bg-blue-600">
+        <TimelineCard title="Uniquement géré par des étudiants" icon="autres-services">
+            MiNET est une équipe d'étudiants passionnés de Télécom SudParis et d'Institut Mines-Télécom Business School, qui gère le réseau informatique de la résidence étudiante depuis 1991.
+            Chaque année, une nouvelle équipe est élue et prend la relève.
+        </TimelineCard>
+        <TimelineCard title="Des formations hebdomadaires" icon="wi-fi">
+            Chaque semaine, MiNET organise des formations sur des sujets variés, afin de former ses membres et de leur permettre de monter en compétences.
+            La très grande majorité des formations sont ouvertes à tous les étudiants du campus.
+        </TimelineCard>
+        <TimelineCard title="Des conférences annuelles" icon="autres-services">
+            Chaque année, MiNET organise une conférence sur un sujet technique où de nombreux experts interviennent.
+            Cet événement rassemble des centaines d'étudiants et est ouvert à tous.
+        </TimelineCard>
+    </DiscoverCard>
+</discover-carousel>
+
+<script>
+    type Selector = {
+        button: HTMLButtonElement;
+        card: HTMLDivElement;
+    }
+
+    class DiscoverCarousel extends HTMLElement {
+        selectors: Array<Selector>;
+
+        constructor() {
+            super();
+
+            // Both buttons and cards has the same data-name attribute
+            // So we can use it to link them together
+            // We query the button and cards that has the same data-name
+            // then we store them in an array
+            this.selectors = Array.from(this.querySelectorAll("button")).map((button) => {
+                const name = button.dataset.target;
+                const card = this.querySelector(`[data-name="${name}"]`)! as HTMLDivElement;
+
+                return {button: button, card: card};
+            });
+        }
+
+        connectedCallback() {
+            // We set the first button as selected and the others as not selected
+            this.selectors.forEach((selector, index) => {
+                selector.button.setAttribute("aria-selected", index === 0 ? "true" : "false");
+                selector.card.setAttribute("aria-hidden", index === 0 ? "false" : "true");
+            });
+
+            // We add a click event listener on each button
+            this.selectors.forEach((selector) => {
+                selector.button.addEventListener("click", () => {
+                    this.handleClick(selector);
+                });
+            });
+
+        }
+
+        handleClick(selector: Selector) {
+            // We set the clicked button as selected and the others as not selected
+            this.selectors.forEach((selector) => {
+                selector.button.setAttribute("aria-selected", "false");
+                selector.card.setAttribute("aria-hidden", "true");
+            });
+
+            selector.button.setAttribute("aria-selected", "true");
+            selector.card.setAttribute("aria-hidden", "false");
+        }
+    }
+
+    customElements.define("discover-carousel", DiscoverCarousel);
+</script>

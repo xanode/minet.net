@@ -1,6 +1,7 @@
 ---
+import DiscoverCard from "@components/DiscoverCard.astro";
+import DiscoverCarousel from "@components/DiscoverCarousel.astro";
 import Globe from '@components/Globe.astro';
-import TimelineCard from '@components/TimelineCard.astro';
 import TypingCursor from '@components/TypingCursor.astro';
 import Layout from '@layouts/Layout.astro';
 ---
@@ -36,7 +37,7 @@ import Layout from '@layouts/Layout.astro';
 				</div>
 				<div class="relative w-full aspect-square m-auto">
 					<div class="absolute -top-20 -right-80 lg:-right-60 w-256 h-256">
-						<Globe />
+						<!-- <Globe /> -->
 					</div>
 				</div>
 			</section>
@@ -80,37 +81,14 @@ import Layout from '@layouts/Layout.astro';
 				<div class="flex flex-col items-center gap-10">
 					<span class="w-[1px] h-32 pr-[1px] bg-gradient-to-b from-white/10 to-white"></span>
 					<div class="flex items-center gap-10">
-						<span class="w-32 h-[1px] bg-gradient-to-r from-white/10 to-white"></span>
-						<h1 class="text-6xl text-white/80 font-bold">
+						<span class="hidden md:block w-32 h-[1px] bg-gradient-to-r from-white/10 to-white"></span>
+						<h1 class="text-5xl md:text-6xl text-white/80 font-bold">
 							Un FAI étudiant
 						</h1>
-						<span class="w-32 h-[1px] bg-gradient-to-l from-white/10 to-white"></span>
+						<span class="hidden md:block w-32 h-[1px] bg-gradient-to-l from-white/10 to-white"></span>
 					</div>
 				</div>
-				<div class="relative flex flex-col max-w-5xl mt-20">
-					<div class="flex">
-						<div class="flex flex-col items-center px-20">
-							<span class="w-3 h-3 rounded-full mx-1 shadow-[0_0_0_1.5px_rgb(255_255_255_/_30%)_inset]"></span>
-							<span class="flex grow shrink w-[1px] border-l border-dashed border-sky-400/50"></span>
-						</div>
-						<div class="py-2">
-							<TimelineCard title="Un réseau de plus de 800 adhérents">
-								Le réseau de MiNET est composé de plus de 800 adhérents, dont 600 résidents de la résidence étudiante de Télécom SudParis et d'Institut Mines-Télécom Business School.
-							</TimelineCard>
-						</div>
-					</div>
-					<div class="flex">
-						<div class="flex flex-col items-center px-20">
-							<span class="w-3 h-3 rounded-full mx-1 shadow-[0_0_0_1.5px_rgb(255_255_255_/_30%)_inset]"></span>
-							<span class="flex grow shrink w-[1px] border-l border-dashed border-sky-400/50"></span>
-						</div>
-						<div class="py-2">
-							<TimelineCard title="Un réseau de plus de 800 adhérents">
-								Le réseau de MiNET est composé de plus de 800 adhérents, dont 600 résidents de la résidence étudiante de Télécom SudParis et d'Institut Mines-Télécom Business School.
-							</TimelineCard>
-						</div>
-					</div>
-				</div>
+				<DiscoverCarousel />
 			</section>
 		</div>
 	</main>
