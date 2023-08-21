@@ -1,5 +1,5 @@
 ---
-import DiscoverCard from "@components/DiscoverCard.astro";
+import CardSkew from "@components/CardSkew.astro";
 import DiscoverCarousel from "@components/DiscoverCarousel.astro";
 import Globe from '@components/Globe.astro';
 import TypingCursor from '@components/TypingCursor.astro';
@@ -89,6 +89,69 @@ import Layout from '@layouts/Layout.astro';
 					</div>
 				</div>
 				<DiscoverCarousel />
+			</section>
+			<section class="relative max-w-8xl">
+				<div class="flex items-center justify-center gap-10">
+					<span class="hidden md:block w-32 h-[1px] bg-gradient-to-r from-white/10 to-white"></span>
+					<h1 class="text-5xl md:text-6xl text-white/80 font-bold">
+						Rejoins-nous !
+					</h1>
+					<span class="hidden md:block w-32 h-[1px] bg-gradient-to-l from-white/10 to-white"></span>
+				</div>
+				<div class="flex flex-col lg:flex-row items-center justify-between gap-20 mt-20">
+					<CardSkew rounded="rounded-2xl" color="bg-neutral-900">
+						<div class="flex flex-col items-center gap-10 p-6 border rounded-2xl border-white/10 shadow-inner shadow-white/5">
+							<div class="bg-white/50 px-[1px] py-[9px] rounded-full">
+								<span class="text-4xl text-white rounded-full bg-black px-5 py-2">
+									1
+								</span>
+							</div>
+							<h2 class="text-2xl md:text-3xl text-white/80 font-bold">
+								Deviens adhérent
+							</h2>
+							<p class="text-base md:text-lg text-white/50 text-center">
+								En tant qu'adhérent, tu pourras profiter de tous les services de MiNET, et participer à la vie de l'association.
+							</p>
+						</div>
+					</CardSkew>
+					<CardSkew rounded="rounded-2xl" color="bg-neutral-900">
+						<div class="flex flex-col items-center gap-10 p-6 border rounded-2xl border-white/10 shadow-inner shadow-white/5">
+							<div class="bg-white/50 px-[1px] py-[9px] rounded-full">
+								<span class="text-4xl text-white rounded-full bg-black px-5 py-2.5">
+									2
+								</span>
+							</div>
+							<h2 class="text-2xl md:text-3xl text-white/80 font-bold">
+								Viens nous voir
+							</h2>
+							<p class="md:text-lg text-white/50 text-center">
+								Passe au local MiNET au foyer associatif de l'école quand tu veux, on se fera un plaisir de te présenter ce que l'on fait !
+							</p>
+						</div>
+					</CardSkew>
+					<CardSkew rounded="rounded-2xl" color="bg-neutral-900">
+						<div class="flex flex-col items-center gap-10 p-6 border rounded-2xl border-white/10 shadow-inner shadow-white/5">
+							<div class="bg-white/50 px-[1px] py-[9px] rounded-full">
+								<span class="text-4xl text-white rounded-full bg-black px-5 py-2.5">
+									3
+								</span>
+							</div>
+							<h2 class="text-2xl md:text-3xl text-white/80 font-bold">
+								Deviens membre actif
+							</h2>
+							<p class="md:text-lg text-white/50 text-center">
+								En tant que membre actif, tu pourras participer à la gestion du réseau et de l'association, et ainsi acquérir de l'expérience.
+							</p>
+						</div>
+					</CardSkew>
+				</div>
+				<div class="flex flex-col items-center gap-10 mt-20">
+					<div class="flex items-center gap-10">
+						<span class="hidden md:block w-32 h-[1px] bg-gradient-to-r from-white/10 to-white"></span>
+						<span class="hidden md:block w-32 h-[1px] bg-gradient-to-l from-white/10 to-white"></span>
+					</div>
+					<span class="w-[1px] h-32 pr-[1px] bg-gradient-to-t from-white/10 to-white"></span>
+				</div>
 			</section>
 		</div>
 	</main>

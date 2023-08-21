@@ -1,54 +1,39 @@
 ---
 ---
 
-<canvas is="minet-globe" class="absolute w-full h-full cursor-grab opacity-0 transition-opacity duration-1000"></canvas>
+<canvas id="minet-globe" class="absolute w-full h-full cursor-grab opacity-0 transition-opacity duration-1000"></canvas>
 
 <script>
     import type Phenomenon from 'phenomenon';
     import createGlobe from "cobe";
 
-    class Globe extends HTMLCanvasElement {
-        globe!: Phenomenon;
-        phi: number = 0;
+    let phi: number = 0;
+    let canvas: HTMLCanvasElement = document.querySelector('#minet-globe') as HTMLCanvasElement;
 
-        constructor() {
-            super();
-        }
+    const globe: Phenomenon = createGlobe(canvas, {
+        devicePixelRatio: 1,
+        width: canvas.offsetWidth,
+        height: canvas.offsetWidth,
+        phi: 4,
+        theta: 0.3,
+        dark: 1,
+        diffuse: 0.2,
+        mapSamples: 16000,
+        mapBrightness: 20,
+        baseColor: [0.1, 0.1, 0.1],
+        markerColor: [251/255, 100/255, 21/255],
+        glowColor: [0.1, 0.1, 0.1],
+        offset: [0, 0],
+        markers: [
+            { location: [48.856614, 2.3522219], size: 0.03 }
+        ],
+        onRender: (state: Record<string, any>) => {
+            state.phi = phi;
+            state.width = canvas.offsetWidth;
+            state.height = canvas.offsetWidth;
+            phi += 0.002;
+        },
+    });
 
-        connectedCallback() {
-            this.globe = createGlobe(this, {
-                devicePixelRatio: 2,
-                width: this.offsetWidth * 2,
-                height: this.offsetWidth * 2,
-                phi: 4,
-                theta: 0.3,
-                dark: 1,
-                diffuse: 0.2,
-                mapSamples: 16000,
-                mapBrightness: 20,
-                baseColor: [0.1, 0.1, 0.1],
-                markerColor: [251/255, 100/255, 21/255],
-                glowColor: [0.1, 0.1, 0.1],
-                offset: [0, 0],
-                markers: [
-                    { location: [48.856614, 2.3522219], size: 0.03 }
-                ],
-                onRender: this.render
-            });
-            setTimeout(() => this.style.opacity = '1');
-        }
-
-        render(state: Record<string, any>) {
-            state.phi = this.phi;
-            state.width = this.offsetWidth * 2;
-            state.height = this.offsetWidth * 2;
-            this.phi += 0.0005 % (2 * Math.PI);
-        }
-
-        disconnectedCallback() {
-            this.globe.destroy();
-        }
-    }
-
-    customElements.define('minet-globe', Globe, {extends: 'canvas'});
+    setTimeout(() => canvas.style.opacity = '1');
 </script>
