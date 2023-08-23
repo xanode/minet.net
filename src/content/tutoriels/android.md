@@ -1,7 +1,7 @@
 ---
-icon: android
-title: Android
-description: Connecter son appareil Android.
+title: Connecter son appareil Android.
+categories:
+ - android
 ---
 
 ## Prérequis

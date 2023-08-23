@@ -1,11 +1,8 @@
 ---
-import { getCollection } from "astro:content";
-
 import CardSkew from "@components/CardSkew.astro";
 import TutorialCard from "@components/TutorialCard.astro";
 import Layout from "@layouts/Layout.astro";
-
-const tutorials = await getCollection("tutoriels");
+import { categories } from "@libs/categories";
 ---
 
 <Layout title="MiNET - Tutoriels">
@@ -14,12 +11,12 @@ const tutorials = await getCollection("tutoriels");
             <h1 class="text-3xl md:text-4xl text-center font-bold my-6">Tout ce dont vous avez besoin de savoir pour utiliser nos services.</h1>
             <CardSkew rounded="2xl" overflow>
                 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
-                    {tutorials.map(tutorial => (
+                    {categories.map(category => (
                         <TutorialCard
-                            icon={tutorial.data.icon}
-                            title={tutorial.data.title}
-                            description={tutorial.data.description}
-                            href={tutorial.slug}
+                            icon={category.icon}
+                            title={category.name}
+                            description={category.description}
+                            href={`/tutoriels/${category.slug}`}
                         />
                     ))}
                 </div>

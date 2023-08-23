@@ -1,7 +1,9 @@
 ---
 import { getCollection } from "astro:content";
+import type { CollectionEntry } from "astro:content";
 
 import Layout from "@layouts/Layout.astro";
+import { categories } from "@libs/categories";
 
 export async function getStaticPaths() {
     const tutorials = await getCollection("tutoriels");
@@ -17,16 +19,121 @@ export async function getStaticPaths() {
     });
 };
 
+interface Props {
+    tutorial: CollectionEntry<'tutoriels'>;
+};
 const { tutorial } = Astro.props;
 const { Content } = await tutorial.render();
+const tutorials = await getCollection("tutoriels");
 ---
 
 <Layout title={tutorial.data.title}>
-    <main class="py-20 px-2 mt-20 text-white">
-        <div class="flex flex-col items-center gap-20 p-2 max-w-4xl mx-auto backdrop-blur-sm rounded-2xl border border-neutral-700">
-            <h1 class="text-3xl md:text-4xl text-center font-bold my-6">{tutorial.data.description}</h1>
-            <div class="prose lg:prose-xl prose-invert text-justify">
-                <Content />
+    <main class="py-20 px-2 mt-20">
+        <div class="absolute -right-10 top-112 flex flex-col gap-4 w-256 blur-pulse-after -rotate-45">
+            <div class="absolute inset-0 bg-gradient-to-l from-transparent to-black"></div>
+            <div class="w-full h-5 bg-red-500"></div>
+            <div class="w-full h-5 bg-orange-500"></div>
+            <div class="w-full h-5 bg-yellow-500"></div>
+            <div class="w-full h-2 bg-white"></div>
+            <div class="w-full h-5 bg-green-500"></div>
+            <div class="w-full h-5 bg-blue-500"></div>
+            <div class="w-full h-5 bg-indigo-500"></div>
+            <div class="w-full h-5 bg-purple-500"></div>
+        </div>
+        <div class="relative flex flex-col lg:flex-row gap-4 max-w-8xl mx-auto">
+            {/* Leftbar */}
+            <aside class="hidden lg:block sticky top-40 shrink-0 py-4 w-80 h-full max-w-xs">
+                <div class="flex flex-col gap-10">
+                    {/* Searchbar */}
+                    <button class="flex items-center justify-between self-center w-64 h-9 cursor-text rounded-md bg-neutral-900">
+                        <div class="flex items-center gap-3">
+                            <svg class="w-4.5 h-4.5 ml-2 text-neutral-500 fill-none stroke-current" shape-rendering="geometricPrecision" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" viewBox="0 0 24 24"><path d="M11 17.25a6.25 6.25 0 110-12.5 6.25 6.25 0 010 12.5z"></path><path d="M16 16l4.5 4.5"></path></svg>
+                            <span class="text-neutral-500 ml-3">Rechercher...</span>
+                        </div>
+                        <div class="flex items-center mr-1.5">
+                            <kbd class="inline-block text-center text-xs leading-5 px-1.5 rounded-md text-neutral-200 bg-neutral-950">
+                                <span>Ctrl+K</span>
+                            </kbd>
+                        </div>
+                    </button>
+                    {/* Navigation */}
+                    <nav class="block w-full">
+                        <ul class="list-none">
+                            {categories.map(category =>
+                            <li class="py-2 w-full text-neutral-400 text-sm">
+                                <details open>
+                                    <summary class="flex items-center">
+                                        <a class="grow cursor-default" href="#">
+                                            <span class="font-semibold cursor-default text-white">
+                                                {category.name}
+                                            </span>
+                                        </a>
+                                        <button class="flex items-center justify-center hover:text-white hover:bg-neutral-700 rounded-[50%] transition-transform w-6 h-6">
+                                            <svg class="w-4 h-4 fill-none stroke-current" shape-rendering="geometricPrecision" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" viewBox="0 0 24 24"><path d="M9 18l6-6-6-6"></path></svg>
+                                        </button>
+                                    </summary>
+                                    <ul class="flex flex-col gap-4 mt-4 -ml-[1px] border-l border-neutral-800">
+                                        {tutorials.map(tutorial =>
+                                            tutorial.data.categories.includes(category.slug) &&
+                                            <li class="flex text-sm text-neutral-400 hover:text-white pl-4 hover:-ml-[1px] hover:border-l hover:border-white">
+                                                <a class="grow" href={`/tutoriels/${tutorial.slug}/`}>
+                                                    {tutorial.data.title}
+                                                </a>
+                                                <div class="invisible w-6 h-6 px-1"></div>
+                                            </li>
+                                        )}
+                                    </ul>
+                                </details>
+                            </li>
+                            )}
+                        </ul>
+                    </nav>
+                </div>
+            </aside>
+            {/* Content */}
+            <div class="flex flex-col px-6 md:px-12 pt-6 pb-16 mx-auto w-full max-w-5xl">
+                {/* Breadcrumbs */}
+                <div class="hidden md:flex items-center gap-2">
+                    <div class="grow leading-5 overflow-hidden whitespace-nowrap">
+                        <div class="flex items-center text-sm gap-1">
+                            <a class="flex items-center text-neutral-600 hover:text-white" href="#">
+                                <span>
+                                    Tutoriels
+                                </span>
+                                <span class="flex items-center justify-center ml-1">
+                                    <svg class="w-4 h-4 shrink-0" fill="none" shape-rendering="geometricPrecision" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" viewBox="0 0 24 24"><path d="M9 18l6-6-6-6"></path></svg>
+                                </span>
+                            </a>
+                            <span class="text-neutral-200">
+                                {tutorial.data.title}
+                            </span>
+                        </div>
+                    </div>
+                </div>
+                <button class="flex items-center justify-between self-center w-64 h-9 cursor-text rounded-md bg-neutral-900">
+                    <div class="flex items-center gap-3">
+                        <svg class="w-4.5 h-4.5 ml-2 text-neutral-500 fill-none stroke-current" shape-rendering="geometricPrecision" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" viewBox="0 0 24 24"><path d="M11 17.25a6.25 6.25 0 110-12.5 6.25 6.25 0 010 12.5z"></path><path d="M16 16l4.5 4.5"></path></svg>
+                        <span class="text-neutral-500 ml-3">Rechercher...</span>
+                    </div>
+                    <div class="flex items-center mr-1.5">
+                        <kbd class="inline-block text-center text-xs leading-5 px-1.5 rounded-md text-neutral-200 bg-neutral-950">
+                            <span>Ctrl+K</span>
+                        </kbd>
+                    </div>
+                </button>
+                <div class="flex mt-8 mb-4">
+                    <h1 class="relative inline-flex items-center text-neutral-100 text-2xl md:text-5xl leading-[26px] md:leading-[3.5rem] tracking-tighter font-semibold">
+                        <a class="peer border-b border-transparent hover:border-neutral-100 mr-2.5 break-words" href="#">
+                            {tutorial.data.title}
+                        </a>
+                        <span class="relative text-center align-middle invisible peer-hover:visible">
+                            <svg class="w-auto h-7 fill-none stroke-current" shape-rendering="geometricPrecision" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" viewBox="0 0 24 24"><path d="M10 13a5 5 0 007.54.54l3-3a5 5 0 00-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 00-7.54-.54l-3 3a5 5 0 007.07 7.07l1.71-1.71"></path></svg>
+                        </span>
+                    </h1>
+                </div>
+                <div class="prose md:prose-lg prose-invert prose-h2:font-medium max-md:prose-h2:text-xl md:text-justify max-w-none">
+                    <Content />
+                </div>
             </div>
         </div>
     </main>
