@@ -1,5 +1,4 @@
 import { defineConfig } from 'astro/config';
-import fuse from 'astro-fuse';
 import tailwind from "@astrojs/tailwind";
 import vercel from "@astrojs/vercel/serverless";
 
@@ -10,12 +9,6 @@ export default defineConfig({
     viewTransitions: true,
   },
   integrations: [
-    fuse({
-      keys: [
-        'content',
-        'frontmatter.title',
-      ],
-    }),
     tailwind(),
   ],
   site: "https://minet.xanode.fr",

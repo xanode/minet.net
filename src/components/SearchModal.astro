@@ -56,11 +56,8 @@
 </div>
 
 <script>
-    import type Searchable from "astro-fuse";
-    import type Fuse from "fuse.js";
-
     class SearchModal extends HTMLDivElement {
-        fuse: Fuse<Searchable> | null = null;
+        //fuse: Fuse<Searchable> | null = null;
         input: HTMLInputElement;
         overlay: HTMLDivElement;
         subtitle: HTMLSpanElement;
@@ -82,7 +79,7 @@
             document.addEventListener('search', this.openModal.bind(this));
 
             /** Event related to search */
-            this.input.addEventListener('input', this.handleSearch.bind(this));
+            //this.input.addEventListener('input', this.handleSearch.bind(this));
 
             /** Events that close the modal */
             document.addEventListener('keydown', (event: KeyboardEvent) => {
@@ -94,35 +91,6 @@
         openModal() {
             this.style.display = 'block';
             setTimeout(() => this.style.opacity = '1');
-        }
-
-        load() {
-            if (!this.fuse) {
-                return loadFuse().then((_instance) => {
-                    this.fuse = _instance;
-                });
-            }
-
-            return Promise.resolve(this.fuse);
-        }
-
-        handleSearch() {
-            if (this.input.value.length < 3) {
-                this.subtitle.textContent = 'Tapez plus de 2 caractères pour commencer la recherche.';
-                return;
-            }
-
-            this.load()
-                .then(() => {
-                    const results = this.fuse?.search(this.input.value)
-                    
-                    if (results !== undefined && results.length === 0) {
-                        this.subtitle.textContent = 'Aucun résultat trouvé.';
-                        return;
-                    }
-
-                    this.subtitle.textContent = `${results!.length} résultats trouvés.`;
-                });
         }
 
         closeModal() {
