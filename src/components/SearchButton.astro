@@ -1,0 +1,33 @@
+---
+---
+
+<button is="search-button" class="flex items-center justify-between w-full h-9 cursor-text rounded-md bg-neutral-900">
+    <div class="flex items-center gap-3">
+        <svg class="w-4.5 h-4.5 ml-2 text-neutral-500 fill-none stroke-current" shape-rendering="geometricPrecision" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" viewBox="0 0 24 24"><path d="M11 17.25a6.25 6.25 0 110-12.5 6.25 6.25 0 010 12.5z"></path><path d="M16 16l4.5 4.5"></path></svg>
+        <span class="text-neutral-500 ml-3">Rechercher...</span>
+    </div>
+    <div class="flex items-center mr-1.5">
+        <kbd class="inline-block text-center text-xs leading-5 px-1.5 border rounded-md border-neutral-800 text-neutral-200 bg-neutral-950">
+            <span>Ctrl+K</span>
+        </kbd>
+    </div>
+</button>
+
+<script>
+    class SearchButton extends HTMLButtonElement {
+        constructor() {
+            super();
+        }
+
+        connectedCallback() {
+            this.addEventListener('click', () => document.dispatchEvent(new CustomEvent('search', { bubbles: true })));
+            document.addEventListener('keydown', (event: KeyboardEvent) => {
+                if (event.ctrlKey && event.key === 'k') {
+                    event.preventDefault();
+                    document.dispatchEvent(new CustomEvent('search', { bubbles: true }));
+                }
+            });
+        }
+    }
+    customElements.define('search-button', SearchButton, { extends: 'button' });
+</script>

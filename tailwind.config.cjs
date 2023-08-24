@@ -202,6 +202,7 @@ module.exports = {
 			spacing: {
 				'4.5': '18px',
 				'13': '3.25rem',
+				'18': '4.5rem',
 				'26': '6.5rem',
 				'34': '8.5rem',
 				'38': '9.5rem',
@@ -216,6 +217,7 @@ module.exports = {
 				'125': '31.25rem',
 				'148': '37rem',
 				'150': '37.5rem',
+				'160': '40rem',
 				'164': '41rem',
 				'175': '43.75rem',
 				'220': '55rem',
@@ -224,6 +226,7 @@ module.exports = {
 				'276': '69rem',
 				'280': '70rem',
 				'1/12': '8.333333%',
+				'1/5': '20%',
 				'2/5': '40%',
 				'3/5': '60%',
 			},
@@ -231,10 +234,12 @@ module.exports = {
 				'0': '0 0',
 			},
 			transitionProperty: {
+				'height': 'height',
 				'stroke-dashoffset': 'stroke-dashoffset',
 			},
 			willChange: {
 				'background-opacity': 'background, opacity',
+				'height': 'height',
 			},
 			zIndex: {
 				'1': '1',

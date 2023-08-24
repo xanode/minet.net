@@ -1,7 +1,8 @@
 ---
 import { getCollection } from "astro:content";
 import type { CollectionEntry } from "astro:content";
-
+import SearchButton from "@components/SearchButton.astro";
+import SearchModal from "@components/SearchModal.astro";
 import Layout from "@layouts/Layout.astro";
 import { categories } from "@libs/categories";
 
@@ -27,7 +28,7 @@ const { Content } = await tutorial.render();
 const tutorials = await getCollection("tutoriels");
 ---
 
-<Layout title={tutorial.data.title}>
+<Layout title={`MiNET - ${tutorial.data.title}`}>
     <main class="py-20 px-2 mt-20">
         <div class="absolute -right-10 top-112 flex flex-col gap-4 w-256 blur-pulse-after -rotate-45">
             <div class="absolute inset-0 bg-gradient-to-l from-transparent to-black"></div>
@@ -40,22 +41,13 @@ const tutorials = await getCollection("tutoriels");
             <div class="w-full h-5 bg-indigo-500"></div>
             <div class="w-full h-5 bg-purple-500"></div>
         </div>
+        <SearchModal />
         <div class="relative flex flex-col lg:flex-row gap-4 max-w-8xl mx-auto">
             {/* Leftbar */}
-            <aside class="hidden lg:block sticky top-40 shrink-0 py-4 w-80 h-full max-w-xs">
+            <aside class="hidden lg:block sticky top-40 shrink-0 py-4 w-80 h-full max-w-xs overflow-y-auto">
                 <div class="flex flex-col gap-10">
-                    {/* Searchbar */}
-                    <button class="flex items-center justify-between self-center w-64 h-9 cursor-text rounded-md bg-neutral-900">
-                        <div class="flex items-center gap-3">
-                            <svg class="w-4.5 h-4.5 ml-2 text-neutral-500 fill-none stroke-current" shape-rendering="geometricPrecision" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" viewBox="0 0 24 24"><path d="M11 17.25a6.25 6.25 0 110-12.5 6.25 6.25 0 010 12.5z"></path><path d="M16 16l4.5 4.5"></path></svg>
-                            <span class="text-neutral-500 ml-3">Rechercher...</span>
-                        </div>
-                        <div class="flex items-center mr-1.5">
-                            <kbd class="inline-block text-center text-xs leading-5 px-1.5 rounded-md text-neutral-200 bg-neutral-950">
-                                <span>Ctrl+K</span>
-                            </kbd>
-                        </div>
-                    </button>
+                    {/* Searchbutton */}
+                    <SearchButton />
                     {/* Navigation */}
                     <nav class="block w-full">
                         <ul class="list-none">
@@ -110,17 +102,6 @@ const tutorials = await getCollection("tutoriels");
                         </div>
                     </div>
                 </div>
-                <button class="flex items-center justify-between self-center w-64 h-9 cursor-text rounded-md bg-neutral-900">
-                    <div class="flex items-center gap-3">
-                        <svg class="w-4.5 h-4.5 ml-2 text-neutral-500 fill-none stroke-current" shape-rendering="geometricPrecision" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" viewBox="0 0 24 24"><path d="M11 17.25a6.25 6.25 0 110-12.5 6.25 6.25 0 010 12.5z"></path><path d="M16 16l4.5 4.5"></path></svg>
-                        <span class="text-neutral-500 ml-3">Rechercher...</span>
-                    </div>
-                    <div class="flex items-center mr-1.5">
-                        <kbd class="inline-block text-center text-xs leading-5 px-1.5 rounded-md text-neutral-200 bg-neutral-950">
-                            <span>Ctrl+K</span>
-                        </kbd>
-                    </div>
-                </button>
                 <div class="flex mt-8 mb-4">
                     <h1 class="relative inline-flex items-center text-neutral-100 text-2xl md:text-5xl leading-[26px] md:leading-[3.5rem] tracking-tighter font-semibold">
                         <a class="peer border-b border-transparent hover:border-neutral-100 mr-2.5 break-words" href="#">

@@ -1,0 +1,134 @@
+---
+---
+
+<div is="search-modal" class="relative z-50 opacity-0 transition-opacity duration-200">
+    <div data-name="overlay" class="fixed inset-0 bg-black/80"></div>
+    <div class="fixed top-1/5 left-1/2 -translate-x-1/2 flex flex-col border rounded-lg border-neutral-700 bg-neutral-950 p-2 w-160">
+        <div class="flex items-center gap-2">
+            <input class="text-xl text-neutral-400 placeholder:text-neutral-700 bg-transparent outline-none px-4 py-2 w-full" placeholder="Rechercher..." />
+            <kbd class="inline-block text-center text-xs leading-5 px-1.5 border rounded-md border-neutral-800 text-neutral-200 bg-neutral-950">
+                <span>Esc</span>
+            </kbd>
+        </div>
+        <span class="w-full h-[1px] bg-neutral-700 mb-2 overflow-visible"></span>
+        <div class="text-xs text-neutral-500 pl-2 py-2 mb-2 h-6 text-ellipsis overflow-hidden">
+            <span data-name="subtitle"></span>
+        </div>
+        <div class="will-change-height transition-height overflow-y-auto overflow-x-hidden max-h-80">
+            <ul class="flex flex-col gap-1">
+                <li>
+                    <a class="flex items-center text-sm px-4 rounded-lg hover:bg-neutral-900 whitespace-normal transition-colors h-18" href="#">
+                        <div class="flex items-center">
+                            <span class="flex items-center justify-center mr-3">
+                                <svg class="w-5 h-5 mt-[1px] fill-none text-neutral-400 stroke-current" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" viewBox="0 0 24 24"><path d="M2 3h6a4 4 0 014 4v14a3 3 0 00-3-3H2z"></path><path d="M22 3h-6a4 4 0 00-4 4v14a3 3 0 013-3h7z"></path></svg>
+                            </span>
+                            <span>
+                                <div class="text-base text-neutral-200 text-ellipsis line-clamp-1">
+                                    Titre du tutoriel
+                                </div>
+                                <div class="my-2 pl-2 border-l-4 border-neutral-800 text-neutral-400 text-ellipsis line-clamp-1">
+                                    Description de l'article
+                                </div>
+                            </span>
+                        </div>
+                    </a>
+                </li>
+                <li>
+                    <a class="flex items-center text-sm px-4 rounded-lg hover:bg-neutral-900 whitespace-normal transition-colors h-18" href="#">
+                        <div class="flex items-center">
+                            <span class="flex items-center justify-center mr-3">
+                                <svg class="w-5 h-5 mt-[1px] fill-none text-neutral-400 stroke-current" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" viewBox="0 0 24 24"><path d="M2 3h6a4 4 0 014 4v14a3 3 0 00-3-3H2z"></path><path d="M22 3h-6a4 4 0 00-4 4v14a3 3 0 013-3h7z"></path></svg>
+                            </span>
+                            <span>
+                                <div class="text-base text-neutral-200 text-ellipsis line-clamp-1">
+                                    Titre du tutoriel
+                                </div>
+                                <div class="my-2 pl-2 border-l-4 border-neutral-800 text-neutral-400 text-ellipsis line-clamp-1">
+                                    Description de l'article
+                                </div>
+                            </span>
+                        </div>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<script>
+    import type Searchable from "astro-fuse";
+    import type Fuse from "fuse.js";
+
+    class SearchModal extends HTMLDivElement {
+        fuse: Fuse<Searchable> | null = null;
+        input: HTMLInputElement;
+        overlay: HTMLDivElement;
+        subtitle: HTMLSpanElement;
+
+        constructor() {
+            super();
+            
+            /** Get elements */
+            this.input = this.querySelector('input') as HTMLInputElement;
+            this.overlay = this.querySelector('[data-name="overlay"]') as HTMLDivElement;
+            this.subtitle = this.querySelector('[data-name="subtitle"]') as HTMLSpanElement;
+        }
+
+        connectedCallback() {
+            this.style.display = 'none';
+            this.subtitle.textContent = 'Tapez plus de 2 caractères pour commencer la recherche.';
+
+            /** Events that open the modal */
+            document.addEventListener('search', this.openModal.bind(this));
+
+            /** Event related to search */
+            this.input.addEventListener('input', this.handleSearch.bind(this));
+
+            /** Events that close the modal */
+            document.addEventListener('keydown', (event: KeyboardEvent) => {
+                if (event.key === 'Escape') this.closeModal();
+            });
+            this.overlay.addEventListener('click', this.closeModal.bind(this));
+        }
+
+        openModal() {
+            this.style.display = 'block';
+            setTimeout(() => this.style.opacity = '1');
+        }
+
+        load() {
+            if (!this.fuse) {
+                return loadFuse().then((_instance) => {
+                    this.fuse = _instance;
+                });
+            }
+
+            return Promise.resolve(this.fuse);
+        }
+
+        handleSearch() {
+            if (this.input.value.length < 3) {
+                this.subtitle.textContent = 'Tapez plus de 2 caractères pour commencer la recherche.';
+                return;
+            }
+
+            this.load()
+                .then(() => {
+                    const results = this.fuse?.search(this.input.value)
+                    
+                    if (results !== undefined && results.length === 0) {
+                        this.subtitle.textContent = 'Aucun résultat trouvé.';
+                        return;
+                    }
+
+                    this.subtitle.textContent = `${results!.length} résultats trouvés.`;
+                });
+        }
+
+        closeModal() {
+            this.style.display = 'none';
+            this.style.opacity = '0';
+        }
+    }
+    customElements.define('search-modal', SearchModal, { extends: 'div' });
+</script>
