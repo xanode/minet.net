@@ -1,4 +1,5 @@
 ---
+icon: android
 title: Connecter son appareil Android.
 category: wifi
 ---

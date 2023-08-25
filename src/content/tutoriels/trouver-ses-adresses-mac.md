@@ -1,4 +1,5 @@
 ---
+icon: question
 title: Trouver ses adresses MAC
 category: pour-commencer
 ---

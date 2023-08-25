@@ -1,4 +1,5 @@
 ---
+icon: windows
 title: Se connecter au Wi-Fi avec Windows
 category: wifi
 ---
@@ -68,12 +69,12 @@ Faites la combinaison de touches suivante : Windows + R et tapez ensuite `contro
 - Vous pouvez tout valider avec OK et fermer ces fenêtres, vous devriez désormais être connecté !
 
 #### Si vous voyez le texte Wi-fi(MiNET) dans la fenêtre qui s'ouvre
-    Cliquer gauche sur le texte "Wi-fi(Minet)"
-    Cliquer sur "Propriétés sans fil", une fenêtre s'ouvre
-    Aller dans l'onglet "Sécurité"
-    Cliquer sur le bouton "Paramètres"
-    Décocher la case "Vérifier l'identité du serveur en validant le certificat"
-    Validez les modifications en cliquant sur "OK"
+- Cliquer gauche sur le texte "Wi-fi(Minet)"
+- Cliquer sur "Propriétés sans fil", une fenêtre s'ouvre
+- Aller dans l'onglet "Sécurité"
+- Cliquer sur le bouton "Paramètres"
+- Décocher la case "Vérifier l'identité du serveur en validant le certificat"
+- Validez les modifications en cliquant sur "OK"
 
 Une fois fait, vous pouvez à nouveau vous connecter sur le réseau Wi-fi. La connexion et l'accès à Internet devrait se faire dans les secondes qui suivent. Dans le cas contraire, notez qu'un redémarrage peut-être nécessaire.
 

@@ -1,28 +1,35 @@
 ---
 import { getCollection } from "astro:content";
-import CardSkew from "@components/CardSkew.astro";
-import TutorialCard from "@components/TutorialCard.astro";
-import Layout from "@layouts/Layout.astro";
+import Icon from "@components/Icon.astro";
+import TutorialsGrid from "@components/TutorialsGrid.astro";
+import TutorialsLayout from "@layouts/TutorialsLayout.astro";
 
-const categories = await getCollection("categories");
+const tutorials = await getCollection("tutoriels");
 ---
 
-<Layout title="MiNET - Tutoriels">
-    <main class="py-20 px-2 mt-20 text-white overflow-hidden">
-        <div class="flex flex-col items-center gap-20 max-w-8xl mx-auto">
-            <h1 class="text-3xl md:text-4xl text-center font-bold my-6">Tout ce dont vous avez besoin de savoir pour utiliser nos services.</h1>
-            <CardSkew rounded="2xl" overflow>
-                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
-                    {categories.map(category => (
-                        <TutorialCard
-                            icon='question'
-                            title={category.data.name}
-                            description={category.data.description}
-                            href="#"
-                        />
-                    ))}
-                </div>
-            </CardSkew>
+<TutorialsLayout title="Tutoriels">
+    <div class="flex flex-col items-center">
+        <div class="relative flex flex-col gap-4 items-center text-neutral-200 text-center border-b border-neutral-500 h-fit p-8 max-w-3xl">
+            <div class="absolute inset-0 -z-10 blur-pulse-after">
+                <div class="absolute left-1/2 -translate-x-1/2 bottom-0 w-7 h-full bg-purple-500 origin-bottom -rotate-[78.75deg]"></div>
+                <div class="absolute left-1/2 -translate-x-1/2 bottom-0 w-7 h-full bg-indigo-500 origin-bottom -rotate-[56.25deg]"></div>
+                <div class="absolute left-1/2 -translate-x-1/2 bottom-0 w-7 h-full bg-blue-500 origin-bottom -rotate-[33.75deg]"></div>
+                <div class="absolute left-1/2 -translate-x-1/2 bottom-0 w-7 h-full bg-green-500 origin-bottom -rotate-[11.25deg]"></div>
+                <div class="absolute left-1/2 -translate-x-1/2 bottom-0 w-2 h-full bg-white origin-bottom rotate-[11.25deg]"></div>
+                <div class="absolute left-1/2 -translate-x-1/2 bottom-0 w-7 h-full bg-yellow-500 origin-bottom rotate-[33.75deg]"></div>
+                <div class="absolute left-1/2 -translate-x-1/2 bottom-0 w-7 h-full bg-orange-500 origin-bottom rotate-[56.25deg]"></div>
+                <div class="absolute left-1/2 -translate-x-1/2 bottom-0 w-7 h-full bg-red-500 origin-bottom rotate-[78.75deg]"></div>
+            </div>
+            <div class="relative w-24 h-24 shadow-pulse backdrop-blur-xl bg-neutral-900 rounded-3xl select-none">
+                <Icon className="absolute w-full h-full inset-0 fill-transparent block" name="minet" />
+            </div>
+            <h1 class="text-4xl leading-[70px] font-extrabold">
+                Tutoriels MiNET
+            </h1>
+            <p class="text-xl leading-9">
+                Les tutoriels MiNET constituent tout ce que vous avez besoin de savoir pour commencer à utiliser nos services.
+            </p>
         </div>
-    </main>
-</Layout>
+        <TutorialsGrid tutorials={tutorials} />
+    </div>
+</TutorialsLayout>

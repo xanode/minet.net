@@ -1,4 +1,5 @@
 ---
+icon: apple
 title: Connecter un MAC en filaire au réseau MiNET
 category: filaire
 ---

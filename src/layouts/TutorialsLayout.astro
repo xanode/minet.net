@@ -1,0 +1,33 @@
+---
+import SearchModal from "@components/SearchModal.astro";
+import Sidebar from "@components/Sidebar.astro";
+import Layout from "@layouts/Layout.astro";
+import type { CollectionEntry } from "astro:content";
+
+interface Props {
+    title: string;
+    tutorial?: CollectionEntry<'tutoriels'>;
+}
+const { title, tutorial } = Astro.props;
+---
+
+<Layout title={`MiNET - ${title}`}>
+    <main class="py-20 px-2 mt-20">
+        <div class="absolute -right-10 top-112 flex flex-col gap-4 w-256 blur-pulse-after -rotate-45">
+            <div class="absolute inset-0 bg-gradient-to-l from-transparent to-black"></div>
+            <div class="w-full h-5 bg-red-500"></div>
+            <div class="w-full h-5 bg-orange-500"></div>
+            <div class="w-full h-5 bg-yellow-500"></div>
+            <div class="w-full h-2 bg-white"></div>
+            <div class="w-full h-5 bg-green-500"></div>
+            <div class="w-full h-5 bg-blue-500"></div>
+            <div class="w-full h-5 bg-indigo-500"></div>
+            <div class="w-full h-5 bg-purple-500"></div>
+        </div>
+        <SearchModal />
+        <div class="relative flex flex-col lg:flex-row gap-4 max-w-8xl mx-auto">
+            <Sidebar tutorial={tutorial} />
+            <slot />
+        </div>
+    </main>
+</Layout>

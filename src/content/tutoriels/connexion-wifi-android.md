@@ -1,4 +1,5 @@
 ---
+icon: android
 title: Se connecter au Wi-Fi avec son smartphone Android
 category: wifi
 ---

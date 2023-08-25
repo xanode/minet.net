@@ -1,0 +1,122 @@
+---
+import Icon from "@components/Icon.astro";
+import type { CollectionEntry } from "astro:content";
+
+interface Props {
+    tutorials: CollectionEntry<'tutoriels'>[];
+}
+const { tutorials } = Astro.props;
+---
+
+<div is="shining-grid" class="relative grid grid-cols-3 gap-4 m-6 w-fit h-fit" data-target="bounding">
+    {tutorials.map(tutorial =>
+        <a class="flex flex-col gap-4 items-center justify-between text-neutral-200 text-center border rounded-2xl border-neutral-700 hover:border-neutral-500 transition-colors mask-shine-hover p-8 max-w-3xl" href={tutorial.slug}>
+            <div class="p-2 rounded-lg bg-white/5 w-fit">
+                <Icon name={tutorial.data.icon || "question"} className="w-8 h-8 fill-white/30" />
+            </div>
+            <h1 class="text-xl font-medium">
+                {tutorial.data.title}
+            </h1>
+            <div data-target="shine" class="absolute bottom-0 right-0 pointer-events-none -z-10 bg-white/40 w-48 h-48 blur-shine rounded-full transition-opacity duration-1200 mix-blend-soft-light will-change-transform"></div>
+        </a>
+    )}
+</div>
+
+<script>
+    class ShiningGrid extends HTMLDivElement {
+        moveSpeed: number = 0.9;
+        snapTreshold: number = 0.005;
+        isMobileDevice: boolean;
+        rect: DOMRect | undefined = undefined;
+        boundingElement: HTMLElement;
+        animationTargets: { x: number; y: number; shouldAnimate: boolean; }
+        currentState: { x: number; y: number; isAnimating: boolean; }
+        bounding: HTMLElement | null;
+        shines: NodeListOf<HTMLElement> | null;
+
+        constructor() {
+            super();
+
+            this.isMobileDevice = /Mobi/i.test(navigator.userAgent);
+            this.boundingElement = this;
+            this.animationTargets = {
+                x: 0,
+                y: 0,
+                shouldAnimate: false
+            };
+            this.currentState = {
+                x: 0,
+                y: 0,
+                isAnimating: false
+            };
+            this.bounding = this.querySelector('[data-target="bounding"]');
+            this.shines = this.querySelectorAll('[data-target="shine"]');
+        }
+
+        connectedCallback() {
+            if (this.isConnected && !this.isMobileDevice && !(this.getRootNode() instanceof ShadowRoot)) {
+                this.boundingElement = this.bounding || this;
+                this.rect = this.boundingElement.getBoundingClientRect();
+                this.addEventListener('mousemove', this.handleMouseMove.bind(this));
+                this.addEventListener('mouseleave', this.handleMouseLeave.bind(this));
+            }
+        }
+
+        handleMouseMove(event: MouseEvent) {
+            if (!this.animationTargets.shouldAnimate) {
+                this.rect = this.boundingElement.getBoundingClientRect();
+            }
+
+            this.animationTargets = {
+                x: this.shines ? this.rect!.width - (event.clientX - this.rect!.x) - this.shines[0].offsetWidth / 2 : 0,
+                y: this.shines ? this.rect!.height - (event.clientY - this.rect!.y) - this.shines[0].offsetHeight / 2 : 0,
+                shouldAnimate: true,
+            };
+
+            if (!this.currentState.isAnimating) {
+                this.currentState.isAnimating = true;
+                this.animationTargets.shouldAnimate = true;
+                requestAnimationFrame(this.animateTowardsTarget.bind(this));
+            }
+
+            this.shines?.forEach((shine, index) => {
+                shine.style.opacity = '1';
+            });
+        }
+
+        handleMouseLeave() {
+            this.animationTargets.shouldAnimate = false;
+            this.shines?.forEach((shine, index) => {
+                shine.style.opacity = '0';
+            });
+        }
+
+        animateTowardsTarget() {
+            this.currentState = {
+                x: this.shines ? this.goTowardsValue(this.currentState.x, this.animationTargets.x, this.moveSpeed) : 0,
+                y: this.shines ? this.goTowardsValue(this.currentState.y, this.animationTargets.y, this.moveSpeed) : 0,
+                isAnimating: this.currentState.isAnimating,
+            };
+
+            if (Math.abs(this.animationTargets.x - this.currentState.x) < this.snapTreshold &&
+                Math.abs(this.animationTargets.y - this.currentState.y) < this.snapTreshold &&
+                !this.animationTargets.shouldAnimate) {
+                this.currentState.isAnimating = false;
+                return;
+            }
+
+            if (this.shines) {
+                this.shines.forEach((shine, index) => {
+                    shine.style.transform = `translate(${-this.currentState.x}px, ${-this.currentState.y}px)`; // Apply transformation
+                });
+            }
+
+            requestAnimationFrame(this.animateTowardsTarget.bind(this));
+        }
+
+        goTowardsValue(current: number, target: number, speed: number) {
+            return Math.round((current + (target - current) * speed) * 100) / 100;
+        }
+    }
+    customElements.define('shining-grid', ShiningGrid, { extends: 'div' });
+</script>

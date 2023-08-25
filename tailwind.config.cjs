@@ -25,6 +25,10 @@ const maskProperty = plugin(function({addUtilities}) {
 		'.mask-circle': {
 			'-webkit-mask': 'linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0)',
 			'mask-composite': 'exclude',
+		},
+		'.mask-shine-hover': {
+			'-webkit-mask': 'radial-gradient(#000 50%,#000 0)',
+			'-webkit-mask-repeat': 'no-repeat',
 		}
 	});
 });
