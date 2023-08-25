@@ -1,8 +1,10 @@
 ---
+import { getCollection } from "astro:content";
 import CardSkew from "@components/CardSkew.astro";
 import TutorialCard from "@components/TutorialCard.astro";
 import Layout from "@layouts/Layout.astro";
-import { categories } from "@libs/categories";
+
+const categories = await getCollection("categories");
 ---
 
 <Layout title="MiNET - Tutoriels">
@@ -13,10 +15,10 @@ import { categories } from "@libs/categories";
                 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
                     {categories.map(category => (
                         <TutorialCard
-                            icon={category.icon}
-                            title={category.name}
-                            description={category.description}
-                            href={`/tutoriels/${category.slug}`}
+                            icon='question'
+                            title={category.data.name}
+                            description={category.data.description}
+                            href="#"
                         />
                     ))}
                 </div>
