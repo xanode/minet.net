@@ -1,7 +1,6 @@
 ---
 title: Ajouter des appareils à son compte MiNET
-categories:
- - pour-commencer
+category: pour-commencer
 ---
 
 ## Prérequis

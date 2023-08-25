@@ -1,0 +1,27 @@
+---
+import { getCollection } from "astro:content";
+import CategoryDetails from "@components/CategoryDetails.astro";
+import SearchButton from "@components/SearchButton.astro";
+
+import type { CollectionEntry } from "astro:content";
+interface Props {
+    tutorial?: CollectionEntry<"tutoriels">; // Selected tutorial
+}
+const { tutorial } = Astro.props;
+const categories = await getCollection("categories");
+---
+
+<aside class="hidden lg:block sticky top-40 shrink-0 py-4 w-80 h-[calc(100vh-10rem)] no-scrollbar max-w-xs overflow-y-auto">
+    <div class="flex flex-col gap-10">
+        <SearchButton />
+        <nav class="block w-full">
+            <ul class="list-none">
+                {categories.map(category =>
+                <li class="py-2 w-full text-neutral-400 text-sm">
+                    <CategoryDetails category={category} tutorial={tutorial} />
+                </li>
+                )}
+            </ul>
+        </nav>
+    </div>
+</aside>

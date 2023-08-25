@@ -1,7 +1,6 @@
 ---
 title: Trouver ses adresses MAC
-categories:
- - pour-commencer
+category: pour-commencer
 ---
 
 L'adresse MAC sert d'identifiant unique à chacune de vos interfaces (WiFi comme filaire), et est nécessaire pour ajouter un nouvel appareil à notre réseau.

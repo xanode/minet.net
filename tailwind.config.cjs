@@ -29,6 +29,18 @@ const maskProperty = plugin(function({addUtilities}) {
 	});
 });
 
+const noScrollbar = plugin(function({addUtilities}) {
+	addUtilities({
+		'.no-scrollbar::-webkit-scrollbar': {
+			display: 'none',
+		},
+		'.no-scrollbar': {
+			'-ms-overflow-style': 'none',
+			'scrollbar-width': 'none',
+		}
+	})
+})
+
 const textStroke = plugin(function({addUtilities}) {
 	addUtilities({
 		'.text-stroke': {
@@ -252,6 +264,7 @@ module.exports = {
 		backfaceVisibility,
 		background,
 		maskProperty,
+		noScrollbar,
 		textStroke,
 		require('@tailwindcss/typography'),
 	],

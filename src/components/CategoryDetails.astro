@@ -1,0 +1,73 @@
+---
+import { getCollection } from 'astro:content';
+import type { CollectionEntry } from 'astro:content';
+
+interface Props {
+    category: CollectionEntry<'categories'>;
+    tutorial?: CollectionEntry<'tutoriels'>; // Selected tutorial
+}
+const { category, tutorial: selectedTutorial } = Astro.props;
+const expanded = selectedTutorial?.data.category.id === category.id;
+
+const tutorials = await getCollection('tutoriels', ({ data }) => {
+    return data.category.id === category.id;
+});
+---
+
+<div is="category-details">
+    <div class="flex items-center">
+        <a class="grow cursor-default" href="#">
+            <span class="font-semibold cursor-default text-white">
+                {category.data.name}
+            </span>
+        </a>
+        <button class="flex items-center justify-center hover:text-white hover:bg-neutral-700 rounded-full aria-expanded:rotate-90 transition-transform w-6 h-6" aria-expanded={expanded}>
+            <svg class="w-4 h-4 fill-none stroke-current" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" viewBox="0 0 24 24"><path d="M9 18l6-6-6-6"></path></svg>
+        </button>
+    </div>
+    <ul class="hidden aria-expanded:flex flex-col gap-4 mt-4 -ml-[1px] border-l-2 border-neutral-800" aria-expanded={expanded}>
+        {tutorials.map(tutorial =>
+        <li class="flex text-sm text-neutral-400 hover:text-white aria-selected:text-white pl-4 border-l border-transparent hover:border-white aria-selected:border-white" aria-selected={tutorial.id === selectedTutorial?.id}>
+            <a class="grow" href={`/tutoriels/${tutorial.slug}/`}>
+                {tutorial.data.title}
+            </a>
+            <div class="invisible w-6 h-6 px-1"></div>
+        </li>
+        )}
+        {tutorials.length === 0 &&
+        <li class="flex text-sm text-neutral-400 italic pl-4">
+            <a class="grow">
+                Aucun tutoriel
+            </a>
+            <div class="invisible w-6 h-6 px-1"></div>
+        </li>
+        }
+    </ul>
+</div>
+
+<script>
+    class CategoryDetails extends HTMLDivElement {
+        button: HTMLButtonElement;
+        open: boolean = false;
+        list: HTMLUListElement;
+
+        constructor() {
+            super();
+            this.button = this.querySelector<HTMLButtonElement>('button')!;
+            if (this.button.getAttribute('aria-expanded') === 'true') this.open = true;
+            this.list = this.querySelector<HTMLUListElement>('ul')!;
+        }
+
+        connectedCallback() {
+            this.button.addEventListener('click', this.toggle.bind(this));
+        }
+
+        toggle() {
+            this.open = !this.open;
+            this.button.setAttribute('aria-expanded', this.open.toString());
+            this.list.setAttribute('aria-expanded', this.open.toString());
+        }
+    }
+
+    customElements.define('category-details', CategoryDetails, { extends: 'div' });
+</script>

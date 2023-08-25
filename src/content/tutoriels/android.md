@@ -1,7 +1,6 @@
 ---
 title: Connecter son appareil Android.
-categories:
- - android
+category: wifi
 ---
 
 ## Prérequis
