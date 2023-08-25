@@ -15,10 +15,12 @@
     "@fontsource/inter": "^5.0.8",
     "astro": "^2.10.1",
     "cobe": "^0.6.3",
+    "lunr": "^2.3.9",
     "tailwindcss": "^3.0.24"
   },
   "devDependencies": {
     "@tailwindcss/typography": "^0.5.9",
+    "@types/lunr": "^2.3.4",
     "phenomenon": "^1.6.0"
   }
 }

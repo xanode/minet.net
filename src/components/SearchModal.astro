@@ -19,7 +19,8 @@
         </div>
         <div class="will-change-height transition-height overflow-y-auto overflow-x-hidden max-h-80">
             <ul class="flex flex-col gap-1">
-                {/*<li>
+                {/* Here is one result:
+                <li>
                     <a class="flex items-center text-sm px-4 rounded-lg hover:bg-neutral-900 whitespace-normal transition-colors h-18" href="#">
                         <div class="flex items-center">
                             <span class="flex items-center justify-center mr-3">
@@ -42,11 +43,15 @@
 </div>
 
 <script>
+    import lunr from 'lunr';
+
     class SearchModal extends HTMLDivElement {
-        //fuse: Fuse<Searchable> | null = null;
+        documents: any | null = null;
+        index: lunr.Index | null = null;
         input: HTMLInputElement;
         overlay: HTMLDivElement;
         reset: HTMLButtonElement;
+        resultList: HTMLUListElement
         subtitle: HTMLSpanElement;
 
         constructor() {
@@ -56,6 +61,7 @@
             this.input = this.querySelector('input') as HTMLInputElement;
             this.overlay = this.querySelector('[data-name="overlay"]') as HTMLDivElement;
             this.reset = this.querySelector('button') as HTMLButtonElement;
+            this.resultList = this.querySelector('ul') as HTMLUListElement;
             this.subtitle = this.querySelector('[data-name="subtitle"]') as HTMLSpanElement;
         }
 
@@ -81,7 +87,36 @@
         openModal() {
             this.style.display = 'block';
             setTimeout(() => this.style.opacity = '1');
+            this.loadSearch();
             this.input.focus();
+        }
+
+        async loadSearch() {
+            if (this.index) return;
+
+            // Update the subtitle to indicate that the search is loading
+            this.subtitle.textContent = 'Chargement...';
+
+            // Fetch the search.json data and initialize the lunr index
+            const response = await fetch('/search.json');
+            this.documents = await response.json();
+
+            const self = this;
+
+            // Create the lunr index
+            this.index = lunr(function () {
+                // We assume that search.json is an array of objects with the attributes title, body and slug
+                this.field('title');
+                this.field('body');
+                this.ref('slug');
+                // Add documents to the index
+                self.documents.forEach(function (doc) {
+                    this.add(doc);
+                }, this);
+            });
+
+            // Update the subtitle to indicate that searching can start
+            this.subtitle.textContent = 'Tapez plus de 2 caractères pour commencer la recherche.';
         }
 
         handleReset() {
@@ -91,9 +126,15 @@
         }
 
         handleSearch() {
+            if (!this.index) return;
+
             const query = this.input.value;
 
+            // Reset the subtitle and results
+            this.subtitle.textContent = '';
             this.reset.style.display = query.length > 0 ? 'block' : 'none';
+            // Clear previous search results
+            this.clearResults();
 
             if (query.length < 3) {
                 this.subtitle.textContent = 'Tapez plus de 2 caractères pour commencer la recherche.';
@@ -102,16 +143,43 @@
 
             this.subtitle.textContent = 'Recherche en cours...';
 
-            // if (!this.fuse) {
-            //     this.fuse = new Fuse(searchables, {
-            //         keys: ['title', 'description', 'tags'],
-            //         includeScore: true,
-            //         threshold: 0.4
-            //     });
-            // }
+            // Perform the search and display results
+            const searchResults = this.index.search(query);
+            this.displayResults(searchResults);
+        }
 
-            // const results = this.fuse.search(query);
-            // console.log(results);
+        clearResults() {
+            // Clear the results list
+            this.resultList.innerHTML = '';
+        }
+
+        displayResults(searchResults: lunr.Index.Result[]) {
+            searchResults.forEach(result => {
+                const doc = this.documents.find(doc => doc.slug === result.ref);
+                if (doc) {
+                    const listItem = document.createElement('li');
+                    listItem.innerHTML = `
+                        <a class="flex items-center text-sm px-4 rounded-lg hover:bg-neutral-900 whitespace-normal transition-colors h-18" href="/tutoriels/${doc.slug}/">
+                            <div class="flex items-center">
+                                <span class="flex items-center justify-center mr-3">
+                                    <svg class="w-5 h-5 mt-[1px] fill-none text-neutral-400 stroke-current" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" viewBox="0 0 24 24"><path d="M2 3h6a4 4 0 014 4v14a3 3 0 00-3-3H2z"></path><path d="M22 3h-6a4 4 0 00-4 4v14a3 3 0 013-3h7z"></path></svg>
+                                </span>
+                                <span>
+                                    <div class="text-base text-neutral-200 text-ellipsis line-clamp-1">
+                                        ${doc.title}
+                                    </div>
+                                    <div class="my-2 pl-2 border-l-4 border-neutral-800 text-neutral-400 text-ellipsis line-clamp-1">
+                                        ${doc.body}
+                                    </div>
+                                </span>
+                            </div>
+                        </a>
+                    `;
+                    // Update content in listItem using doc data
+                    this.resultList.appendChild(listItem);
+                }
+            });
+            this.subtitle.textContent = `${searchResults.length} résultats trouvés.`;
         }
 
         closeModal() {
