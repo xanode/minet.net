@@ -11,7 +11,7 @@ const { tutorial } = Astro.props;
 const category = await getEntry(tutorial.data.category);
 ---
 
-<div is="mobile-sidebar" class="fixed inset-x-0 bottom-0 flex items-center justify-center border-t border-neutral-800 px-4 py-3 bg-black max-w-screen">
+<div is="mobile-sidebar" class="xl:hidden fixed inset-x-0 bottom-0 flex items-center justify-center border-t border-neutral-800 px-4 py-3 bg-black max-w-screen">
     <button class="group flex grow justify-center gap-2.5 p-2 text-neutral-200 border rounded-lg border-neutral-800" aria-selected="false">
         <svg class="w-4 h-4 shrink-0 fill-none stroke-current text-current" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" viewBox="0 0 24 24"><path d="M15 10l5 5-5 5"></path><path d="M4 4v7a4 4 0 004 4h12"></path></svg>
         <span class="flex grow text-sm font-medium whitespace-nowrap text-ellipsis overflow-hidden">
@@ -21,7 +21,7 @@ const category = await getEntry(tutorial.data.category);
             <svg class="w-4 h-4 fill-none stroke-current text-current" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"></path></svg>
         </span>
     </button>
-    <div class="hidden aria-expanded:block fixed inset-x-0 bottom-16 px-4 py-3 border-t border-neutral-800 bg-black transition-all duration-500 max-w-screen max-h-4/5 overflow-y-auto" aria-expanded="false">
+    <div class="hidden aria-expanded:block fixed inset-x-0 bottom-[63px] px-4 py-3 border-t border-neutral-800 bg-black transition-all duration-500 max-w-screen max-h-4/5 overflow-y-auto" aria-expanded="false">
         <TutorialsNav tutorial={tutorial} />
         <SearchButton />
     </div>
