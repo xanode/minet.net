@@ -1,0 +1,17 @@
+---
+import SearchButton from "@components/tutorials/SearchButton.astro";
+import TutorialsNav from "@components/tutorials/TutorialsNav.astro";
+import type { CollectionEntry } from "astro:content";
+
+interface Props {
+    tutorial?: CollectionEntry<"tutoriels">; // Selected tutorial
+}
+const { tutorial } = Astro.props;
+---
+
+<aside class="hidden xl:block sticky top-40 shrink-0 py-4 w-80 h-[calc(100vh-10rem)] no-scrollbar max-w-xs overflow-y-auto">
+    <div class="flex flex-col gap-10">
+        <SearchButton />
+        <TutorialsNav tutorial={tutorial} />
+    </div>
+</aside>

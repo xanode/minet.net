@@ -1,5 +1,5 @@
 ---
-import { getCollection, getEntry } from "astro:content";
+import { getCollection } from "astro:content";
 import type { CollectionEntry } from "astro:content";
 import TutorialsLayout from "@layouts/TutorialsLayout.astro";
 
@@ -21,14 +21,13 @@ interface Props {
     tutorial: CollectionEntry<'tutoriels'>;
 };
 const { tutorial } = Astro.props;
-const category = await getEntry("categories", tutorial.data.category.id);
 const { Content } = await tutorial.render();
 ---
 
 <TutorialsLayout title={tutorial.data.title} tutorial={tutorial}>
     <div class="flex flex-col px-6 md:px-12 pt-6 pb-16 mx-auto w-full max-w-5xl">
         {/* Breadcrumbs */}
-        <div class="hidden md:flex items-center gap-2">
+        <div class="flex items-center gap-2">
             <div class="grow leading-5 overflow-hidden whitespace-nowrap">
                 <div class="flex items-center text-sm gap-1">
                     <a class="flex items-center text-neutral-600 hover:text-white" href="/tutoriels/">

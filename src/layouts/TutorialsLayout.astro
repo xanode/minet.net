@@ -1,6 +1,7 @@
 ---
-import SearchModal from "@components/SearchModal.astro";
-import Sidebar from "@components/Sidebar.astro";
+import MobileSidebar from "@components/tutorials/MobileSidebar.astro";
+import SearchModal from "@components/tutorials/SearchModal.astro";
+import Sidebar from "@components/tutorials/Sidebar.astro";
 import Layout from "@layouts/Layout.astro";
 import type { CollectionEntry } from "astro:content";
 
@@ -29,5 +30,6 @@ const { title, tutorial } = Astro.props;
             <Sidebar tutorial={tutorial} />
             <slot />
         </div>
+        <MobileSidebar tutorial={tutorial} />
     </main>
 </Layout>

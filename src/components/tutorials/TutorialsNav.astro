@@ -1,0 +1,22 @@
+---
+import { getCollection } from "astro:content";
+import CategoryDetails from "@components/tutorials/CategoryDetails.astro";
+import type { CollectionEntry } from "astro:content";
+
+interface Props {
+    tutorial?: CollectionEntry<'tutoriels'>;
+}
+const { tutorial } = Astro.props;
+const categories = await getCollection('categories');
+---
+
+<nav class="block w-full">
+    <ul class="list-none">
+        {categories.map(category =>
+        <li class="py-2 w-full text-neutral-400 text-sm">
+            <CategoryDetails category={category} tutorial={tutorial} />
+        </li>
+        )}
+    </ul>
+</nav>
+

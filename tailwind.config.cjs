@@ -211,6 +211,7 @@ module.exports = {
 			},
 			maxWidth: {
 				'8xl': '90rem',
+				'screen': '100vw',
 			},
 			scale: {
 				'30': '.30',
@@ -245,6 +246,7 @@ module.exports = {
 				'1/5': '20%',
 				'2/5': '40%',
 				'3/5': '60%',
+				'4/5': '80%',
 			},
 			transformOrigin: {
 				'0': '0 0',
