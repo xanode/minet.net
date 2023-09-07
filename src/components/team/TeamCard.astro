@@ -13,7 +13,7 @@ const { image, role, name, pseudo } = Astro.props;
 
 <div class="flex flex-col items-center gap-10 ml-6 text-center rounded-2xl border border-transparent hover:border-sky-400 hover:cursor-pointer p-2">
     <figure class="relative h-40 md:h-64 w-40 md:w-64 overflow-hidden rounded-2xl bg-transparent">
-        <Image src={image} alt="" class="absolute inset-0 w-full h-full" />
+        <Image src={image} alt="" class="absolute inset-0 w-full h-auto" />
     </figure>
     <div class="space-y-4">
         <p class="text-2xl md:text-3xl">{name}</p>

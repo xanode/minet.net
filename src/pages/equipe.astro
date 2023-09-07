@@ -6,19 +6,20 @@ import TeamCard from '@components/team/TeamCard.astro';
 import TeamCarousel from '@components/team/TeamCarousel.astro';
 import Layout from '@layouts/Layout.astro';
 
-import RespoWifiReference from "@assets/equipe/Alexandre.png";
-import RespoFormationsReference from "@assets/equipe/Bence.png";
-import RespoWebReference from "@assets/equipe/benoit.png";
-import TresorierReference from "@assets/equipe/Bilal.png";
-import VicePresident1Reference from "@assets/equipe/Clément.png";
-import RespoInventaireReference from "@assets/equipe/Fabulo.png";
-import SecretaireReference from "@assets/equipe/Gatien.png";
-import RespoClubsReference from "@assets/equipe/hector.png";
-import RespoCommunication1Reference from "@assets/equipe/Inès.png";
-import PresidentReference from "@assets/equipe/nathan.png";
-import RespoCommunication2Reference from "@assets/equipe/Orlane.png";
-import VicePresident2Reference from "@assets/equipe/Siffrein.png";
-import RespoPermanenceReference from "@assets/equipe/Yassine.png";
+import RespoWifiReference from "@assets/equipe/tim.png";
+import RespoFormations1Reference from "@assets/equipe/val.png";
+import RespoFormations2Reference from "@assets/equipe/louis.png";
+import RespoWebReference from "@assets/equipe/thomas.png";
+import TresorierReference from "@assets/equipe/baptiste.png";
+import VicePresident1Reference from "@assets/equipe/tom.png";
+import RespoInventaireReference from "@assets/equipe/mathis.png";
+import SecretaireReference from "@assets/equipe/esteban.png";
+import RespoClubsReference from "@assets/equipe/chabane.png";
+import RespoCommunication1Reference from "@assets/equipe/raph.png";
+import PresidentReference from "@assets/equipe/nicolasp.png";
+import RespoCommunication2Reference from "@assets/equipe/juliette.png";
+import VicePresident2Reference from "@assets/equipe/nicolasvp.png";
+import RespoREReference from "@assets/equipe/yasmine.png";
 ---
 
 <Layout title="MiNET - L'équipe">
@@ -33,50 +34,67 @@ import RespoPermanenceReference from "@assets/equipe/Yassine.png";
 						Découvrez l'équipe MiNET
 					</p>
 					<PulseCircles />
-					<TeamCarousel startIndex={6}>
+					<TeamCarousel startIndex={7}>
 						<li>
-							<TeamCard image={RespoPermanenceReference} name="Yassine Boussafir" role="Responsable Permanence" pseudo="bouyass" />
+							<TeamCard image={RespoREReference} name="Yasmine Aluch" role="Responsable Relations Entreprises" pseudo="samayass" />
 						</li>
 						<li>
-							<TeamCard image={RespoCommunication1Reference} name="Inès Kacer" role="Responsable Communication" pseudo="nesi" />
+							<TeamCard image={RespoClubsReference} name="Chabane Petit" role="Responsable Clubs" pseudo="lowengeist" />
 						</li>
 						<li>
-							<TeamCard image={RespoWifiReference} name="Alexandre Humeau" role="Responsable Wi-Fi" pseudo="didier" />
+							<TeamCard image={RespoCommunication1Reference} name="Raphaël Bachelier" role="Responsable Communication" pseudo="ptitegame" />
 						</li>
 						<li>
-							<TeamCard image={RespoFormationsReference} name="Bence Kolonics" role="Responsable Formations" pseudo="placeholder" />
+							<TeamCard image={RespoWebReference} name="Thomas Robert" role="Responsable Web" pseudo="toyohr" />
 						</li>
 						<li>
-							<TeamCard image={SecretaireReference} name="Gatien Roujanski" role="Secrétaire" pseudo="fauconk" />
+							<TeamCard image={RespoFormations1Reference} name="Valentin Lantigny" role="Responsable Formations" pseudo="valt" />
 						</li>
 						<li>
-							<TeamCard image={VicePresident1Reference} name="Clément Lucas" role="Vice-Président" pseudo="sulray" />
+							<TeamCard image={SecretaireReference} name="Esteban Dectot" role="Secrétaire" pseudo="greemty" />
 						</li>
 						<li>
-							<TeamCard image={PresidentReference} name="Nathan Stchepinsky" role="Président" pseudo="seaweedbrain" />
+							<TeamCard image={VicePresident1Reference} name="Tom Burellier" role="Vice-Président" pseudo="balmine" />
 						</li>
 						<li>
-							<TeamCard image={VicePresident2Reference} name="Siffrein Sigy" role="Vice-Président" pseudo="wobarron" />
+							<TeamCard image={PresidentReference} name="Nicolas Rocq" role="Président" pseudo="nishogi" />
 						</li>
 						<li>
-							<TeamCard image={TresorierReference} name="Bilal Bousmeslout" role="Trésorier" pseudo="linegann" />
+							<TeamCard image={VicePresident2Reference} name="Nicolas Renout" role="Vice-Président" pseudo="naincapable" />
 						</li>
 						<li>
-							<TeamCard image={RespoWebReference} name="Benoit Marzelleau" role="Responsable Web" pseudo="xanode" />
+							<TeamCard image={TresorierReference} name="Baptiste Legros" role="Trésorier" pseudo="direshaw" />
 						</li>
 						<li>
-							<TeamCard image={RespoCommunication2Reference} name="Orlane Donias" role="Responsable Communication" pseudo="kamiro" />
+							<TeamCard image={RespoFormations2Reference} name="Louis Delyon" role="Responsable Formations" pseudo="rustace" />
 						</li>
 						<li>
-							<TeamCard image={RespoClubsReference} name="Hector Fétis" role="Responsable Clubs" pseudo="smyler" />
+							<TeamCard image={RespoWifiReference} name="Timothée Mathubert" role="Responsable Wi-Fi" pseudo="xhelozs" />
 						</li>
 						<li>
-							<TeamCard image={RespoInventaireReference} name="Thomas Plazziac" role="Responsable Inventaire" pseudo="fabulo" />
+							<TeamCard image={RespoCommunication2Reference} name="Juliette Bourdiau" role="Responsable Communication" pseudo="jouliet" />
+						</li>
+						<li>
+							<TeamCard image={RespoInventaireReference} name="Mathis Williot" role="Responsable Inventaire" pseudo="jflyxx" />
 						</li>
 					</TeamCarousel>
 				</div>
 			</section>
-			<OldMembersSection mandate="2021-2022" lineColor={{from: 'from-blue-600/0', to: 'to-cyan-400'}} textColor={{from: 'from-blue-600', to: 'to-cyan-400'}}>
+			<OldMembersSection mandate="2022-2023">
+				<MemberCard name="Nathan Stchepinsky" pseudo="seaweedbrain" role="Président" />
+				<MemberCard name="Clément Lucas" pseudo="sulray" role="Vice-Présidente" />
+				<MemberCard name="Siffrein Sigy" pseudo="wobarron" role="Vice-Président" />
+				<MemberCard name="Gatien Roujanski" pseudo="fauconk" role="Secrétaire" />
+				<MemberCard name="Bence Kolonics" pseudo="placeholder" role="Responsable Formations" />
+				<MemberCard name="Benoit Marzelleau" pseudo="xanode" role="Responsable Web & Formations" />
+				<MemberCard name="Alexandre Humeau" pseudo="didier" role="Responsable Wi-Fi" />
+				<MemberCard name="Orlane Donias" pseudo="kamiro" role="Responsable Communication" />
+				<MemberCard name="Inès Kacer" pseudo="nesi" role="Responsable Communication" />
+				<MemberCard name="Hector Fétis" pseudo="smyler" role="Responsable Clubs" />
+				<MemberCard name="Yassine Boussafir" pseudo="bouyass" role="Responsable Permanences" />
+				<MemberCard name="Thomas Plazziac" pseudo="fabulo" role="Responsable Inventaire" />
+			</OldMembersSection>
+			<OldMembersSection mandate="2021-2022">
 				<MemberCard name="Jules Gonzales" pseudo="seberus" role="Président" />
 				<MemberCard name="Éloïse Bonnet" pseudo="lovali" role="Vice-Présidente" />
 				<MemberCard name="Hamza Benfkira" pseudo="lionofinterest" role="Vice-Président" />
@@ -91,7 +109,7 @@ import RespoPermanenceReference from "@assets/equipe/Yassine.png";
 				<MemberCard name="Martin Spiering" pseudo="typhlos" role="Responsable Hardware" />
 				<MemberCard name="Pierre Cornette" pseudo="flying_potato" role="Responsable Archéologistique" />
 			</OldMembersSection>
-			<OldMembersSection mandate="2020-2021" lineColor={{from: 'from-violet-600/0', to: 'to-blue-400'}} textColor={{from: 'from-violet-600', to: 'to-blue-400'}}>
+			<OldMembersSection mandate="2020-2021">
 				<MemberCard name="Clément Parssegny" pseudo="cleplatypint" role="Président" />
 				<MemberCard name="Dzenan Cindrak" pseudo="za" role="Vice-Président & Secrétaire" />
 				<MemberCard name="Gauthier Carpentier" pseudo="nierquick" role="Vice-Président" />
@@ -102,7 +120,7 @@ import RespoPermanenceReference from "@assets/equipe/Yassine.png";
 				<MemberCard name="Valentin Paolicelli" pseudo="omeega1" role="Responsable Clubs" />
 				<MemberCard name="Aurélien Chomon" pseudo="financier" role="Responsable Relations Entreprises" />
 			</OldMembersSection>
-			<OldMembersSection mandate="2019-2020" lineColor={{from: 'from-fuchsia-600/0', to: 'to-violet-400'}} textColor={{from: 'from-fuchsia-600', to: 'to-violet-400'}}>
+			<OldMembersSection mandate="2019-2020">
 				<MemberCard name="François Horta" pseudo="frazew" role="Président" />
 				<MemberCard name="Johan Hubau-Honoré" pseudo="heisenberg" role="Vice-Président" />
 				<MemberCard name="Gabriel Prévault" pseudo="gabery" role="Vice-Président" />
@@ -112,15 +130,23 @@ import RespoPermanenceReference from "@assets/equipe/Yassine.png";
 				<MemberCard name="Constance Chou" pseudo="rico" role="Responsable Communication" />
 				<MemberCard name="Jean-Baptiste Mouret" pseudo="hydroxyl" role="Trésorier" resignation/>
 			</OldMembersSection>
-			<OldMembersSection mandate="2018-2019" lineColor={{from: 'from-rose-600/0', to: 'to-fuchsia-400'}} textColor={{from: 'from-rose-600', to: 'to-fuchsia-400'}}>
+			<OldMembersSection mandate="2018-2019">
+				<MemberCard name="Emmanuel Allaire" pseudo="abracastoral" role="Président" />
+				<MemberCard name="Clément Taverne" pseudo="simtrami" role="Vice-Président" />
+				<MemberCard name="Valentin Penciolelli" pseudo="penpen" role="Trésorier" />
+				<MemberCard name="Etienne Lamouret" pseudo="etiennewan" role="Secrétaire" />
+				<MemberCard name="Alice Rebeyrol" pseudo="shatoon" role="Responsable Communication" />
+				<MemberCard name="Olivier Dulcy" pseudo="moog" role="Responsable Formation" />
+				<MemberCard name="Pierrick Gorisse" pseudo="teagrain" role="Responsable Sécurité" />
+				<MemberCard name="Adrien Floriant" pseudo="mad" role="Responsable Logiciels Libres" resignation/>
 			</OldMembersSection>
-			<OldMembersSection mandate="2017-2018" lineColor={{from: 'from-orange-600/0', to: 'to-rose-400'}} textColor={{from: 'from-orange-600', to: 'to-rose-400'}}>
+			<OldMembersSection mandate="2017-2018">
 			</OldMembersSection>
-			<OldMembersSection mandate="2016-2017" lineColor={{from: 'from-yellow-600/0', to: 'to-orange-400'}} textColor={{from: 'from-yellow-600', to: 'to-orange-400'}}>
+			<OldMembersSection mandate="2016-2017">
 			</OldMembersSection>
-			<OldMembersSection mandate="2015-2016" lineColor={{from: 'from-green-600/0', to: 'to-yellow-400'}} textColor={{from: 'from-green-600', to: 'to-yellow-400'}}>
+			<OldMembersSection mandate="2015-2016">
 			</OldMembersSection>
-			<OldMembersSection mandate="2014-2015" lineColor={{from: 'from-teal-600/0', to: 'to-green-400'}} textColor={{from: 'from-teal-600', to: 'to-green-400'}}>
+			<OldMembersSection mandate="2014-2015">
 				<MemberCard name="Anasse Hassala" pseudo="marlow" role="Président" />
 				<MemberCard name="Paul Jarleton" pseudo="sarlam" role="Vice-Président" resignation/>
 				<MemberCard name="Andréa Mornet-Martinvalet" pseudo="badgohan" role="Trésorière" />
@@ -133,11 +159,11 @@ import RespoPermanenceReference from "@assets/equipe/Yassine.png";
 				<MemberCard name="Myriam El-Houdini-Dehaudt" pseudo="timka" role="Responsable Conférences" />
 				<MemberCard name="Noé Marius" pseudo="khalaan" role="Responsable Monitoring" />
 			</OldMembersSection>
-			<OldMembersSection mandate="2013-2014" lineColor={{from: 'from-sky-600/0', to: 'to-teal-400'}} textColor={{from: 'from-sky-600', to: 'to-teal-400'}}>
+			<OldMembersSection mandate="2013-2014">
 			</OldMembersSection>
-			<OldMembersSection mandate="2012-2013" lineColor={{from: 'from-indigo-600/0', to: 'to-sky-400'}} textColor={{from: 'from-indigo-600', to: 'to-sky-400'}}>
+			<OldMembersSection mandate="2012-2013">
 			</OldMembersSection>
-			<OldMembersSection mandate="2011-2012" lineColor={{from: 'from-purple-600/0', to: 'to-indigo-400'}} textColor={{from: 'from-purple-600', to: 'to-indigo-400'}}>
+			<OldMembersSection mandate="2011-2012">
 				<MemberCard name="Stéphanie Ouillon" pseudo="stephanie" role="Présidente" />
 				<MemberCard name="Nicolas Carlo" pseudo="espeon" role="Vice-Président" />
 				<MemberCard name="Ariane Richer" pseudo="ariane" role="Trésoière" />
@@ -147,33 +173,33 @@ import RespoPermanenceReference from "@assets/equipe/Yassine.png";
 				<MemberCard name="Philippe Tillet" pseudo="ragnar" role="Responsable Applications" />
 				<MemberCard name="Fabien Bernard" pseudo="fab0102" role="Bienfaiteur" />
 			</OldMembersSection>
-			<OldMembersSection mandate="2010-2011" lineColor={{from: 'from-pink-600/0', to: 'to-purple-400'}} textColor={{from: 'from-pink-600', to: 'to-purple-400'}}>
+			<OldMembersSection mandate="2010-2011">
 			</OldMembersSection>
-			<OldMembersSection mandate="2009-2010" lineColor={{from: 'from-red-600/0', to: 'to-pink-400'}} textColor={{from: 'from-red-600', to: 'to-pink-400'}}>
+			<OldMembersSection mandate="2009-2010">
 			</OldMembersSection>
-			<OldMembersSection mandate="2008-2009" lineColor={{from: 'from-amber-600/0', to: 'to-red-400'}} textColor={{from: 'from-amber-600', to: 'to-red-400'}}>
+			<OldMembersSection mandate="2008-2009">
 			</OldMembersSection>
-			<OldMembersSection mandate="2007-2008" lineColor={{from: 'from-lime-600/0', to: 'to-amber-400'}} textColor={{from: 'from-lime-600', to: 'to-amber-400'}}>
+			<OldMembersSection mandate="2007-2008">
 			</OldMembersSection>
-			<OldMembersSection mandate="2006-2007" lineColor={{from: 'from-emerald-600/0', to: 'to-lime-400'}} textColor={{from: 'from-emerald-600', to: 'to-lime-400'}}>
+			<OldMembersSection mandate="2006-2007">
 			</OldMembersSection>
-			<OldMembersSection mandate="2005-2006" lineColor={{from: 'from-cyan-600/0', to: 'to-emerald-400'}} textColor={{from: 'from-cyan-600', to: 'to-emerald-400'}}>
+			<OldMembersSection mandate="2005-2006">
 			</OldMembersSection>
-			<OldMembersSection mandate="2004-2005" lineColor={{from: 'from-blue-600/0', to: 'to-cyan-400'}} textColor={{from: 'from-blue-600', to: 'to-cyan-400'}}>
+			<OldMembersSection mandate="2004-2005">
 			</OldMembersSection>
-			<OldMembersSection mandate="2003-2004" lineColor={{from: 'from-violet-600/0', to: 'to-blue-400'}} textColor={{from: 'from-violet-600', to: 'to-blue-400'}}>
+			<OldMembersSection mandate="2003-2004">
 			</OldMembersSection>
-			<OldMembersSection mandate="2002-2003" lineColor={{from: 'from-fuchsia-600/0', to: 'to-violet-400'}} textColor={{from: 'from-fuchsia-600', to: 'to-violet-400'}}>
+			<OldMembersSection mandate="2002-2003">
 			</OldMembersSection>
-			<OldMembersSection mandate="2001-2002" lineColor={{from: 'from-rose-600/0', to: 'to-fuchsia-400'}} textColor={{from: 'from-rose-600', to: 'to-fuchsia-400'}}>
+			<OldMembersSection mandate="2001-2002">
 			</OldMembersSection>
-			<OldMembersSection mandate="2000-2001" lineColor={{from: 'from-orange-600/0', to: 'to-rose-400'}} textColor={{from: 'from-orange-600', to: 'to-rose-400'}}>
+			<OldMembersSection mandate="2000-2001">
 			</OldMembersSection>
-			<OldMembersSection mandate="1999-2000" lineColor={{from: 'from-yellow-600/0', to: 'to-orange-400'}} textColor={{from: 'from-yellow-600', to: 'to-orange-400'}}>
+			<OldMembersSection mandate="1999-2000">
 			</OldMembersSection>
-			<OldMembersSection mandate="1998-1999" lineColor={{from: 'from-green-600/0', to: 'to-yellow-400'}} textColor={{from: 'from-green-600', to: 'to-yellow-400'}}>
+			<OldMembersSection mandate="1998-1999">
 			</OldMembersSection>
-			<OldMembersSection mandate="1997-1998" lineColor={{from: 'from-teal-600/0', to: 'to-green-400'}} textColor={{from: 'from-teal-600', to: 'to-green-400'}}>
+			<OldMembersSection mandate="1997-1998">
 				<MemberCard name="Steeve Devergne" pseudo="steeve" role="Président" />
 				<MemberCard name="Kewin Kubryck" pseudo="kewin" role="Vice-Président" />
 				<MemberCard name="Éric Ferrand" pseudo="eric" role="Trésorier" />

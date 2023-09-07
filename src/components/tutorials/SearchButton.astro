@@ -1,4 +1,5 @@
 ---
+import KBD from "@components/ui/KBD.astro";
 ---
 
 <button is="search-button" class="flex items-center justify-between w-full h-9 cursor-text rounded-md bg-neutral-900">
@@ -7,9 +8,9 @@
         <span class="text-neutral-500 ml-3">Rechercher...</span>
     </div>
     <div class="hidden lg:flex items-center mr-1.5">
-        <kbd class="inline-block text-center text-xs leading-5 px-1.5 border rounded-md border-neutral-800 text-neutral-200 bg-neutral-950">
-            <span>Ctrl+K</span>
-        </kbd>
+        <KBD size="text-xs">
+            Ctrl+K
+        </KBD>
     </div>
 </button>
 

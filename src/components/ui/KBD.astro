@@ -1,0 +1,15 @@
+---
+interface Props {
+    size?: 'text-xs' | 'text-sm' | 'text-md' | 'text-lg' | 'text-xl'
+    mobile?: boolean
+}
+const { size, mobile = false } = Astro.props;
+const displayRule = mobile ? 'hidden lg:inline-block' : 'inline-block';
+
+---
+
+<kbd class={`${displayRule} text-center ${size} leading-5 px-1.5 border rounded-md border-neutral-800 text-neutral-200 bg-neutral-950`}>
+    <span>
+        <slot />
+    </span>
+</kbd>
