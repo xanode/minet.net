@@ -1,0 +1,54 @@
+---
+interface Props {
+    type: 'info' | 'success' | 'warning' | 'danger';
+}
+const { type } = Astro.props;
+const color: {
+    background: string;
+    border: {
+        from: string;
+        to: string;
+    };
+    shadow: string;
+} = {
+    info: {
+        background: 'bg-blue-500/30',
+        border: {
+            from: 'from-blue-500',
+            to: 'to-blue-500',
+        },
+        shadow: 'shadow-blue-500/20',
+    },
+    success: {
+        background: 'bg-green-500/30',
+        border: {
+            from: 'from-green-500',
+            to: 'to-green-500',
+        },
+        shadow: 'shadow-green-500/20',
+    },
+    warning: {
+        background: 'bg-yellow-500/30',
+        border: {
+            from: 'from-yellow-500',
+            to: 'to-yellow-500',
+        },
+        shadow: 'shadow-yellow-500/20',
+    },
+    danger: {
+        background: 'bg-red-500/30',
+        border: {
+            from: 'from-red-500',
+            to: 'to-red-500',
+        },
+        shadow: 'shadow-red-500/20',
+    },
+}[type];
+---
+
+<div class={`relative rounded-2xl shadow-inner ${color.shadow} ${color.background}`}>
+    <span class={`absolute inset-0 -z-1 p-[1px] rounded-2xl bg-gradient-to-br ${color.border.from} via-transparent ${color.border.to} mask-circle`}></span>
+    <div class="flex rounded-2xl px-6 py-2">
+        <slot />
+    </div>
+</div>
