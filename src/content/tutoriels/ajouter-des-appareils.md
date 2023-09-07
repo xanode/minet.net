@@ -6,7 +6,7 @@ category: pour-commencer
 
 ## Prérequis
 
-Pour pouvoir enregistrer vos appareils sur le réseau MiNET, vous aurez besoin de vos adresses MACs. Si vous ne savez pas comment les trouver, n'hésitez pas à suivre le tutoriel "Trouver ses adresses MAC" qui vous guidera pour les systèmes d'explotation les plus communs.
+Pour pouvoir enregistrer vos appareils sur le réseau MiNET, vous aurez besoin de vos adresses MACs. Si vous ne savez pas comment les trouver, n'hésitez pas à suivre le tutoriel [Trouver ses adresses MAC](/tutoriels/trouver-ses-adresses-mac) qui vous guidera pour les systèmes d'explotation les plus communs.
 
 ## En pratique
 
@@ -37,16 +37,16 @@ Une fois les appareils entrés, il ne reste plus qu'à les configurer. La config
 ### Configurer son appareil
 
 Sous Windows :
-- Configurer son interface WiFi (voir ici)
-- Configurer son interface filaire (c'est par là)
+- Configurer son interface WiFi ([voir ici](/tutoriels/connexion-wifi-windows))
+- Configurer son interface filaire ([c'est par là](/tutoriels/connexion-filaire-windows))
 
 Sous Linux :
-- Configurer son interface WiFi (par ici)
-- Configurer son interface filaire (ça se passe là)
+- Configurer son interface WiFi ([par ici](/tutoriels/connexion-wifi-linux))
+- Configurer son interface filaire ([ça se passe là](/tutoriels/connexion-filaire-linux))
 
-Sous Mac : WiFi et filaire (c'est ici que ça se passe)
+Sous Mac : WiFi et filaire ([c'est ici que ça se passe](/tutoriels/connexion-mac))
 
 Sous Android :
-- Configurer son interface WiFi (voir cette page)
+- Configurer son interface WiFi ([voir cette page](/tutoriels/connexion-wifi-android))
 
-Sur iPhone : connexion au WiFi (c'est là)
+Sur iPhone : connexion au WiFi ([c'est là](/tutoriels/connexion-wifi-iphone))

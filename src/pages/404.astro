@@ -1,0 +1,14 @@
+---
+import { Image } from "astro:assets";
+import Layout from "@layouts/Layout.astro";
+import BarbieLandReference from "@assets/barbieland.png";
+---
+
+<Layout title="MiNET - Page introuvable">
+	<main class="mt-28 overflow-x-hidden">
+        <h1 class="absolute top-[calc(113px+11vw)] left-1/2 text-neutral-100 text-[5vw] tracking-tighter font-semibold">
+            Page introuvable...
+        </h1>
+        <Image class="w-full opacity-50" src={BarbieLandReference} alt="BarbieLand" />
+    </main>
+</Layout>
