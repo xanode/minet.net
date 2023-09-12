@@ -12,7 +12,6 @@
   "dependencies": {
     "@astrojs/mdx": "^1.0.2",
     "@astrojs/tailwind": "^5.0.0",
-    "@astrojs/vercel": "^4.0.3",
     "@fontsource/inter": "^5.0.8",
     "astro": "^3.0.6",
     "cobe": "^0.6.3",
