@@ -1,0 +1,32 @@
+stages:
+  - build
+  - deploy
+
+variables:
+  GIT_DEPTH: 1
+
+build:
+  stage: build
+  script:
+    - yarn config set proxy http://192.168.102.61:82/
+    - yarn config set https-proxy http://192.168.102.61:82/
+    - yarn
+    - yarn build
+  artifacts:
+    paths:
+      - dist
+    expire_in: 15 minutes
+  tags:
+    - website
+  only:
+    - main
+
+deploy:
+  stage: deploy
+  script:
+    - rm -rf /var/www/minet.net/*
+    - cp -r dist/* /var/www/minet.net
+  tags:
+    - website
+  only:
+    - main
