@@ -10,7 +10,7 @@ const { tutorials } = Astro.props;
 
 <div is="shining-grid" class="relative grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 m-6 w-fit h-fit" data-target="bounding">
     {tutorials.map(tutorial =>
-        <a class="flex flex-col gap-4 items-center justify-between text-neutral-200 text-center border rounded-2xl border-neutral-700 hover:border-neutral-500 transition-colors mask-shine-hover p-8 max-w-3xl" href={tutorial.slug}>
+        <a class="flex flex-col gap-4 items-center justify-between text-neutral-200 text-center border rounded-2xl border-neutral-700 hover:border-neutral-500 transition-colors mask-shine-hover p-8 max-w-3xl" href={`/tutoriels/${tutorial.slug}/`}>
             <div class="p-2 rounded-lg bg-white/5 w-fit">
                 <Icon name={tutorial.data.icon || "question"} className="w-8 h-8 fill-white/30" />
             </div>
