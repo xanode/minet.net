@@ -10,8 +10,8 @@ interface Props {
 const { image, title, href } = Astro.props
 ---
 
-<a class="group relative rounded-2xl shadow-inner shadow-white/20 bg-white/5" href={href} target="_blank">
-    <span class="absolute inset-0 -z-1 p-[1px] rounded-2xl bg-gradient-to-br from-white/50 via-transparent to-white/50 mask-circle"></span>
+<a class="group relative rounded-2xl shadow-inner shadow-white/20 lg:bg-white/5" href={href} target="_blank">
+    <span class="absolute inset-0 -z-1 p-[1px] rounded-2xl bg-gradient-to-br from-neutral-500 via-transparent to-neutral-500 mask-circle"></span>
     <div class="flex flex-col items-center gap-6 rounded-2xl p-6">
         <Image src={image} alt="" class="max-h-32 w-auto" />
         <h2 class="text-2xl font-bold">{title}</h2>
