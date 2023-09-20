@@ -1,7 +1,7 @@
 ---
 icon: apple
 title: Connecter un iPhone au réseau MiNET
-category: wifi
+category: en/wifi
 ---
 
 ## Prérequis

@@ -1,8 +1,14 @@
 import { getCollection } from "astro:content";
+import { getStaticTranslations } from "@i18n/utils";
 import { remark } from "remark";
 import remarkHtml from "remark-html";
 import type { APIContext, APIRoute } from "astro";
 import type { CollectionEntry } from "astro:content";
+
+
+export function getStaticPaths() {
+    return getStaticTranslations();
+}
 
 
 type Tutorial = {
@@ -17,8 +23,8 @@ function extractTextFromMDX(mdxContent: string): string {
     return textContent;
 }
 
-async function getTutorials(): Promise<Tutorial[]> {
-    const tutorials = await getCollection("tutoriels");
+async function getTutorials(lang: string): Promise<Tutorial[]> {
+    const tutorials = await getCollection("tutoriels", (entry: CollectionEntry<'tutoriels'>) => entry.id.startsWith(lang));
     return Promise.all(
         tutorials.map(async (tutorial: CollectionEntry<"tutoriels">) => {
             const textContent = extractTextFromMDX(tutorial.body);
@@ -33,7 +39,8 @@ async function getTutorials(): Promise<Tutorial[]> {
 }
 
 export const GET: APIRoute = async (context: APIContext) => {
-    return new Response(JSON.stringify(await getTutorials()), {
+    const lang = context.params.lang as string;
+    return new Response(JSON.stringify(await getTutorials(lang)), {
         headers: {
             "Content-Type": "application/json",
         }

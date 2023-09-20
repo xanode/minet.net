@@ -1,15 +1,20 @@
 ---
+import { getLangFromUrl, useTranslations } from '@i18n/utils';
+
 interface Props {
     mandate: string;
 }
 const { mandate } = Astro.props;
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
 ---
 
 <section class="relative max-w-8xl space-y-20">
     <div class="flex flex-col items-center min-w-[1px] max-w-full">
         <div class="text-center space-y-2">
             <h3 class="text-3xl tracking-tighter font-bold text-white">
-                Mandat {mandate}
+                {t('team.mandate')}&nbsp;{mandate}
             </h3>
             <span class="flex grow h-[1px] bg-gradient-to-r from-transparent via-white to-transparent"></span>
         </div>

@@ -1,7 +1,7 @@
 ---
 icon: linux
 title: Se connecter en filaire avec Linux
-category: filaire
+category: en/wired
 ---
 
 ## Prérequis

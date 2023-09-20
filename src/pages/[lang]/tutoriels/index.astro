@@ -1,10 +1,19 @@
 ---
 import { getCollection } from "astro:content";
+import { getStaticTranslations, getLangFromUrl, useTranslations } from "@i18n/utils";
 import Icon from "@components/Icon.astro";
 import TutorialsGrid from "@components/tutorials/TutorialsGrid.astro";
 import TutorialsLayout from "@layouts/TutorialsLayout.astro";
+import type { CollectionEntry } from "astro:content";
 
-const tutorials = await getCollection("tutoriels");
+export function getStaticPaths() {
+    return getStaticTranslations();
+}
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+
+const tutorials = await getCollection("tutoriels", (entry: CollectionEntry<'tutoriels'>) => entry.id.startsWith(getLangFromUrl(Astro.url)));
 ---
 
 <TutorialsLayout title="Tutoriels">
@@ -24,10 +33,10 @@ const tutorials = await getCollection("tutoriels");
                 <Icon className="absolute w-full h-full inset-0 fill-transparent block" name="minet" />
             </div>
             <h1 class="text-4xl leading-[70px] font-extrabold">
-                Tutoriels MiNET
+                {t('tutorials.title')}
             </h1>
             <p class="text-xl leading-9">
-                Les tutoriels MiNET constituent tout ce que vous avez besoin de savoir pour commencer à utiliser nos services.
+                {t('tutorials.subtitle')}
             </p>
         </div>
         <TutorialsGrid tutorials={tutorials} />

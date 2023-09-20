@@ -1,0 +1,95 @@
+---
+icon: windows
+title: Se connecter en filaire avec Windows
+category: en/wired
+---
+import Alert from '@components/ui/Alert.astro';
+import KBD from '@components/ui/KBD.astro';
+
+
+## Prérequis
+
+Pour pouvoir enregistrer vos appareils sur le réseau MiNET, vous aurez besoin d'ajouter vos adresses MACs à votre compte. Si vous ne savez pas comment les entrer, n'hésitez pas à suivre le tutoriel "Ajouter des appareils à son compte MiNET" qui vous indiquera comment procéder.
+
+## Configurer son PC sous Windows 11 (filaire)
+
+- Accédez au paramètres Windows
+- Réseau et Internet
+- En haut sur "Ethernet" cliquez sur Propriétés
+- Puis "se connecter"
+- Rentrez vos identifiants et ok
+- "se connecter"
+- Après un certain temps vous devriez être connectés à MiNET
+
+<Alert type="danger">
+La dernière mise à jour de Windows 11 nécessite une configuration supplémentaire si vous n'arrivez pas à vous connecter :<br />
+Faites la combinaison de touches suivante : <KBD>Windows+R</KBD> et tapez ensuite `ncpa.cpl`.
+</Alert>
+
+Dans la fenêtre qui s'ouvre, il faut :
+
+- Cliquez droit sur votre carte réseau filaire (identifiez-la grâce à sa marque : Intel, Asus, D-Link, ...)
+- Cliquez sur "Propriétés", une fenêtre s'ouvre
+<br />
+- Dans l'onglet "Authentification"
+- Cochez l'utilisation de l'authentification 802.1X
+- Cliquez sur "Paramètres"
+- Décochez la case "Vérifier l'identité du serveur en validant le certificat"
+- Cochez l'utilisation de l'identité privée et entrez votre nom d'utilisateur MiNET
+- Cliquez sur "Configurer"
+- Assurez-vous que la case "Utiliser mon nom et mon mot de passe Windows..." est bien décochée
+- Validez les deux dernières fenêtres ouvertes en cliquant sur "OK"
+<br />
+- De nouveau dans l'onglet "Authentification", cliquez sur "Paramètres supplémentaires"
+- Cochez l'option pour entrer soit même le couple identifiant / mot de passe pour se connecter
+- Sélectionnez dans la liste déroulante débloquée "Remplacer l'identification" (Windows 7) ou "Enregistrer identité" (Windows 8/8.1/10)
+- Une fenêtre s'ouvre. Entrez-y le couple identifiant / mot de passe que vous avez choisi lors de votre inscription à MiNET
+- Validez toutes les fenêtres ouvertes en cliquant sur "OK"
+
+Une fois ces étapes faites, il ne reste plus qu'à brancher votre câble RJ45 et vous devriez vous connecter automatiquement au réseau filaire MiNET. Remarquez que l'authentification peut prendre quelques secondes. Par ailleurs, un redémarrage du PC peut-être nécessaire.
+
+
+
+## Configurer son PC sous Windows (filaire)
+
+En suivant ce tutoriel, vous verrez comment configurer votre ordinateur sous Windows 7/8/8.1/10 afin de bénéficier d'une connexion Internet en filaire à MiNET.
+
+### Activer le bon service Windows
+
+Faites la combinaison de touches suivante : <KBD>Windows+R</KBD> et tapez ensuite `services.msc`.
+
+Dans la fenêtre qui s'ouvre, il faut :
+
+- Cliquez droit sur le service "Configuration automatique de réseau câblés"
+- Cliquez sur "Propriétés", une fenêtre s'ouvre
+- Vérifiez que le service séléctionné est le bon, vous devez voir "dot3svc" comme nom de service
+- Choississez le type de démarrage "Automatique" dans le menu déroulant
+- Cliquez sur le bouton "Démarrer" pour démarrer le service
+- Validez les modifications en cliquant sur "OK"
+
+Une fois ce service activé, vous pouvez maintenant utiliser un réseau se servant du mode d'authentification 802.1X. Il ne reste plus qu'à configurer la carte réseau.
+
+
+### Configuration de votre carte réseau
+
+Faites la combinaison de touches suivante: <KBD>Windows+R</KBD> et tapez ensuite `ncpa.cpl`.
+
+Dans la fenêtre qui s'ouvre, il faut :
+
+- Cliquez droit sur votre carte réseau filaire (identifiez-la grâce à sa marque : Intel, Asus, D-Link, ...)
+- Cliquez sur "Propriétés", une fenêtre s'ouvre
+<br />
+- Dans l'onglet "Authentification", cliquez sur "Paramètres"
+- Décochez la case "Vérifier l'identité du serveur en validant le certificat"
+- Cliquez sur "Configurer"
+- Assurez-vous que la case "Utiliser mon nom et mon mot de passe Windows..." est bien décochée
+- Validez les deux dernières fenêtres ouvertes en cliquant sur "OK"
+<br />
+- De nouveau dans l'onglet "Authentification", cliquez sur "Paramètres supplémentaires"
+- Cochez l'option pour entrer soit même le couple identifiant / mot de passe pour se connecter
+- Sélectionnez dans la liste déroulante débloquée "Remplacer l'identification" (Windows 7) ou "Enregistrer identité" (Windows 8/8.1/10)
+- Une fenêtre s'ouvre. Entrez-y le couple identifiant / mot de passe que vous avez choisi lors de votre inscription à MiNET
+- Validez toutes les fenêtres ouvertes en cliquant sur "OK"
+
+Une fois ces étapes faites, il ne reste plus qu'à brancher votre câble RJ45, et vous devriez vous connecter automatiquement au réseau filaire MiNET. Remarquez que l'authentification peut prendre quelques secondes. Par ailleurs, un redémarrage du PC peut être nécessaire.
+

@@ -1,7 +1,7 @@
 ---
 icon: question
 title: Ajouter des appareils à son compte MiNET
-category: pour-commencer
+category: en/getting-started
 ---
 
 ## Prérequis

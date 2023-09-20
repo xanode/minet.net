@@ -1,7 +1,7 @@
 ---
 icon: linux
 title: Se connecter au Wi-Fi avec Linux
-category: wifi
+category: en/wifi
 ---
 
 ## Prérequis

@@ -1,7 +1,7 @@
 ---
 icon: android
 title: Connecter son appareil Android.
-category: wifi
+category: fr/wifi
 ---
 
 ## Prérequis

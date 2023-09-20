@@ -1,0 +1,111 @@
+---
+icon: windows
+title: Se connecter au Wi-Fi avec Windows
+category: fr/wifi
+---
+import Alert from "@components/ui/Alert.astro";
+import KBD from "@components/ui/KBD.astro";
+
+## Prérequis
+
+Pour pouvoir enregistrer vos appareils sur le réseau MiNET, vous aurez besoin d'ajouter vos adresses MACs à votre compte. Si vous ne savez pas comment les entrer, n'hésitez pas à suivre le tutoriel [Ajouter des appareils à son compte MiNET](/tutoriels/ajouter-des-appareils) qui vous indiquera comment procéder.
+
+## Configurer son PC sous Windows (WiFi)
+
+En suivant ce tutoriel, vous verrez comment configurer votre ordinateur sous Windows 7/8/8.1/10/11 afin de bénéficier d'une connexion Internet en WiFi à MiNET.
+
+### Pour Windows 11
+
+**Si vous étiez précédemment connecté à notre réseau et que vous n'arrivez plus à vous connecter** : oubliez le réseau le réseau MiNET en faisant un clic droit dessus dans la liste des réseaux WiFi.
+
+- Cliquez sur les réseaux Wi-Fi
+- Cliquez sur "MiNET" et se connecter
+- Rentrez vos identifiants et ok
+- "Se connecter"
+- Après un temps d'attendante vous êtes connecté au réseau MiNET !
+- En cas de soucis, vérifiez bien que vous avez renseigné votre adresse MAC
+
+<Alert type="warning">
+    Pour la dernière version de windows 11, il faut appliquer la configuration suivante :
+    Pensez à cliquer sur oublier le réseau MINET.
+</Alert>
+
+**Si vous étiez précédemment connecté à notre réseau et que vous n'arrivez plus à vous connecter** : oubliez le réseau le réseau MiNET en faisant un clic droit dessus dans la liste des réseaux WiFi.
+
+Faites la combinaison de touches suivante : <KBD>Windows+R</KBD> et tapez ensuite `control.exe /name Microsoft.NetworkAndSharingCenter`.
+
+Si vous ne voyez pas le texte Wi-fi (MiNET) dans la fenêtre qui s'ouvre:
+
+- Cliquez sur "Configurer une nouvelle connexion ou un nouveau réseau"
+- Cliquez sur "Se connecter manuellement à un réseau sans fil"
+- Remplissez le champ "Nom réseau" avec "MiNET" et "Type de sécurité" avec "WPA2 - Entreprise"
+- Validez avec "Suivant"
+- Si un message vous informe que le réseau existe déjà, veuillez l'oublier avant de recommencer cette procédure
+- Cliquez sur "Modifier les paramètres de la connexion"
+- Dans l'onglet "Sécurité", cliquez sur "Paramètres"
+- Décochez "Vérifier l'identité du serveur en validant le certificat" et vérifiez, en cliquant sur "Configurer" que l'option "Utiliser automatiquement mon nom et mon mot de passe Windows" est bien décochée
+- Revenez à l'onglet "Sécurité" et allez dans "Paramètres avancés"
+- Cochez "Spécifier le mode d'authentification", et dans la liste choisissez "Authentification utilisateur"
+- Cliquez sur "Enregistrer identité" et renseignez vos identifiants pour vous connecter au réseau MiNET
+- Vous pouvez tout valider avec OK et fermer ces fenêtres, vous devriez désormais être connecté !
+
+
+
+### Pour Windows 8/8.1/10
+
+**Si vous étiez précédemment connecté à notre réseau et que vous n'arrivez plus à vous connecter** : oubliez le réseau le réseau MiNET en faisant un clic droit dessus dans la liste des réseaux WiFi.
+
+Faites la combinaison de touches suivante : <KBD>Windows+R</KBD> et tapez ensuite `control.exe /name Microsoft.NetworkAndSharingCenter`.
+
+#### Si vous ne voyez pas le texte Wi-fi (MiNET) dans la fenêtre qui s'ouvre
+- Cliquez sur "Configurer une nouvelle connexion ou un nouveau réseau"
+- Cliquez sur "Se connecter manuellement à un réseau sans fil"
+- Remplissez le champ "Nom réseau" avec "MiNET" et "Type de sécurité" avec "WPA2 - Entreprise"
+- Validez avec "Suivant"
+- Si un message vous informe que le réseau existe déjà, veuillez l'oublier avant de recommencer cette procédure
+- Cliquez sur "Modifier les paramètres de la connexion"
+- Dans l'onglet "Sécurité", cliquez sur "Paramètres"
+- Décochez "Vérifier l'identité du serveur en validant le certificat" et vérifiez, en cliquant sur "Configurer" que l'option "Utiliser automatiquement mon nom et mon mot de passe Windows" est bien décochée
+- Revenez à l'onglet "Sécurité" et allez dans "Paramètres avancés"
+- Cochez "Spécifier le mode d'authentification", et dans la liste choisissez "Authentification utilisateur"
+- Cliquez sur "Enregistrer identité" et renseignez vos identifiants pour vous connecter au réseau MiNET
+- Vous pouvez tout valider avec OK et fermer ces fenêtres, vous devriez désormais être connecté !
+
+#### Si vous voyez le texte Wi-fi (MiNET) dans la fenêtre qui s'ouvre
+- Cliquer gauche sur le texte "Wi-fi (Minet)"
+- Cliquer sur "Propriétés sans fil", une fenêtre s'ouvre
+- Aller dans l'onglet "Sécurité"
+- Cliquer sur le bouton "Paramètres"
+- Décocher la case "Vérifier l'identité du serveur en validant le certificat"
+- Validez les modifications en cliquant sur "OK"
+
+Une fois fait, vous pouvez à nouveau vous connecter sur le réseau Wi-fi. La connexion et l'accès à Internet devrait se faire dans les secondes qui suivent. Dans le cas contraire, notez qu'un redémarrage peut-être nécessaire.
+
+
+### Pour Windows 7
+
+Dans le cas de Windows 7, un ajout à la main du réseau WiFi devient obligatoire :
+
+Faites la combinaison de touches suivante: <KBD>Windows+R</KBD> et tapez ensuite `control`.
+
+- Vous arrivez dans le panneau de configuration. Allez dans "Réseau et Internet"
+- Dans "Centre réseau et partage", aller dans "Configurer une nouvelle connexion ou un nouveau réseau"
+- Cliquez sur "Se connecter manuellement à un réseau sans fil"
+- Dans "Mon réseau", entrez "MiNET"
+- Choississez comme type de sécurité "WPA2 - Entreprise"
+- Cochez l'option "Lancer automatiquement cette connexion"
+- Terminez la création du profil, puis cliquez sur "Modifier les paramètres de connexion"
+
+- Dans l'onglet "Authentification", cliquez sur "Paramètres"
+- Décochez la case "Vérifier l'identité du serveur en validant le certificat"
+- Cliquez sur "Configurer"
+- Assurez-vous que la case "Utiliser mon nom et mon mot de passe Windows..." est bien décochée
+- Validez les deux dernières fenêtres ouvertes en cliquant sur "OK"
+
+- De nouveau dans l'onglet "Authentification", cliquez sur "Paramètres supplémentaires"
+- Cochez l'option pour entrer soit même le couple identifiant / mot de passe pour se connecter
+- Sélectionnez dans la liste déroulante débloquée "Remplacer l'identification"
+- Une fenêtre s'ouvre. Entrez-y le couple identifiant / mot de passe que vous avez choisi lors de votre cotisation à MiNET
+- Validez toutes les fenêtres ouvertes en cliquant sur "OK"
+
+Une fois ces étapes faites, il ne reste plus qu'à patienter une vingtaine de secondes, et vous devriez vous connecter automatiquement au réseau WiFi MiNET. Remarquez que l'authentification peut prendre quelques secondes. Par ailleurs, un redémarrage du PC peut-être nécessaire.

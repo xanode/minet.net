@@ -1,5 +1,9 @@
 ---
+import { getLangFromUrl, useTranslations } from "@i18n/utils";
 import ButtonAction from "@components/ButtonAction.astro";
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
 ---
 
 <footer class="bg-neutral-900/90 border-t border-t-white border-opacity-40 py-10 text-sm md:py-16 lg:py-28 mt-auto">
@@ -9,21 +13,21 @@ import ButtonAction from "@components/ButtonAction.astro";
             <div>
                 <ul class="marker:text-sky-400 list-disc font-normal text-white text-opacity-75 md:max-w-[255px]">
                     <span class="block font-semibold text-white">
-                        Un problème&nbsp;? Tu peux&nbsp;:
+                        {t('footer.issue')}
                     </span>
                     <li class="ml-3 pt-4">
-                        voir l'état des services <a class="text-sky-400 hover:underline underline-offset-4" href="https://status.minet.net" target="_blank">ici</a>.
+                        {t('footer.see-status')}&nbsp;<a class="text-sky-400 hover:underline underline-offset-4" href="https://status.minet.net" target="_blank">{t('footer.see-status.link')}</a>.
                     </li>
                     <li class="ml-3 pt-4">
-                        venir nous voir pendant les heures de permanences, du lundi au jeudi de 18h à 19h30.
+                        {t('footer.duty')}
                     </li>
                     <li class="ml-3 pt-4">
-                        déposer un ticket.
+                        {t('footer.ticket')}.
                     </li>
                 </ul>
                 <div class="flex mt-6">
                 <ButtonAction class="relative rounded-full px-3 py-2" href="https://tickets.minet.net/" rounded="full" underline={false}>
-                    Déposer un ticket
+                    {(t('footer.ticket') as string).charAt(0).toUpperCase() + t('footer.ticket').slice(1)}
                 </ButtonAction>
                 </div>
             </div>
@@ -34,35 +38,35 @@ import ButtonAction from "@components/ButtonAction.astro";
                     </span>
                     <ul class="flex flex-col gap-y-3 pt-3">
                         <li>
-                            <a class="transition-colors text-white hover:text-sky-400 text-opacity-75" href="/tutoriels/" target="_self">
-                                Tutoriels
+                            <a class="transition-colors text-white hover:text-sky-400 text-opacity-75" href={`${lang}/tutoriels/`} target="_self">
+                                {t('nav.tutorials')}
                             </a>
                         </li>
                         <li>
-                            <a class="transition-colors text-white hover:text-sky-400 text-opacity-75" href="/equipe/" target="_self">
-                                Équipe
+                            <a class="transition-colors text-white hover:text-sky-400 text-opacity-75" href={`/${lang}/equipe/`} target="_self">
+                                {t('nav.team')}
                             </a>
                         </li>
                         <li>
-                            <a class="transition-colors text-white hover:text-sky-400 text-opacity-75" href="/clubs/" target="_self">
-                                Nos clubs
+                            <a class="transition-colors text-white hover:text-sky-400 text-opacity-75" href={`/${lang}/clubs/`} target="_self">
+                                {t('nav.clubs')}
                             </a>
                         </li>
                         <li>
-                            <a class="transition-colors text-white hover:text-sky-400 text-opacity-75" href="/partenaires/" target="_self">
-                                Nos partenaires
+                            <a class="transition-colors text-white hover:text-sky-400 text-opacity-75" href={`/${lang}/partenaires/`} target="_self">
+                                {t('nav.partners')}
                             </a>
                         </li>
                         <li>
-                            <a class="transition-colors text-white hover:text-sky-400 text-opacity-75" href="/services/" target="_self">
-                                Nos services
+                            <a class="transition-colors text-white hover:text-sky-400 text-opacity-75" href={`/${lang}/services/`} target="_self">
+                                {t('nav.services')}
                             </a>
                         </li>
                     </ul>
                 </div>
                 <div class="md:w-auto md:p-4 lg:w-40">
                     <span class="block font-semibold">
-                        Nous contacter
+                        {t('footer.contact')}
                     </span>
                     <ul class="flex flex-col gap-y-3 pt-3">
                         <li>
@@ -108,27 +112,27 @@ import ButtonAction from "@components/ButtonAction.astro";
                 </div>
                 <div class="md:w-auto md:p-4 lg:w-40">
                     <span class="block font-semibold">
-                        L'association
+                        {t('footer.association')}
                     </span>
                     <ul class="flex flex-col gap-y-3 pt-3">
                         <li>
                             <a class="transition-colors text-white hover:text-sky-400 text-opacity-75" href="https://minet.net/res/statuts.pdf" target="_blank">
-                                Statuts
+                                {t('footer.association.status')}
                             </a>
                         </li>
                         <li>
                             <a class="transition-colors text-white hover:text-sky-400 text-opacity-75" href="https://chartes.minet.net/" target="_blank">
-                                Charte d'utilisation
+                                {t('footer.association.charter')}
                             </a>
                         </li>
                         <li>
                             <a class="transition-colors text-white hover:text-sky-400 text-opacity-75" href="#" target="_blank">
-                                Politique de confidentialité
+                                {t('footer.association.privacy')}
                             </a>
                         </li>
                         <li>
                             <a class="transition-colors text-white hover:text-sky-400 text-opacity-75" href="#" target="_self">
-                                Mentions légales
+                                {t('footer.association.legal')}
                             </a>
                         </li>
                     </ul>
@@ -137,8 +141,8 @@ import ButtonAction from "@components/ButtonAction.astro";
         </div>
         <div class="flex items-center place-content-between pt-14">
             <span class="text-white text-opacity-75">
-                © 2023 MiNET - Tous droits réservés<br />
-                Développé avec ❤️ par <span class="font-mono font-semibold text-red-400">xanode</span>
+                © 2023 MiNET - {t('footer.rights')}<br />
+                {t('footer.credit')}&nbsp;<span class="font-mono font-semibold text-red-400">xanode</span>
             </span>
             <ul class="hidden md:flex gap-x-2 [&>svg]:cursor-pointer">
                 <li>

@@ -1,14 +1,19 @@
 ---
 import { getCollection } from "astro:content";
-import type { CollectionEntry } from "astro:content";
+import { useTranslations } from "@i18n/utils";
 import TutorialsLayout from "@layouts/TutorialsLayout.astro";
+import type { CollectionEntry } from "astro:content";
+import type { ui } from "@i18n/ui";
 
 export async function getStaticPaths() {
     const tutorials = await getCollection("tutoriels");
+
     return tutorials.map((tutorial) => {
+        const [lang, ...slug] = tutorial.slug.split("/");
         return {
             params: {
-                slug: tutorial.slug,
+                lang,
+                slug: slug.join('/') || undefined,
             },
             props: {
                 tutorial,
@@ -16,6 +21,9 @@ export async function getStaticPaths() {
         };
     });
 };
+
+const { lang } = Astro.params;
+const t = useTranslations(lang as keyof typeof ui);
 
 interface Props {
     tutorial: CollectionEntry<'tutoriels'>;
@@ -30,9 +38,9 @@ const { Content } = await tutorial.render();
         <div class="flex items-center gap-2">
             <div class="grow leading-5 overflow-hidden whitespace-nowrap">
                 <div class="flex items-center text-sm gap-1">
-                    <a class="flex items-center text-neutral-600 hover:text-white" href="/tutoriels/">
+                    <a class="flex items-center text-neutral-600 hover:text-white" href={`/${lang}/tutoriels/`}>
                         <span>
-                            Tutoriels
+                            {t('tutorials.breadcrumbs.root')}
                         </span>
                         <span class="flex items-center justify-center ml-1">
                             <svg class="w-4 h-4 shrink-0 fill-none stroke-current" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" viewBox="0 0 24 24"><path d="M9 18l6-6-6-6"></path></svg>

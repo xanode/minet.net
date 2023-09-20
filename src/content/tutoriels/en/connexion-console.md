@@ -1,7 +1,7 @@
 ---
 icon: consoles
 title: Connecter sa console au réseau MiNET
-category: autres-services
+category: en/other-services
 ---
 
 ## Pour connecter sa PlayStation, son Xbox ou sa Nintendo Switch.

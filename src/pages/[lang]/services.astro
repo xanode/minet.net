@@ -1,0 +1,62 @@
+---
+import { getStaticTranslations, getLangFromUrl, useTranslations } from "@i18n/utils";
+import ServiceCard from "@components/ServiceCard.astro";
+import Layout from "@layouts/Layout.astro";
+
+import CryptpadLogoReference from "@assets/services/cryptpad.png";
+import EtherpadLogoReference from "@assets/services/etherpad.png";
+import FramadateLogoReference from "@assets/services/framadate.png";
+import GitlabLogoReference from "@assets/services/gitlab.png";
+import HostingLogoReference from "@assets/services/hosting.png";
+import LimesurveyLogoReference from "@assets/services/limesurvey.png";
+import MailmanLogoReference from "@assets/services/mailman.png";
+import WikiJSLogoReference from "@assets/services/wikijs.png";
+
+export function getStaticPaths() {
+    return getStaticTranslations();
+}
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+---
+
+<Layout title="MiNET - Nos services">
+    <main class="py-20 px-2 mt-20">
+        <section class="relative flex flex-col items-center gap-40 text-white max-w-8xl mx-auto">
+            <h1 class="text-5xl md:text-6xl font-bold text-center">{t('services.title')}</h1>
+            <div class="relative flex p-6">
+                <div class="hidden lg:block absolute z-0 inset-0 overflow-hidden blur-pulse-after select-none pointer-events-none">
+                    <div class="absolute rounded-full bg-purple-600 opacity-60 w-175 h-175 -z-20 top-2/5 left-3/5 mix-blend-lighten animate-gradient-1"></div>
+                    <div class="absolute rounded-full bg-pink-600 opacity-60 w-150 h-150 -z-10 top-3/5 left-2/5 mix-blend-screen animate-gradient-2"></div>
+                    <div class="absolute rounded-full bg-sky-600 opacity-60 w-125 h-125 -z-30 top-1/2 left-1/2 mix-blend-screen animate-gradient-3"></div>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                    <ServiceCard image={CryptpadLogoReference} title={t('services.cryptpad.name')} href="https://cryptpad.minet.net/">
+                        {t('services.cryptpad.description')}
+                    </ServiceCard>
+                    <ServiceCard image={WikiJSLogoReference} title={t('services.wiki.name')} href="https://wiki.minet.net/">
+                        {t('services.wiki.description')}
+                    </ServiceCard>
+                    <ServiceCard image={FramadateLogoReference} title={t('services.framadate.name')} href="https://framadate.minet.net/">
+                        {t('services.framadate.description')}
+                    </ServiceCard>
+                    <ServiceCard image={LimesurveyLogoReference} title={t('services.survey.name')} href="https://sondage.minet.net/">
+                        {t('services.survey.description')}
+                    </ServiceCard>
+                    <ServiceCard image={GitlabLogoReference} title={t('services.gitlab.name')} href="https://gitlab.minet.net/">
+                        {t('services.gitlab.description')}
+                    </ServiceCard>
+                    <ServiceCard image={MailmanLogoReference} title={t('services.mailing-lists.name')} href="https://listes.minet.net/">
+                        {t('services.mailing-lists.description')}
+                    </ServiceCard>
+                    <ServiceCard image={EtherpadLogoReference} title={t('services.etherpad.name')} href="https://etherpad.minet.net/">
+                        {t('services.etherpad.description')}
+                    </ServiceCard>
+                    <ServiceCard image={HostingLogoReference} title={t('services.hosting.name')} href="https://hosting.minet.net/">
+                        {t('services.hosting.description')}
+                    </ServiceCard>
+                </div>
+            </div>
+        </section>
+    </main>
+</Layout>

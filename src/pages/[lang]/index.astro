@@ -1,0 +1,167 @@
+---
+import { getStaticTranslations, getLangFromUrl, useTranslations } from "@i18n/utils";
+import CardSkew from "@components/CardSkew.astro";
+import DiscoverCarousel from "@components/DiscoverCarousel.astro";
+import Globe from '@components/Globe.astro';
+import TypingCursor from '@components/TypingCursor.astro';
+import Layout from '@layouts/Layout.astro';
+
+export function getStaticPaths() {
+	return getStaticTranslations();
+}
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+---
+
+<Layout title="MiNET">
+	<main class="py-20 px-2 mt-20 overflow-x-hidden">
+		<div class="flex flex-col items-center gap-40">
+			<section class="relative flex flex-col lg:flex-row items-center gap-10 text-white w-full max-w-8xl">
+				<div class="flex flex-col gap-12 text-center lg:text-start z-10 w-full">
+					<h1 class="text-4xl lg:text-6xl font-extrabold tracking-tighter leading-tight">
+						{t('index.title.begin')}<br />
+						<span class="inline-flex items-center gap-2">
+							<span class="hidden aria-hidden:hidden lg:block mr-2" aria-hidden={lang === 'fr'}>{t('index.title.student')}</span>
+							<TypingCursor strings={t('index.title.carousel') as readonly string[]} />
+							<span class="hidden aria-hidden:hidden lg:block" aria-hidden={lang === 'en'}>{t('index.title.student')}</span>
+						</span><br />
+						{t('index.title.end')}
+					</h1>
+					<h2 class="text-xl lg:text-2xl font-normal text-neutral-500 tracking-tight max-w-3xl">
+						{t('index.subtitle')}
+					</h2>
+					<div class="flex flex-col lg:flex-row gap-8 self-center text-center text-sm lg:text-lg font-medium w-full">
+						<div class="basis-1/2 rounded-lg bg-white p-[1px]">
+							<a class="inline-block w-full rounded-lg bg-white hover:bg-black text-black hover:text-white px-4 py-3 duration-200" href="https://payment.minet.net/" target="_blank">
+								{t('index.subscribe-button')}
+							</a>
+						</div>
+						<div class="basis-1/2 rounded-lg bg-gradient-to-br from-blue-500 to-cyan-400 p-[1px]">
+							<a class="inline-block w-full rounded-lg bg-black hover:bg-transparent text-white hover:text-black px-4 py-3 duration-200" href="#nous-découvrir">
+								{t('index.discover-button')}
+							</a>
+						</div>
+					</div>
+				</div>
+				<div class="relative w-full aspect-square m-auto">
+					<div class="absolute -top-20 -right-80 lg:-right-60 w-256 h-256">
+						<Globe />
+					</div>
+				</div>
+			</section>
+			<section class="relative flex flex-col items-center border-t border-b border-neutral-700 bg-neutral-900 w-screen -mt-40 lg:mt-20">
+				<div class="flex flex-col md:flex-row items-center py-6 w-full max-w-8xl">
+					<div class="flex-grow text-center py-8 md:px-8 border-b-1 md:border-b-0 md:border-r-1 border-neutral-700 w-full lg:w-auto">
+						<p class="text-4xl lg:text-6xl leading-tight tracking-tighter font-bold bg-clip-text text-transparent bg-gradient-to-b from-white to-neutral-300">
+							+800
+						</p>
+						<span class="uppercase text-sm tracking-tighter text-neutral-400 font-semibold">
+							{t('index.statbar.members')}
+						</span>
+					</div>
+					<div class="flex-grow text-center py-8 md:px-8 border-b-1 md:border-b-0 md:border-r-1 border-neutral-700 w-full lg:w-auto">
+						<p class="text-4xl lg:text-6xl leading-tight tracking-tighter font-bold bg-clip-text text-transparent bg-gradient-to-b from-white to-neutral-300">
+							10 Gb/s
+						</p>
+						<span class="uppercase text-sm tracking-tighter text-neutral-400 font-semibold">
+							{t('index.statbar.speed')}
+						</span>
+					</div>
+					<div class="flex-grow text-center py-8 md:px-8 border-b-1 md:border-b-0 md:border-r-1 border-neutral-700 w-full lg:w-auto">
+						<p class="text-4xl lg:text-6xl leading-tight tracking-tighter font-bold bg-clip-text text-transparent bg-gradient-to-b from-white to-neutral-300">
+							+15
+						</p>
+						<span class="uppercase text-sm tracking-tighter text-neutral-400 font-semibold">
+							{t('index.statbar.servers')}
+						</span>
+					</div>
+					<div class="flex-grow text-center py-8 md:px-8">
+						<p class="text-4xl lg:text-6xl leading-tight tracking-tighter font-bold bg-clip-text text-transparent bg-gradient-to-b from-white to-neutral-300">
+							98 %
+						</p>
+						<span class="uppercase text-sm tracking-tighter text-neutral-400 font-semibold">
+							{t('index.statbar.uptime')}
+						</span>
+					</div>
+				</div>
+			</section>
+			<section id="nous-découvrir" class="relative max-w-8xl">
+				<div class="flex flex-col items-center gap-10">
+					<span class="w-[1px] h-32 pr-[1px] bg-gradient-to-b from-white/10 to-white"></span>
+					<div class="flex items-center gap-10">
+						<span class="hidden md:block w-32 h-[1px] bg-gradient-to-r from-white/10 to-white"></span>
+						<h1 class="text-5xl md:text-6xl text-white/80 font-bold">
+							{t('index.discover.title')}
+						</h1>
+						<span class="hidden md:block w-32 h-[1px] bg-gradient-to-l from-white/10 to-white"></span>
+					</div>
+				</div>
+				<DiscoverCarousel />
+			</section>
+			<section class="relative max-w-8xl">
+				<div class="flex items-center justify-center gap-10">
+					<span class="hidden md:block w-32 h-[1px] bg-gradient-to-r from-white/10 to-white"></span>
+					<h1 class="text-5xl md:text-6xl text-white/80 font-bold">
+						{t('index.join.title')}
+					</h1>
+					<span class="hidden md:block w-32 h-[1px] bg-gradient-to-l from-white/10 to-white"></span>
+				</div>
+				<div class="flex flex-col lg:flex-row items-stretch justify-between gap-20 mt-20">
+					<CardSkew rounded="rounded-2xl" color="bg-neutral-900">
+						<div class="flex flex-col items-center gap-10 p-6 border rounded-2xl border-white/10 shadow-inner shadow-white/5">
+							<div class="bg-white/50 px-[1px] py-[9px] rounded-full">
+								<span class="text-4xl text-white rounded-full bg-black px-5 py-2">
+									1
+								</span>
+							</div>
+							<h2 class="text-2xl md:text-3xl text-white/80 font-bold">
+								{t('index.join.card0.title')}
+							</h2>
+							<p class="text-base md:text-lg text-white/50 text-center">
+								{t('index.join.card0.content')}
+							</p>
+						</div>
+					</CardSkew>
+					<CardSkew rounded="rounded-2xl" color="bg-neutral-900">
+						<div class="flex flex-col items-center gap-10 p-6 border rounded-2xl border-white/10 shadow-inner shadow-white/5">
+							<div class="bg-white/50 px-[1px] py-[9px] rounded-full">
+								<span class="text-4xl text-white rounded-full bg-black px-5 py-2.5">
+									2
+								</span>
+							</div>
+							<h2 class="text-2xl md:text-3xl text-white/80 font-bold">
+								{t('index.join.card1.title')}
+							</h2>
+							<p class="md:text-lg text-white/50 text-center">
+								{t('index.join.card1.content')}
+							</p>
+						</div>
+					</CardSkew>
+					<CardSkew rounded="rounded-2xl" color="bg-neutral-900">
+						<div class="flex flex-col items-center gap-10 p-6 border rounded-2xl border-white/10 shadow-inner shadow-white/5">
+							<div class="bg-white/50 px-[1px] py-[9px] rounded-full">
+								<span class="text-4xl text-white rounded-full bg-black px-5 py-2.5">
+									3
+								</span>
+							</div>
+							<h2 class="text-2xl md:text-3xl text-white/80 font-bold">
+								{t('index.join.card2.title')}
+							</h2>
+							<p class="md:text-lg text-white/50 text-center">
+								{t('index.join.card2.content')}
+							</p>
+						</div>
+					</CardSkew>
+				</div>
+				<div class="flex flex-col items-center gap-10 mt-20">
+					<div class="flex items-center gap-10">
+						<span class="hidden md:block w-32 h-[1px] bg-gradient-to-r from-white/10 to-white"></span>
+						<span class="hidden md:block w-32 h-[1px] bg-gradient-to-l from-white/10 to-white"></span>
+					</div>
+					<span class="w-[1px] h-32 pr-[1px] bg-gradient-to-t from-white/10 to-white"></span>
+				</div>
+			</section>
+		</div>
+	</main>
+</Layout>

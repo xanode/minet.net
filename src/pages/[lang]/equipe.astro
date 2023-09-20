@@ -1,4 +1,5 @@
 ---
+import { getStaticTranslations, getLangFromUrl, useTranslations } from '@i18n/utils';
 import MemberCard from '@components/team/MemberCard.astro';
 import OldMembersSection from '@components/team/OldMembersSection.astro';
 import PulseCircles from '@components/team/PulseCircles.astro';
@@ -20,6 +21,13 @@ import PresidentReference from "@assets/equipe/nicolasp.png";
 import RespoCommunication2Reference from "@assets/equipe/juliette.png";
 import VicePresident2Reference from "@assets/equipe/nicolasvp.png";
 import RespoREReference from "@assets/equipe/yasmine.png";
+
+export function getStaticPaths() {
+	return getStaticTranslations();
+}
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
 ---
 
 <Layout title="MiNET - L'équipe">
@@ -28,54 +36,54 @@ import RespoREReference from "@assets/equipe/yasmine.png";
 			<section class="relative text-white">
 				<div class="mx-auto pb-56">
 					<h1 class="relative text-5xl md:text-7xl font-bold text-center mb-10">
-						Notre équipe
+						{t('team.title')}
 					</h1>
 					<p class="text-2xl text-center">
-						Découvrez l'équipe MiNET
+						{t('team.subtitle')}
 					</p>
 					<PulseCircles />
 					<TeamCarousel startIndex={7}>
 						<li>
-							<TeamCard image={RespoREReference} name="Yasmine Aluch" role="Responsable Relations Entreprises" pseudo="samayass" />
+							<TeamCard image={RespoREReference} name="Yasmine Aluch" role={t('team.role.corporate') as string} pseudo="samayass" />
 						</li>
 						<li>
-							<TeamCard image={RespoClubsReference} name="Chabane Petit" role="Responsable Clubs" pseudo="lowengeist" />
+							<TeamCard image={RespoClubsReference} name="Chabane Petit" role={t('team.role.clubs') as string} pseudo="lowengeist" />
 						</li>
 						<li>
-							<TeamCard image={RespoCommunication1Reference} name="Raphaël Bachelier" role="Responsable Communication" pseudo="ptitegame" />
+							<TeamCard image={RespoCommunication1Reference} name="Raphaël Bachelier" role={t('team.role.communication') as string} pseudo="ptitegame" />
 						</li>
 						<li>
-							<TeamCard image={RespoWebReference} name="Thomas Robert" role="Responsable Web" pseudo="toyohr" />
+							<TeamCard image={RespoWebReference} name="Thomas Robert" role={t('team.role.web') as string} pseudo="toyohr" />
 						</li>
 						<li>
-							<TeamCard image={RespoFormations1Reference} name="Valentin Lantigny" role="Responsable Formations" pseudo="valt" />
+							<TeamCard image={RespoFormations1Reference} name="Valentin Lantigny" role={t('team.role.formations') as string} pseudo="valt" />
 						</li>
 						<li>
-							<TeamCard image={SecretaireReference} name="Esteban Dectot" role="Secrétaire" pseudo="greemty" />
+							<TeamCard image={SecretaireReference} name="Esteban Dectot" role={t('team.role.secretary') as string} pseudo="greemty" />
 						</li>
 						<li>
-							<TeamCard image={VicePresident1Reference} name="Tom Burellier" role="Vice-Président" pseudo="balmine" />
+							<TeamCard image={VicePresident1Reference} name="Tom Burellier" role={t('team.role.vp') as string} pseudo="balmine" />
 						</li>
 						<li>
-							<TeamCard image={PresidentReference} name="Nicolas Rocq" role="Président" pseudo="nishogi" />
+							<TeamCard image={PresidentReference} name="Nicolas Rocq" role={t('team.role.president') as string} pseudo="nishogi" />
 						</li>
 						<li>
-							<TeamCard image={VicePresident2Reference} name="Nicolas Renout" role="Vice-Président" pseudo="naincapable" />
+							<TeamCard image={VicePresident2Reference} name="Nicolas Renout" role={t('team.role.vp') as string} pseudo="naincapable" />
 						</li>
 						<li>
-							<TeamCard image={TresorierReference} name="Baptiste Legros" role="Trésorier" pseudo="direshaw" />
+							<TeamCard image={TresorierReference} name="Baptiste Legros" role={t('team.role.treasurer') as string} pseudo="direshaw" />
 						</li>
 						<li>
-							<TeamCard image={RespoFormations2Reference} name="Louis Delyon" role="Responsable Formations" pseudo="rustace" />
+							<TeamCard image={RespoFormations2Reference} name="Louis Delyon" role={t('team.role.formations') as string} pseudo="rustace" />
 						</li>
 						<li>
-							<TeamCard image={RespoWifiReference} name="Timothée Mathubert" role="Responsable Wi-Fi" pseudo="xhelozs" />
+							<TeamCard image={RespoWifiReference} name="Timothée Mathubert" role={t('team.role.wifi') as string} pseudo="xhelozs" />
 						</li>
 						<li>
-							<TeamCard image={RespoCommunication2Reference} name="Juliette Bourdiau" role="Responsable Communication" pseudo="jouliet" />
+							<TeamCard image={RespoCommunication2Reference} name="Juliette Bourdiau" role={t('team.role.communication') as string} pseudo="jouliet" />
 						</li>
 						<li>
-							<TeamCard image={RespoInventaireReference} name="Mathis Williot" role="Responsable Inventaire" pseudo="jflyxx" />
+							<TeamCard image={RespoInventaireReference} name="Mathis Williot" role={t('team.role.inventory') as string} pseudo="jflyxx" />
 						</li>
 					</TeamCarousel>
 				</div>

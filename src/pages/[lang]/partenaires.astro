@@ -1,5 +1,6 @@
 ---
 import { Image } from "astro:assets";
+import { getStaticTranslations, getLangFromUrl, useTranslations } from "@i18n/utils";
 import Layout from "@layouts/Layout.astro";
 
 import TelecomSudParisLogoReference from "@assets/partenaires/telecom-sudparis.png";
@@ -7,49 +8,53 @@ import IMTBSLogoReference from "@assets/partenaires/imt-bs.png";
 import OrnessLogoReference from "@assets/partenaires/orness.png";
 import FlamsLogoReference from "@assets/partenaires/flams.png";
 import TakestyleLogoReference from "@assets/partenaires/takestyle.png";
+
+export function getStaticPaths() {
+	return getStaticTranslations();
+}
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
 ---
 
 <Layout title="MiNET - Nos partenaires">
     <main class="py-20 px-2 mt-20">
         <section class="relative flex flex-col items-center gap-40 text-white max-w-8xl mx-auto">
-            <h1 class="text-5xl md:text-6xl font-bold text-center">Nos partenaires</h1>
+            <h1 class="text-5xl md:text-6xl font-bold text-center">{t('partners.title')}</h1>
             <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <div class="flex flex-col items-center justify-between gap-10 p-6 border border-white/10 hover:border-white/50 transition-colors duration-200">
                     <Image src={TelecomSudParisLogoReference} alt="Logo de Télécom SudParis" class="max-h-64 w-auto" />
-                    <h2 class="text-2xl font-bold">Télécom SudParis</h2>
+                    <h2 class="text-2xl font-bold">{t('partners.tsp.name')}</h2>
                     <p class="text-center text-neutral-500">
-                        Télécom SudParis est une grande école publique d'ingénieurs reconnue au meilleur niveau des sciences et technologies du numérique.
-                        La qualité de ses formations est basée sur l’excellence scientifique de son corps professoral et une pédagogie mettant l’accent sur les projets d’équipes, l’innovation de rupture et l’entreprenariat.
+                        {t('partners.tsp.description')}
                     </p>
                 </div>
                 <div class="flex flex-col items-center justify-between gap-10 p-6 border border-white/10 hover:border-white/50 transition-colors duration-200">
                     <Image src={IMTBSLogoReference} alt="Logo d'IMT-BS" class="max-h-64 w-auto" />
-                    <h2 class="text-2xl font-bold">Institut Mines-Télécom Business School</h2>
+                    <h2 class="text-2xl font-bold">{t('partners.imtbs.name')}</h2>
                     <p class="text-center text-neutral-500">
-                        École publique et socialement inclusive, proche des écoles d’ingénieurs, Institut Mines-Télécom Business School (IMT-BS) est la Grande École de Commerce et de Management de l’Institut Mines-Télécom.
+                        {t('partners.imtbs.description')}
                     </p>
                 </div>
                 <div class="flex flex-col items-center justify-between gap-10 p-6 border border-white/10 hover:border-white/50 transition-colors duration-200">
                     <Image src={OrnessLogoReference} alt="Logo d'Orness" class="max-h-64 w-auto" />
-                    <h2 class="text-2xl font-bold">Orness</h2>
+                    <h2 class="text-2xl font-bold">{t('partners.orness.name')}</h2>
                     <p class="text-center text-neutral-500">
-                        Orness est une société de conseil et d’ingénierie en transformation numérique fondée à Paris en 2001.
-                        Orness est une Entreprise de Services du Numérique.
-                        Ils accompagnent la transformation digitale de leurs clients et basent leur proposition de valeur sur la complémentarité de leurs métiers, permettant un accompagnement de bout en bout sur les projets IT de leurs clients.
+                        {t('partners.orness.description')}
                     </p>
                 </div>
                 <div class="flex flex-col items-center justify-between gap-10 p-6 border border-white/10 hover:border-white/50 transition-colors duration-200">
                     <Image src={FlamsLogoReference} alt="Logo du Flams" class="max-h-64 w-auto" />
-                    <h2 class="text-2xl font-bold">Flams</h2>
+                    <h2 class="text-2xl font-bold">{t('partners.flams.name')}</h2>
                     <p class="text-center text-neutral-500">
-                        Profitez de tarifs privilégiés pour organiser une soirée conviviale et détendue. FLAM’s s’adapte à chaque occasion, un bon moment garanti à chaque fois.
+                        {t('partners.flams.description')}
                     </p>
                 </div>
                 <div class="flex flex-col items-center justify-between gap-10 p-6 border border-white/10 hover:border-white/50 transition-colors duration-200">
                     <Image src={TakestyleLogoReference} alt="Logo de Takestyle" class="max-h-64 w-auto" />
-                    <h2 class="text-2xl font-bold">Takestyle</h2>
+                    <h2 class="text-2xl font-bold">{t('partners.takestyle.name')}</h2>
                     <p class="text-center text-neutral-500">
-                        Créé en 2019, TAKESTYLE est le fruit d’une envie de liberté et d’une grande confiance dans nos capacités à répondre aux besoins textiles et objets pulicitaires de toutes entreprises , associations sportives , associations étudiantes et autres.
+                        {t('partners.takestyle.description')}
                     </p>
                 </div>
             </div>

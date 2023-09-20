@@ -1,11 +1,15 @@
 ---
+import { getLangFromUrl, useTranslations } from "@i18n/utils";
 import KBD from "@components/ui/KBD.astro";
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
 ---
 
 <button is="search-button" class="flex items-center justify-between w-full h-9 cursor-text rounded-md bg-neutral-900">
     <div class="flex items-center gap-3">
         <svg class="w-4.5 h-4.5 ml-2 text-neutral-500 fill-none stroke-current" shape-rendering="geometricPrecision" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" viewBox="0 0 24 24"><path d="M11 17.25a6.25 6.25 0 110-12.5 6.25 6.25 0 010 12.5z"></path><path d="M16 16l4.5 4.5"></path></svg>
-        <span class="text-neutral-500 ml-3">Rechercher...</span>
+        <span class="text-neutral-500 ml-3">{t('tutorials.search.placeholder')}</span>
     </div>
     <div class="hidden lg:flex items-center mr-1.5">
         <KBD size="text-xs">

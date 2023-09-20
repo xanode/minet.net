@@ -26,7 +26,7 @@ const tutorials = await getCollection('tutoriels', ({ data }) => {
     <ul class="hidden aria-expanded:flex flex-col gap-4 mt-4 -ml-[1px] border-l-2 border-neutral-800" aria-expanded={expanded}>
         {tutorials.map(tutorial =>
         <li class="flex text-sm text-neutral-400 hover:text-white aria-selected:text-white pl-4 border-l border-transparent hover:border-white aria-selected:border-white" aria-selected={tutorial.id === selectedTutorial?.id}>
-            <a class="grow" href={`/tutoriels/${tutorial.slug}/`}>
+            <a class="grow" href={`/${tutorial.slug.split('/')[0]}/tutoriels/${tutorial.slug.split('/')[1]}/`}>
                 {tutorial.data.title}
             </a>
             <div class="invisible w-6 h-6 px-1"></div>

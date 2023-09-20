@@ -1,5 +1,6 @@
 ---
 import { getCollection } from "astro:content";
+import { getLangFromUrl } from "@i18n/utils";
 import CategoryDetails from "@components/tutorials/CategoryDetails.astro";
 import type { CollectionEntry } from "astro:content";
 
@@ -7,7 +8,7 @@ interface Props {
     tutorial?: CollectionEntry<'tutoriels'>;
 }
 const { tutorial } = Astro.props;
-const categories = await getCollection('categories');
+const categories = await getCollection('categories', (entry: CollectionEntry<'categories'>) => entry.id.startsWith(getLangFromUrl(Astro.url)));
 ---
 
 <nav class="block w-full">

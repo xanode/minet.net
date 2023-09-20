@@ -1,4 +1,5 @@
 ---
+import { getStaticTranslations, getLangFromUrl, useTranslations } from "@i18n/utils";
 import ClubCard from "@components/ClubCard.astro";
 import Layout from "@layouts/Layout.astro";
 
@@ -6,12 +7,19 @@ import CellLogoReference from "@assets/clubs/logo_cell.png";
 import ClubCodeLogoReference from "@assets/clubs/logo_club_code.png";
 import GamINTLogoReference from "@assets/clubs/logo_gamint.png";
 import HackademINTLogoReference from "@assets/clubs/logo_hackademint.png";
+
+export function getStaticPaths() {
+    return getStaticTranslations();
+}
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
 ---
 
 <Layout title="MiNET - Nos Clubs">
     <main class="py-20 px-2 mt-20">
         <section class="relative flex flex-col items-center gap-40 text-white max-w-8xl mx-auto">
-            <h1 class="text-5xl md:text-6xl font-bold text-center">Nos clubs</h1>
+            <h1 class="text-5xl md:text-6xl font-bold text-center">{t('clubs.title')}</h1>
             <div class="flex flex-col lg:flex-row items-center gap-20">
                 <ClubCard image={CellLogoReference} name="Cell" color="bg-purple-400/30" />
                 <ClubCard image={ClubCodeLogoReference} name="Club Code" color="bg-teal-400/30" />

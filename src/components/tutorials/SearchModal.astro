@@ -1,12 +1,22 @@
 ---
+import { getLangFromUrl, useTranslations } from "@i18n/utils";
 import KBD from "@components/ui/KBD.astro";
+import { ui, defaultLang } from "@i18n/ui";
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+
+const i18n = Object.keys(ui[lang]).filter((key) => key.startsWith('tutorials.search.modal.')).reduce((acc, key) => {
+    acc[key] = t(key as keyof typeof ui[typeof defaultLang]) as string;
+    return acc;
+}, {} as Record<string, string>);
 ---
 
-<div is="search-modal" class="relative z-50 opacity-0 transition-opacity duration-200">
+<div is="search-modal" class="relative z-50 opacity-0 transition-opacity duration-200" data-i18n={JSON.stringify(i18n)} data-lang={lang}>
     <div data-name="overlay" class="fixed inset-0 bg-black/80"></div>
     <div class="fixed top-1/5 inset-x-0 lg:left-1/2 lg:-translate-x-1/2 flex flex-col border rounded-lg border-neutral-700 bg-neutral-950 p-2 lg:w-160">
         <div class="flex items-center gap-2">
-            <input class="text-xl text-neutral-400 placeholder:text-neutral-700 bg-transparent outline-none px-4 py-2 w-full" placeholder="Rechercher..." />
+            <input class="text-xl text-neutral-400 placeholder:text-neutral-700 bg-transparent outline-none px-4 py-2 w-full" placeholder={t('tutorials.search.placeholder') as string} />
             <button class="text-neutral-500">
                 <svg class="w-5 h-5 stroke-current text-current" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"></circle><path d="M15 9l-6 6"></path><path d="M9 9l6 6"></path></svg>
             </button>
@@ -42,6 +52,8 @@ import KBD from "@components/ui/KBD.astro";
         reset: HTMLButtonElement;
         resultList: HTMLUListElement
         subtitle: HTMLSpanElement;
+        i18n: Record<string, string>;
+        lang: string;
 
         constructor() {
             super();
@@ -52,12 +64,16 @@ import KBD from "@components/ui/KBD.astro";
             this.reset = this.querySelector('button') as HTMLButtonElement;
             this.resultList = this.querySelector('ul') as HTMLUListElement;
             this.subtitle = this.querySelector('[data-name="subtitle"]') as HTMLSpanElement;
+
+            /** Get i18n */
+            this.i18n = JSON.parse(this.dataset.i18n!);
+            this.lang = this.dataset.lang!;
         }
 
         connectedCallback() {
             this.style.display = 'none';
             this.reset.style.display = 'none';
-            this.subtitle.textContent = 'Tapez plus de 2 caractères pour commencer la recherche.';
+            this.subtitle.textContent = this.i18n['tutorials.search.modal.min-length'];
 
             /** Events that open the modal */
             document.addEventListener('search', this.openModal.bind(this));
@@ -84,10 +100,10 @@ import KBD from "@components/ui/KBD.astro";
             if (this.index) return;
 
             // Update the subtitle to indicate that the search is loading
-            this.subtitle.textContent = 'Chargement...';
+            this.subtitle.textContent = this.i18n['tutorials.search.modal.loading'];
 
             // Fetch the search.json data and initialize the lunr index
-            const response = await fetch('/search.json');
+            const response = await fetch(`/${this.lang}/search.json`);
             this.documents = await response.json();
 
             const self = this;
@@ -105,13 +121,13 @@ import KBD from "@components/ui/KBD.astro";
             });
 
             // Update the subtitle to indicate that searching can start
-            this.subtitle.textContent = 'Tapez plus de 2 caractères pour commencer la recherche.';
+            this.subtitle.textContent = this.i18n['tutorials.search.modal.min-length'];
         }
 
         handleReset() {
             this.input.value = '';
             this.reset.style.display = 'none';
-            this.subtitle.textContent = 'Tapez plus de 2 caractères pour commencer la recherche.';
+            this.subtitle.textContent = this.i18n['tutorials.search.modal.min-length'];
         }
 
         handleSearch() {
@@ -126,11 +142,11 @@ import KBD from "@components/ui/KBD.astro";
             this.clearResults();
 
             if (query.length < 3) {
-                this.subtitle.textContent = 'Tapez plus de 2 caractères pour commencer la recherche.';
+                this.subtitle.textContent = this.i18n['tutorials.search.modal.min-length'];
                 return;
             }
 
-            this.subtitle.textContent = 'Recherche en cours...';
+            this.subtitle.textContent = this.i18n['tutorials.search.modal.searching'];
 
             // Perform the search and display results
             const searchResults = this.index.search(query);
@@ -145,10 +161,11 @@ import KBD from "@components/ui/KBD.astro";
         displayResults(searchResults: lunr.Index.Result[]) {
             searchResults.forEach(result => {
                 const doc: Document = this.documents.find((doc: Document) => doc.slug === result.ref);
+                const [lang, ...slug] = doc.slug.split('/');
                 if (doc) {
                     const listItem = document.createElement('li');
                     listItem.innerHTML = `
-                        <a class="flex items-center text-sm px-4 rounded-lg hover:bg-neutral-900 whitespace-normal transition-colors h-18" href="/tutoriels/${doc.slug}/">
+                        <a class="flex items-center text-sm px-4 rounded-lg hover:bg-neutral-900 whitespace-normal transition-colors h-18" href="/${lang}/tutoriels/${slug}/">
                             <div class="flex items-center">
                                 <span class="flex items-center justify-center mr-3">
                                     <svg class="w-5 h-5 mt-[1px] fill-none text-neutral-400 stroke-current" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" viewBox="0 0 24 24"><path d="M2 3h6a4 4 0 014 4v14a3 3 0 00-3-3H2z"></path><path d="M22 3h-6a4 4 0 00-4 4v14a3 3 0 013-3h7z"></path></svg>
@@ -168,7 +185,7 @@ import KBD from "@components/ui/KBD.astro";
                     this.resultList.appendChild(listItem);
                 }
             });
-            this.subtitle.textContent = `${searchResults.length} résultats trouvés.`;
+            this.subtitle.textContent = `${searchResults.length} ${this.i18n['tutorials.search.modal.results']}`;
         }
 
         closeModal() {
