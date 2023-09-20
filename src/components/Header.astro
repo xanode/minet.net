@@ -2,6 +2,7 @@
 import { getLangFromUrl, useTranslations } from "@i18n/utils";
 import ButtonAction from "@components/ButtonAction.astro";
 import Icon from "@components/Icon.astro";
+import LanguagePicker from "@components/LanguagePicker.astro";
 import NavButton from "@components/NavButton.astro";
 import NavItem from "@components/NavItem.astro";
 
@@ -11,10 +12,11 @@ const t = useTranslations(lang);
 
 <header class="fixed w-full z-50 text-white bg-neutral-900 lg:bg-neutral-800/50 lg:backdrop-blur-sm border-b border-neutral-700 p-4">
     <div class="flex items-center max-w-8xl mx-auto">
-        <a class="flex-none overflow-hidden" href={`/${lang}/`}>
+        <a class="flex items-center gap-2 overflow-hidden" href={`/${lang}/`}>
             <span class="sr-only">MiNET</span>
             <Icon className="h-20 w-auto fill-white" name="minet" />
         </a>
+        <LanguagePicker />
         {/* Large screen */}
         <nav class="relative hidden lg:flex items-center ml-auto">
             <ul class="flex items-center leading-8 space-x-4 text-center text-sm">

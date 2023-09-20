@@ -51,4 +51,12 @@ export const IconsDict = {
         viewbox :'0 0 18 10',
         content: '<path d="M1 5h16m0 0l-4-4m4 4l-4 4" stroke-linecap="round" stroke-linejoin="round"/>'
     },
+    'fr-flag': {
+        viewbox: '0 0 900 600',
+        content: '<path fill="#ed2939" d="M0 0h900v600H0z"/><path fill="#fff" d="M0 0h600v600H0z"/><path fill="#002395" d="M0 0h300v600H0z"/>'
+    },
+    'en-flag': {
+        viewbox: '0 0 50 30',
+        content: '<clipPath id="A"><path d="M25 15h25v15zv15H0zH0V0zV0h25z"/></clipPath><path d="M0 0v30h50V0z" fill="#012169"/><path d="M0,0 50,30M50,0 0,30" stroke="#fff" stroke-width="6"/><path d="M0,0 50,30M50,0 0,30" clip-path="url(#A)" stroke="#c8102e" stroke-width="4"/><path d="M-1 11h22V-1h8v12h22v8H29v12h-8V19H-1z" fill="#c8102e" stroke="#fff" stroke-width="2"/>'
+    }
 };
