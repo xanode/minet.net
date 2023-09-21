@@ -1,36 +1,36 @@
 ---
 icon: linux
-title: Se connecter en filaire avec Linux
+title: Set up a PC with Linux to use the wired network
 category: en/wired
 ---
 
-## Prérequis
+## Prerequisites
 
-Pour pouvoir enregistrer vos appareils sur le réseau MiNET, vous aurez besoin d'ajouter vos adresses MACs à votre compte. Si vous ne savez pas comment les entrer, n'hésitez pas à suivre le tutoriel [Ajouter des appareils à son compte MiNET](/tutoriels/ajouter-des-appareils) qui vous indiquera comment procéder.
+In order to register devices on the MiNET network, you have to add your MAC addresses on your account. To do so, you can follow the instructions on [Adding devices on your MiNET account](/en/tutoriels/ajouter-des-appareils).
 
-## Configurer son PC sous Linux (filaire)
+## Set up your PC with Linux (wired)
 
-En suivant ce tutoriel, vous verrez comment configurer votre ordinateur sous Linux afin de bénéficier d'une connexion Internet en filaire à MiNET.
+If you follow this tutorial, you will see how to set up your computer with Linux in order to use the wired network of MiNET.
 
-### Création d'un nouveau profil de connexion
+### Adding the MiNET wired network
 
-Pour effectuer la configuration, nous nous aiderons d'un terminal. Une fois ouvert, tapez :
-- La commande  nm-connection-editor 
-- Dans la fenêtre qui s'ouvre, cliquez sur "Ajouter" et choississez "Ethernet" dans la liste déroulante
-- Cliquez sur "Créer"
-- Donnez un nom à votre profil de connexion
-- Choississez la carte réseau à lier à ce nouveau profil
+To configure your network, we are going to use a terminal. Open one, then :
+- Type the following command : `nm-connection-editor`
+- In the window that opens, click on "Add" and choose "Ethernet" in the dropdown list
+- Click on "Create"
+- Give a name to your connection profile
+- Choose the network card you wish to link to this new profile.
 
-Une fois cela fait, votre profil de connexion est crée, il ne vous reste plus qu'à le configurer.
+Once this is done, your connection profile is created, you only have to configure it.
 
-### Configuration de l'authentification
+### Authentication configuration
 
-Il reste à choisir le type d'authentification. Sur la même fenêtre
-- Dans l'onglet "Sécurité 802.1X", cochez la case "Utilisez la sécurité 802.1X pour cette connexion"
-- Choississez ensuite "Protected EAP (PEAP) pour l'authentification
-- Cochez la case "Aucun certificat de CA n'est requis"
-- Enfin, entrez vos identifiants et mots de passe dans les champs "Nom d'utilisateur" et "Mot de passe"
-- Vous pouvez alors fermer la fenêtre en cliquant sur "Enregistrer"
+You have to choose the type of authentication you want. On the same window :
+- In the “802.1X Security” tab, check the “Use 802.1X security for this connection” checkbox.
+- Then, choose the “Protected EAP (PEAP)” in the drop-down menu for the Authentication.
+- Check the box “No CA certificate required”.
+- Finally, enter your MiNET login and password in the “Username” and “Password” fields respectively.
+- Once this is done, you can close the window by clicking on “Save”.
 
-Une fois ces étapes faites, il ne reste plus qu'à brancher votre câble réseau, et vous devriez vous connecter automatiquement au réseau filaire MiNET. Remarquez que l'authentification peut prendre quelques secondes. Par ailleurs, un redémarrage du PC peut-être nécessaire.
+Once all of these steps are done, you only have to plug in your Ethernet cable, and you should be automatically connected on the MiNET wired network. Take note that the authentication can take a few seconds. Sometimes, rebooting your pc is necessary.
 
