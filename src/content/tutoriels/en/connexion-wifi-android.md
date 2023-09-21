@@ -1,6 +1,6 @@
 ---
 icon: android
-title: Se connecter au Wi-Fi avec son smartphone Android
+title: Set up an Android smartphone to use the WiFi
 category: en/wifi
 ---
 

@@ -1,15 +1,15 @@
 ---
 icon: consoles
-title: Connecter sa console au réseau MiNET
+title: Connect your game console to the MiNET network
 category: en/other-services
 ---
 
-## Pour connecter sa PlayStation, son Xbox ou sa Nintendo Switch.
+## To connect your PlayStation, Xbox or Nintendo Switch to the network.
 
-- La première étape consiste à trouver l'adresse MAC filaire de ta console, elle devrait se situer dans les paramètres
-- Il faut ensuite l'ajouter sur ton compte en allant sur [ADH6](https://adh6.minet.net/) et en l'ajoutant en tant que *Nouvel ordinateur*
-- Envoie-nous ensuite un ticket, en te rendant sur [tickets](https://tickets.minet.net/), en spécifiant l'adresse MAC de ta console et nous pourrons autoriser sa connexion de notre côté
+- The first step is to find the wired MAC address of your console, you should find it in the parameters
+- Then add it to your account by going on [ADH6](https://adh6.minet.net/)and add it as a  *new wired device*
+- Then send us a [ticket](https://tickets.minet.net/), specify your login, your room number and the MAC address of your console and we can authorize its connection on our side.
 
-## Pourquoi toute cette procédure ?
+## Why this whole procedure ?
 
-Il faut savoir que ces consoles ne supportent pas l'authentification 802.1X que nous utilisons (de type réseau d'entreprise), nous devons donc spécifiquement autoriser l'adresse MAC de ta console à se connecter. Cela peut se faire uniquement en filaire et pas en WiFi.
+Please note that these consoles do not support the 802.1X authentication we use (enterprise network type), so we must specifically allow the MAC address of your console to connect. This can only be done via cable and not via WiFi.
