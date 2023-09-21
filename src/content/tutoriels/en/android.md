@@ -4,11 +4,11 @@ title: Connecter son appareil Android.
 category: en/wifi
 ---
 
-## Prérequis
+## Prerequisites
 
 In order to register devices on the MiNET network, you have to add your MAC addresses on your account. To do so, you can follow the instructions on [Adding new devices on your MiNET account](/en/tutoriels/ajouter-des-appareils).
 
-## Connecter son mobile
+## Connect your mobile
 
 By following this tutorial, you will see how to configure your mobile to use the MiNET WiFi connexion.
 

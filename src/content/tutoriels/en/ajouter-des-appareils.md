@@ -1,52 +1,52 @@
 ---
 icon: question
-title: Ajouter des appareils à son compte MiNET
+title: Adding new devices on your MiNET account
 category: en/getting-started
 ---
 
-## Prérequis
+## Prerequisites
 
-Pour pouvoir enregistrer vos appareils sur le réseau MiNET, vous aurez besoin de vos adresses MACs. Si vous ne savez pas comment les trouver, n'hésitez pas à suivre le tutoriel [Trouver ses adresses MAC](/tutoriels/trouver-ses-adresses-mac) qui vous guidera pour les systèmes d'explotation les plus communs.
+In order to register devices on the MiNET network, you will need your MAC addresses (or MAC) . If necessary, use the [Finding your MAC addresses](/en/tutoriels/trouver-ses-adresses-mac) tutorial to find yours (for Windows, MAC, or a linux distribution).
 
-## En pratique
+## Let's go !
 
-Une fois les MACs de l'appareil connues, l'ajout d'un nouvel appareil sur votre compte MiNET passe par deux étapes :
+Once you found your MAC addresses of your device, there is two steps to add a new device on your MiNET account:
 
-- Entrer la MAC sur son compte MiNET, via le portail
-- Configurer l'appareil pour le connecter au réseau
+- Enter the MAC on your MiNET account, through the portal.
+- Set up your device to connect it to the network.
 
-Nous détaillerons ici la première étape.
+We will describe the first step here.
+
+### Adding a MAC to your account
+
+To be able to manage the settings of your MiNET account, go on [ADH6](https://adh6.minet.net/).Remember that this page is accessible even from a device that still haven’t been set up.
+
+Once on the page:
+
+- Click on the “My account” button
+- Enter your MiNET login and password you obtained when creating your account in the MiNET office.
+- You will arrive on the management page of your account, where you can add or delete MACs from your account.
+- To add a wired MAC, click on the “Nouvel ordinateur” button and enter the wired MAC of the device.
+- To add a WiFi MAC, click on the “Nouvel équipement WiFi” and enter the WiFI MAC of the device.
+
+You can also change password on this page.
+
+Once the MAC addresses are registered, you only have to set up your device. The kind of setup needed depends on the OS you are using.
 
 
-### Ajouter une MAC à son compte
+### Configuring your device
 
-Pour accéder à la gestion de votre compte, aller sur le portail MiNET. Notez que cette page est accessible même depuis un appareil non-configuré !
-Une fois sur la page :
+On Windows:
+- Configuring your WiFi interface ([see here](/en/tutoriels/connexion-wifi-windows))
+- Configuring your wired interface ([see here](/en/tutoriels/connexion-filaire-windows))
 
-- Cliquez sur le bouton "Mon compte"
-- Entrez le couple identifiant / mot de passe que vous avez entré en créant votre compte à MiNET
-- Vous arrivez sur la page d'aministration de votre compte, ou vous pouvez ajouter et supprimer les MACs de votre compte
-- Pour ajouter une MAC filaire, cliquez sur "Nouvel ordinateur" et entrez la MAC de l'appareil
-- Pour ajouter une MAC WiFi, cliquez sur "Nouvel équipement WiFi" et entrez la MAC de l'appareil
+On Linux:
+- Configuring your WiFi interface ([see here](/en/tutoriels/connexion-wifi-linux))
+- Configuring your wired interface ([see here](/en/tutoriels/connexion-filaire-linux))
 
-Notez que vous pouvez aussi changer de mot de passe sur cette page !
+On Mac: WiFi and wired ([see here](/en/tutoriels/connexion-mac))
 
-Une fois les appareils entrés, il ne reste plus qu'à les configurer. La configuration nécessaire est très variable selon le système d'exploitation que vous utilisez.
+On Android:
+- Configuring your WiFi interface ([see here](/en/tutoriels/connexion-wifi-android))
 
-
-### Configurer son appareil
-
-Sous Windows :
-- Configurer son interface WiFi ([voir ici](/tutoriels/connexion-wifi-windows))
-- Configurer son interface filaire ([c'est par là](/tutoriels/connexion-filaire-windows))
-
-Sous Linux :
-- Configurer son interface WiFi ([par ici](/tutoriels/connexion-wifi-linux))
-- Configurer son interface filaire ([ça se passe là](/tutoriels/connexion-filaire-linux))
-
-Sous Mac : WiFi et filaire ([c'est ici que ça se passe](/tutoriels/connexion-mac))
-
-Sous Android :
-- Configurer son interface WiFi ([voir cette page](/tutoriels/connexion-wifi-android))
-
-Sur iPhone : connexion au WiFi ([c'est là](/tutoriels/connexion-wifi-iphone))
+On iPhone: WiFi ([see here](/en/tutoriels/connexion-wifi-iphone))

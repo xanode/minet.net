@@ -7,7 +7,7 @@ category: en/other-services
 ## To connect your PlayStation, Xbox or Nintendo Switch to the network.
 
 - The first step is to find the wired MAC address of your console, you should find it in the parameters
-- Then add it to your account by going on [ADH6](https://adh6.minet.net/)and add it as a  *new wired device*
+- Then add it to your account by going on [ADH6](https://adh6.minet.net/) and add it as a  *new wired device*
 - Then send us a [ticket](https://tickets.minet.net/), specify your login, your room number and the MAC address of your console and we can authorize its connection on our side.
 
 ## Why this whole procedure ?
