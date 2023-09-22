@@ -1,5 +1,6 @@
 ---
 import { getStaticTranslations, getLangFromUrl, useTranslations } from "@i18n/utils";
+import AnimatedGradients from "@components/ui/AnimatedGradients.astro";
 import ServiceCard from "@components/services/ServiceCard.astro";
 import Layout from "@layouts/Layout.astro";
 
@@ -25,11 +26,7 @@ const t = useTranslations(lang);
         <section class="relative flex flex-col items-center gap-40 text-white max-w-8xl mx-auto">
             <h1 class="text-5xl md:text-6xl font-bold text-center">{t('services.title')}</h1>
             <div class="relative flex p-6">
-                <div class="hidden lg:block absolute z-0 inset-0 overflow-hidden blur-pulse-after select-none pointer-events-none">
-                    <div class="absolute rounded-full bg-purple-600 opacity-60 w-175 h-175 -z-20 top-2/5 left-3/5 mix-blend-lighten animate-gradient-1"></div>
-                    <div class="absolute rounded-full bg-pink-600 opacity-60 w-150 h-150 -z-10 top-3/5 left-2/5 mix-blend-screen animate-gradient-2"></div>
-                    <div class="absolute rounded-full bg-sky-600 opacity-60 w-125 h-125 -z-30 top-1/2 left-1/2 mix-blend-screen animate-gradient-3"></div>
-                </div>
+                <AnimatedGradients colors={["bg-purple-600", "bg-pink-600", "bg-sky-600"]} />
                 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
                     <ServiceCard image={CryptpadLogoReference} title={t('services.cryptpad.name')} href="https://cryptpad.minet.net/">
                         {t('services.cryptpad.description')}
