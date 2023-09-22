@@ -1,6 +1,7 @@
 ---
 import { getLangFromUrl, useTranslations } from "@i18n/utils";
-import ButtonAction from "@components/ButtonAction.astro";
+import ButtonAction from "@components/ui/ButtonAction.astro";
+import LanguagePicker from "@components/ui/LanguagePicker.astro";
 
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
@@ -30,6 +31,7 @@ const t = useTranslations(lang);
                     {(t('footer.ticket') as string).charAt(0).toUpperCase() + t('footer.ticket').slice(1)}
                 </ButtonAction>
                 </div>
+                <LanguagePicker />
             </div>
             <div class="grid grid-cols-2 md:grid-cols-3 gap-6 pt-20 md:pt-0 text-sm">
                 <div class="md:w-auto md:p-4 lg:w-40">
@@ -139,7 +141,7 @@ const t = useTranslations(lang);
                 </div>
             </div>
         </div>
-        <div class="flex items-center place-content-between pt-14">
+        <div class="flex items-center place-content-between pt-2">
             <span class="text-white text-opacity-75">
                 © 2023 MiNET - {t('footer.rights')}<br />
                 {t('footer.credit')}&nbsp;<span class="font-mono font-semibold text-red-400">xanode</span>

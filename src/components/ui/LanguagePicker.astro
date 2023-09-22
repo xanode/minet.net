@@ -1,0 +1,21 @@
+---
+import { getLangFromUrl, useTranslations } from "@i18n/utils";
+import Icon from "@components/ui/Icon.astro";
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+---
+
+<div class="flex flex-col gap-2 mt-10">
+    <div class="text-sm font-semibold">
+        {t('footer.language')}
+    </div>
+    <div class="flex items-center gap-4">
+        <a href={Astro.url.href.replace(lang, 'fr')}>
+            <Icon className="w-5 h-8 fill-none" name="fr-flag" />
+        </a>
+        <a href={Astro.url.href.replace(lang, 'en')}>
+            <Icon className="w-5 h-8 fill-none" name="en-flag" />
+        </a>
+    </div>
+</div>
