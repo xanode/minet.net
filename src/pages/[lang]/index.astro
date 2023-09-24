@@ -3,6 +3,7 @@ import { getStaticTranslations, getLangFromUrl, useTranslations } from "@i18n/ut
 import CardSkew from "@components/ui/CardSkew.astro";
 import DiscoverCarousel from "@components/home/DiscoverCarousel.astro";
 import Globe from '@components/home/Globe.astro';
+import Icon from "@components/ui/Icon.astro";
 import TypingCursor from '@components/ui/TypingCursor.astro';
 import Layout from '@layouts/Layout.astro';
 
@@ -45,9 +46,10 @@ const t = useTranslations(lang);
 					</div>
 				</div>
 				<div class="relative w-full aspect-square m-auto">
-					<div class="absolute -top-20 -right-80 lg:-right-60 w-256 h-256">
-						<Globe />
+					<div class="z-0 absolute top-0 left-0 translate-x-1/4 translate-y-1/4 rounded-full w-2/3 h-2/3 bg-blue-950 blur-pulse-after">
+						<div class="--10 absolute inset-0 w-full h-full rounded-full bg-sky-600 animate-pulse-circle lur-pulse-after"></div>
 					</div>
+					<Icon className="absolute top-0 left-0 translate-x-1/2 translate-y-1/2 w-1/2 h-1/2" name="minet" />
 				</div>
 			</section>
 			<section class="relative flex flex-col items-center border-t border-b border-neutral-700 bg-neutral-900 w-screen -mt-40 lg:mt-20">
@@ -107,9 +109,9 @@ const t = useTranslations(lang);
 					</h1>
 					<span class="hidden md:block w-32 h-[1px] bg-gradient-to-l from-white/10 to-white"></span>
 				</div>
-				<div class="flex flex-col lg:flex-row items-stretch justify-between gap-20 mt-20">
+				<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 items-center justify-between gap-20 mt-20">
 					<CardSkew rounded="rounded-2xl" color="bg-neutral-900">
-						<div class="flex flex-col items-center gap-10 p-6 border rounded-2xl border-white/10 shadow-inner shadow-white/5">
+						<div class="flex flex-col items-center gap-10 text-center p-6 border rounded-2xl border-white/10 shadow-inner shadow-white/5">
 							<div class="bg-white/50 px-[1px] py-[9px] rounded-full">
 								<span class="text-4xl text-white rounded-full bg-black px-5 py-2">
 									1
@@ -118,13 +120,13 @@ const t = useTranslations(lang);
 							<h2 class="text-2xl md:text-3xl text-white/80 font-bold">
 								{t('index.join.card0.title')}
 							</h2>
-							<p class="text-base md:text-lg text-white/50 text-center">
+							<p class="text-base md:text-lg text-white/50">
 								{t('index.join.card0.content')}
 							</p>
 						</div>
 					</CardSkew>
 					<CardSkew rounded="rounded-2xl" color="bg-neutral-900">
-						<div class="flex flex-col items-center gap-10 p-6 border rounded-2xl border-white/10 shadow-inner shadow-white/5">
+						<div class="flex flex-col items-center gap-10 text-center p-6 border rounded-2xl border-white/10 shadow-inner shadow-white/5">
 							<div class="bg-white/50 px-[1px] py-[9px] rounded-full">
 								<span class="text-4xl text-white rounded-full bg-black px-5 py-2.5">
 									2
@@ -133,13 +135,13 @@ const t = useTranslations(lang);
 							<h2 class="text-2xl md:text-3xl text-white/80 font-bold">
 								{t('index.join.card1.title')}
 							</h2>
-							<p class="md:text-lg text-white/50 text-center">
+							<p class="md:text-lg text-white/50">
 								{t('index.join.card1.content')}
 							</p>
 						</div>
 					</CardSkew>
 					<CardSkew rounded="rounded-2xl" color="bg-neutral-900">
-						<div class="flex flex-col items-center gap-10 p-6 border rounded-2xl border-white/10 shadow-inner shadow-white/5">
+						<div class="flex flex-col items-center gap-10 p-6 text-center border rounded-2xl border-white/10 shadow-inner shadow-white/5">
 							<div class="bg-white/50 px-[1px] py-[9px] rounded-full">
 								<span class="text-4xl text-white rounded-full bg-black px-5 py-2.5">
 									3
@@ -148,7 +150,7 @@ const t = useTranslations(lang);
 							<h2 class="text-2xl md:text-3xl text-white/80 font-bold">
 								{t('index.join.card2.title')}
 							</h2>
-							<p class="md:text-lg text-white/50 text-center">
+							<p class="md:text-lg text-white/50">
 								{t('index.join.card2.content')}
 							</p>
 						</div>
