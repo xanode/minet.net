@@ -13,7 +13,7 @@ const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
 ---
 
-<div class="relative flex flex-col gap-4 border rounded-lg border-neutral-900 p-2">
+<div class="relative flex flex-col gap-4 border rounded-lg border-neutral-700 bg-neutral-900 p-2">
     {resignation && (
         <div class="absolute inset-0 flex items-center justify-center text-neutral-300 font-semibold rounded-lg w-full h-full bg-neutral-900/80 backdrop-blur-[1px]">
             {t('team.resignation')}
