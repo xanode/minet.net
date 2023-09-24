@@ -11,8 +11,8 @@ interface Props {
 const { image, name, color } = Astro.props;
 ---
 
-<CardSkew rounded="rounded-xl" color={color}>
-    <div class="flex flex-col items-stretch justify-between gap-4 border border-white/10 hover:border-white/50 rounded-xl p-3 transition-colors duration-200">
+<CardSkew rounded="rounded-xl" color={color} perspective={100} overflow>
+    <div class="flex flex-col items-stretch justify-between gap-4 p-3">
         <Image src={image} alt=`Logo de ${name}` class="w-auto h-72 md:h-98 object-contain" />
         <h2 class="text-3xl font-bold text-center text-white md:text-transparent group-hover:text-white transition-colors duration-200">{name}</h2>
     </div>
