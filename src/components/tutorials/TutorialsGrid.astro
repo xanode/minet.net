@@ -79,7 +79,7 @@ const { tutorials } = Astro.props;
                 requestAnimationFrame(this.animateTowardsTarget.bind(this));
             }
 
-            this.shines?.forEach((shine, index) => {
+            this.shines?.forEach((shine, _) => {
                 shine.style.opacity = '1';
             });
         }
@@ -106,7 +106,7 @@ const { tutorials } = Astro.props;
             }
 
             if (this.shines) {
-                this.shines.forEach((shine, index) => {
+                this.shines.forEach((shine, _) => {
                     shine.style.transform = `translate(${-this.currentState.x}px, ${-this.currentState.y}px)`; // Apply transformation
                 });
             }

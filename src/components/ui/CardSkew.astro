@@ -5,14 +5,15 @@ interface Props {
     rounded: string;
     overflow?: boolean;
     color?: string;
+    size?: string;
 }
-const { perspective, disableSkew, rounded, overflow, color = 'bg-sky-400/30' } = Astro.props;
+const { perspective, disableSkew, rounded, overflow, color = 'bg-sky-400/30', size = 'w-96 h-96' } = Astro.props;
 ---
 
 <card-skew data-perspective={perspective} data-skew={disableSkew && 'disabled'} class={`group ${rounded} bg-transparent ${!overflow ? 'overflow-hidden' : ''} w-fit h-fit`}>
     <div data-target="card-skew.bounding">
         <slot />
-        <div data-target="card-skew.shine" class={`!absolute !bottom-0 !right-0 pointer-events-none !-z-10 ${color} w-96 h-96 blur-shine rounded-full opacity-0 group-hover:opacity-80 transition-opacity duration-1200 mix-blend-soft-light will-change-transform`}></div>
+        <div data-target="card-skew.shine" class={`!absolute !bottom-0 !right-0 pointer-events-none !-z-10 ${color} ${size} blur-shine rounded-full opacity-0 group-hover:opacity-80 transition-opacity duration-1200 mix-blend-soft-light will-change-transform`}></div>
     </div>
 </card-skew>
 

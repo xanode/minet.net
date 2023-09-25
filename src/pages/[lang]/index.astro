@@ -2,8 +2,8 @@
 import { getStaticTranslations, getLangFromUrl, useTranslations } from "@i18n/utils";
 import CardSkew from "@components/ui/CardSkew.astro";
 import DiscoverCarousel from "@components/home/DiscoverCarousel.astro";
-import Globe from '@components/home/Globe.astro';
 import Icon from "@components/ui/Icon.astro";
+import JoinUsCard from "@components/home/JoinUsCard.astro";
 import TypingCursor from '@components/ui/TypingCursor.astro';
 import Layout from '@layouts/Layout.astro';
 
@@ -109,52 +109,16 @@ const t = useTranslations(lang);
 					</h1>
 					<span class="hidden md:block w-32 h-[1px] bg-gradient-to-l from-white/10 to-white"></span>
 				</div>
-				<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 items-center justify-between gap-20 mt-20">
-					<CardSkew rounded="rounded-2xl" color="bg-neutral-900">
-						<div class="flex flex-col items-center gap-10 text-center p-6 border rounded-2xl border-white/10 shadow-inner shadow-white/5">
-							<div class="bg-white/50 px-[1px] py-[9px] rounded-full">
-								<span class="text-4xl text-white rounded-full bg-black px-5 py-2">
-									1
-								</span>
-							</div>
-							<h2 class="text-2xl md:text-3xl text-white/80 font-bold">
-								{t('index.join.card0.title')}
-							</h2>
-							<p class="text-base md:text-lg text-white/50">
-								{t('index.join.card0.content')}
-							</p>
-						</div>
-					</CardSkew>
-					<CardSkew rounded="rounded-2xl" color="bg-neutral-900">
-						<div class="flex flex-col items-center gap-10 text-center p-6 border rounded-2xl border-white/10 shadow-inner shadow-white/5">
-							<div class="bg-white/50 px-[1px] py-[9px] rounded-full">
-								<span class="text-4xl text-white rounded-full bg-black px-5 py-2.5">
-									2
-								</span>
-							</div>
-							<h2 class="text-2xl md:text-3xl text-white/80 font-bold">
-								{t('index.join.card1.title')}
-							</h2>
-							<p class="md:text-lg text-white/50">
-								{t('index.join.card1.content')}
-							</p>
-						</div>
-					</CardSkew>
-					<CardSkew rounded="rounded-2xl" color="bg-neutral-900">
-						<div class="flex flex-col items-center gap-10 p-6 text-center border rounded-2xl border-white/10 shadow-inner shadow-white/5">
-							<div class="bg-white/50 px-[1px] py-[9px] rounded-full">
-								<span class="text-4xl text-white rounded-full bg-black px-5 py-2.5">
-									3
-								</span>
-							</div>
-							<h2 class="text-2xl md:text-3xl text-white/80 font-bold">
-								{t('index.join.card2.title')}
-							</h2>
-							<p class="md:text-lg text-white/50">
-								{t('index.join.card2.content')}
-							</p>
-						</div>
-					</CardSkew>
+				<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 justify-between mt-20">
+					<JoinUsCard number={1} title={t('index.join.card0.title')}>
+						{t('index.join.card0.content')}
+					</JoinUsCard>
+					<JoinUsCard number={2} title={t('index.join.card1.title')}>
+						{t('index.join.card1.content')}
+					</JoinUsCard>
+					<JoinUsCard number={3} title={t('index.join.card2.title')}>
+						{t('index.join.card2.content')}
+					</JoinUsCard>
 				</div>
 				<div class="flex flex-col items-center gap-10 mt-20">
 					<div class="flex items-center gap-10">
