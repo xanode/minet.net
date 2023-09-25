@@ -169,7 +169,7 @@ export const ui = {
         'index.discover.card0.timeline1.content': 'Chaque logement est équipé d\'une prise Ethernet (Gigabit) et un ensemble de bornes Wi-Fi (2.4 et 5 GHz) permettent de couvrir l\'ensemble des bâtiments.',
         'index.discover.card0.timeline2.title': 'Une large infrastructure',
         'index.discover.card0.timeline2.content': 'Une quinzaine de serveurs répartis dans deux salles, authentification 802.1X, commutateurs CISCO, supervision via Zabbix, plusieurs clusters Proxmox, cluster de stockage distribué sous Ceph, etc.',
-        'index.discover.card1.timeline0.title': 'Organisation d`une soirée',
+        'index.discover.card1.timeline0.title': 'Organisation d\'une soirée',
         'index.discover.card1.timeline0.content': 'Tous les trois ans, MiNET est l\'organisateur d\'une soirée étudiante qui rassemble des centaines d\'étudiants.',
         'index.discover.card1.timeline1.title': 'Soutien du monde associatif',
         'index.discover.card1.timeline1.content': 'Chaque année, MiNET distribue des subventions aux autres clubs et associations du campus afin d\'enrichir la vie étudiante.',
