@@ -1,6 +1,6 @@
 ---
 icon: android
-title: Connecter son appareil Android.
+title: Connect your Android to the MiNET network
 category: en/wifi
 ---
 
