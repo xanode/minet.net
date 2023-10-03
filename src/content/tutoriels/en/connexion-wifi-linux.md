@@ -1,25 +1,25 @@
 ---
 icon: linux
-title: Se connecter au Wi-Fi avec Linux
+title: Connect to Wi-Fi with Linux
 category: en/wifi
 ---
 
-## Prérequis
+## Prerequisites
 
-Pour pouvoir enregistrer vos appareils sur le réseau MiNET, vous aurez besoin d'ajouter vos adresses MACs à votre compte. Si vous ne savez pas comment les entrer, n'hésitez pas à suivre le tutoriel [Ajouter des appareils à son compte MiNET](/tutoriels/ajouter-des-appareils) qui vous indiquera comment procéder.
+To register your devices on the MiNET network, you will need to add your MAC addresses to your account. If you don't know how to do this, don't hesitate to follow the tutorial [Add devices to your MiNET account](/en/tutorials/add-devices), which will guide you through the process.
 
-## Configurer son PC sous Linux (WiFi)
+## Setting Up Your PC with Linux (Wi-Fi)
 
-En suivant ce tutoriel, vous verrez comment configurer votre ordinateur sous Linux en utilisant Network Manager, afin de bénéficier d'une connexion Internet en WiFi à MiNET.
+By following this tutorial, you will learn how to configure your computer with Linux using Network Manager to benefit from a WiFi internet connection on MiNET.
 
-### Se connecter au WiFi MiNET
+### Connecting to MiNET WiFi
 
-Via votre zone de notification, trouvez et connectez-vous à un des deux réseaux WiFi de MiNET cités précédemment (choisir selon vos appareils).
+Through your notification area, find and connect to one of the two MiNET WiFi networks mentioned earlier (choose based on your devices).
 
-### Configuration de la configuration
+### Configuration Setup
 
-Dans le cas où votre connexion n'est pas encore configurée, une fenêtre devrait alors s'ouvrir. Dedans vous aurez à :
+In case your connection isn't configured yet, a window should open. Inside it, you will need to:
 
-- Cochez la case "Aucun certificat de CA n'est requis"
-- Entrez vos identifiants et mots de passe dans les champs "Nom d'utilisateur" et "Mot de passe"
-- Enfin, fermez la fenêre en cliquant sur "Enregistrer"
+- Check the "No CA certificate is required" box.
+- Enter your credentials and passwords in the "Username" and "Password" fields.
+- Finally, close the window by clicking "Save."
