@@ -1,24 +1,24 @@
 ---
 icon: android
-title: Set up an Android smartphone to use the WiFi
+title: Set up an Android Smartphone for WiFi Connectivity
 category: en/wifi
 ---
 
-## Prérequis
+## Prerequisites
 
-Pour pouvoir enregistrer vos appareils sur le réseau MiNET, vous aurez besoin d'ajouter vos adresses MACs à votre compte. Si vous ne savez pas comment les entrer, n'hésitez pas à suivre le tutoriel [Ajouter des appareils à son compte MiNET](/tutoriels/ajouter-des-appareils) qui vous indiquera comment procéder.
+To register your devices on the MiNET network, you will need to add your MAC addresses to your account. If you don't know how to do this, don't hesitate to follow the tutorial [Add devices to your MiNET account](/tutorials/add-devices), which will guide you through the process.
 
-## Connecter son mobile
+## Connecting Your Mobile Device
 
-En suivant ce tutoriel, vous verrez comment configurer votre mobile afin de bénéficier d'une connexion Internet en WiFi à MiNET. Rendez-vous dans les paramètres du téléphone, et faites :
+By following this tutorial, you will learn how to configure your mobile device to benefit from a WiFi internet connection on MiNET. Go to your phone's settings and:
 
-- Allez dans WiFi
-- Selectionnez "MiNET" en fonction de votre matériel
-- Renseignez vos identifiants et mots de passe dans les champs "Identités" et "Mot de passe"
-- Si l'on vous demande de renseigner un champ "Anonyme", laissez-le vide
-- Vérifiez que les champs "Méthode d'authentification EAP", "Authentification phase 2" et "Certificat CA" ont pour valeur respectivement "PEAP", "MSCHAPV2" et "Ne pas valider"
-- NOUVEAU : Si une option "Type d'adresse MAC" apparaît choisissez "utiliser l'adresse MAC du téléphone"
-- NOUVEAU : Si une option "Domaine" apparaît, rentrez : "minet.net"
-- Cliquez enfin sur "Se connecter"
+- Navigate to WiFi.
+- Select "MiNET" based on your hardware.
+- Enter your credentials and passwords in the "Identities" and "Password" fields.
+- If you are asked to enter an "Anonymous" field, leave it blank.
+- Verify that the "EAP authentication method," "Phase 2 authentication," and "CA Certificate" fields have the values "PEAP," "MSCHAPV2," and "Do not validate," respectively.
+- NEW: If an "MAC address type" option appears, choose "Use the phone's MAC address."
+- NEW: If a "Domain" option appears, enter: "minet.net."
+- Finally, click "Connect."
 
-La connexion et l'accès à Internet devrait se faire dans les secondes qui suivent. Dans le cas contraire, notez qu'un redémarrage peut-être nécessaire.
+The connection and internet access should be established within seconds. If not, please note that a restart may be necessary.
