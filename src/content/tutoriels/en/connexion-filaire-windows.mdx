@@ -1,95 +1,90 @@
 ---
 icon: windows
-title: Se connecter en filaire avec Windows
+title: Set up a PC with Windows for Wired Network
 category: en/wired
 ---
 import Alert from '@components/ui/Alert.astro';
 import KBD from '@components/ui/KBD.astro';
 
+## Prerequisites
 
-## Prérequis
+To register your devices on the MiNET network, you will need to add your MAC addresses to your account. If you don't know how to do this, don't hesitate to follow the tutorial "Add devices to your MiNET account," which will guide you through the process.
 
-Pour pouvoir enregistrer vos appareils sur le réseau MiNET, vous aurez besoin d'ajouter vos adresses MACs à votre compte. Si vous ne savez pas comment les entrer, n'hésitez pas à suivre le tutoriel "Ajouter des appareils à son compte MiNET" qui vous indiquera comment procéder.
+## Configure your PC with Windows 11 (Wired)
 
-## Configurer son PC sous Windows 11 (filaire)
-
-- Accédez au paramètres Windows
-- Réseau et Internet
-- En haut sur "Ethernet" cliquez sur Propriétés
-- Puis "se connecter"
-- Rentrez vos identifiants et ok
-- "se connecter"
-- Après un certain temps vous devriez être connectés à MiNET
+- Access Windows settings.
+- Go to Network & Internet.
+- Under "Ethernet," click on Properties.
+- Then click on "Connect."
+- Enter your credentials and click OK.
+- Click "Connect" again.
+- After some time, you should be connected to MiNET.
 
 <Alert type="danger">
-La dernière mise à jour de Windows 11 nécessite une configuration supplémentaire si vous n'arrivez pas à vous connecter :<br />
-Faites la combinaison de touches suivante : <KBD>Windows+R</KBD> et tapez ensuite `ncpa.cpl`.
+The latest Windows 11 update may require additional configuration if you can't connect: <br />
+Press the following key combination: <KBD>Windows+R</KBD> and then type `ncpa.cpl`.
 </Alert>
 
-Dans la fenêtre qui s'ouvre, il faut :
+In the window that opens, do the following:
 
-- Cliquez droit sur votre carte réseau filaire (identifiez-la grâce à sa marque : Intel, Asus, D-Link, ...)
-- Cliquez sur "Propriétés", une fenêtre s'ouvre
+- Right-click on your wired network card (identify it by its brand: Intel, Asus, D-Link, etc.).
+- Click on "Properties," and a new window will open.
 <br />
-- Dans l'onglet "Authentification"
-- Cochez l'utilisation de l'authentification 802.1X
-- Cliquez sur "Paramètres"
-- Décochez la case "Vérifier l'identité du serveur en validant le certificat"
-- Cochez l'utilisation de l'identité privée et entrez votre nom d'utilisateur MiNET
-- Cliquez sur "Configurer"
-- Assurez-vous que la case "Utiliser mon nom et mon mot de passe Windows..." est bien décochée
-- Validez les deux dernières fenêtres ouvertes en cliquant sur "OK"
+- In the "Authentication" tab,
+- Check the use of 802.1X authentication.
+- Click on "Settings."
+- Uncheck the "Validate server's identity by validating the certificate" option.
+- Check the use of private identity and enter your MiNET username.
+- Click on "Configure."
+- Ensure that the "Use my Windows logon name and password..." option is unchecked.
+- Validate the last two open windows by clicking "OK."
 <br />
-- De nouveau dans l'onglet "Authentification", cliquez sur "Paramètres supplémentaires"
-- Cochez l'option pour entrer soit même le couple identifiant / mot de passe pour se connecter
-- Sélectionnez dans la liste déroulante débloquée "Remplacer l'identification" (Windows 7) ou "Enregistrer identité" (Windows 8/8.1/10)
-- Une fenêtre s'ouvre. Entrez-y le couple identifiant / mot de passe que vous avez choisi lors de votre inscription à MiNET
-- Validez toutes les fenêtres ouvertes en cliquant sur "OK"
+- Back in the "Authentication" tab, click on "Additional settings."
+- Check the option to manually enter the username/password pair for connection.
+- Select "Replace the authentication" from the drop-down list (Windows 7) or "Register identity" (Windows 8/8.1/10).
+- A window will open. Enter the username/password pair you chose when registering with MiNET.
+- Validate all open windows by clicking "OK."
 
-Une fois ces étapes faites, il ne reste plus qu'à brancher votre câble RJ45 et vous devriez vous connecter automatiquement au réseau filaire MiNET. Remarquez que l'authentification peut prendre quelques secondes. Par ailleurs, un redémarrage du PC peut-être nécessaire.
+Once these steps are completed, all that remains is to plug in your RJ45 cable, and you should connect automatically to the MiNET wired network. Note that authentication may take a few seconds. Additionally, a PC restart may be required.
 
+## Configure Your PC on Windows (Wired)
 
+By following this tutorial, you will learn how to configure your computer on Windows 7/8/8.1/10 to benefit from a wired Internet connection to MiNET.
 
-## Configurer son PC sous Windows (filaire)
+### Activate the Correct Windows Service
 
-En suivant ce tutoriel, vous verrez comment configurer votre ordinateur sous Windows 7/8/8.1/10 afin de bénéficier d'une connexion Internet en filaire à MiNET.
+Press the following key combination: <KBD>Windows+R</KBD> and then type `services.msc`.
 
-### Activer le bon service Windows
+In the window that opens, do the following:
 
-Faites la combinaison de touches suivante : <KBD>Windows+R</KBD> et tapez ensuite `services.msc`.
+- Right-click on the "Wired Network Auto Configuration" service.
+- Click on "Properties," and a new window will open.
+- Verify that the selected service is correct; you should see "dot3svc" as the service name.
+- Choose "Automatic" as the startup type from the dropdown menu.
+- Click the "Start" button to start the service.
+- Confirm the changes by clicking "OK."
 
-Dans la fenêtre qui s'ouvre, il faut :
+Once this service is activated, you can now use a network that uses 802.1X authentication. All that's left is to configure the network card.
 
-- Cliquez droit sur le service "Configuration automatique de réseau câblés"
-- Cliquez sur "Propriétés", une fenêtre s'ouvre
-- Vérifiez que le service séléctionné est le bon, vous devez voir "dot3svc" comme nom de service
-- Choississez le type de démarrage "Automatique" dans le menu déroulant
-- Cliquez sur le bouton "Démarrer" pour démarrer le service
-- Validez les modifications en cliquant sur "OK"
+### Configure Your Network Card
 
-Une fois ce service activé, vous pouvez maintenant utiliser un réseau se servant du mode d'authentification 802.1X. Il ne reste plus qu'à configurer la carte réseau.
+Press the following key combination: <KBD>Windows+R</KBD> and then type `ncpa.cpl`.
 
+In the window that opens, do the following:
 
-### Configuration de votre carte réseau
-
-Faites la combinaison de touches suivante: <KBD>Windows+R</KBD> et tapez ensuite `ncpa.cpl`.
-
-Dans la fenêtre qui s'ouvre, il faut :
-
-- Cliquez droit sur votre carte réseau filaire (identifiez-la grâce à sa marque : Intel, Asus, D-Link, ...)
-- Cliquez sur "Propriétés", une fenêtre s'ouvre
+- Right-click on your wired network card (identify it by its brand: Intel, Asus, D-Link, etc.).
+- Click on "Properties," and a new window will open.
 <br />
-- Dans l'onglet "Authentification", cliquez sur "Paramètres"
-- Décochez la case "Vérifier l'identité du serveur en validant le certificat"
-- Cliquez sur "Configurer"
-- Assurez-vous que la case "Utiliser mon nom et mon mot de passe Windows..." est bien décochée
-- Validez les deux dernières fenêtres ouvertes en cliquant sur "OK"
+- In the "Authentication" tab, click on "Settings."
+- Uncheck the "Validate server's identity by validating the certificate" option.
+- Click on "Configure."
+- Ensure that the "Use my Windows logon name and password..." option is unchecked.
+- Validate the last two open windows by clicking "OK."
 <br />
-- De nouveau dans l'onglet "Authentification", cliquez sur "Paramètres supplémentaires"
-- Cochez l'option pour entrer soit même le couple identifiant / mot de passe pour se connecter
-- Sélectionnez dans la liste déroulante débloquée "Remplacer l'identification" (Windows 7) ou "Enregistrer identité" (Windows 8/8.1/10)
-- Une fenêtre s'ouvre. Entrez-y le couple identifiant / mot de passe que vous avez choisi lors de votre inscription à MiNET
-- Validez toutes les fenêtres ouvertes en cliquant sur "OK"
+- Back in the "Authentication" tab, click on "Additional settings."
+- Check the option to manually enter the username/password pair for connection.
+- Select "Replace the authentication" from the drop-down list (Windows 7) or "Register identity" (Windows 8/8.1/10).
+- A window will open. Enter the username/password pair you chose when registering with MiNET.
+- Validate all open windows by clicking "OK."
 
-Une fois ces étapes faites, il ne reste plus qu'à brancher votre câble RJ45, et vous devriez vous connecter automatiquement au réseau filaire MiNET. Remarquez que l'authentification peut prendre quelques secondes. Par ailleurs, un redémarrage du PC peut être nécessaire.
-
+Once these steps are completed, all that remains is to plug in your RJ45 cable, and you should connect automatically to the MiNET wired network. Note that authentication may take a few seconds. Additionally, a PC restart may be required.
