@@ -1,7 +1,7 @@
 ---
 icon: linux
 title: Set up a PC with Linux to use the wired network
-category: en/wired
+category: en/filaire
 ---
 
 ## Prerequisites

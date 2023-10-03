@@ -1,7 +1,7 @@
 ---
 icon: apple
 title: Connect a Mac to the MiNET Wired Network
-category: en/wired
+category: en/filaire
 ---
 
 ## Prerequisites
