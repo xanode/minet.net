@@ -1,20 +1,20 @@
 ---
 icon: apple
-title: Connecter un iPhone au réseau MiNET
+title: Connect an iPhone to the MiNET Network
 category: en/wifi
 ---
 
-## Prérequis
+## Prerequisites
 
-Pour pouvoir enregistrer vos appareils sur le réseau MiNET, vous aurez besoin d'ajouter vos adresses MAC à votre compte. Si vous ne savez pas comment les entrer, n'hésitez pas à suivre le tutoriel [Ajouter des appareils à son compte MiNET](/tutoriels/ajouter-des-appareils) qui vous indiquera comment procéder.
+To register your devices on the MiNET network, you will need to add your MAC addresses to your account. If you don't know how to do this, don't hesitate to follow the tutorial [Add devices to your MiNET account](/tutorials/add-devices), which will guide you through the process.
 
-## Connecter son iPhone
+## Connecting Your iPhone
 
-En suivant ce tutoriel, vous verrez comment configurer votre mobile afin de bénéficier d'une connexion Internet en WiFi à MiNET. Rendez-vous dans les paramètres WiFi du téléphone, et :
+By following this tutorial, you will learn how to configure your mobile device to benefit from a WiFi internet connection on MiNET. Go to the WiFi settings on your phone, and:
 
-- NOUVEAU : Avant de vous connecter, appuyez sur le bouton d'informations en face de "MiNET"
-- NOUVEAU : Décochez le champ "Adresse privée"
-- Revenez en arrière, et choisissez le réseau “MiNET”
-- Renseignez vos identifiants MiNET
-- Une fenêtre “Certificat” s'ouvre alors, appuyez sur “Se fier”
-- Vous êtes connecté ! L'accès à Internet devrait se faire dans les secondes qui suivent.
+- NEW: Before connecting, press the information button next to "MiNET."
+- NEW: Uncheck the "Private Address" field.
+- Go back and choose the "MiNET" network.
+- Enter your MiNET credentials.
+- A "Certificate" window will appear; press "Trust."
+- You are now connected! Internet access should be established within seconds.
