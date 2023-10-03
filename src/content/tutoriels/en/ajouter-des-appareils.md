@@ -1,7 +1,7 @@
 ---
 icon: question
 title: Adding new devices on your MiNET account
-category: en/pour-commencer
+category: en/getting-started
 ---
 
 ## Prerequisites
