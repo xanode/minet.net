@@ -1,11 +1,11 @@
 ---
 import { getStaticTranslations, getLangFromUrl, useTranslations } from "@i18n/utils";
-import CardSkew from "@components/ui/CardSkew.astro";
 import DiscoverCarousel from "@components/home/DiscoverCarousel.astro";
 import Icon from "@components/ui/Icon.astro";
 import JoinUsCard from "@components/home/JoinUsCard.astro";
 import TypingCursor from '@components/ui/TypingCursor.astro';
 import Layout from '@layouts/Layout.astro';
+
 
 export function getStaticPaths() {
 	return getStaticTranslations();
@@ -32,7 +32,7 @@ const t = useTranslations(lang);
 					<h2 class="text-xl lg:text-2xl font-normal text-neutral-500 tracking-tight max-w-3xl">
 						{t('index.subtitle')}
 					</h2>
-					<div class="flex flex-col lg:flex-row gap-8 self-center text-center text-sm lg:text-lg font-medium w-full">
+					<div class="flex flex-col lg:flex-row gap-8 self-center text-center text-sm lg:text-lg font-medium w-full max-w-xs lg:max-w-none">
 						<div class="basis-1/2 rounded-lg bg-white p-[1px]">
 							<a class="inline-block w-full rounded-lg bg-white hover:bg-black text-black hover:text-white px-4 py-3 duration-200" href="https://payment.minet.net/" target="_blank">
 								{t('index.subscribe-button')}
@@ -52,7 +52,7 @@ const t = useTranslations(lang);
 					<Icon className="absolute top-0 left-0 translate-x-1/2 translate-y-1/2 w-1/2 h-1/2" name="minet" />
 				</div>
 			</section>
-			<section class="relative flex flex-col items-center border-t border-b border-neutral-700 bg-neutral-900 w-screen -mt-40 lg:mt-20">
+			<section class="relative flex flex-col items-center border-t border-b border-neutral-700 bg-neutral-900 w-screen -mt-40 lg:mt-6">
 				<div class="flex flex-col md:flex-row items-center py-6 w-full max-w-8xl">
 					<div class="flex-grow text-center py-8 md:px-8 border-b-1 md:border-b-0 md:border-r-1 border-neutral-700 w-full lg:w-auto">
 						<p class="text-4xl lg:text-6xl leading-tight tracking-tighter font-bold bg-clip-text text-transparent bg-gradient-to-b from-white to-neutral-300">
@@ -80,7 +80,7 @@ const t = useTranslations(lang);
 					</div>
 					<div class="flex-grow text-center py-8 md:px-8">
 						<p class="text-4xl lg:text-6xl leading-tight tracking-tighter font-bold bg-clip-text text-transparent bg-gradient-to-b from-white to-neutral-300">
-							98 %
+							99.6 %
 						</p>
 						<span class="uppercase text-sm tracking-tighter text-neutral-400 font-semibold">
 							{t('index.statbar.uptime')}
