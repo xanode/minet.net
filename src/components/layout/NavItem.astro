@@ -6,6 +6,8 @@ interface Props {
 const { href, target } = Astro.props as Props;
 ---
 
-<a class="hover:text-sky-400 transition-colors" href={href} target={target}>
-    <slot />
-</a>
+<li class="hover:text-sky-400 transition-colors">
+    <a href={href} target={target}>
+        <slot />
+    </a>
+</li>
