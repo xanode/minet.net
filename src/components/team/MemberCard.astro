@@ -1,10 +1,11 @@
 ---
 import { getLangFromUrl, useTranslations } from '@i18n/utils';
+import type { ui, defaultLang } from "@i18n/ui";
 
 interface Props {
     name: string;
     pseudo: string;
-    role: string;
+    role: keyof typeof ui[typeof defaultLang];
     resignation?: boolean;
 }
 const { name, pseudo, role, resignation } = Astro.props;
@@ -28,6 +29,6 @@ const t = useTranslations(lang);
         </span>
     </div>
     <p class="font-medium max-w-xs">
-        {role}
+        {t(role)}
     </p>
 </div>
