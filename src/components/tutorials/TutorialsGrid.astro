@@ -1,4 +1,5 @@
 ---
+import CardSkew from "@components/ui/CardSkew.astro";
 import Icon from "@components/ui/Icon.astro";
 import type { CollectionEntry } from "astro:content";
 
@@ -8,16 +9,14 @@ interface Props {
 const { tutorials } = Astro.props;
 ---
 
-<div is="shining-grid" class="relative grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 m-6 w-fit h-fit" data-target="bounding">
+<div class="relative grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 m-6 w-fit h-fit" data-target="bounding">
     {tutorials.map(tutorial =>
-        <a class="flex flex-col gap-4 items-center justify-between text-neutral-200 text-center border rounded-2xl border-neutral-700 hover:border-neutral-500 transition-colors mask-shine-hover p-8 max-w-3xl" href={`/${tutorial.slug.split('/')[0]}/tutoriels/${tutorial.slug.split('/')[1]}/`}>
-            <div class="p-2 rounded-lg bg-white/5 w-fit">
-                <Icon name={tutorial.data.icon || "question"} className="w-8 h-8 fill-white/30" />
-            </div>
+        <a class="flex flex-col gap-4 items-center justify-between text-neutral-200 text-center rounded-2xl bg-neutral-900 border border-neutral-700 hover:border-neutral-500 transition-colors mask-shine-hover p-8 max-w-3xl" href={`/${tutorial.slug.split('/')[0]}/tutoriels/${tutorial.slug.split('/')[1]}/`}>
+            <Icon name={tutorial.data.icon || "question"} className="w-8 h-8 m-2 fill-neutral-500" />
             <h1 class="text-xl font-medium">
                 {tutorial.data.title}
             </h1>
-            <div data-target="shine" class="hidden lg:block absolute bottom-0 right-0 pointer-events-none -z-10 bg-white/40 w-48 h-48 blur-shine rounded-full transition-opacity duration-1200 mix-blend-soft-light will-change-transform"></div>
+            <div data-target="shine" class="hidden absolute bottom-0 right-0 pointer-events-none z-10 shadow-inner shadow-neutral-400 w-48 h-48 lur-2xl rounded-full transition-opacity duration-1200 ix-blend-soft-light will-change-transform"></div>
         </a>
     )}
 </div>
