@@ -65,9 +65,15 @@ const { dragSpeed, startIndex } = Astro.props;
         }
 
         updateCardPositions(target: number) {
-            if (target < 0 || target >= this.cards.length) return; // Handle invalid target index
+            if (target < 0) {
+                target = this.cards.length - 1; // Wrap to the last card when reaching the beginning
+            } else if (target >= this.cards.length) {
+                target = 0; // Wrap to the first card when reaching the end
+            }
+            
             const diff = this.startIndex - target;
             const cardWidth = this.cards[0].offsetWidth;
+
             this.cards[this.currentIndex].style.transform = 'scale(1)';
             this.carousel.style.transform = `translateX(${diff * (cardWidth + this.gap) + this.offset}px)`;
             this.cards[target].style.transform = 'scale(1.25)';
