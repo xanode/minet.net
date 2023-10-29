@@ -13,15 +13,15 @@ const t = useTranslations(lang);
 
 <discover-carousel>
     <div class="flex flex-col lg:flex-row items-center justify-between gap-2 text-2xl md:text-3xl text-white/50 mt-20">
-        <button class="hover:text-white/70 aria-selected:text-white" data-target="0">
+        <button class="hover:text-white/70 aria-current:text-white" data-target="0" aria-current="page">
             {t('index.discover.link0')}
         </button>
         <span class="hidden lg:flex grow shrink h-[1px] bg-gradient-to-r from-white/10 via-white/50 to-white/10"></span>
-        <button class="hover:text-white/70 aria-selected:text-white" data-target="1">
+        <button class="hover:text-white/70 aria-current:text-white" data-target="1">
             {t('index.discover.link1')}
         </button>
         <span class="hidden lg:flex grow shrink h-[1px] bg-gradient-to-r from-white/10 via-white/50 to-white/10"></span>
-        <button class="hover:text-white/70 aria-selected:text-white" data-target="2">
+        <button class="hover:text-white/70 aria-current:text-white" data-target="2">
             {t('index.discover.link2')}
         </button>
     </div>
@@ -87,7 +87,7 @@ const t = useTranslations(lang);
         connectedCallback() {
             // We set the first button as selected and the others as not selected
             this.selectors.forEach((selector, index) => {
-                selector.button.setAttribute("aria-selected", index === 0 ? "true" : "false");
+                //selector.button.setAttribute("aria-selected", index === 0 ? "true" : "false");
                 selector.card.setAttribute("aria-hidden", index === 0 ? "false" : "true");
             });
 
@@ -103,11 +103,11 @@ const t = useTranslations(lang);
         handleClick(selector: Selector) {
             // We set the clicked button as selected and the others as not selected
             this.selectors.forEach((selector) => {
-                selector.button.setAttribute("aria-selected", "false");
+                selector.button.removeAttribute("aria-current");
                 selector.card.setAttribute("aria-hidden", "true");
             });
 
-            selector.button.setAttribute("aria-selected", "true");
+            selector.button.setAttribute("aria-current", "page");
             selector.card.setAttribute("aria-hidden", "false");
         }
     }

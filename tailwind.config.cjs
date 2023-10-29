@@ -68,6 +68,9 @@ module.exports = {
 				'pulse-circle': 'pulse-circle 1800ms linear infinite both',
 				'typing': 'typing 1.5s linear infinite',
 			},
+			aria: {
+				'current': 'current="page"',
+			},
 			backgroundImage: {
 				'circle-after': 'linear-gradient(1.72deg,hsla(0,0%,100%,0) 8.89%,#7dd3fc 30.41%,#0ea5e9 50.24%,#0284c7 67.59%,hsla(0,0%,100%,0) 86.81%)',
 				'circle-before': 'linear-gradient(277deg,rgba(240,238,255,0) 1.13%,rgba(240,238,255,.05) 50.81%,rgba(240,238,255,0) 98.38%)',
