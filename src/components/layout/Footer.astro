@@ -12,11 +12,11 @@ const t = useTranslations(lang);
     <div class="flex flex-col gap-y-10 px-4 mx-auto max-w-8xl">
         <Icon className="h-20 w-auto fill-white self-start" name="minet" />
         <div class="flex flex-col md:flex-row place-content-between md:gap-x-4 text-white">
-            <div>
-                <ul class="marker:text-sky-400 list-disc font-normal text-white text-opacity-75 md:max-w-[255px]">
-                    <span class="block font-semibold text-white">
-                        {t('footer.issue')}
-                    </span>
+            <div class="font-normal text-white text-opacity-75 md:max-w-[255px]">
+                <div class="block font-semibold text-white">
+                    {t('footer.issue')}
+                </div>
+                <ul class="marker:text-sky-400 list-disc">
                     <li class="ml-3 pt-4">
                         {t('footer.see-status')}&nbsp;<a class="text-sky-400 hover:underline underline-offset-4" href="https://status.minet.net" target="_blank">{t('footer.see-status.link')}</a>.
                     </li>
