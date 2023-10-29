@@ -64,7 +64,7 @@ export const services: Service[] = [
     {
         name: 'services.hosting.name',
         description: 'services.hosting.description',
-        url: 'https://gitlab.minet.net/minet/hosting',
+        url: 'https://hosting.minet.net/',
         image: HostingLogoReference,
     },
 ]
