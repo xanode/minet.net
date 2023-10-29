@@ -1,17 +1,10 @@
 ---
 import { getStaticTranslations, getLangFromUrl, useTranslations } from "@i18n/utils";
+import { services } from "@libs/services";
 import AnimatedGradients from "@components/ui/AnimatedGradients.astro";
 import ServiceCard from "@components/services/ServiceCard.astro";
 import Layout from "@layouts/Layout.astro";
 
-import CryptpadLogoReference from "@assets/services/cryptpad.png";
-import EtherpadLogoReference from "@assets/services/etherpad.png";
-import FramadateLogoReference from "@assets/services/framadate.png";
-import GitlabLogoReference from "@assets/services/gitlab.png";
-import HostingLogoReference from "@assets/services/hosting.png";
-import LimesurveyLogoReference from "@assets/services/limesurvey.png";
-import MailmanLogoReference from "@assets/services/mailman.png";
-import WikiJSLogoReference from "@assets/services/wikijs.png";
 
 export function getStaticPaths() {
     return getStaticTranslations();
@@ -28,30 +21,11 @@ const t = useTranslations(lang);
             <div class="relative flex p-6">
                 <AnimatedGradients colors={["bg-purple-600", "bg-pink-600", "bg-sky-600"]} />
                 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-                    <ServiceCard image={CryptpadLogoReference} title={t('services.cryptpad.name')} href="https://cryptpad.minet.net/">
-                        {t('services.cryptpad.description')}
+                    {services.map(service =>
+                    <ServiceCard image={service.image} title={t(service.name)} href={service.url}>
+                        {t(service.description)}
                     </ServiceCard>
-                    <ServiceCard image={WikiJSLogoReference} title={t('services.wiki.name')} href="https://wiki.minet.net/">
-                        {t('services.wiki.description')}
-                    </ServiceCard>
-                    <ServiceCard image={FramadateLogoReference} title={t('services.framadate.name')} href="https://framadate.minet.net/">
-                        {t('services.framadate.description')}
-                    </ServiceCard>
-                    <ServiceCard image={LimesurveyLogoReference} title={t('services.survey.name')} href="https://sondage.minet.net/">
-                        {t('services.survey.description')}
-                    </ServiceCard>
-                    <ServiceCard image={GitlabLogoReference} title={t('services.gitlab.name')} href="https://gitlab.minet.net/">
-                        {t('services.gitlab.description')}
-                    </ServiceCard>
-                    <ServiceCard image={MailmanLogoReference} title={t('services.mailing-lists.name')} href="https://listes.minet.net/">
-                        {t('services.mailing-lists.description')}
-                    </ServiceCard>
-                    <ServiceCard image={EtherpadLogoReference} title={t('services.etherpad.name')} href="https://etherpad.minet.net/">
-                        {t('services.etherpad.description')}
-                    </ServiceCard>
-                    <ServiceCard image={HostingLogoReference} title={t('services.hosting.name')} href="https://hosting.minet.net/">
-                        {t('services.hosting.description')}
-                    </ServiceCard>
+                    )}
                 </div>
             </div>
         </section>
