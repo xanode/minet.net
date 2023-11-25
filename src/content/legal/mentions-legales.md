@@ -29,7 +29,7 @@ Cependant, les adhérents de l'association MiNET peuvent bénéficier des servic
 
 Tout site, quel qu'il soit, est autorisé à établir sans autorisation préalable un lien vers les informations diffusées sur ce site, sous réserve de ne pas utiliser la technique du lien profond, c'est-à-dire que les pages du site ne doivent pas être imbriquées à l'intérieur des pages d'un autre site, mais visibles par l'ouverture d'une fenêtre indépendante.
 
-Cette autorisation de mise en place d'un lien ne s'applique en aucun cas aux supports diffusant des informations à caractère pornographique ou pédophile, porter à la sécurité ou à l’intégrité d’un Etat ou d’un territoire, quel qu’il soit, inciter à la haine, à la violence, au suicide, au racisme, à l’antisémitisme, à la xénophobie, à l’homophobie, faire l’apologie des crimes de guerre ou des crimes contre l’humanité.
+Cette autorisation de mise en place d'un lien ne s'applique en aucun cas aux supports diffusant des informations à caractère pornographique ou pédophile, portant atteinte à la sécurité ou à l’intégrité d’un Etat ou d’un territoire, quel qu’il soit, incitant à la haine, à la violence, au suicide, au racisme, à l’antisémitisme, à la xénophobie, à l’homophobie, faisant l’apologie des crimes de guerre ou des crimes contre l’humanité.
 
 ## 5. Liens externes
 
