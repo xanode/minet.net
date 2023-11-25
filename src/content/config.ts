@@ -8,15 +8,22 @@ function zodEnumFromObjectKeys<K extends string>(obj: Record<K, any>): z.ZodEnum
 
 const categoriesCollection = defineCollection({
     type: 'data',
-    schema: ({ image }) => z.object({
+    schema: z.object({
         name: z.string(),
         description: z.string(),
     })
-})
+});
+
+const legalCollection = defineCollection({
+    type: 'content',
+    schema: z.object({
+        title: z.string(),
+    })
+});
 
 const tutorialsCollection = defineCollection({
     type: 'content',
-    schema: ({ image }) => z.object({
+    schema: z.object({
         icon: zodEnumFromObjectKeys(IconsDict).optional(),
         title: z.string(),
         category: reference('categories'),
@@ -25,5 +32,6 @@ const tutorialsCollection = defineCollection({
 
 export const collections = {
     'categories': categoriesCollection,
+    'legal': legalCollection,
     'tutoriels': tutorialsCollection,
 };
