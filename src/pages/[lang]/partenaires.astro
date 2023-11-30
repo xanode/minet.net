@@ -1,13 +1,8 @@
 ---
-import { Image } from "astro:assets";
 import { getStaticTranslations, getLangFromUrl, useTranslations } from "@i18n/utils";
+import { partners } from "@libs/partners";
+import PartnerCard from "@components/partners/PartnerCard.astro";
 import Layout from "@layouts/Layout.astro";
-
-import TelecomSudParisLogoReference from "@assets/partenaires/telecom-sudparis.png";
-import IMTBSLogoReference from "@assets/partenaires/imt-bs.png";
-import OrnessLogoReference from "@assets/partenaires/orness.png";
-import FlamsLogoReference from "@assets/partenaires/flams.png";
-import TakestyleLogoReference from "@assets/partenaires/takestyle.png";
 
 export function getStaticPaths() {
 	return getStaticTranslations();
@@ -22,41 +17,11 @@ const t = useTranslations(lang);
         <section class="relative flex flex-col items-center gap-40 text-white max-w-8xl mx-auto">
             <h1 class="text-5xl md:text-6xl font-bold text-center">{t('partners.title')}</h1>
             <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                <div class="flex flex-col items-center justify-between gap-10 p-6 border border-white/10 hover:border-white/50 transition-colors duration-200">
-                    <Image src={TelecomSudParisLogoReference} alt="Logo de Télécom SudParis" class="max-h-64 w-auto" />
-                    <h2 class="text-2xl font-bold">{t('partners.tsp.name')}</h2>
-                    <p class="text-center text-neutral-500">
-                        {t('partners.tsp.description')}
-                    </p>
-                </div>
-                <div class="flex flex-col items-center justify-between gap-10 p-6 border border-white/10 hover:border-white/50 transition-colors duration-200">
-                    <Image src={IMTBSLogoReference} alt="Logo d'IMT-BS" class="max-h-64 w-auto" />
-                    <h2 class="text-2xl font-bold">{t('partners.imtbs.name')}</h2>
-                    <p class="text-center text-neutral-500">
-                        {t('partners.imtbs.description')}
-                    </p>
-                </div>
-                <div class="flex flex-col items-center justify-between gap-10 p-6 border border-white/10 hover:border-white/50 transition-colors duration-200">
-                    <Image src={OrnessLogoReference} alt="Logo d'Orness" class="max-h-64 w-auto" />
-                    <h2 class="text-2xl font-bold">{t('partners.orness.name')}</h2>
-                    <p class="text-center text-neutral-500">
-                        {t('partners.orness.description')}
-                    </p>
-                </div>
-                <div class="flex flex-col items-center justify-between gap-10 p-6 border border-white/10 hover:border-white/50 transition-colors duration-200">
-                    <Image src={FlamsLogoReference} alt="Logo du Flams" class="max-h-64 w-auto" />
-                    <h2 class="text-2xl font-bold">{t('partners.flams.name')}</h2>
-                    <p class="text-center text-neutral-500">
-                        {t('partners.flams.description')}
-                    </p>
-                </div>
-                <div class="flex flex-col items-center justify-between gap-10 p-6 border border-white/10 hover:border-white/50 transition-colors duration-200">
-                    <Image src={TakestyleLogoReference} alt="Logo de Takestyle" class="max-h-64 w-auto" />
-                    <h2 class="text-2xl font-bold">{t('partners.takestyle.name')}</h2>
-                    <p class="text-center text-neutral-500">
-                        {t('partners.takestyle.description')}
-                    </p>
-                </div>
+                {partners.map(partner =>
+                <PartnerCard image={partner.image} name={t(partner.name)}>
+                    {t(partner.description)}
+                </PartnerCard>
+                )}
             </div>
         </section>
     </main>
