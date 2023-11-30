@@ -32,7 +32,7 @@ const t = useTranslations(lang);
 					<TeamCarousel startIndex={7}>
 						{activeTeam.members.map(member =>
 						<li>
-							<TeamCard image={member.image as ImageMetadata} name={member.name} role={t(member.role) as string} pseudo={member.pseudo} />
+							<TeamCard image={member.image as ImageMetadata} name={member.name} role={t(member.role) as string} pseudo={member.pseudo} resignation={member.hasResigned} />
 						</li>
 						)}
 					</TeamCarousel>
