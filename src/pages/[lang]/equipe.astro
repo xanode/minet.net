@@ -1,6 +1,6 @@
 ---
 import { getStaticTranslations, getLangFromUrl, useTranslations } from '@i18n/utils';
-import { teams } from "@libs/team";
+import { activeTeam, teams } from "@libs/team";
 import MemberCard from '@components/team/MemberCard.astro';
 import OldMembersSection from '@components/team/OldMembersSection.astro';
 import PulseCircles from '@components/team/PulseCircles.astro';
@@ -8,20 +8,6 @@ import TeamCard from '@components/team/TeamCard.astro';
 import TeamCarousel from '@components/team/TeamCarousel.astro';
 import Layout from '@layouts/Layout.astro';
 
-import RespoWifiReference from "@assets/equipe/tim.png";
-import RespoFormations1Reference from "@assets/equipe/val.png";
-import RespoFormations2Reference from "@assets/equipe/louis.png";
-import RespoWebReference from "@assets/equipe/thomas.png";
-import TresorierReference from "@assets/equipe/baptiste.png";
-import VicePresident1Reference from "@assets/equipe/tom.png";
-import RespoInventaireReference from "@assets/equipe/mathis.png";
-import SecretaireReference from "@assets/equipe/esteban.png";
-import RespoClubsReference from "@assets/equipe/chabane.png";
-import RespoCommunication1Reference from "@assets/equipe/raph.png";
-import PresidentReference from "@assets/equipe/nicolasp.png";
-import RespoCommunication2Reference from "@assets/equipe/juliette.png";
-import VicePresident2Reference from "@assets/equipe/nicolasvp.png";
-import RespoREReference from "@assets/equipe/yasmine.png";
 
 export function getStaticPaths() {
 	return getStaticTranslations();
@@ -44,48 +30,11 @@ const t = useTranslations(lang);
 					</p>
 					<PulseCircles />
 					<TeamCarousel startIndex={7}>
+						{activeTeam.members.map(member =>
 						<li>
-							<TeamCard image={RespoREReference} name="Yasmine Aluch" role={t('team.role.corporate') as string} pseudo="samayass" />
+							<TeamCard image={member.image as ImageMetadata} name={member.name} role={t(member.role) as string} pseudo={member.pseudo} />
 						</li>
-						<li>
-							<TeamCard image={RespoClubsReference} name="Chabane Petit" role={t('team.role.clubs') as string} pseudo="lowengeist" />
-						</li>
-						<li>
-							<TeamCard image={RespoCommunication1Reference} name="Raphaël Bachelier" role={t('team.role.communication') as string} pseudo="ptitegame" />
-						</li>
-						<li>
-							<TeamCard image={RespoWebReference} name="Thomas Robert" role={t('team.role.web') as string} pseudo="toyohr" />
-						</li>
-						<li>
-							<TeamCard image={RespoFormations1Reference} name="Valentin Lantigny" role={t('team.role.formations') as string} pseudo="valt" />
-						</li>
-						<li>
-							<TeamCard image={SecretaireReference} name="Esteban Dectot" role={t('team.role.secretary') as string} pseudo="greemty" />
-						</li>
-						<li>
-							<TeamCard image={VicePresident1Reference} name="Tom Burellier" role={t('team.role.vp') as string} pseudo="balmine" />
-						</li>
-						<li>
-							<TeamCard image={PresidentReference} name="Nicolas Rocq" role={t('team.role.president') as string} pseudo="nishogi" />
-						</li>
-						<li>
-							<TeamCard image={VicePresident2Reference} name="Nicolas Renout" role={t('team.role.vp') as string} pseudo="naincapable" />
-						</li>
-						<li>
-							<TeamCard image={TresorierReference} name="Baptiste Legros" role={t('team.role.treasurer') as string} pseudo="direshaw" />
-						</li>
-						<li>
-							<TeamCard image={RespoFormations2Reference} name="Louis Delyon" role={t('team.role.formations') as string} pseudo="rustace" />
-						</li>
-						<li>
-							<TeamCard image={RespoWifiReference} name="Timothée Mathubert" role={t('team.role.wifi') as string} pseudo="xhelozs" />
-						</li>
-						<li>
-							<TeamCard image={RespoCommunication2Reference} name="Juliette Bourdiau" role={t('team.role.communication') as string} pseudo="jouliet" />
-						</li>
-						<li>
-							<TeamCard image={RespoInventaireReference} name="Mathis Williot" role={t('team.role.inventory') as string} pseudo="jflyxx" />
-						</li>
+						)}
 					</TeamCarousel>
 				</div>
 			</section>

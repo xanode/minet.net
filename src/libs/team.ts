@@ -1,15 +1,53 @@
+import type { ImageMetadata } from "astro";
 import type { ui, defaultLang } from "@i18n/ui";
+
+import RespoWifiReference from "@assets/equipe/tim.png";
+import RespoFormations1Reference from "@assets/equipe/val.png";
+import RespoFormations2Reference from "@assets/equipe/louis.png";
+import RespoWebReference from "@assets/equipe/thomas.png";
+import TresorierReference from "@assets/equipe/baptiste.png";
+import VicePresident1Reference from "@assets/equipe/tom.png";
+import RespoInventaireReference from "@assets/equipe/mathis.png";
+import SecretaireReference from "@assets/equipe/esteban.png";
+import RespoClubsReference from "@assets/equipe/chabane.png";
+import RespoCommunication1Reference from "@assets/equipe/raph.png";
+import PresidentReference from "@assets/equipe/nicolasp.png";
+import RespoCommunication2Reference from "@assets/equipe/juliette.png";
+import VicePresident2Reference from "@assets/equipe/nicolasvp.png";
+import RespoREReference from "@assets/equipe/yasmine.png";
+
 
 interface Member {
     name: string;
     pseudo: string;
     role: keyof typeof ui[typeof defaultLang];
     hasResigned?: boolean;
+    image?: ImageMetadata;
 }
 
 interface Team {
     mandate: string;
     members: Member[];
+}
+
+export const activeTeam: Team = {
+    mandate: "2023-2024",
+    members: [
+        {name: "Yasmine Aluch", pseudo: "samayass", role: 'team.role.corporate', hasResigned: true, image: RespoREReference},
+        {name: "Chabane Petit", pseudo: "lowengeist", role: 'team.role.clubs', image: RespoClubsReference},
+        {name: "Raphaël Bachelier", pseudo: "ptitegame", role: 'team.role.communication', image: RespoCommunication1Reference},
+        {name: "Thomas Robert", pseudo: "toyohr", role: 'team.role.web', image: RespoWebReference},
+        {name: "Valentin Lantigny", pseudo: "valt", role: 'team.role.formations', image: RespoFormations1Reference},
+        {name: "Esteban Dectot", pseudo: "greemty", role: 'team.role.secretary', image: SecretaireReference},
+        {name: "Tom Burellier", pseudo: "balmine", role: 'team.role.vp', image: VicePresident1Reference},
+        {name: "Nicolas Rocq", pseudo: "nishogi", role: 'team.role.president', image: PresidentReference},
+        {name: "Nicolas Renout", pseudo: "naincapable", role: 'team.role.vp', image: VicePresident2Reference},
+        {name: "Baptiste Legros", pseudo: "direshaw", role: 'team.role.treasurer', image: TresorierReference},
+        {name: "Louis Delyon", pseudo: "rustace", role: 'team.role.formations', image: RespoFormations2Reference},
+        {name: "Timothée Mathubert", pseudo: "xhelozs", role: 'team.role.wifi', image: RespoWifiReference},
+        {name: "Juliette Bourdiau", pseudo: "jouliet", role: 'team.role.communication', image: RespoCommunication2Reference},
+        {name: "Mathis Williot", pseudo: "jflyxx", role: 'team.role.inventory', image: RespoInventaireReference},
+    ]
 }
 
 export const teams: Team[] = [
