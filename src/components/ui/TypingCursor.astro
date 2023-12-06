@@ -1,9 +1,8 @@
 ---
 interface Props {
-    minHeight?: string;
     strings: readonly string[];
 }
-const { minHeight, strings } = Astro.props;
+const { strings } = Astro.props;
 
 const dataStrings = JSON.stringify(strings);
 ---
