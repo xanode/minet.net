@@ -54,6 +54,13 @@ const { dragSpeed, startIndex } = Astro.props;
             this.querySelector('[data-name="right"]')!.addEventListener('click', () => {
                 this.updateCardPositions(this.currentIndex + 1);
             });
+            document.addEventListener('keydown', (event) => {
+                if (event.key === 'ArrowLeft') {
+                    this.updateCardPositions(this.currentIndex - 1);
+                } else if (event.key === 'ArrowRight') {
+                    this.updateCardPositions(this.currentIndex + 1);
+                }
+            });
             this.updateCardPositions(this.currentIndex);
 
             window.addEventListener('resize', this.handleResize.bind(this));
