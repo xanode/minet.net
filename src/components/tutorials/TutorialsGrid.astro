@@ -1,5 +1,4 @@
 ---
-import CardSkew from "@components/ui/CardSkew.astro";
 import Icon from "@components/ui/Icon.astro";
 import type { CollectionEntry } from "astro:content";
 
@@ -85,7 +84,7 @@ const { tutorials } = Astro.props;
 
         handleMouseLeave() {
             this.animationTargets.shouldAnimate = false;
-            this.shines?.forEach((shine, index) => {
+            this.shines?.forEach((shine, _) => {
                 shine.style.opacity = '0';
             });
         }
