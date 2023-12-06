@@ -21,6 +21,8 @@ const { dragSpeed, startIndex } = Astro.props;
 </div>
 
 <script>
+    import { debounce } from '@libs/utils';
+
     class TeamCarousel extends HTMLDivElement {
         startIndex: number = 0; // The index of the card that is in the center at the start
         currentIndex: number = 0; // The index of the card that is currently in the center
@@ -79,20 +81,22 @@ const { dragSpeed, startIndex } = Astro.props;
                 this.updateCardPositions(this.currentIndex + 1);
             });
 
-            // Add keydown event listeners to move to the previous or next card when the left or right arrow keys are pressed
-            document.addEventListener('keydown', (event) => {
-                if (event.key === 'ArrowLeft') {
-                    this.updateCardPositions(this.currentIndex - 1);
-                } else if (event.key === 'ArrowRight') {
-                    this.updateCardPositions(this.currentIndex + 1);
-                }
-            });
+            // Add keydown event listener to move to the previous or next card when the left or right arrow keys are pressed
+            document.addEventListener('keydown', debounce(this.handleKeydown.bind(this), 100));
 
             // Update the offset when the window is resized
             window.addEventListener('resize', this.handleResize.bind(this));
 
             // Set the initial card positions
             this.updateCardPositions(this.currentIndex);
+        }
+
+        handleKeydown(event: KeyboardEvent) {
+            if (event.key === 'ArrowLeft') {
+                this.updateCardPositions(this.currentIndex - 1);
+            } else if (event.key === 'ArrowRight') {
+                this.updateCardPositions(this.currentIndex + 1);
+            }
         }
 
         handleResize() {
