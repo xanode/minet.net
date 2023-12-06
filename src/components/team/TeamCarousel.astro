@@ -8,27 +8,27 @@ interface Props {
 const { dragSpeed, startIndex } = Astro.props;
 ---
 
-<div is="team-carousel" class="relative mt-16 md:mt-20 overflow-hidden w-screen py-16 px-4" data-dragspeed={dragSpeed} data-startindex={startIndex}>
-    <button data-name="left" class="group absolute top-40 left-1/12 rounded-full border border-neutral-700 lg:backdrop-blur-sm hover:-translate-x-2 duration-500 px-3 py-5 sm:py-6 z-40">
+<div is="team-carousel" class="group relative mt-16 md:mt-20 overflow-hidden w-screen py-16 px-4" data-dragspeed={dragSpeed} data-startindex={startIndex}>
+    <button data-name="left" class="lg:opacity-0 group-hover:opacity-100 group absolute top-40 left-1/12 rounded-full border border-neutral-700 lg:backdrop-blur-sm hover:-translate-x-2 duration-500 px-3 py-5 sm:py-6 z-40">
         <Icon className="w-8 sm:w-12 h-auto stroke-[1.5] stroke-sky-400" name="left-arrow" />
     </button>
     <ul class="relative flex gap-4 transition-transform duration-300">
         <slot />
     </ul>
-    <button data-name="right" class="group absolute top-40 right-1/12 rounded-full border border-neutral-700 lg:backdrop-blur-sm hover:translate-x-2 duration-500 px-3 py-5 sm:py-6 z-40">
+    <button data-name="right" class="lg:opacity-0 group-hover:opacity-100 group absolute top-40 right-1/12 rounded-full border border-neutral-700 lg:backdrop-blur-sm hover:translate-x-2 duration-500 px-3 py-5 sm:py-6 z-40">
         <Icon className="w-8 sm:w-12 h-auto stroke-[1.5] stroke-sky-400" name="right-arrow" />
     </button>
 </div>
 
 <script>
     class TeamCarousel extends HTMLDivElement {
-        startIndex: number = 0;
-        currentIndex: number = 0;
-        cards: Array<HTMLLIElement>;
-        dragSpeed: number = 0.3;
-        offset: number = 0;
-        gap: number = 0;
-        carousel: HTMLUListElement;
+        startIndex: number = 0; // The index of the card that is in the center at the start
+        currentIndex: number = 0; // The index of the card that is currently in the center
+        cards: Array<HTMLLIElement>; // The cards in the carousel
+        dragSpeed: number = 0.3; // The speed of the transition when dragging
+        offset: number = 0; // The offset to center the cards
+        gap: number = 0; // The gap between the cards in pixels
+        carousel: HTMLUListElement; // The carousel element
 
         constructor() {
             super();
@@ -39,21 +39,47 @@ const { dragSpeed, startIndex } = Astro.props;
         }
 
         connectedCallback() {
+            /// Initialize variables ///
             this.currentIndex = parseInt(this.dataset.startindex ?? '0'); // Set the current index to the start index given in the HTML
             this.gap = parseFloat(window.getComputedStyle(this.carousel).gap.replace('px', '')) || 0; // Get the gap between the cards
-            this.offset = this.carousel.getBoundingClientRect().width/2 - (this.cards[0].offsetWidth + this.gap)/2; // Calculate the offset to center the cards
+            /*
+             * The offset is the distance that the cards need to be translated to center the cards.
+             * The offset is calculated by taking the width of the carousel, dividing it by 2, and subtracting half of the width of a card and half of the gap.
+             * 
+             * Here is a visual representation of the offset (with startIndex=4):
+             * 
+             * +----------------------------The carousel---------------------------------+
+             * |                                                                         |
+             * |------------------------------------|: carousel width/2                  |
+             * |                                |---|: (card width + gap)/2              |
+             * |  +---+   +---+   +---+   +---+   +---+   +---+   +---+   +---+   +---+  |
+             * |  | 0 |   | 1 |   | 2 |   | 3 |   | 4 |   | 5 |   | 6 |   | 7 |---| 8 |<-|--- a card
+             * |  +---+   +---+   +---+   +---+   +---+   +---+   +---+   +---+ ^ +---+  |
+             * |                                                                |        |
+             * |--------------------------------|: offset                       +--------|--- the gap (the distance between the cards)
+             * |                                                                         |
+             * +-------------------------------------------------------------------------+
+             */
+            this.offset = this.carousel.getBoundingClientRect().width/2 - (this.cards[0].offsetWidth + this.gap)/2;
+
+            /// Add event listeners ///
+            // Add a click event listener to each card to move to that card when clicked
             this.cards.forEach((card, index) => {
                 card.style.transitionDuration = `${this.dragSpeed}s`;
                 card.addEventListener('click', () => {
                     this.updateCardPositions(index);
                 });
             });
+
+            // Add click event listeners to the left and right buttons to move to the previous or next card
             this.querySelector('[data-name="left"]')!.addEventListener('click', () => {
                 this.updateCardPositions(this.currentIndex - 1);
             });
             this.querySelector('[data-name="right"]')!.addEventListener('click', () => {
                 this.updateCardPositions(this.currentIndex + 1);
             });
+
+            // Add keydown event listeners to move to the previous or next card when the left or right arrow keys are pressed
             document.addEventListener('keydown', (event) => {
                 if (event.key === 'ArrowLeft') {
                     this.updateCardPositions(this.currentIndex - 1);
@@ -61,9 +87,12 @@ const { dragSpeed, startIndex } = Astro.props;
                     this.updateCardPositions(this.currentIndex + 1);
                 }
             });
-            this.updateCardPositions(this.currentIndex);
 
+            // Update the offset when the window is resized
             window.addEventListener('resize', this.handleResize.bind(this));
+
+            // Set the initial card positions
+            this.updateCardPositions(this.currentIndex);
         }
 
         handleResize() {
