@@ -1,6 +1,5 @@
 ---
 import { Image } from "astro:assets";
-import { getLangFromUrl, useTranslations } from '@i18n/utils';
 import type { ImageMetadata } from "astro";
 
 interface Props {
@@ -11,9 +10,6 @@ interface Props {
     resignation?: boolean;
 }
 const { image, role, name, pseudo, resignation } = Astro.props;
-
-const lang = getLangFromUrl(Astro.url);
-const t = useTranslations(lang);
 ---
 
 {!resignation &&
