@@ -32,10 +32,11 @@ const { dragSpeed, startIndex } = Astro.props;
         gap: number = 0; // The gap between the cards in pixels
         carousel: HTMLUListElement; // The carousel element
         translation: number = 0; // The current translation of the carousel
+        isMouseDown: boolean = false; // Whether the mouse is down
         isDragging: boolean = false; // Whether the user is dragging the carousel
         startX: number = 0; // The x position of the mouse when the user starts dragging
         currentX: number = 0; // The current x position of the mouse when the user is dragging
-        noClick: boolean = false; // Whether the user stop dragging the carousel
+        justFinishedDragging: boolean = false; // Whether the user just finished dragging the carousel
 
 
         constructor() {
@@ -75,11 +76,8 @@ const { dragSpeed, startIndex } = Astro.props;
             this.cards.forEach((card, index) => {
                 card.style.transitionDuration = `${this.dragSpeed}s`;
                 card.addEventListener('click', () => {
-                    if (this.noClick) {
-                        this.noClick = false;
-                        return;
-                    }
-                    this.updateCardPositions(index);
+                    !this.justFinishedDragging && this.updateCardPositions(index);
+                    this.justFinishedDragging = false;
                 });
             });
 
@@ -97,12 +95,8 @@ const { dragSpeed, startIndex } = Astro.props;
             // Add mousedown event listener to start dragging the carousel
             this.carousel.addEventListener('mousedown', (event: MouseEvent) => {
                 event.preventDefault();
-                this.isDragging = true;
+                this.isMouseDown = true;
                 this.startX = event.clientX;
-                // Stop CSS animations
-                this.carousel.classList.remove('duration-300');
-                this.carousel.classList.add('duration-0');
-                this.style.cursor = 'grabbing';
             });
             this.carousel.addEventListener('mousemove', this.handleDragging.bind(this));
             this.carousel.addEventListener('mouseup', this.handleMouseup.bind(this));
@@ -113,10 +107,15 @@ const { dragSpeed, startIndex } = Astro.props;
             // Set the initial card positions
             this.updateCardPositions(this.currentIndex);
         }
-        
+
         handleDragging(event: MouseEvent) {
-            if (!this.isDragging) return;
+            if (!this.isMouseDown) return;
+            this.isDragging = true;
             event.preventDefault();
+            // Stop CSS animations
+            this.carousel.classList.remove('duration-300');
+            this.carousel.classList.add('duration-0');
+            this.style.cursor = 'grabbing';
             this.currentX = event.clientX;
             const diff = this.currentX - this.startX;
             this.translation += diff;
@@ -133,8 +132,10 @@ const { dragSpeed, startIndex } = Astro.props;
         }
 
         handleMouseup() {
+            this.isMouseDown = false;
+            if (!this.isDragging) return;
             this.isDragging = false;
-            this.noClick = true;
+            this.justFinishedDragging = true;
             this.carousel.classList.remove('duration-0');
             this.carousel.classList.add('duration-300');
             this.style.cursor = 'grab';
@@ -151,7 +152,6 @@ const { dragSpeed, startIndex } = Astro.props;
         }
 
         updateCardPositions(target: number) {
-            console.log(`Updating card positions to ${target}`);
             if (target < 0) {
                 target = this.cards.length - 1; // Wrap to the last card when reaching the beginning
             } else if (target >= this.cards.length) {
