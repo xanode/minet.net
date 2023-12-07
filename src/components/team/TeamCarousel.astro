@@ -31,6 +31,12 @@ const { dragSpeed, startIndex } = Astro.props;
         offset: number = 0; // The offset to center the cards
         gap: number = 0; // The gap between the cards in pixels
         carousel: HTMLUListElement; // The carousel element
+        translation: number = 0; // The current translation of the carousel
+        isDragging: boolean = false; // Whether the user is dragging the carousel
+        startX: number = 0; // The x position of the mouse when the user starts dragging
+        currentX: number = 0; // The current x position of the mouse when the user is dragging
+        noClick: boolean = false; // Whether the user stop dragging the carousel
+
 
         constructor() {
             super();
@@ -69,6 +75,10 @@ const { dragSpeed, startIndex } = Astro.props;
             this.cards.forEach((card, index) => {
                 card.style.transitionDuration = `${this.dragSpeed}s`;
                 card.addEventListener('click', () => {
+                    if (this.noClick) {
+                        this.noClick = false;
+                        return;
+                    }
                     this.updateCardPositions(index);
                 });
             });
@@ -82,13 +92,36 @@ const { dragSpeed, startIndex } = Astro.props;
             });
 
             // Add keydown event listener to move to the previous or next card when the left or right arrow keys are pressed
-            document.addEventListener('keydown', debounce(this.handleKeydown.bind(this), 100));
+            document.addEventListener('keydown', debounce(this.handleKeydown.bind(this), 100)); // Debounce the event listener to prevent spamming, events will be fired at most once every 100ms
+
+            // Add mousedown event listener to start dragging the carousel
+            this.carousel.addEventListener('mousedown', (event: MouseEvent) => {
+                event.preventDefault();
+                this.isDragging = true;
+                this.startX = event.clientX;
+                // Stop CSS animations
+                this.carousel.classList.remove('duration-300');
+                this.carousel.classList.add('duration-0');
+                this.style.cursor = 'grabbing';
+            });
+            this.carousel.addEventListener('mousemove', this.handleDragging.bind(this));
+            this.carousel.addEventListener('mouseup', this.handleMouseup.bind(this));
 
             // Update the offset when the window is resized
             window.addEventListener('resize', this.handleResize.bind(this));
 
             // Set the initial card positions
             this.updateCardPositions(this.currentIndex);
+        }
+        
+        handleDragging(event: MouseEvent) {
+            if (!this.isDragging) return;
+            event.preventDefault();
+            this.currentX = event.clientX;
+            const diff = this.currentX - this.startX;
+            this.translation += diff;
+            this.carousel.style.transform = `translateX(${this.translation}px)`;
+            this.startX = this.currentX;
         }
 
         handleKeydown(event: KeyboardEvent) {
@@ -99,12 +132,26 @@ const { dragSpeed, startIndex } = Astro.props;
             }
         }
 
+        handleMouseup() {
+            this.isDragging = false;
+            this.noClick = true;
+            this.carousel.classList.remove('duration-0');
+            this.carousel.classList.add('duration-300');
+            this.style.cursor = 'grab';
+
+            // Compute the index of the card that is currently nearest to the center
+            const cardWidth = this.cards[0].offsetWidth;
+            const diff = Math.round((this.offset - this.translation) / (cardWidth + this.gap));
+            this.updateCardPositions(diff);
+        }
+
         handleResize() {
             this.offset = this.carousel.getBoundingClientRect().width/2 - (this.cards[0].offsetWidth + this.gap)/2; // Calculate the offset to center the cards
             this.updateCardPositions(this.currentIndex);
         }
 
         updateCardPositions(target: number) {
+            console.log(`Updating card positions to ${target}`);
             if (target < 0) {
                 target = this.cards.length - 1; // Wrap to the last card when reaching the beginning
             } else if (target >= this.cards.length) {
@@ -115,7 +162,8 @@ const { dragSpeed, startIndex } = Astro.props;
             const cardWidth = this.cards[0].offsetWidth;
 
             this.cards[this.currentIndex].style.transform = 'scale(1)';
-            this.carousel.style.transform = `translateX(${diff * (cardWidth + this.gap) + this.offset}px)`;
+            this.translation = diff * (cardWidth + this.gap) + this.offset;
+            this.carousel.style.transform = `translateX(${this.translation}px)`;
             this.cards[target].style.transform = 'scale(1.25)';
             this.currentIndex = target;
         }
