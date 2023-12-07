@@ -30,14 +30,7 @@ const roundedClass = roundedClasses[rounded];
 </a>
 
 <script>
-    // Helper function to debounce a function call
-    function debounce(func: Function, delay: number) {
-        let timeoutId: number;
-        return function (this: any, ...args: any[]) {
-            clearTimeout(timeoutId);
-            timeoutId = setTimeout(() => func.apply(this, args), delay);
-        };
-    }
+    import { debounce } from "@libs/utils";
 
     class ButtonAction extends HTMLAnchorElement {
         rect: DOMRect;
