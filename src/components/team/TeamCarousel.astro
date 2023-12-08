@@ -23,6 +23,17 @@ const { dragSpeed, startIndex } = Astro.props;
 <script>
     import { debounce } from '@libs/utils';
 
+    /**
+     * A custom element that represents a carousel of cards.
+     * 
+     * The carousel is a horizontal list of cards that can be dragged to the left or right.
+     * When the user stops dragging, the carousel will move to the card that is nearest to the center.
+     * The carousel can also be navigated using the left and right arrow keys.
+     * 
+     * The carousel can be customized using the following attributes:
+     * - data-dragspeed: The speed of the transition when dragging the carousel (default: 0.3)
+     * - data-startindex: The index of the card that is in the center at the start (default: 0)
+     */
     class TeamCarousel extends HTMLDivElement {
         startIndex: number = 0; // The index of the card that is in the center at the start
         currentIndex: number = 0; // The index of the card that is currently in the center
@@ -47,28 +58,32 @@ const { dragSpeed, startIndex } = Astro.props;
             this.dragSpeed = parseFloat(this.dataset.dragspeed ?? '0.3');
         }
 
+        /**
+         * Called when the component is connected to the DOM.
+         * It initializes the variables and adds event listeners.
+         * 
+         * The offset is calculated by taking the width of the carousel, dividing it by 2, and subtracting half of the width of a card and half of the gap.
+         * 
+         * Here is a visual representation of the offset (with startIndex=4):
+         * 
+         * +----------------------------The carousel---------------------------------+
+         * |                                                                         |
+         * |------------------------------------|: carousel width/2                  |
+         * |                                |---|: (card width + gap)/2              |
+         * |  +---+   +---+   +---+   +---+   +---+   +---+   +---+   +---+   +---+  |
+         * |  | 0 |   | 1 |   | 2 |   | 3 |   | 4 |   | 5 |   | 6 |   | 7 |---| 8 |<-|--- a card
+         * |  +---+   +---+   +---+   +---+   +---+   +---+   +---+   +---+ ^ +---+  |
+         * |                                                                |        |
+         * |--------------------------------|: offset                       +--------|--- the gap (the distance between the cards)
+         * |                                                                         |
+         * +-------------------------------------------------------------------------+
+         * 
+         * @returns {void}
+         */
         connectedCallback() {
             /// Initialize variables ///
             this.currentIndex = parseInt(this.dataset.startindex ?? '0'); // Set the current index to the start index given in the HTML
             this.gap = parseFloat(window.getComputedStyle(this.carousel).gap.replace('px', '')) || 0; // Get the gap between the cards
-            /*
-             * The offset is the distance that the cards need to be translated to center the cards.
-             * The offset is calculated by taking the width of the carousel, dividing it by 2, and subtracting half of the width of a card and half of the gap.
-             * 
-             * Here is a visual representation of the offset (with startIndex=4):
-             * 
-             * +----------------------------The carousel---------------------------------+
-             * |                                                                         |
-             * |------------------------------------|: carousel width/2                  |
-             * |                                |---|: (card width + gap)/2              |
-             * |  +---+   +---+   +---+   +---+   +---+   +---+   +---+   +---+   +---+  |
-             * |  | 0 |   | 1 |   | 2 |   | 3 |   | 4 |   | 5 |   | 6 |   | 7 |---| 8 |<-|--- a card
-             * |  +---+   +---+   +---+   +---+   +---+   +---+   +---+   +---+ ^ +---+  |
-             * |                                                                |        |
-             * |--------------------------------|: offset                       +--------|--- the gap (the distance between the cards)
-             * |                                                                         |
-             * +-------------------------------------------------------------------------+
-             */
             this.offset = this.carousel.getBoundingClientRect().width/2 - (this.cards[0].offsetWidth + this.gap)/2;
 
             /// Add event listeners ///
@@ -108,6 +123,13 @@ const { dragSpeed, startIndex } = Astro.props;
             this.updateCardPositions(this.currentIndex);
         }
 
+        /**
+         * Called when the user is dragging the carousel.
+         * It translates the carousel to follow the mouse.
+         * 
+         * @param event The mousemove event
+         * @returns {void}
+         */
         handleDragging(event: MouseEvent) {
             if (!this.isMouseDown) return;
             this.isDragging = true;
@@ -123,6 +145,13 @@ const { dragSpeed, startIndex } = Astro.props;
             this.startX = this.currentX;
         }
 
+        /**
+         * Called when the user presses a key.
+         * It moves to the previous or next card when the left or right arrow keys are pressed.
+         * 
+         * @param event The keydown event
+         * @returns {void}
+         */
         handleKeydown(event: KeyboardEvent) {
             if (event.key === 'ArrowLeft') {
                 this.updateCardPositions(this.currentIndex - 1);
@@ -131,6 +160,13 @@ const { dragSpeed, startIndex } = Astro.props;
             }
         }
 
+        /**
+         * Called when the user stops dragging the carousel.
+         * It computes the index of the card that is currently nearest to the center and moves to that card.
+         * There is little logic to separate click and mouseup events; three booleans are used to keep track of the state.
+         * 
+         * @returns {void}
+         */
         handleMouseup() {
             this.isMouseDown = false;
             if (!this.isDragging) return;
@@ -146,11 +182,23 @@ const { dragSpeed, startIndex } = Astro.props;
             this.updateCardPositions(diff);
         }
 
+        /**
+         * Called when the window is resized.
+         * It recalculates the offset to center the cards.
+         * 
+         * @returns {void}
+         */
         handleResize() {
             this.offset = this.carousel.getBoundingClientRect().width/2 - (this.cards[0].offsetWidth + this.gap)/2; // Calculate the offset to center the cards
             this.updateCardPositions(this.currentIndex);
         }
 
+        /**
+         * Updates the positions of the cards.
+         * It moves the card at the given index to the center and scales it up.
+         * 
+         * @param target The index of the card to move to
+         */
         updateCardPositions(target: number) {
             if (target < 0) {
                 target = this.cards.length - 1; // Wrap to the last card when reaching the beginning
