@@ -44,10 +44,13 @@ const tutorials = await getCollection('tutoriels', ({ data }) => {
 </div>
 
 <script>
+    /**
+     * A custom element to toggle the visibility of a list of tutorials.
+     */
     class CategoryDetails extends HTMLDivElement {
-        button: HTMLButtonElement;
-        open: boolean = false;
-        list: HTMLUListElement;
+        button: HTMLButtonElement; // The button to toggle the visibility of the list
+        open: boolean = false; // Whether the list is visible or not
+        list: HTMLUListElement; // The list of tutorials
 
         constructor() {
             super();
@@ -56,10 +59,22 @@ const tutorials = await getCollection('tutoriels', ({ data }) => {
             this.list = this.querySelector<HTMLUListElement>('ul')!;
         }
 
+        /**
+         * Called when the element is added to the DOM.
+         * Add the event listener to the button.
+         * 
+         * @returns {void}
+         */
         connectedCallback() {
             this.button.addEventListener('click', this.toggle.bind(this));
         }
 
+        /**
+         * Called when the button is clicked.
+         * Toggle the visibility of the list.
+         * 
+         * @returns {void}
+         */
         toggle() {
             this.open = !this.open;
             this.button.setAttribute('aria-expanded', this.open.toString());
