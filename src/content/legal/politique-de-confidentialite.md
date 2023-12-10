@@ -15,6 +15,8 @@ En cas de non-conformité relative au traitement de vos données, vous pouvez in
  - via leur service en ligne [https://www.cnil.fr/fr/plaintes](https://www.cnil.fr/fr/plaintes) ;
  - par courrier postal à l'adresse suivante : CNIL, 3 Place de Fontenoy, TSA 80715, 75334 PARIS CEDEX 07, France.
 
+Ces droits peuvent faire l'objet de restrictions en application des articles [107](https://www.legifrance.gouv.fr/loda/article_lc/LEGIARTI000037817690) et [110](https://www.legifrance.gouv.fr/loda/article_lc/LEGIARTI000037817696) de la Loi Informatique et Libertés. En particulier, vous ne pouvez vous opposer à ce que vos données à caractère personnel fassent l'objet d'un traitement lorsque celui-ci répond à une obligation légale. Vous pouvez saisir la CNIL en cas de contestation de ces restrictions.
+
 MiNET attache une grande importance à la protection et à la confidentialité de la vie privée et plus particulièrement de vos données à caractère personnel ainsi qu'au respect de vos choix concernant ces dernières.
 
 La présente politique de confidentialité vous permettra de prendre connaissance des données personnelles que MiNET est susceptible de collecter et de traiter et de la manière dont elles sont utilisées.
@@ -123,4 +125,3 @@ Aucun cookie de traçage n'est utilisé par MiNET.
 MiNET met en œuvre toutes les mesures techniques et organisationnelles nécessaires au respect de la sécurité et de la confidentialité de vos données à caractère personnel. Ces mesures sont mises en œuvre en tenant compte de l'état de l'art, du coût de mise en œuvre et de la nature, de la portée, du contexte et des finalités du traitement ainsi que des risques identifiés. Cependant, la sécurité totale n'existant pas, celle de vos données ne peut être garantie. Toutefois, MiNET fera ses meilleurs efforts pour assurer un niveau de sécurité optimal.
 
 En cas de violation de données à caractère personnel, et que cet incident constitue un risque au regard de la vie privée des personnes concernées, MiNET s'engage à respecter l'obligation de notification auprès de la CNIL et, le cas échéant, auprès de vous, et ce dans les meilleurs délais.
-
