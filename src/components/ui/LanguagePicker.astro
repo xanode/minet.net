@@ -11,10 +11,10 @@ const t = useTranslations(lang);
         {t('footer.language')}
     </div>
     <div class="flex items-center gap-4">
-        <a aria-label="Changer la langue en français" href={Astro.url.href.replace(lang, 'fr')}>
+        <a aria-label="Changer la langue en français" href={Astro.url.pathname.replace(lang, 'fr')}>
             <Icon className="w-5 h-8 fill-none" name="fr-flag" />
         </a>
-        <a aria-label="Change language to english" href={Astro.url.href.replace(lang, 'en')}>
+        <a aria-label="Change language to english" href={Astro.url.pathname.replace(lang, 'en')}>
             <Icon className="w-5 h-8 fill-none" name="en-flag" />
         </a>
     </div>
