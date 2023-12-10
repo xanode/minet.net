@@ -115,6 +115,14 @@ const { dragSpeed, startIndex } = Astro.props;
             });
             this.carousel.addEventListener('mousemove', this.handleDragging.bind(this));
             this.carousel.addEventListener('mouseup', this.handleMouseup.bind(this));
+            // Same as above but for touch events
+            this.carousel.addEventListener('touchstart', (event: TouchEvent) => {
+                event.preventDefault();
+                this.isMouseDown = true;
+                this.startX = event.touches[0].clientX;
+            });
+            this.carousel.addEventListener('touchmove', this.handleDragging.bind(this));
+            this.carousel.addEventListener('touchend', this.handleMouseup.bind(this));
 
             // Update the offset when the window is resized
             window.addEventListener('resize', this.handleResize.bind(this));
@@ -130,7 +138,7 @@ const { dragSpeed, startIndex } = Astro.props;
          * @param event The mousemove event
          * @returns {void}
          */
-        handleDragging(event: MouseEvent) {
+        handleDragging(event: MouseEvent | TouchEvent) {
             if (!this.isMouseDown) return;
             this.isDragging = true;
             event.preventDefault();
@@ -138,7 +146,7 @@ const { dragSpeed, startIndex } = Astro.props;
             this.carousel.classList.remove('duration-300');
             this.carousel.classList.add('duration-0');
             this.style.cursor = 'grabbing';
-            this.currentX = event.clientX;
+            this.currentX = (event instanceof MouseEvent) ? event.clientX : event.touches[0].clientX;
             const diff = this.currentX - this.startX;
             this.translation += diff;
             this.carousel.style.transform = `translateX(${this.translation}px)`;
