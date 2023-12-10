@@ -1,21 +1,26 @@
 ---
 import { getEntry } from "astro:content";
+import { ui } from "@i18n/ui";
+import { useTranslations } from "@i18n/utils";
 import SearchButton from "@components/tutorials/SearchButton.astro";
 import TutorialsNav from "@components/tutorials/TutorialsNav.astro";
 import type { CollectionEntry } from "astro:content";
 
 interface Props {
-    tutorial: CollectionEntry<"tutoriels">; // Selected tutorial
+    tutorial?: CollectionEntry<"tutoriels">; // Selected tutorial
 }
 const { tutorial } = Astro.props;
-const category = await getEntry(tutorial.data.category);
+const category = tutorial ? await getEntry(tutorial.data.category) : undefined;
+
+const { lang } = Astro.params;
+const t = useTranslations(lang as keyof typeof ui);
 ---
 
-<div is="mobile-sidebar" class="xl:hidden fixed inset-x-0 bottom-0 flex items-center justify-center border-t border-neutral-800 px-4 py-3 bg-black max-w-screen">
+<div is="mobile-sidebar" class="xl:hidden z-100 fixed inset-x-0 bottom-0 flex items-center justify-center border-t border-neutral-800 px-4 py-3 bg-black max-w-screen">
     <button class="group flex grow justify-center gap-2.5 p-2 text-neutral-200 border rounded-lg border-neutral-800" aria-selected="false">
         <svg class="w-4 h-4 shrink-0 fill-none stroke-current text-current" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" viewBox="0 0 24 24"><path d="M15 10l5 5-5 5"></path><path d="M4 4v7a4 4 0 004 4h12"></path></svg>
         <span class="flex grow text-sm font-medium whitespace-nowrap text-ellipsis overflow-hidden">
-            {category.data.name}
+            {category ? category.data.name : t('tutorials.sidebar.search')}
         </span>
         <span class="flex transition-transform group-aria-selected:rotate-180">
             <svg class="w-4 h-4 fill-none stroke-current text-current" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"></path></svg>

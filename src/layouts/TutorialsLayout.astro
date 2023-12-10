@@ -10,7 +10,6 @@ interface Props {
     tutorial?: CollectionEntry<'tutoriels'>;
 }
 const { title, tutorial } = Astro.props;
-const noSidebar = tutorial === undefined ? true : false;
 ---
 
 <Layout title={`MiNET - ${title}`}>
@@ -31,6 +30,6 @@ const noSidebar = tutorial === undefined ? true : false;
             <Sidebar tutorial={tutorial} />
             <slot />
         </div>
-        {!noSidebar && <MobileSidebar tutorial={tutorial!} />}
+        <MobileSidebar tutorial={tutorial!} />
     </main>
 </Layout>
