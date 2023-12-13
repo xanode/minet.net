@@ -1,33 +1,52 @@
 ---
-icon: autres-services
-title: Watch MiNET TV on Your PC
-category: en/other-services
+icon: question
+title: Finding Your MAC Addresses
+category: en/getting-started
 ---
-import KBD from '@components/ui/KBD.astro';
+import KBD from "@components/ui/KBD.astro";
 
-## Internet Protocol Television (IPTV)
+The MAC address serves as a unique identifier for each of your interfaces (both WiFi and wired) and is necessary for adding a new device to our network.
 
-MiNET offers an Internet Protocol Television (IPTV) service, allowing you to watch digital terrestrial and satellite channels directly on your PC. To access this service, you need to be a MiNET member, live in Maison de l'Étudiant (Maisel), and connect your computer directly to the Ethernet port in your room. Please note that TV streaming is not available via Wi-Fi or behind a router.
+## How to Find Your MAC Address?
 
-## Download and Install VLC Player and the MiNET Playlist
+A MAC address is typically represented in hexadecimal form like `5A-FF-56-A2-AF-15` or `5A:FF:56:A2:AF:15`. There are various methods to find it, depending on the operating system you are using. We have listed the most common ones below.
 
-If you haven't already installed the VLC media player on your PC, visit [the VLC website](http://www.videolan.org/vlc/#download) to download a version of VLC compatible with your operating system.
+### Windows
 
-Once the download is complete, launch the VLC installation (you can follow the instructions available on the [VLC Wiki](https://wiki.videolan.org/Documentation:Installing_VLC/)).
+- Press the following key combination <KBD>Windows+R</KBD> to open the *Run* window.
+- Type `cmd` and then press <KBD>Enter</KBD> to open the command prompt.
+- Type `getmac -v` and then press <KBD>Enter</KBD> to obtain a list of the device's MAC addresses.
+- The MAC address is located in the *Physical Address* column.
+- The first line generally corresponds to your wired network card, and the second to your WiFi network card.
 
-Next, you'll need to download the <a href="/TV-MiNET.xspf" download>MiNET TV playlist</a>.
+### GNU/Linux
 
-## Using VLC Player
+- Open a terminal.
+- Type `ip link show` followed by <KBD>Enter</KBD> for a summary of the device's interfaces.
+- Look for fields with *eth* or *enp* (for wired) or *wlan* or *wlp* (for WiFi).
+- Then look for the MAC address following the desired interface, just after the *link/ether* field.
 
-To watch TV, follow these steps:
-- Open VLC.
-- Click on *Media*.
-- Go to *Open File*.
-- Select the MiNET TV playlist.
+You will thus obtain your MAC addresses.
 
-The television stream will start playing!
+### macOS
 
-Here are some useful shortcuts:
-- Use the <KBD>F</KBD> key (Full Screen) to switch to full-screen mode or exit it.
-- Use the <KBD>N</KBD> key (Next) to switch to the next channel and the <KBD>P</KBD> key (Previous) to switch to the previous channel.
-- Use the <KBD>Ctrl+L</KBD> key combination (List) to view the list of available channels.
+- In the search bar, type `terminal` and then press <KBD>Enter</KBD>.
+- Then type `networksetup -listallhardwareports` followed by <KBD>Enter</KBD>.
+
+The *Ethernet Address* field corresponds to your MAC addresses.
+
+### Android
+
+- Go to your smartphone's settings.
+- Look for the *About Phone* section.
+- Find the *Status* field.
+
+Your MAC address is displayed next to *Wi-Fi MAC Address*.
+
+### PS4 and Xbox
+
+- Go to the console settings.
+- Look for the *Network* section.
+- Open the *View Connection Status* menu for PS4 or *Advanced Settings* for Xbox.
+
+Your MAC address is displayed next to *MAC Address (LAN)*.

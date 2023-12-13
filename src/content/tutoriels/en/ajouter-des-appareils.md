@@ -1,6 +1,6 @@
 ---
 icon: question
-title: Adding new devices on your MiNET account
+title: Add new devices to your MiNET account
 category: en/getting-started
 ---
 

@@ -6,7 +6,7 @@ category: en/wifi
 
 ## Prerequisites
 
-To register your devices on the MiNET network, you will need to add your MAC addresses to your account. If you don't know how to do this, don't hesitate to follow the tutorial [Add devices to your MiNET account](/en/tutorials/add-devices), which will guide you through the process.
+To register your devices on the MiNET network, you will need to add your MAC addresses to your account. If you don't know how to do this, don't hesitate to follow the tutorial [Add devices to your MiNET account](/en/tutoriels/ajouter-des-appareils), which will guide you through the process.
 
 ## Setting Up Your PC with Linux (Wi-Fi)
 
