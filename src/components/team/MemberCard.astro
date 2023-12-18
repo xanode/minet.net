@@ -20,15 +20,15 @@ const t = useTranslations(lang);
             {t('team.resignation')}
         </div>
     )}
-    <div class="flex gap-18">
+    <div class="flex justify-between">
         <span class="font-bold">
             {name}
         </span>
-        <span class="ml-auto text-red-600 text-sm font-mono font-bold">
+        <span class="text-red-600 text-sm font-mono font-bold">
             {pseudo}
         </span>
     </div>
-    <p class="font-medium max-w-xs">
+    <span class="font-medium">
         {t(role)}
-    </p>
+    </span>
 </div>

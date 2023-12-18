@@ -3,14 +3,15 @@ import { getLangFromUrl, useTranslations } from '@i18n/utils';
 
 interface Props {
     mandate: string;
+    collaborators?: boolean;
 }
-const { mandate } = Astro.props;
+const { mandate, collaborators = false } = Astro.props;
 
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
 ---
 
-<section class="relative max-w-8xl space-y-20">
+<section class="relative max-w-6xl space-y-20 w-full">
     <div class="flex flex-col items-center min-w-[1px] max-w-full">
         <div class="text-center space-y-2">
             <h3 class="text-3xl tracking-tighter font-bold text-white">
@@ -20,6 +21,19 @@ const t = useTranslations(lang);
         </div>
     </div>
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 text-white">
-        <slot />
+        <slot name="members"/>
     </div>
+    {collaborators &&
+    <div class="flex flex-col gap-10 min-w-[1px] max-w-full">
+        <div class="space-y-2 w-fit">
+            <h3 class="text-2xl tracking-tighter font-medium text-white">
+                {t('team.collaborators')}
+            </h3>
+            <span class="flex grow h-[1px] bg-gradient-to-r from-white to-transparent"></span>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 text-white">
+            <slot name="collaborators"/>
+        </div>
+    </div>
+    }
 </section>

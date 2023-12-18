@@ -1,6 +1,7 @@
 ---
 import { getStaticTranslations, getLangFromUrl, useTranslations } from '@i18n/utils';
 import { activeTeam, teams } from "@libs/team";
+import CollaboratorCard from '@components/team/CollaboratorCard.astro';
 import MemberCard from '@components/team/MemberCard.astro';
 import OldMembersSection from '@components/team/OldMembersSection.astro';
 import PulseCircles from '@components/team/PulseCircles.astro';
@@ -37,10 +38,19 @@ const t = useTranslations(lang);
 				</div>
 			</section>
 			{teams.map(team =>
-			<OldMembersSection mandate={team.mandate}>
-				{team.members.map(member =>
-				<MemberCard name={member.name} pseudo={member.pseudo} role={member.role} resignation={member.hasResigned} />
-				)}
+			<OldMembersSection mandate={team.mandate} collaborators={team.collaborators ? true : false}>
+				<Fragment slot="members">
+					{team.members.map(member =>
+					<MemberCard name={member.name} pseudo={member.pseudo} role={member.role} resignation={member.hasResigned} />
+					)}
+				</Fragment>
+				{team.collaborators &&
+				<Fragment slot="collaborators">
+					{team.collaborators.map(collaborator =>
+						<CollaboratorCard name={collaborator.name} pseudo={collaborator.pseudo} role={collaborator.role} />
+					)}
+				</Fragment>
+				}
 			</OldMembersSection>
 			)}
 		</div>
