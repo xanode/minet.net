@@ -258,6 +258,24 @@ module.exports = {
 				'height': 'height',
 				'stroke-dashoffset': 'stroke-dashoffset',
 			},
+			typography: (theme) => ({
+				DEFAULT: {
+					css: {
+						'code::before': {
+							content: '""',
+						},
+						code: {
+							backgroundColor: theme('colors.neutral.800'), // bg-neutral-800
+							fontSize: theme('fontSize.sm'), // text-sm
+							fontWeight: theme('fontWeight.normal'), // font-normal
+							padding: `${theme('spacing[0.5]')} ${theme('spacing[1.5]')}`, // py-0.5 px-1.5
+						},
+						'code::after': {
+							content: '""',
+						},
+					},
+				},
+			}),
 			willChange: {
 				'background-opacity': 'background, opacity',
 				'height': 'height',
