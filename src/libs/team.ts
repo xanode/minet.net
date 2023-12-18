@@ -17,6 +17,12 @@ import VicePresident2Reference from "@assets/equipe/nicolasvp.png";
 import RespoREReference from "@assets/equipe/yasmine.png";
 
 
+interface Collaborator {
+    name: string;
+    pseudo: string;
+    role?: string;
+}
+
 interface Member {
     name: string;
     pseudo: string;
@@ -28,6 +34,7 @@ interface Member {
 interface Team {
     mandate: string;
     members: Member[];
+    collaborators?: Collaborator[];
 }
 
 export const activeTeam: Team = {
@@ -86,6 +93,10 @@ export const teams: Team[] = [
             {name: "Martin Spiering", pseudo: "typhlos", role: 'team.role.hardware'},
             {name: "Pierre Cornette", pseudo: "flying_potato", role: 'team.role.inventory'},
         ],
+        collaborators: [
+            {name: "Lucie", pseudo: "Közel"},
+            {name: "Mévéna Boué", pseudo: "ka-ribou"},
+        ],
     },
     {
         mandate: "2020-2021",
@@ -100,6 +111,10 @@ export const teams: Team[] = [
             {name: "Valentin Paolicelli", pseudo: "omeega1", role: 'team.role.clubs'},
             {name: "Aurélien Chomon", pseudo: "financier", role: 'team.role.corporate'},
         ],
+        collaborators: [
+            {name: "Gaëtan Gianquintieri", pseudo: ""},
+            {name :"Rémi Billy", pseudo: "rbilly"},
+        ]
     },
     {
         mandate: "2019-2020",
@@ -160,6 +175,10 @@ export const teams: Team[] = [
             {name: "Benjamin Deyrolles", pseudo: "sinoy", role: 'team.role.community'},
             {name: "Eve Refeyton", pseudo: "eve", role: 'team.role.internal'},
         ],
+        collaborators: [
+            {name: "Jeremy Venin", pseudo: "arceus"},
+            {name: "Grégoire Menguy", pseudo: "acous"},
+        ]
     },
     {
         mandate: "2015-2016",
@@ -176,6 +195,10 @@ export const teams: Team[] = [
             {name: "Antoine Morrier", pseudo: "qnope", role: 'team.role.software'},
             {name: "Ambre Montfort", pseudo: "amber", role: 'team.role.corporate'},
             {name: "Benoit Bazard", pseudo: "ginkgo", role: 'team.role.hardware'},
+        ],
+        collaborators: [
+            {name: "Arthur Lefebvre", pseudo: "artlef"},
+            {name: "Erwan Guyomarc'h", pseudo: "pandawan"},
         ],
     },
     {
@@ -245,6 +268,9 @@ export const teams: Team[] = [
             {name: "Guillaume Demaison", pseudo: "XtalSi", role: 'team.role.software'},
             {name: "Mathieu Cassard", pseudo: "cassou", role: 'team.role.projects'},
         ],
+        collaborators: [
+            {name: "Jean-Baptiste Habourdin", pseudo: "grabazu", role: "Manager"},
+        ],
     },
     {
         mandate: "2009-2010",
@@ -255,6 +281,11 @@ export const teams: Team[] = [
             {name: "Jérémy Cheynet", pseudo: "jeremy", role: 'team.role.secretary'},
             {name: "Siman", pseudo: "siman", role: 'team.role.web'},
             {name: "Florent", pseudo: "", role: 'team.role.communication'},
+        ],
+        collaborators: [
+            {name: "Michel Dong", pseudo: "raknor", role: "Responsable Technique"},
+            {name: "Dhia Moakhar", pseudo: "dhia", role: "Responsable TV"},
+            {name: "Mathieu Frappier", pseudo: "supermatt", role: "VP PM"},
         ],
     },
     {
@@ -309,6 +340,13 @@ export const teams: Team[] = [
             {name: "Carine Joubert", pseudo: "cajou", role: 'team.role.secretary'},
             {name: "Jean-Francois Boeuf", pseudo: "jfb", role: 'team.role.web'},
         ],
+        collaborators: [
+            {name: "Amandine Dubillon", pseudo: "mady"},
+            {name: "Matthieu Kraan", pseudo: "maat"},
+            {name: "Aline Dalbiez", pseudo: "mystic", role: "Prez' SadINT"},
+            {name: "Florent Thiery", pseudo: "Ddwarf"},
+            {name: "Nicolas Rudelle", pseudo: "Nÿko"},
+        ],
     },
     {
         mandate: "2003-2004",
@@ -318,6 +356,13 @@ export const teams: Team[] = [
             {name: "Jean-Didier Kahlig", pseudo: "crash", role: 'team.role.treasurer'},
             {name: "Marie Camier", pseudo: "marie", role: 'team.role.secretary'},
             {name: "Fabien Gomez", pseudo: "acathla", role: 'team.role.web'},
+        ],
+        collaborators: [
+            {name: "Cristophe Gondouin", pseudo: "cricri"},
+            {name: "Fabrice Saya-Gasnier", pseudo: "chanito"},
+            {name: "Cristophe Eyquem", pseudo: "clarkwan"},
+            {name: "Yannick Thirion", pseudo: "krogoth"},
+            {name: "Guillaume Peigne", pseudo: "yaum"},
         ],
     },
     {
@@ -329,6 +374,12 @@ export const teams: Team[] = [
             {name: "Marie Porot", pseudo: "Mary", role: 'team.role.secretary'},
             {name: "Benjamin Leroux", pseudo: "Ben", role: 'team.role.web'},
         ],
+        collaborators: [
+            {name: "Mohamed Ghalayini", pseudo: "", role: "Connexions & Admin Réseau"},
+            {name: "Cédric L'Ollivier", pseudo: "Majax", role: "Responsable Sadint"},
+            {name: "Thomas Fourdin", pseudo: "Thom", role: "Un peu de tout"},
+            {name: "François Délépine", pseudo: "F", role: "IRC & saxotel"},
+        ],
     },
     {
         mandate: "2001-2002",
@@ -338,6 +389,17 @@ export const teams: Team[] = [
             {name: "Mathieu Hemery", pseudo: "Knife", role: 'team.role.treasurer'},
             {name: "Mathilde Barbanchon", pseudo: "Mathilde", role: 'team.role.secretary'},
             {name: "Pierre Gueguin", pseudo: "Pierre", role: 'team.role.web'},
+        ],
+        collaborators: [
+            {name: "Julien Wajsberg", pseudo: "Mantis", role: "Admin Réseau"},
+            {name: "Nicolas Plessis", pseudo: "Nico", role: "Connexions & Admin Réseau"},
+            {name: "Thomas Bernard", pseudo: "nanard", role: "Réseau, IRC, ..."},
+            {name: "Bertrand Ait Touati", pseudo: "BAT", role: "Responsable Mac & Web"},
+            {name: "Frederic Dieu", pseudo: "Gott", role: "Relations Adhérents (Réseau, Problèmes, ...)"},
+            {name: "Sylvain Surmonne", pseudo: "Belgaryon", role: "IRC, Relations Entreprises"},
+            {name: "Sophie Papajak", pseudo: "Lyb'", role: "Collaboratrice Web et Communication"},
+            {name: "Guilhem Ribart", pseudo: "Vlemquov", role: "Jeux"},
+            {name: "Judikaëla Auffredou", pseudo: "Judikalea", role: "Vice-Secrétaire"},
         ],
     },
     {
@@ -349,6 +411,14 @@ export const teams: Team[] = [
             {name: "Stéphanie Couston", pseudo: "Doreamon", role: 'team.role.secretary'},
             {name: "Guillaume Dauron", pseudo: "Gui", role: 'team.role.web'},
         ],
+        collaborators: [
+            {name: "Pierre C.", pseudo: "Skid", role: "Admin Réseau"},
+            {name: "Dominique Perlat", pseudo: "Lapinot", role: "Web"},
+            {name: "Olivier Printemps", pseudo: "O_Spring", role: "Réseau & Web"},
+            {name: "Arnauld Le Carbonnier de Morsangliere Qui Tue", pseudo: "Bobock", role: "Réseau"},
+            {name: "Emmanuel Courreges", pseudo: "Maikeul", role: "Connexions"},
+            {name: "Laurent Cottereau", pseudo: "Clark", role: "Responsable Mac"},
+        ],
     },
     {
         mandate: "1999-2000",
@@ -359,6 +429,14 @@ export const teams: Team[] = [
             {name: "Emmanuel Blondel", pseudo: "Scrib", role: 'team.role.secretary'},
             {name: "Cédric Ulmer", pseudo: "Bloubi", role: 'team.role.web'},
         ],
+        collaborators: [
+            {name: "Elodie Sanchez", pseudo: "Diloé", role: "Vice-Trésorier"},
+            {name: "François Bouju", pseudo: "Sved", role: "Web"},
+            {name: "Laurent Bernaille", pseudo: "Tabootoi", role: "Sous-fifre"},
+            {name: "Régis Leng", pseudo: "Red", role: "Connexions"},
+            {name: "Olivier Friedman", pseudo: "Milton", role: "Mac"},
+            {name: "Nicolas Frontin", pseudo: "Bernie", role: "Réseau"},
+        ],
     },
     {
         mandate: "1998-1999",
@@ -367,6 +445,12 @@ export const teams: Team[] = [
             {name: "Jean-Jacques Puig", pseudo: "JJ", role: 'team.role.vp'},
             {name: "Emmanuel Araman", pseudo: "Manu", role: 'team.role.treasurer'},
             {name: "Stéphane Lecoanet", pseudo: "Maciste", role: 'team.role.secretary'},
+        ],
+        collaborators: [
+            {name: "Matthieu Speder", pseudo: "Spider", role: "Mac"},
+            {name: "Mathieu Millet", pseudo: "Htam", role: "Alpha-NT"},
+            {name: "Julien Serre", pseudo: "Frané", role: "Connect-Men"},
+            {name: "Agnes Garron", pseudo: "Agnes", role: "Fille"},
         ],
     },
     {
