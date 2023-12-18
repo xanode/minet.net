@@ -118,6 +118,7 @@ export const ui = {
         'team.role.applications': 'Applications manager',
         'team.role.benefactor': 'Benefactor',
         'team.mandate': 'Mandate',
+        'team.collaborators': 'The nice collaborators',
         'team.resignation': 'Resignation',
         // Text on the clubs page
         'clubs.title': 'Our clubs',
@@ -254,6 +255,7 @@ export const ui = {
         'team.role.applications': 'Responsable applications',
         'team.role.benefactor': 'Bienfaiteur',
         'team.mandate': 'Mandat',
+        'team.collaborators': 'Les gentils collaborateurs',
         'team.resignation': 'Démission',
         // Text on the clubs page
         'clubs.title': 'Nos clubs',

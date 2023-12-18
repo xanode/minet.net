@@ -1,0 +1,24 @@
+---
+interface Props {
+    name: string;
+    pseudo: string;
+    role?: string;
+}
+const { name, pseudo, role } = Astro.props;
+---
+
+<div class="relative flex flex-col gap-4 border border-neutral-700 bg-neutral-950 p-2">
+    <div class="flex justify-between">
+        <span class="font-medium">
+            {name}
+        </span>
+        <span class="text-red-600 text-sm font-mono font-medium">
+            {pseudo}
+        </span>
+    </div>
+    {role &&
+    <span>
+        {role}
+    </span>
+    }
+</div>
