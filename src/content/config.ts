@@ -1,5 +1,5 @@
 import { defineCollection, reference, z } from 'astro:content';
-import { IconsDict } from '@libs/icons';
+import { IconsDict } from '@libs/data/icons';
 
 function zodEnumFromObjectKeys<K extends string>(obj: Record<K, any>): z.ZodEnum<[K, ...K[]]> {
     const [firstKey, ...otherKeys] = Object.keys(obj) as K[];
