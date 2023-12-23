@@ -19,20 +19,6 @@ const t = useTranslations(lang);
 </button>
 
 <script>
-    class SearchButton extends HTMLButtonElement {
-        constructor() {
-            super();
-        }
-
-        connectedCallback() {
-            this.addEventListener('click', () => document.dispatchEvent(new CustomEvent('search', { bubbles: true })));
-            document.addEventListener('keydown', (event: KeyboardEvent) => {
-                if (event.ctrlKey && event.key === 'k') {
-                    event.preventDefault();
-                    document.dispatchEvent(new CustomEvent('search', { bubbles: true }));
-                }
-            });
-        }
-    }
+    import { SearchButton } from "@libs/components/search/SearchButton";
     customElements.define('search-button', SearchButton, { extends: 'button' });
 </script>

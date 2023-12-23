@@ -17,7 +17,7 @@ const roundedClasses = {
 const roundedClass = roundedClasses[rounded];
 ---
 
-<a is="button-action" class=`group z-0 ${className} ${roundedClass}` href={href} target="_blank">
+<a is="animated-button" class=`group z-0 ${className} ${roundedClass}` href={href} target="_blank">
     <div class=`-z-10 bg-auto bg-gradient-radial will-change-background-opacity block absolute inset-0 transition-opacity ${roundedClass}` style="--circle-radius: 2.5em;"></div>
     <div class=`-z-10 bg-sky-500 group-hover:bg-neutral-900 transition-colors backface-hidden opacity-95 block absolute inset-0 ${roundedClass} m-[1px]`></div>
     <div class=`relative ${underline && 'after:absolute after:-bottom-1 after:left-0 after:w-[calc(100%-1.5em)] after:h-0.5 after:pointer-events-none after:content-empty after:bg-current after:scale-x-0 after:group-hover:scale-x-100 after:origin-0 after:transition-transform after:duration-300'}`>
@@ -30,41 +30,6 @@ const roundedClass = roundedClasses[rounded];
 </a>
 
 <script>
-    import { debounce } from "@libs/utils";
-
-    class ButtonAction extends HTMLAnchorElement {
-        rect: DOMRect;
-        radialGradient: HTMLDivElement | null;
-        viaPercent: number = 0;
-
-        constructor() {
-            super();
-
-            this.rect = this.getBoundingClientRect();
-
-            this.radialGradient = this.querySelector("div"); // Representing the first div element in the sub tree so this is the good one
-
-            this.addEventListener("mousemove", this.handleMouseHover.bind(this));
-            this.addEventListener("mouseenter", this.handleMouseEnter.bind(this));
-            this.addEventListener("mouseleave", this.handleMouseLeave.bind(this));
-
-            // Debounce the handleMouseHover function with a delay of 50ms
-            this.handleMouseHover = debounce(this.handleMouseHover, 50);
-        }
-
-        handleMouseHover(event: MouseEvent) {
-            this.style.setProperty("--y", `${(event.clientY - this.rect.top)}px`);
-            this.style.setProperty("--x", `${(event.clientX - this.rect.left)}px`);
-        }
-
-        handleMouseEnter() {
-            this.radialGradient!.style.setProperty("--circle-radius", "2.5em");
-        }
-
-        handleMouseLeave() {
-            this.radialGradient!.style.setProperty("--circle-radius", "0em");
-        }
-    }
-
-    customElements.define("button-action", ButtonAction, { extends: "a" });
+    import { AnimatedButton } from "@libs/components/animated/AnimatedButton";
+    customElements.define("animated-button", AnimatedButton, { extends: "a" });
 </script>
