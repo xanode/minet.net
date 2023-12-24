@@ -134,16 +134,17 @@ export class SearchModal extends HTMLDivElement {
                                 <svg class="w-5 h-5 mt-[1px] fill-none text-neutral-400 stroke-current" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" viewBox="0 0 24 24"><path d="M2 3h6a4 4 0 014 4v14a3 3 0 00-3-3H2z"></path><path d="M22 3h-6a4 4 0 00-4 4v14a3 3 0 013-3h7z"></path></svg>
                             </span>
                             <span>
-                                <div class="text-base text-neutral-200 text-ellipsis line-clamp-1">
-                                    ${doc.title}
+                                <div class="text-base text-neutral-200 text-ellipsis line-clamp-1" name="title">
                                 </div>
-                                <div class="my-2 pl-2 border-l-4 border-neutral-800 text-neutral-400 text-ellipsis line-clamp-1">
-                                    ${doc.body}
+                                <div class="my-2 pl-2 border-l-4 border-neutral-800 text-neutral-400 text-ellipsis line-clamp-1" name="body">
                                 </div>
                             </span>
                         </div>
                     </a>
                 `;
+                listItem.querySelector('[name="title"]')!.textContent = doc.title;
+                listItem.querySelector('[name="body"]')!.textContent = doc.body;
+
                 // Update content in listItem using doc data
                 this.resultList.appendChild(listItem);
             }
