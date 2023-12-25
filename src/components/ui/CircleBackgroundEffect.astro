@@ -1,0 +1,15 @@
+---
+interface Props {
+    class?: string;
+}
+const { class: className } = Astro.props;
+---
+
+<div is="circle-background-effet" class={className} data-target="shining-circle.bounding">
+    <slot />
+</div>
+
+<script>
+    import { ShiningCircle } from "@libs/components/animated/ShiningCircle";
+    customElements.define('circle-background-effet', ShiningCircle, { extends: 'div' });
+</script>
