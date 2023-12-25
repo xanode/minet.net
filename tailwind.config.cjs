@@ -80,6 +80,7 @@ module.exports = {
 				'pulse-after': '100px',
 				'pulse-before': '110px',
 				'shine': '180px',
+				'shine-soft': '90px',
 			},
 			borderWidth: {
 				'1': '1px',

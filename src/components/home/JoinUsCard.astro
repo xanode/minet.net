@@ -6,7 +6,7 @@ interface Props {
 const { number, title } = Astro.props;
 ---
 
-<div class="relative flex flex-col border rounded-2xl border-neutral-700 hover:border-neutral-400 bg-neutral-950/70 hover:bg-neutral-950/90 duration-500 p-4">
+<div class="flex flex-col border rounded-2xl border-neutral-700 hover:border-neutral-500 bg-neutral-950/70 duration-500 mask-shine-hover p-4">
     <div class="flex items-center justify-center gap- px-4 lg:px-0">
         <span class="border rounded-full border-neutral-800 bg-neutral-950 w-14 text-center text-4xl text-white leading-normal">
             {number}
@@ -26,4 +26,5 @@ const { number, title } = Astro.props;
                 </div>
             </div>
     </div>
+    <div data-target="shining-circle.shine" class="hidden lg:block absolute bottom-0 right-0 pointer-events-none -z-10 bg-[#6fa5e8] w-72 h-72 blur-shine-soft rounded-full transition-opacity duration-1200 mix-blend-soft-light will-change-transform"></div>
 </div>
