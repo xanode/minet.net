@@ -20,7 +20,7 @@ const t = useTranslations(lang);
                 </div>
                 <ul class="marker:text-sky-400 list-disc">
                     <li class="ml-3 pt-4">
-                        {t('footer.see-status')}&nbsp;<a class="text-sky-400 hover:underline underline-offset-4" href="https://status.minet.net" target="_blank">{t('footer.see-status.link')}</a>.
+                        {t('footer.see-status')}&nbsp;<a class="text-sky-400 hover:underline underline-offset-4" href="https://status.minet.net/" target="_blank">{t('footer.see-status.link')}</a>.
                     </li>
                     <li class="ml-3 pt-4">
                         {t('footer.duty')}
@@ -52,7 +52,7 @@ const t = useTranslations(lang);
                 <LinkList class="md:w-auto md:p-4 lg:w-40" title={t('footer.contact')} links={[
                     { href: "https://tickets.minet.net/", target: "_blank", text: "Tickets" },
                     { href: "https://www.facebook.com/minet.tmsp/", target: "_blank", text: "Facebook" },
-                    { href: "https://discord.gg/minet", target: "_blank", text: "Discord" },
+                    { href: "https://discord.gg/minet/", target: "_blank", text: "Discord" },
                 ]} />
                 <div class="col-start-1 row-start-2 flex md:hidden items-end">
                     <SocialIconList class="flex items-end gap-2" icons={[
@@ -62,7 +62,7 @@ const t = useTranslations(lang);
                 <LinkList class="md:w-auto md:p-4 lg:w-40" title={t('footer.association')} links={[
                     { href: `/${lang}/legal/statuts/`, text: t('footer.association.status') },
                     { href: "https://chartes.minet.net/", target: "_blank", text: t('footer.association.charter') },
-                    { href: `/${lang}/legal/politique-de-confidentialite`, text: t('footer.association.privacy') },
+                    { href: `/${lang}/legal/politique-de-confidentialite/`, text: t('footer.association.privacy') },
                     { href: `/${lang}/legal/mentions-legales/`, text: t('footer.association.legal') },
                 ]} />
             </div>
