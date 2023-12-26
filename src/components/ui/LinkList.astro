@@ -1,0 +1,30 @@
+---
+import NavItem from '@components/ui/NavItem.astro';
+import type { HTMLAttributes } from 'astro/types';
+
+type Link = {
+    target?: HTMLAttributes<'a'>['target'];
+    text: string;
+    href: HTMLAttributes<'a'>['href'];
+};
+
+interface Props {
+    class: string;
+    title: string;
+    links: Link[];
+}
+const { class: className, title, links } = Astro.props;
+---
+
+<div class={className}>
+    <span class="block font-semibold">
+        {title}
+    </span>
+    <ul class="flex flex-col gap-3 text-neutral-300 pt-3">
+        {links.map(link =>
+        <NavItem href={link.href} target={link.target ? link.target : '_self'}>
+            {link.text}
+        </NavItem>
+        )}
+    </ul>
+</div>

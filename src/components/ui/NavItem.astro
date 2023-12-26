@@ -1,7 +1,9 @@
 ---
+import type { HTMLAttributes } from 'astro/types';
+
 interface Props {
-    href: string;
-    target?: astroHTML.JSX.HTMLAttributeAnchorTarget;
+    href: HTMLAttributes<'a'>['href'];
+    target?: HTMLAttributes<'a'>['target'];
 }
 const { href, target } = Astro.props as Props;
 ---

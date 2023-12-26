@@ -1,0 +1,32 @@
+---
+import Icon from "@components/ui/Icon.astro";
+import type { HTMLAttributes } from "astro/types";
+
+type Icons = "facebook" | "twitter" | "linkedin" | "discord";
+
+interface Props {
+    class: string;
+    icons: Icons[];
+}
+const { class: className, icons } = Astro.props;
+
+const socialLinks: {
+    [key in Icons]: HTMLAttributes<'a'>['href'];
+} = {
+    facebook: "https://www.facebook.com/minet.tmsp/",
+    twitter: "https://twitter.com/MinetTMSP/",
+    linkedin: "https://www.linkedin.com/company/minet",
+    discord: "https://discord.gg/minet",
+};
+
+---
+
+<ul class={className}>
+    {icons.map((icon) => (
+        <li>
+            <a aria-label={icon} target="_blank" rel="noopener noreferrer" href={socialLinks[icon]}>
+                <Icon className="w-6 h-6 fill-white hover:fill-neutral-400 transition-colors" name={icon} />
+            </a>
+        </li>
+    ))}
+</ul>

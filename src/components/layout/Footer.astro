@@ -3,16 +3,18 @@ import { getLangFromUrl, useTranslations } from "@i18n/utils";
 import CircleBackgroundEffect from "@components/ui/CircleBackgroundEffect.astro";
 import Icon from "@components/ui/Icon.astro";
 import LanguagePicker from "@components/ui/LanguagePicker.astro";
+import LinkList from "@components/ui/LinkList.astro";
+import SocialIconList from "@components/ui/SocialIconList.astro";
 
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
 ---
 
 <footer class="bg-neutral-900/90 border-t border-t-white border-opacity-40 py-10 text-sm md:py-16 lg:py-28 mt-auto">
-    <div class="flex flex-col gap-y-10 px-4 mx-auto max-w-8xl">
+    <div class="flex flex-col gap-10 px-4 mx-auto max-w-8xl">
         <Icon className="h-20 w-auto fill-white self-start" name="minet" />
-        <div class="flex flex-col md:flex-row place-content-between md:gap-x-4 text-white">
-            <div class="font-normal text-white text-opacity-75 md:max-w-[255px]">
+        <div class="flex flex-col md:flex-row place-content-between md:gap-4 text-white">
+            <div class="font-normal text-neutral-300 md:max-w-[255px]">
                 <div class="block font-semibold text-white">
                     {t('footer.issue')}
                 </div>
@@ -28,7 +30,7 @@ const t = useTranslations(lang);
                     </li>
                 </ul>
                 <CircleBackgroundEffect class="relative group flex rounded-full p-[1px] mt-6 w-fit overflow-hidden">
-                    <a class="relative group z-1 px-3 py-2 rounded-full bg-sky-500 group-hover:bg-neutral-900/95 transition-colors" href="https://adh6.minet.net/" target="_blank">
+                    <a class="relative group z-1 px-3 py-2 rounded-full text-white bg-sky-500 group-hover:bg-neutral-900/95 transition-colors" href="https://adh6.minet.net/" target="_blank">
                         {(t('footer.ticket') as string).charAt(0).toUpperCase() + t('footer.ticket').slice(1)}
                         <svg class="w-4 h-4 inline-block visible fill-current transition-transform duration-200 translate-x-0 group-hover:translate-x-1" viewBox="0 0 16 16" fill="none">
                             <path fill="currentColor" d="M7.28033 3.21967C6.98744 2.92678 6.51256 2.92678 6.21967 3.21967C5.92678 3.51256 5.92678 3.98744 6.21967 4.28033L7.28033 3.21967ZM11 8L11.5303 8.53033C11.8232 8.23744 11.8232 7.76256 11.5303 7.46967L11 8ZM6.21967 11.7197C5.92678 12.0126 5.92678 12.4874 6.21967 12.7803C6.51256 13.0732 6.98744 13.0732 7.28033 12.7803L6.21967 11.7197ZM6.21967 4.28033L10.4697 8.53033L11.5303 7.46967L7.28033 3.21967L6.21967 4.28033ZM10.4697 7.46967L6.21967 11.7197L7.28033 12.7803L11.5303 8.53033L10.4697 7.46967Z"></path>
@@ -40,140 +42,39 @@ const t = useTranslations(lang);
                 <LanguagePicker />
             </div>
             <div class="grid grid-cols-2 md:grid-cols-3 gap-6 pt-20 md:pt-0 text-sm">
-                <div class="md:w-auto md:p-4 lg:w-40">
-                    <span class="block font-semibold">
-                        Ressources
-                    </span>
-                    <ul class="flex flex-col gap-y-3 pt-3">
-                        <li>
-                            <a class="transition-colors text-white hover:text-sky-400 text-opacity-75" href={`/${lang}/tutoriels/`} target="_self">
-                                {t('nav.tutorials')}
-                            </a>
-                        </li>
-                        <li>
-                            <a class="transition-colors text-white hover:text-sky-400 text-opacity-75" href={`/${lang}/equipe/`} target="_self">
-                                {t('nav.team')}
-                            </a>
-                        </li>
-                        <li>
-                            <a class="transition-colors text-white hover:text-sky-400 text-opacity-75" href={`/${lang}/clubs/`} target="_self">
-                                {t('nav.clubs')}
-                            </a>
-                        </li>
-                        <li>
-                            <a class="transition-colors text-white hover:text-sky-400 text-opacity-75" href={`/${lang}/partenaires/`} target="_self">
-                                {t('nav.partners')}
-                            </a>
-                        </li>
-                        <li>
-                            <a class="transition-colors text-white hover:text-sky-400 text-opacity-75" href={`/${lang}/services/`} target="_self">
-                                {t('nav.services')}
-                            </a>
-                        </li>
-                    </ul>
-                </div>
-                <div class="md:w-auto md:p-4 lg:w-40">
-                    <span class="block font-semibold">
-                        {t('footer.contact')}
-                    </span>
-                    <ul class="flex flex-col gap-y-3 pt-3">
-                        <li>
-                            <a class="transition-colors text-white hover:text-sky-400 text-opacity-75" href="https://tickets.minet.net/" target="_blank">
-                                Tickets
-                            </a>
-                        </li>
-                        <li>
-                            <a class="transition-colors text-white hover:text-sky-400 text-opacity-75" href="https://www.facebook.com/minet.tmsp/" target="_blank">
-                                Facebook
-                            </a>
-                        </li>
-                        <li>
-                            <a class="transition-colors text-white hover:text-sky-400 text-opacity-75" href="https://discord.gg/minet" target="_blank">
-                                Discord
-                            </a>
-                        </li>
-                    </ul>
-                </div>
+                <LinkList class="md:w-auto md:p-4 lg:w-40" title="Ressources" links={[
+                    { href: `/${lang}/tutoriels/`, text: t('nav.tutorials') },
+                    { href: `/${lang}/equipe/`, text: t('nav.team') },
+                    { href: `/${lang}/clubs/`, text: t('nav.clubs') },
+                    { href: `/${lang}/partenaires/`, text: t('nav.partners') },
+                    { href: `/${lang}/services/`, text: t('nav.services') },
+                ]} />
+                <LinkList class="md:w-auto md:p-4 lg:w-40" title={t('footer.contact')} links={[
+                    { href: "https://tickets.minet.net/", target: "_blank", text: "Tickets" },
+                    { href: "https://www.facebook.com/minet.tmsp/", target: "_blank", text: "Facebook" },
+                    { href: "https://discord.gg/minet", target: "_blank", text: "Discord" },
+                ]} />
                 <div class="col-start-1 row-start-2 flex md:hidden items-end">
-                    <ul class="flex items-end gap-2">
-                        <li>
-                            <a aria-label="Facebook" target="_blank" rel="noopener noreferrer" href="https://www.facebook.com/minet.tmsp/">
-                                <Icon className="w-6 h-6 fill-white hover:fill-neutral-400 transition-colors" name="facebook" />
-                            </a>
-                        </li>
-                        <li>
-                            <a aria-label="Twitter" target="_blank" rel="noopener noreferrer" href="https://twitter.com/MinetTMSP/">
-                                <Icon className="w-6 h-6 fill-white hover:fill-neutral-400 transition-colors" name="x" />
-                            </a>
-                        </li>
-                        <li>
-                            <a aria-label="Linkedin" target="_blank" rel="noopener noreferrer" href="https://www.linkedin.com/company/minet">
-                                <Icon className="w-6 h-6 fill-white hover:fill-neutral-400 transition-colors" name="linkedin" />
-                            </a>
-                        </li>
-                        <li>
-                            <a aria-label="Discord" target="_blank" rel="noopener noreferrer" href="https://discord.gg/minet">
-                                <Icon className="w-6 h-6 fill-white hover:fill-neutral-400 transition-colors" name="discord" />
-                            </a>
-                        </li>
-                    </ul>
+                    <SocialIconList class="flex items-end gap-2" icons={[
+                        "facebook", "twitter", "linkedin", "discord",
+                    ]} />
                 </div>
-                <div class="md:w-auto md:p-4 lg:w-40">
-                    <span class="block font-semibold">
-                        {t('footer.association')}
-                    </span>
-                    <ul class="flex flex-col gap-y-3 pt-3">
-                        <li>
-                            <a class="transition-colors text-white hover:text-sky-400 text-opacity-75" href={`/${lang}/legal/statuts/`}>
-                                {t('footer.association.status')}
-                            </a>
-                        </li>
-                        <li>
-                            <a class="transition-colors text-white hover:text-sky-400 text-opacity-75" href="https://chartes.minet.net/" target="_blank">
-                                {t('footer.association.charter')}
-                            </a>
-                        </li>
-                        <li>
-                            <a class="transition-colors text-white hover:text-sky-400 text-opacity-75" href={`/${lang}/legal/politique-de-confidentialite`}>
-                                {t('footer.association.privacy')}
-                            </a>
-                        </li>
-                        <li>
-                            <a class="transition-colors text-white hover:text-sky-400 text-opacity-75" href={`/${lang}/legal/mentions-legales/`}>
-                                {t('footer.association.legal')}
-                            </a>
-                        </li>
-                    </ul>
-                </div>
+                <LinkList class="md:w-auto md:p-4 lg:w-40" title={t('footer.association')} links={[
+                    { href: `/${lang}/legal/statuts/`, text: t('footer.association.status') },
+                    { href: "https://chartes.minet.net/", target: "_blank", text: t('footer.association.charter') },
+                    { href: `/${lang}/legal/politique-de-confidentialite`, text: t('footer.association.privacy') },
+                    { href: `/${lang}/legal/mentions-legales/`, text: t('footer.association.legal') },
+                ]} />
             </div>
         </div>
         <div class="flex items-center place-content-between pt-2">
-            <span class="text-white text-opacity-75">
+            <span class="text-neutral-300">
                 © 2023 MiNET - {t('footer.rights')}<br />
                 {t('footer.credit')}&nbsp;<span class="font-mono font-semibold text-red-400">xanode</span>
             </span>
-            <ul class="hidden md:flex gap-x-2 [&>svg]:cursor-pointer">
-                <li>
-                    <a aria-label="Facebook" target="_blank" rel="noopener noreferrer" href="https://www.facebook.com/minet.tmsp/">
-                        <Icon className="w-6 h-6 fill-white hover:fill-neutral-400 transition-colors" name="facebook" />
-                    </a>
-                </li>
-                <li>
-                    <a aria-label="Twitter" target="_blank" rel="noopener noreferrer" href="https://twitter.com/MinetTMSP/">
-                        <Icon className="w-6 h-6 fill-white hover:fill-neutral-400 transition-colors" name="x" />
-                    </a>
-                </li>
-                <li>
-                    <a aria-label="Linkedin" target="_blank" rel="noopener noreferrer" href="https://www.linkedin.com/company/minet">
-                        <Icon className="w-6 h-6 fill-white hover:fill-neutral-400 transition-colors" name="linkedin" />
-                    </a>
-                </li>
-                <li>
-                    <a aria-label="Discord" target="_blank" rel="noopener noreferrer" href="https://discord.gg/minet">
-                        <Icon className="w-6 h-6 fill-white hover:fill-neutral-400 transition-colors" name="discord" />
-                    </a>
-                </li>
-            </ul>
+            <SocialIconList class="hidden md:flex gap-2 [&>svg]:cursor-pointer" icons={[
+                "facebook", "twitter", "linkedin", "discord",
+            ]} />
         </div>
     </div>
 </footer>
