@@ -2,7 +2,7 @@
 import Icon from "@components/ui/Icon.astro";
 import type { HTMLAttributes } from "astro/types";
 
-type Icons = "facebook" | "twitter" | "linkedin" | "discord";
+type Icons = "facebook" | "x" | "linkedin" | "discord";
 
 interface Props {
     class: string;
@@ -14,7 +14,7 @@ const socialLinks: {
     [key in Icons]: HTMLAttributes<'a'>['href'];
 } = {
     facebook: "https://www.facebook.com/minet.tmsp/",
-    twitter: "https://twitter.com/MinetTMSP/",
+    x: "https://twitter.com/MinetTMSP/",
     linkedin: "https://www.linkedin.com/company/minet",
     discord: "https://discord.gg/minet",
 };
