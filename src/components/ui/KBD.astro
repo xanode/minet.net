@@ -1,15 +1,19 @@
 ---
 interface Props {
-    size?: 'text-xs' | 'text-sm' | 'text-md' | 'text-lg' | 'text-xl'
-    mobile?: boolean
+    keys: string[];
+    size?: string;
 }
-const { size, mobile = false } = Astro.props;
-const displayRule = mobile ? 'hidden lg:inline-block' : 'inline-block';
-
+const { keys, size } = Astro.props;
 ---
 
-<kbd class={`${displayRule} text-center ${size} leading-5 px-1.5 border rounded-md border-neutral-800 text-neutral-200 bg-neutral-950`}>
-    <span>
-        <slot />
-    </span>
-</kbd>
+<span class:list={["not-prose inline-flex items-center gap-1", size]}>
+    {keys.map((key, index) =>
+    <>
+    <kbd class="text-center leading-5 px-1.5 border rounded-md border-neutral-800 text-neutral-200 bg-neutral-950">
+        {key}
+    </kbd>
+    {index < keys.length - 1 && <span class="text-gray-300">+</span>}
+    </>
+    )}
+</span>
+

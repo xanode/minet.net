@@ -3,6 +3,7 @@ icon: windows
 title: Connect to Wi-Fi with Windows
 category: en/wifi
 ---
+import { Code } from "astro:components";
 import Alert from "@components/ui/Alert.astro";
 import KBD from "@components/ui/KBD.astro";
 
@@ -32,7 +33,7 @@ By following this tutorial, you will learn how to configure your computer with W
 
 **If you were previously connected to our network and can't connect anymore**: Forget the MiNET network by right-clicking on it in the list of WiFi networks.
 
-Press the following key combination: <KBD>Windows+R</KBD> and then type `control.exe /name Microsoft.NetworkAndSharingCenter`.
+Press the following key combination: <KBD keys={['Windows', 'R']} /> and then type <Code code='control.exe /name Microsoft.NetworkAndSharingCenter' inline/>.
 
 If you don't see the text Wi-Fi (MiNET) in the window that opens:
 
@@ -53,7 +54,7 @@ If you don't see the text Wi-Fi (MiNET) in the window that opens:
 
 **If you were previously connected to our network and can't connect anymore**: Forget the MiNET network by right-clicking on it in the list of WiFi networks.
 
-Press the following key combination: <KBD>Windows+R</KBD> and then type `control.exe /name Microsoft.NetworkAndSharingCenter`.
+Press the following key combination: <KBD keys={['Windows', 'R']} /> and then type <Code code='control.exe /name Microsoft.NetworkAndSharingCenter' inline/>.
 
 #### If you don't see the text Wi-Fi (MiNET) in the window that opens:
 - Click on "Set up a new connection or network."
@@ -83,7 +84,7 @@ Once done, you can connect to the Wi-Fi network again. Connection and access to 
 
 In the case of Windows 7, manual addition of the Wi-Fi network becomes mandatory:
 
-Press the following key combination: <KBD>Windows+R</KBD> and then type `control`.
+Press the following key combination: <KBD keys={['Windows', 'R']} /> and then type <Code code='control' inline/>.
 
 - You will arrive in the control panel. Go to "Network and Internet."
 - In "Network and Sharing Center," go to "Set up a new connection or network."

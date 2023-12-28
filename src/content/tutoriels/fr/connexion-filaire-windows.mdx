@@ -3,6 +3,7 @@ icon: windows
 title: Se connecter en filaire avec Windows
 category: fr/filaire
 ---
+import { Code } from 'astro:components';
 import Alert from '@components/ui/Alert.astro';
 import KBD from '@components/ui/KBD.astro';
 
@@ -23,7 +24,7 @@ Pour pouvoir enregistrer vos appareils sur le réseau MiNET, vous aurez besoin d
 
 <Alert type="danger">
 La dernière mise à jour de Windows 11 nécessite une configuration supplémentaire si vous n'arrivez pas à vous connecter :<br />
-Faites la combinaison de touches suivante : <KBD>Windows+R</KBD> et tapez ensuite `ncpa.cpl`.
+Faites la combinaison de touches suivante : <KBD keys={["Windows", "R"]} /> et tapez ensuite <Code code='ncpa.cpl' inline/>.
 </Alert>
 
 Dans la fenêtre qui s'ouvre, il faut :
@@ -56,7 +57,7 @@ En suivant ce tutoriel, vous verrez comment configurer votre ordinateur sous Win
 
 ### Activer le bon service Windows
 
-Faites la combinaison de touches suivante : <KBD>Windows+R</KBD> et tapez ensuite `services.msc`.
+Faites la combinaison de touches suivante : <KBD keys={["Windows", "R"]} /> et tapez ensuite <Code code='services.msc' inline/>.
 
 Dans la fenêtre qui s'ouvre, il faut :
 
@@ -72,7 +73,7 @@ Une fois ce service activé, vous pouvez maintenant utiliser un réseau se serva
 
 ### Configuration de votre carte réseau
 
-Faites la combinaison de touches suivante: <KBD>Windows+R</KBD> et tapez ensuite `ncpa.cpl`.
+Faites la combinaison de touches suivante: <KBD keys={["Windows", "R"]} /> et tapez ensuite <Code code='ncpa.cpl' inline/>.
 
 Dans la fenêtre qui s'ouvre, il faut :
 

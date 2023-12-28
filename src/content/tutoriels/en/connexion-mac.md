@@ -1,6 +1,6 @@
 ---
 icon: apple
-title: Connect a Mac to the MiNET Wired Network
+title: Wired connection on Mac
 category: en/wired
 ---
 

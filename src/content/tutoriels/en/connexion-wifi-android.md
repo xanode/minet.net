@@ -1,6 +1,6 @@
 ---
 icon: android
-title: Set up an Android Smartphone for WiFi Connectivity
+title: Connecting to WiFi on Android
 category: en/wifi
 ---
 

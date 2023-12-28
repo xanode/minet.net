@@ -3,6 +3,7 @@ icon: windows
 title: Se connecter au Wi-Fi avec Windows
 category: fr/wifi
 ---
+import { Code } from 'astro:components';
 import Alert from "@components/ui/Alert.astro";
 import KBD from "@components/ui/KBD.astro";
 
@@ -32,7 +33,7 @@ En suivant ce tutoriel, vous verrez comment configurer votre ordinateur sous Win
 
 **Si vous étiez précédemment connecté à notre réseau et que vous n'arrivez plus à vous connecter** : oubliez le réseau le réseau MiNET en faisant un clic droit dessus dans la liste des réseaux WiFi.
 
-Faites la combinaison de touches suivante : <KBD>Windows+R</KBD> et tapez ensuite `control.exe /name Microsoft.NetworkAndSharingCenter`.
+Faites la combinaison de touches suivante : <KBD keys={['Windows', 'R']} /> et tapez ensuite <Code code='control.exe /name Microsoft.NetworkAndSharingCenter' inline/>.
 
 Si vous ne voyez pas le texte Wi-fi (MiNET) dans la fenêtre qui s'ouvre:
 
@@ -55,7 +56,7 @@ Si vous ne voyez pas le texte Wi-fi (MiNET) dans la fenêtre qui s'ouvre:
 
 **Si vous étiez précédemment connecté à notre réseau et que vous n'arrivez plus à vous connecter** : oubliez le réseau le réseau MiNET en faisant un clic droit dessus dans la liste des réseaux WiFi.
 
-Faites la combinaison de touches suivante : <KBD>Windows+R</KBD> et tapez ensuite `control.exe /name Microsoft.NetworkAndSharingCenter`.
+Faites la combinaison de touches suivante : <KBD keys={['Windows', 'R']} /> et tapez ensuite <Code code='control.exe /name Microsoft.NetworkAndSharingCenter' inline/>.
 
 #### Si vous ne voyez pas le texte Wi-fi (MiNET) dans la fenêtre qui s'ouvre
 - Cliquez sur "Configurer une nouvelle connexion ou un nouveau réseau"
@@ -86,7 +87,7 @@ Une fois fait, vous pouvez à nouveau vous connecter sur le réseau Wi-fi. La co
 
 Dans le cas de Windows 7, un ajout à la main du réseau WiFi devient obligatoire :
 
-Faites la combinaison de touches suivante: <KBD>Windows+R</KBD> et tapez ensuite `control`.
+Faites la combinaison de touches suivante: <KBD keys={['Windows', 'R']} /> et tapez ensuite <Code code='control' inline/>.
 
 - Vous arrivez dans le panneau de configuration. Allez dans "Réseau et Internet"
 - Dans "Centre réseau et partage", aller dans "Configurer une nouvelle connexion ou un nouveau réseau"

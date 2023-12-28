@@ -3,26 +3,27 @@ icon: question
 title: Finding Your MAC Addresses
 category: en/getting-started
 ---
+import { Code } from "astro:components";
 import KBD from "@components/ui/KBD.astro";
 
 The MAC address serves as a unique identifier for each of your interfaces (both WiFi and wired) and is necessary for adding a new device to our network.
 
 ## How to Find Your MAC Address?
 
-A MAC address is typically represented in hexadecimal form like `5A-FF-56-A2-AF-15` or `5A:FF:56:A2:AF:15`. There are various methods to find it, depending on the operating system you are using. We have listed the most common ones below.
+A MAC address is typically represented in hexadecimal form like <Code code='5A-FF-56-A2-AF-15' inline/> or <Code code='5A-FF-56-A2-AF-15' inline/>. There are various methods to find it, depending on the operating system you are using. We have listed the most common ones below.
 
 ### Windows
 
-- Press the following key combination <KBD>Windows+R</KBD> to open the *Run* window.
-- Type `cmd` and then press <KBD>Enter</KBD> to open the command prompt.
-- Type `getmac -v` and then press <KBD>Enter</KBD> to obtain a list of the device's MAC addresses.
+- Press the following key combination <KBD keys={["Windows", "R"]} /> to open the *Run* window.
+- Type <Code code='cmd' inline/> and then press <KBD keys={["Enter"]} /> to open the command prompt.
+- Type <Code code='getmac -v' inline/> and then press <KBD keys={["Enter"]} /> to obtain a list of the device's MAC addresses.
 - The MAC address is located in the *Physical Address* column.
 - The first line generally corresponds to your wired network card, and the second to your WiFi network card.
 
 ### GNU/Linux
 
 - Open a terminal.
-- Type `ip link show` followed by <KBD>Enter</KBD> for a summary of the device's interfaces.
+- Type <Code code='ip link show' inline/> followed by <KBD keys={["Enter"]} /> for a summary of the device's interfaces.
 - Look for fields with *eth* or *enp* (for wired) or *wlan* or *wlp* (for WiFi).
 - Then look for the MAC address following the desired interface, just after the *link/ether* field.
 
@@ -30,8 +31,8 @@ You will thus obtain your MAC addresses.
 
 ### macOS
 
-- In the search bar, type `terminal` and then press <KBD>Enter</KBD>.
-- Then type `networksetup -listallhardwareports` followed by <KBD>Enter</KBD>.
+- In the search bar, type <Code code='terminal' inline/> and then press <KBD keys={["Enter"]} />.
+- Then type <Code code='networksetup -listallhardwareports' inline/> followed by <KBD keys={["Enter"]} />.
 
 The *Ethernet Address* field corresponds to your MAC addresses.
 

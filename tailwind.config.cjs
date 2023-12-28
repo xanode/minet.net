@@ -262,17 +262,17 @@ module.exports = {
 			typography: (theme) => ({
 				DEFAULT: {
 					css: {
+						// Reset default code styling
 						'code::before': {
-							content: '""',
+							content: 'none',
 						},
 						code: {
-							backgroundColor: theme('colors.neutral.800'), // bg-neutral-800
-							fontSize: theme('fontSize.sm'), // text-sm
-							fontWeight: theme('fontWeight.normal'), // font-normal
-							padding: `${theme('spacing[0.5]')} ${theme('spacing[1.5]')}`, // py-0.5 px-1.5
+							backgroundColor: 'inherit',
+							color: 'inherit',
+							fontWeight: 'none',
 						},
 						'code::after': {
-							content: '""',
+							content: 'none',
 						},
 					},
 				},

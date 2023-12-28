@@ -20,9 +20,7 @@ const i18n = Object.keys(ui[lang]).filter((key) => key.startsWith('tutorials.sea
             <button class="text-neutral-500">
                 <svg class="w-5 h-5 stroke-current text-current" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"></circle><path d="M15 9l-6 6"></path><path d="M9 9l6 6"></path></svg>
             </button>
-            <KBD size="text-xs" mobile>
-                Esc
-            </KBD>
+            <KBD keys={["Esc"]} size="text-xs"/>
         </div>
         <span class="w-full h-[1px] bg-neutral-700 mb-2 overflow-visible"></span>
         <div class="text-xs text-neutral-500 pl-2 py-2 mb-2 h-6 text-ellipsis overflow-hidden">

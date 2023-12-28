@@ -3,20 +3,21 @@ icon: question
 title: Trouver ses adresses MAC
 category: fr/pour-commencer
 ---
-import KBD from "@components/ui/KBD.astro";
+import { Code } from 'astro:components';
+import KBD from '@components/ui/KBD.astro';
 
 L'adresse MAC sert d'identifiant unique à chacune de vos interfaces (WiFi comme filaire), et est nécessaire pour ajouter un nouvel appareil à notre réseau.
 
 ## Comment trouver son adresse MAC ?
 
-Une adresse MAC est généralement représentée sous forme hexadécimale du type `5A-FF-56-A2-AF-15` ou `5A:FF:56:A2:AF:15`. Il existe différents moyens de la trouver, selon le système d'exploitation utilisé. Nous avons listé ci-après les plus communs.
+Une adresse MAC est généralement représentée sous forme hexadécimale du type <Code code='5A-FF-56-A2-AF-15' inline/> ou <Code code='5A:FF:56:A2:AF:15' inline/>. Il existe différents moyens de la trouver, selon le système d'exploitation utilisé. Nous avons listé ci-après les plus communs.
 
  
 ### Windows
 
-- Faites la combinaison de touches suivante <KBD>Windows+R</KBD> pour ouvrir la fenêtre *Exécuter*.
-- Tapez `cmd` puis <KBD>Entrer</KBD> pour ouvrir l'invité de commande.
-- Tapez `getmac -v`, puis <KBD>Entrer</KBD> pour obtenir une liste des MACs de l'appareil.
+- Faites la combinaison de touches suivante <KBD keys={["Windows", "R"]} /> pour ouvrir la fenêtre *Exécuter*.
+- Tapez <Code code='cmd' inline/> puis <KBD keys={["Entrer"]} /> pour ouvrir l'invité de commande.
+- Tapez <Code code='getmac -v' inline/>, puis <KBD keys={["Entrer"]} /> pour obtenir une liste des MACs de l'appareil.
 - L’adresse MAC est située dans la colone *Adresse physique*.
 - La première ligne correspond généralement à votre carte réseau filaire, et la seconde à votre carte réseau Wi-Fi.
 
@@ -24,7 +25,7 @@ Une adresse MAC est généralement représentée sous forme hexadécimale du typ
 ### GNU/Linux
 
 - Ouvrez un terminal.
-- Tapez `ip link show` suivi de <KBD>Entrer</KBD> pour un résumé des interfaces de l'appareil
+- Tapez <Code code='ip link show' inline/> suivi de <KBD keys={["Entrer"]} /> pour un résumé des interfaces de l'appareil
 - Cherchez les champs *eth* ou *enp* (pour le filaire) ou *wlan* ou *wlp* (pour le WiFi)
 - Cherchez ensuite l'adresse MAC qui suit l'interface voulue, juste après le champ *link/ether*
 
@@ -33,8 +34,8 @@ Vous obtenez ainsi vos adresses MACs.
  
 ### macOS
 
-- Dans la barre de recherche, tapez `terminal` puis <KBD>Entrer</KBD>
-- Tapez ensuite `networksetup -listallhardwareports` suivi de <KBD>Entrer</KBD>
+- Dans la barre de recherche, tapez <Code code='terminal' inline/> puis <KBD keys={["Entrer"]} />
+- Tapez ensuite <Code code='networksetup -listallhardwareports' inline/> suivi de <KBD keys={["Entrer"]} />
 
 Le champ *Ethernet Address* correspond à vos adresses MAC.
 

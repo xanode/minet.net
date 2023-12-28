@@ -1,8 +1,9 @@
 ---
 icon: windows
-title: Set up a PC with Windows for Wired Network
+title: Wired connection with Windows
 category: en/wired
 ---
+import { Code } from 'astro:components';
 import Alert from '@components/ui/Alert.astro';
 import KBD from '@components/ui/KBD.astro';
 
@@ -22,7 +23,7 @@ To register your devices on the MiNET network, you will need to add your MAC add
 
 <Alert type="danger">
 The latest Windows 11 update may require additional configuration if you can't connect: <br />
-Press the following key combination: <KBD>Windows+R</KBD> and then type `ncpa.cpl`.
+Press the following key combination: <KBD keys={["Windows", "R"]} /> and then type <Code code='ncpa.cpl' inline/>.
 </Alert>
 
 In the window that opens, do the following:
@@ -53,7 +54,7 @@ By following this tutorial, you will learn how to configure your computer on Win
 
 ### Activate the Correct Windows Service
 
-Press the following key combination: <KBD>Windows+R</KBD> and then type `services.msc`.
+Press the following key combination: <KBD keys={["Windows", "R"]} /> and then type <Code code='services.msc' inline/>.
 
 In the window that opens, do the following:
 
@@ -68,7 +69,7 @@ Once this service is activated, you can now use a network that uses 802.1X authe
 
 ### Configure Your Network Card
 
-Press the following key combination: <KBD>Windows+R</KBD> and then type `ncpa.cpl`.
+Press the following key combination: <KBD keys={["Windows", "R"]} /> and then type <Code code='ncpa.cpl' inline/>.
 
 In the window that opens, do the following:
 
