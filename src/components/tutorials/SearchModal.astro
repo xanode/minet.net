@@ -1,5 +1,6 @@
 ---
 import { getLangFromUrl, useTranslations } from "@i18n/utils";
+import Icon from "@components/ui/Icon.astro";
 import KBD from "@components/ui/KBD.astro";
 import { ui, defaultLang } from "@i18n/ui";
 
@@ -18,7 +19,7 @@ const i18n = Object.keys(ui[lang]).filter((key) => key.startsWith('tutorials.sea
         <div class="flex items-center gap-2">
             <input class="text-xl text-neutral-400 placeholder:text-neutral-700 bg-transparent outline-none px-4 py-2 w-full" placeholder={t('tutorials.search.placeholder') as string} />
             <button class="text-neutral-500">
-                <svg class="w-5 h-5 stroke-current text-current" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"></circle><path d="M15 9l-6 6"></path><path d="M9 9l6 6"></path></svg>
+                <Icon class="w-5 h-5 stroke-current text-current stroke-[1.5]" name="close" />
             </button>
             <KBD keys={["Esc"]} size="text-xs"/>
         </div>

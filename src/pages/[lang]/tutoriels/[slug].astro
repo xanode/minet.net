@@ -1,6 +1,7 @@
 ---
 import { getCollection } from "astro:content";
 import { useTranslations } from "@i18n/utils";
+import Icon from "@components/ui/Icon.astro";
 import TutorialsLayout from "@layouts/TutorialsLayout.astro";
 import type { CollectionEntry } from "astro:content";
 import type { ui } from "@i18n/ui";
@@ -38,13 +39,11 @@ const { Content } = await tutorial.render();
         <div class="flex items-center gap-2">
             <div class="grow leading-5 overflow-hidden whitespace-nowrap">
                 <div class="flex items-center text-sm gap-1">
-                    <a class="flex items-center text-neutral-600 hover:text-white" href={`/${lang}/tutoriels/`}>
+                    <a class="inline-flex items-center text-neutral-600 hover:text-white" href={`/${lang}/tutoriels/`}>
                         <span>
                             {t('tutorials.breadcrumbs.root')}
                         </span>
-                        <span class="flex items-center justify-center ml-1">
-                            <svg class="w-4 h-4 shrink-0 fill-none stroke-current" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" viewBox="0 0 24 24"><path d="M9 18l6-6-6-6"></path></svg>
-                        </span>
+                        <Icon class="w-4 h-4 shrink-0 fill-none stroke-current stroke-[1.5]" name="right-chevron" />
                     </a>
                     <span class="text-neutral-200">
                         {tutorial.data.title}
@@ -55,12 +54,10 @@ const { Content } = await tutorial.render();
         {/* Title */}
         <div class="flex mt-8 mb-4">
             <h1 class="relative inline-flex items-center text-neutral-100 text-2xl md:text-5xl leading-[26px] md:leading-[3.5rem] tracking-tighter font-semibold">
-                <a class="peer border-b border-transparent hover:border-neutral-100 mr-2.5 break-words" href="#">
-                    {tutorial.data.title}
+                <a class="group inline-flex items-center gap-4 break-words" href="#">
+                    <span class="group-hover:underline underline-offset-8 decoration-1">{tutorial.data.title}</span>
+                    <Icon class="w-auto h-8 fill-none stroke-current stroke-[1.5] invisible md:group-hover:visible" name="internal-link" />
                 </a>
-                <span class="relative text-center align-middle invisible peer-hover:visible">
-                    <svg class="w-auto h-7 fill-none stroke-current" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" viewBox="0 0 24 24"><path d="M10 13a5 5 0 007.54.54l3-3a5 5 0 00-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 00-7.54-.54l-3 3a5 5 0 007.07 7.07l1.71-1.71"></path></svg>
-                </span>
             </h1>
         </div>
         {/* Content */}

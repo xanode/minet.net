@@ -1,5 +1,6 @@
 ---
 import { getCollection } from 'astro:content';
+import Icon from '@components/ui/Icon.astro';
 import type { CollectionEntry } from 'astro:content';
 
 interface Props {
@@ -20,7 +21,7 @@ const tutorials = await getCollection('tutoriels', ({ data }) => {
             {category.data.name}
         </span>
         <div class="flex items-center justify-center hover:bg-neutral-700 rounded-full group-aria-expanded:rotate-90 transition-transform w-6 h-6">
-            <svg class="w-4 h-4 fill-none stroke-current" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" viewBox="0 0 24 24"><path d="M9 18l6-6-6-6"></path></svg>
+            <Icon class="w-4 h-4 fill-none stroke-current stroke-[1.5]" name="right-chevron" />
         </div>
     </button>
     <ul class="hidden aria-expanded:flex flex-col gap-4 mt-4 -ml-[1px] border-l-2 border-neutral-800" aria-expanded={expanded}>
