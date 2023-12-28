@@ -2,11 +2,11 @@
 import { IconsDict } from '@libs/data/icons';
 
 interface Props {
-    className?: string;
+    class?: string;
     label?: string;
     name: keyof typeof IconsDict;
 }
-const { className = "", label, name } = Astro.props;
+const { class: className = "", label, name } = Astro.props;
 ---
 
 <svg

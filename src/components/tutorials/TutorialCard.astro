@@ -12,7 +12,7 @@ const { icon, title, description, href } = Astro.props;
 ---
 
 <a class="flex flex-col items-center gap-10 text-center bg-neutral-800/20 backdrop-blur-sm border border-neutral-700 hover:border-sky-400 rounded-2xl lg:hover:scale-110 duration-300 p-8 h-[calc(100%-1px)]" href={href}>
-    <Icon className="w-8 h-8 fill-current" name={icon} />
+    <Icon class="w-8 h-8 fill-current" name={icon} />
     <h2 class="text-2xl font-bold -mt-8">{title}</h2>
     <p class="italic text-opacity-75">{description}</p>
 </a>

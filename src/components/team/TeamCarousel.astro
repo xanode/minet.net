@@ -10,13 +10,13 @@ const { dragSpeed, startIndex } = Astro.props;
 
 <div is="team-carousel" class="group relative mt-16 md:mt-20 overflow-hidden w-screen py-16 px-4" data-dragspeed={dragSpeed} data-startindex={startIndex}>
     <button data-name="left" class="lg:opacity-0 group-hover:opacity-100 group absolute top-40 left-1/12 rounded-full border border-neutral-700 bg-neutral-800 lg:bg-transparent lg:backdrop-blur-sm hover:-translate-x-2 duration-500 px-3 py-5 sm:py-6 z-40">
-        <Icon className="w-8 sm:w-12 h-auto stroke-[1.5] stroke-sky-400" name="left-arrow" />
+        <Icon class="w-8 sm:w-12 h-auto stroke-[1.5] stroke-sky-400" name="left-arrow" />
     </button>
     <ul class="relative flex gap-4 transition-transform duration-300">
         <slot />
     </ul>
     <button data-name="right" class="lg:opacity-0 group-hover:opacity-100 group absolute top-40 right-1/12 rounded-full border border-neutral-700 bg-neutral-800 lg:bg-transparent lg:backdrop-blur-sm hover:translate-x-2 duration-500 px-3 py-5 sm:py-6 z-40">
-        <Icon className="w-8 sm:w-12 h-auto stroke-[1.5] stroke-sky-400" name="right-arrow" />
+        <Icon class="w-8 sm:w-12 h-auto stroke-[1.5] stroke-sky-400" name="right-arrow" />
     </button>
 </div>
 

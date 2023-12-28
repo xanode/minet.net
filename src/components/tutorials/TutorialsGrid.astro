@@ -11,7 +11,7 @@ const { tutorials } = Astro.props;
 <div class="relative grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 m-6 w-fit h-fit" data-target="bounding">
     {tutorials.map(tutorial =>
         <a class="flex flex-col gap-4 items-center justify-between text-neutral-200 text-center rounded-2xl bg-neutral-900 border border-neutral-700 hover:border-neutral-500 transition-colors mask-shine-hover p-8 max-w-3xl" href={`/${tutorial.slug.split('/')[0]}/tutoriels/${tutorial.slug.split('/')[1]}/`}>
-            <Icon name={tutorial.data.icon || "question"} className="w-8 h-8 m-2 fill-neutral-500" />
+            <Icon name={tutorial.data.icon || "question"} class="w-8 h-8 m-2 fill-neutral-500" />
             <h1 class="text-xl font-medium">
                 {tutorial.data.title}
             </h1>
