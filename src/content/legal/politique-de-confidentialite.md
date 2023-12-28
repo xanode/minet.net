@@ -2,6 +2,10 @@
 title: Politique de confidentialité
 ---
 
+MiNET attache une grande importance à la protection et à la confidentialité de la vie privée et plus particulièrement de vos données à caractère personnel ainsi qu'au respect de vos choix concernant ces dernières.
+
+La présente politique de confidentialité vous permettra de prendre connaissance des données personnelles que MiNET est susceptible de collecter et de traiter et de la manière dont elles sont utilisées. Elle vise à vous informer de vos droits de manière concise, transparente, compréhensible et aisément accessible.
+
 ## Préambule
 
 Le règlement (UE) 2016/679 du Parlement européen et du Conseil du 27 avril 2016, relatif à la protection des personnes physiques à l'égard du traitement des données à caractère personnel et à la libre circulation de ces données, et abrogeant la directive 95/46/CE (**Règlement Général sur la Protection des Données**) et la loi n°78-17 du 6 janvier 1978 modifiée relative à l'informatique, aux fichiers et aux libertés (**Loi Informatique et Libertés**) fixent le cadre juridique applicable aux traitements de données à caractère personnel.
@@ -18,10 +22,6 @@ En cas de non-conformité relative au traitement de vos données, vous pouvez in
  - par courrier postal à l'adresse : CNIL, 3 Place de Fontenoy, TSA 80715, 75334 PARIS CEDEX 07, France.
 
 Ces droits peuvent faire l'objet de restrictions en application des articles [107](https://www.legifrance.gouv.fr/loda/article_lc/LEGIARTI000037817690) et [110](https://www.legifrance.gouv.fr/loda/article_lc/LEGIARTI000037817696) de la Loi Informatique et Libertés. En particulier, vous ne pouvez vous opposer à ce que vos données à caractère personnel fassent l'objet d'un traitement lorsque celui-ci répond à une obligation légale. Vous pouvez saisir la CNIL en cas de contestation de ces restrictions si vous y êtes confronté.
-
-MiNET attache une grande importance à la protection et à la confidentialité de la vie privée et plus particulièrement de vos données à caractère personnel ainsi qu'au respect de vos choix concernant ces dernières.
-
-La présente politique de confidentialité vous permettra de prendre connaissance des données personnelles que MiNET est susceptible de collecter et de traiter et de la manière dont elles sont utilisées. Elle vise à vous informer de vos droits de manière concise, transparente, compréhensible et aisément accessible.
 
 ## 1. Définitions
 
