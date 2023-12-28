@@ -274,6 +274,29 @@ module.exports = {
 						'code::after': {
 							content: 'none',
 						},
+						// Custom table styling
+						table: {
+							borderCollapse: 'collapse',
+							borderSpacing: '0',
+							width: '100%',
+							'& td, & th': {
+								border: '1px solid',
+								borderColor: theme('colors.neutral.800'),
+								padding: theme('spacing.2'),
+							},
+							'& th': {
+								backgroundColor: theme('colors.neutral.900'),
+								color: theme('colors.neutral.100'),
+								fontWeight: theme('fontWeight.bold'),
+								textAlign: 'center',
+							},
+							'& td': {
+								verticalAlign: 'middle',
+							},
+							'& tr:nth-child(even)': {
+								backgroundColor: theme('colors.neutral.950'),
+							}
+						},
 					},
 				},
 			}),

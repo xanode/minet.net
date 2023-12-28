@@ -69,15 +69,15 @@ La conservation de ces données constitue une obligation légale au titre des ar
 **Informations relatives à l'identité civile des adhérents :**
 | Données collectées | Finalité du traitement | Base légale du traitement | Durée de conservation |
 | --- | --- | --- | --- |
-| Nom et prénom / Raison sociale | Identification de l'adhérent | Obligation légale & Exécution du contrat d'association | 5 ans à compter de la fin de l'adhésion |
-| N° de chambre | Fourniture de services Internet | Obligation légale & Exécution du contrat de fourniture de services Internet | 5 an à compter de la fin de la fourniture de services Internet |
-| Adresse email | Identification de l'adhérent | Obligation légale & Exécution du contrat d'association | 5 ans à compter de la fin de l'adhésion |
+| Nom et prénom / Raison sociale | Identification de l'adhérent | <ul><li>Obligation légale</li><li>Exécution du contrat d'association</li></ul> | 5 ans à compter de la fin de l'adhésion |
+| N° de chambre | Fourniture de services Internet | <ul><li>Obligation légale</li><li>Exécution du contrat de fourniture de services Internet</li></ul> | 5 an à compter de la fin de la fourniture de services Internet |
+| Adresse email | Identification de l'adhérent | <ul><li>Obligation légale</li><li>Exécution du contrat d'association</li></ul> | 5 ans à compter de la fin de l'adhésion |
 
 **Autres informations fournies lors de la souscription du contrat de fourniture de services Internet :**
 | Données collectées | Finalité du traitement | Base légale du traitement | Durée de conservation |
 | --- | --- | --- | --- |
-| Identifiant utilisateur | Fourniture de services Internet | Obligation légale & Exécution du contrat de fourniture de services Internet | 1 an à compter de la fin de la fourniture de services Internet |
-| Données de vérification de mot de passe | Fourniture de services Internet | Obligation légale & Exécution du contrat de fourniture de services Internet | 1 an à compter de la fin de la fourniture de services Internet |
+| Identifiant utilisateur | Fourniture de services Internet | <ul><li>Obligation légale</li><li>Exécution du contrat de fourniture de services Internet</li></ul> | 1 an à compter de la fin de la fourniture de services Internet |
+| Données de vérification de mot de passe | Fourniture de services Internet | <ul><li>Obligation légale</li><li>Exécution du contrat de fourniture de services Internet</li></ul> | 1 an à compter de la fin de la fourniture de services Internet |
 
 **Informations relatives au paiement :**
 | Données collectées | Finalité du traitement | Base légale du traitement | Durée de conservation |
@@ -90,10 +90,10 @@ La conservation de ces données constitue une obligation légale au titre des ar
 **Données techniques relatives aux équipements terminaux utilisés :**
 | Données collectées | Finalité du traitement | Base légale du traitement | Durée de conservation |
 | --- | --- | --- | --- |
-| Adresses IP de l'utilisateur | Fourniture de services Internet | Obligation légale & Exécution du contrat de fourniture de services Internet | 1 an à compter de la fin de la fourniture de services Internet |
-| Adresses MAC des terminaux | Fourniture de services Internet | Obligation légale & Exécution du contrat de fourniture de services Internet | 1 an à compter de la fin de la fourniture de services Internet |
-| Baux DHCP | Fourniture de services Internet | Obligation légale & Exécution du contrat de fourniture de services Internet | 1 an à compter de la fin de la fourniture de services Internet |
-| Journaux d'authentification | Fourniture de services Internet | Obligation légale & Exécution du contrat de fourniture de services Internet | 1 an à compter de la fin de la fourniture de services Internet |
+| Adresses IP de l'utilisateur | Fourniture de services Internet | <ul><li>Obligation légale</li><li>Exécution du contrat de fourniture de services Internet</li></ul> | 1 an à compter de la fin de la fourniture de services Internet |
+| Adresses MAC des terminaux | Fourniture de services Internet | <ul><li>Obligation légale</li><li>Exécution du contrat de fourniture de services Internet</li></ul> | 1 an à compter de la fin de la fourniture de services Internet |
+| Baux DHCP | Fourniture de services Internet | <ul><li>Obligation légale</li><li>Exécution du contrat de fourniture de services Internet</li></ul> | 1 an à compter de la fin de la fourniture de services Internet |
+| Journaux d'authentification | Fourniture de services Internet | <ul><li>Obligation légale</li><li>Exécution du contrat de fourniture de services Internet</li></ul> | 1 an à compter de la fin de la fourniture de services Internet |
 
 
 ### 3.2 Données relatives à l'hébergement de machines virtuelles
