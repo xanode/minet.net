@@ -1,5 +1,6 @@
 ---
 title: Politique de confidentialité
+date: 2023-12-30
 ---
 
 MiNET attache une grande importance à la protection et à la confidentialité de la vie privée et plus particulièrement de vos données à caractère personnel ainsi qu'au respect de vos choix concernant ces dernières.

@@ -1,29 +1,28 @@
 ---
 import { getCollection } from "astro:content";
-import { ui } from "@i18n/ui";
 import { useTranslations } from "@i18n/utils";
 import Layout from "@layouts/Layout.astro";
 import type { CollectionEntry } from "astro:content";
+import type { ui } from "@i18n/ui";
 
 export async function getStaticPaths() {
     const legals = await getCollection('legal');
 
-    return Object.keys(ui).flatMap((langCode: string) => {
-        return legals.map((legal) => {
-            return {
+    return legals.map((legal) => {
+        const [lang, ...slug] = legal.slug.split('/');
+        return {
             params: {
-                lang: langCode,
-                slug: legal.slug
+                lang,
+                slug: slug.join('/') || undefined,
             },
             props: {
                 legal,
             },
         };
-        });
     });
 };
 
-const lang = Astro.params.lang;
+const { lang } = Astro.params;
 const t = useTranslations(lang as keyof typeof ui);
 
 interface Props {
