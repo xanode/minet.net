@@ -142,6 +142,8 @@ export const ui = {
         'services.etherpad.description': 'MiNET offers you an etherpad hosted on its servers. Etherpad is an online, open-source, collaborative and real-time text editor.',
         'services.hosting.name': 'Hosting',
         'services.hosting.description': 'MiNET offers its members a free virtual machine hosting service.',
+        // Text on the legal layout
+        'legal.version': 'Version in force on',
     },
     fr: {
         // Text on the navbar (header component)
@@ -289,5 +291,7 @@ export const ui = {
         'services.etherpad.description': 'MiNET vous propose un etherpad hébergé sur ses serveurs. Etherpad est un éditeur de texte en ligne, open-source, collaboratif et en temps réel.',
         'services.hosting.name': 'Hébergement',
         'services.hosting.description': 'MiNET propose à ses adhérent un service d\'hébergement de machines virtuelles gratuit.',
+        // Text on the legal layout
+        'legal.version': 'Version en vigueur au',
     }
 } as const;

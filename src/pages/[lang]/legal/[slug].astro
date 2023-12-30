@@ -1,6 +1,7 @@
 ---
 import { getCollection } from "astro:content";
 import { ui } from "@i18n/ui";
+import { useTranslations } from "@i18n/utils";
 import Layout from "@layouts/Layout.astro";
 import type { CollectionEntry } from "astro:content";
 
@@ -22,12 +23,16 @@ export async function getStaticPaths() {
     });
 };
 
+const lang = Astro.params.lang;
+const t = useTranslations(lang as keyof typeof ui);
+
 interface Props {
     legal: CollectionEntry<'legal'>;
 };
 const { legal } = Astro.props;
+
 const { Content } = await legal.render();
-const date = (legal.data.date ? legal.data.date : new Date()).toLocaleDateString('fr', {day: 'numeric', month: 'long', year: 'numeric'});
+const date = (legal.data.date ? legal.data.date : new Date()).toLocaleDateString(lang, {day: 'numeric', month: 'long', year: 'numeric'});
 ---
 
 <Layout title={`MiNET - ${legal.data.title}`}>
@@ -35,7 +40,7 @@ const date = (legal.data.date ? legal.data.date : new Date()).toLocaleDateString
         <section class="relative flex flex-col items-center gap-40 text-white max-w-8xl mx-auto">
             <div class="flex flex-col items-center gap-4">
                 <h1 class="text-5xl md:text-6xl font-bold text-center">{legal.data.title}</h1>
-                <p class="text-normal md:text-lg italic text-center">Version en vigueur au {date}</p>
+                <p class="text-normal md:text-lg italic text-center">{t('legal.version')} {date}</p>
             </div>
             <div class="prose md:prose-lg prose-invert prose-h2:font-medium max-md:prose-h2:text-xl md:text-justify max-w-xs sm:max-w-none">
                 <Content />
