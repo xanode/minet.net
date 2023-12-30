@@ -4,7 +4,7 @@ title: Politique de confidentialité
 
 MiNET attache une grande importance à la protection et à la confidentialité de la vie privée et plus particulièrement de vos données à caractère personnel ainsi qu'au respect de vos choix concernant ces dernières.
 
-La présente politique de confidentialité vous permettra de prendre connaissance des données personnelles que MiNET est susceptible de collecter et de traiter et de la manière dont elles sont utilisées. Elle vise à vous informer de vos droits de manière concise, transparente, compréhensible et aisément accessible.
+La présente politique de confidentialité vous permettra de prendre connaissance des données personnelles que MiNET est susceptible de collecter ainsi que de comprendre dans quelles conditions vos données sont traitées, quels sont vos droits à cet égard et comment vous pouvez les exercer. Elle vise à vous informer de manière concise, transparente, compréhensible et aisément accessible.
 
 ## Préambule
 
@@ -57,13 +57,13 @@ MiNET est responsable de traitement pour les différents services qu'elle propos
 
 MiNET est susceptible de collecter des données à caractère personnel dans le cadre des services qu'elle propose et qui sont les suivants :
  - **ADH6 et Payment** : plateformes de gestion des adhérents et des cotisations en ligne respectivement ;
- - **Hosting** : hébergement de machines virtuelles.
+ - **Tickets** : plateforme de gestion des demandes d'assistance ;
 
-Les données à caractère personnel collectées à travers ces différents services sont rassemblées au sein d'un unique compte adhérent dans un fichier informatisé et sont traitées par MiNET.
+Les données à caractère personnel collectées à travers **ADH6** et **Payment** sont rassemblées au sein d'un unique compte adhérent dans un fichier informatisé. Les données à caractère personnel collectées à travers **Tickets** sont rassemblées dans un fichier informatisé distinct. Ces données personnelles sont traitées par MiNET.
 
 ### 3.1 Données relatives à l'adhésion et à la fourniture de services Internet
 
-La collecte de ces données et leur traitement sont nécessaires à l'exécution du contrat d'association ainsi que du contrat de fourniture de services Internet.
+La collecte des données relatives aux plateformes **ADH6** et **Payment** et leur traitement sont nécessaires à l'exécution du contrat d'association ainsi que du contrat de fourniture de services Internet.
 La conservation de ces données constitue une obligation légale au titre des articles [L34-1](https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000043887545) et [R10-13](https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000044231067) du Code des postes et des communications électroniques.
 
 **Informations relatives à l'identité civile des adhérents :**
@@ -82,10 +82,10 @@ La conservation de ces données constitue une obligation légale au titre des ar
 **Informations relatives au paiement :**
 | Données collectées | Finalité du traitement | Base légale du traitement | Durée de conservation |
 | --- | --- | --- | --- |
-| Type de paiement utilisé | Gestion des paiements | Obligation légale | 1 ans à compter de la fin de l'adhésion |
-| La référence du paiement | Gestion des paiements | Obligation légale | 1 ans à compter de la fin de l'adhésion |
-| Le montant | Gestion des paiements | Obligation légale | 1 ans à compter de la fin de l'adhésion |
-| Date, heure et lieu (en cas de transaction physique) | Gestion des paiements | Obligation légale | 1 ans à compter de la fin de l'adhésion |
+| Type de paiement utilisé | Gestion des paiements | <ul><li>Obligation légale</li></ul> | 1 ans à compter de la fin de l'adhésion |
+| La référence du paiement | Gestion des paiements | <ul><li>Obligation légale</li></ul> | 1 ans à compter de la fin de l'adhésion |
+| Le montant | Gestion des paiements | <ul><li>Obligation légale</li></ul> | 1 ans à compter de la fin de l'adhésion |
+| Date, heure et lieu (en cas de transaction physique) | Gestion des paiements | <ul><li>Obligation légale</li></ul> | 1 ans à compter de la fin de l'adhésion |
 
 **Données techniques relatives aux équipements terminaux utilisés :**
 | Données collectées | Finalité du traitement | Base légale du traitement | Durée de conservation |
@@ -96,9 +96,17 @@ La conservation de ces données constitue une obligation légale au titre des ar
 | Journaux d'authentification | Fourniture de services Internet | <ul><li>Obligation légale</li><li>Exécution du contrat de fourniture de services Internet</li></ul> | 1 an à compter de la fin de la fourniture de services Internet |
 
 
-### 3.2 Données relatives à l'hébergement de machines virtuelles
+### 3.2 Données relatives à la gestion des demandes d'assistance
 
-Aucune donnée supplémentaire à celles collectées dans le cadre du contrat d'association n'est collectée dans le cadre de l'hébergement de machines virtuelles.
+La collecte des données relatives à la plateforme **Tickets** et leur traitement sont nécessaires à l'exécution du contrat de fourniture de services Internet, notamment pour la résolution des incidents. La durée de conservation de ces données est limitée au temps strictement nécessaire à la gestion de la demande d'assistance.
+
+**Informations relatives à l'identité civile des adhérents :**
+| Données collectées | Finalité du traitement | Base légale du traitement | Durée de conservation |
+| --- | --- | --- | --- |
+| Nom et prénom / Raison sociale | Identification de l'adhérent | <ul><li>Exécution du contrat de fourniture de services Internet</li></ul> | Durée de la gestion de la demande d'assistance |
+| N° de chambre | Identification et résolution des potentiels incidents | <ul><li>Exécution du contrat de fourniture de services Internet</li></ul> | Durée de la gestion de la demande d'assistance |
+| Adresse email | Identification de l'adhérent | <ul><li>Exécution du contrat de fourniture de services Internet</li></ul> | Durée de la gestion de la demande d'assistance |
+
 
 ### 3.3 Journaux applicatifs
 
